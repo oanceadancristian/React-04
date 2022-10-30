@@ -47,6 +47,7 @@ const SignupForm = () => {
       />
       <ThemeProvider theme={theme}>
         <Button
+          type="submit"
           color="social"
           variant="contained"
           sx={{ textTransform: 'capitalize', mt: 1 }}
