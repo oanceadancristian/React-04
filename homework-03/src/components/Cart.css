@@ -1,0 +1,9 @@
+.total {
+  background-color: black;
+  color: white;
+  padding: 20px 25px;
+  font-weight: bold;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
