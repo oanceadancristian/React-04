@@ -1,0 +1,27 @@
+.episode-list {
+  list-style-type: none;
+}
+
+.episode-container {
+  margin: 25px 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+.character-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 25px;
+  row-gap: 25px;
+}
+
+.show-characters {
+  background-color: #efefef;
+  margin: 10px;
+  padding: 15px 20px;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 10px;
+  cursor: pointer;
+}
