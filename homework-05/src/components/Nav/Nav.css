@@ -1,0 +1,17 @@
+.links {
+  margin: 0 50px;
+  display: flex;
+  gap: 25px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.align-icon {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#link {
+  text-decoration: none;
+}

@@ -1,0 +1,17 @@
+.no-opacity {
+  height: 75px;
+  background-color: rgb(79, 153, 180);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.opacity {
+  height: 75px;
+  background-color: rgba(79, 153, 180, 0.75);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}

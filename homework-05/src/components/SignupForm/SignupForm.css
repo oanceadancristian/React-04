@@ -1,0 +1,42 @@
+form {
+  width: 70%;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #4f99b4;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.account-creation {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.align-icon {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.help-text {
+  color: #9b9fab;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 0;
+}
+
+.account-owner {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+a {
+  text-decoration: none;
+  color: #4f99b4;
+}
+
+a:hover {
+  text-decoration: underline;
+}
