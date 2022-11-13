@@ -1,0 +1,33 @@
+header {
+  background-color: white;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  color: black;
+  font-size: 100px;
+  font-weight: bold;
+}
+
+.episodes-btn {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-75%, -50%);
+  width: 175px;
+  padding: 15px 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.episodes-btn:hover {
+  background-color: #f08d49;
+  color: white;
+}

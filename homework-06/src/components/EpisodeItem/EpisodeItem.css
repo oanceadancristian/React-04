@@ -1,0 +1,21 @@
+.episode-btn {
+  width: 175px;
+  padding: 15px 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.episode-btn:hover {
+  background-color: #f08d49;
+  color: white;
+}
+
+li {
+  list-style-type: none;
+}
+
+.episode-link {
+  text-decoration: none;
+}

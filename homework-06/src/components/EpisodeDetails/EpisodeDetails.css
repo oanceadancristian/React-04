@@ -1,0 +1,28 @@
+.episode-details {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.episode-details {
+  text-align: center;
+  font-size: 20px;
+}
+
+.see-characters {
+  margin-top: 25px;
+}
+
+.see-characters-btn {
+  padding: 10px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.see-characters-btn:hover {
+  background-color: #f08d49;
+  color: white;
+}
