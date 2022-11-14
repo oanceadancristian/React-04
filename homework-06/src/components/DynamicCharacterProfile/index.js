@@ -16,7 +16,9 @@ const DynamicCharacterProfile = (props) => {
   const [characterSpecies, setCharacterSpecies] = useState('');
   const [characterGender, setCharacterGender] = useState('');
   const [characterOrigin, setCharacterOrigin] = useState('');
+  const [characterOriginId, setCharacterOriginId] = useState('');
   const [characterLocation, setCharacterLocation] = useState('');
+  const [characterLocationId, setCharacterLocationId] = useState('');
 
   useEffect(() => {
     axios
@@ -29,7 +31,17 @@ const DynamicCharacterProfile = (props) => {
           setCharacterSpecies(response.data.species);
           setCharacterGender(response.data.gender);
           setCharacterOrigin(response.data.origin.name);
+          setCharacterOriginId(
+            response.data.origin.url.substring(
+              response.data.origin.url.lastIndexOf('/') + 1
+            )
+          );
           setCharacterLocation(response.data.location.name);
+          setCharacterLocationId(
+            response.data.location.url.substring(
+              response.data.location.url.lastIndexOf('/') + 1
+            )
+          );
         }
       });
   }, [characterParam]);
@@ -87,11 +99,25 @@ const DynamicCharacterProfile = (props) => {
           <span className="dynamic-last-known-location">
             Last known location:
           </span>
-          <div>{showCharacterLocation()}</div>
+          <div>
+            <Link
+              to={`/locations/${characterLocationId}`}
+              className="dynamic-character-link"
+            >
+              {showCharacterLocation()}
+            </Link>
+          </div>
         </div>
         <div className="dynamic-character-origin">
           <span className="dynamic-first-seen-in">First seen in:</span>
-          <div>{showCharacterOrigin()}</div>
+          <div>
+            <Link
+              to={`/locations/${characterOriginId}`}
+              className="dynamic-character-link"
+            >
+              {showCharacterOrigin()}
+            </Link>
+          </div>
         </div>
       </div>
     </div>

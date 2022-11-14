@@ -6,33 +6,32 @@ import './RickAndMortyApp.css';
 const RickAndMortyApp = () => {
   const [randomCharacterList, getRandomCharacterList] = useState([]);
 
-  function generateRandomCharacterList() {
-    let randomCharacterList = [];
+  const generateRandomCharacterList = () => {
+    let sixCharacterList = [];
     let characterCount = 826;
     for (let i = 0; i < 6; i++) {
       let randomNumber = Math.floor(Math.random() * characterCount) + 1;
-      if (randomCharacterList.indexOf(randomNumber) === -1) {
-        randomCharacterList.push(randomNumber);
+      if (sixCharacterList.indexOf(randomNumber) === -1) {
+        sixCharacterList.push(randomNumber);
       }
     }
 
-    const endPoint = randomCharacterList.join(',');
+    const endPoint = sixCharacterList.join(',');
+    return endPoint;
+  };
 
+  useEffect(() => {
     axios
-      .get(`https://rickandmortyapi.com/api/character/${endPoint}`)
+      .get(
+        `https://rickandmortyapi.com/api/character/${generateRandomCharacterList()}`
+      )
       .then((response) => {
         const { status, data } = response;
         if (status === 200) {
           getRandomCharacterList(data);
         }
       });
-  }
-
-  useEffect(() => {
-    generateRandomCharacterList();
   }, []);
-
-  console.log(randomCharacterList);
 
   return (
     <>
@@ -81,6 +80,14 @@ const RickAndMortyApp = () => {
               );
             };
 
+            const characterLocationId = randomCharacter.location.url.substring(
+              randomCharacter.location.url.lastIndexOf('/') + 1
+            );
+
+            const characterOriginId = randomCharacter.origin.url.substring(
+              randomCharacter.origin.url.lastIndexOf('/') + 1
+            );
+
             return (
               <div
                 className="random-character-details"
@@ -108,11 +115,25 @@ const RickAndMortyApp = () => {
                     <span className="random-last-known-location">
                       Last known location:
                     </span>
-                    <div>{showCharacterLocation()}</div>
+                    <div>
+                      <Link
+                        to={`/locations/${characterLocationId}`}
+                        className="dynamic-character-link"
+                      >
+                        {showCharacterLocation()}
+                      </Link>
+                    </div>
                   </div>
                   <div className="random-character-origin">
                     <span className="random-first-seen-in">First seen in:</span>
-                    <div>{showCharacterOrigin()}</div>
+                    <div>
+                      <Link
+                        to={`/locations/${characterOriginId}`}
+                        className="dynamic-character-link"
+                      >
+                        {showCharacterOrigin()}
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -25,6 +25,7 @@
 
 .dynamic-character-link {
   color: white;
+  text-decoration: none;
 }
 
 .dynamic-character-link:hover {

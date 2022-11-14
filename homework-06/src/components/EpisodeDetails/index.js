@@ -22,7 +22,7 @@ const EpisodeDetails = () => {
 
   return (
     <div className="episode-details">
-      <div className="episode-id">Episode ID: {episodeDetails?.id}</div>
+      <div className="episode-id">Episode: {episodeDetails?.id}</div>
       <div className="episode-name">Episode name: {episodeDetails?.name}</div>
       <div className="episode-number">
         Episode number: {episodeDetails?.episode}

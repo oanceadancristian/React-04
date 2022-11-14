@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './StaticCharacterProfile.css';
 
@@ -14,7 +14,9 @@ const StaticCharacterProfile = () => {
   const [characterSpecies, setCharacterSpecies] = useState('');
   const [characterGender, setCharacterGender] = useState('');
   const [characterOrigin, setCharacterOrigin] = useState('');
+  const [characterOriginId, setCharacterOriginId] = useState('');
   const [characterLocation, setCharacterLocation] = useState('');
+  const [characterLocationId, setCharacterLocationId] = useState('');
 
   useEffect(() => {
     axios
@@ -27,7 +29,17 @@ const StaticCharacterProfile = () => {
           setCharacterSpecies(response.data.species);
           setCharacterGender(response.data.gender);
           setCharacterOrigin(response.data.origin.name);
+          setCharacterOriginId(
+            response.data.origin.url.substring(
+              response.data.origin.url.lastIndexOf('/') + 1
+            )
+          );
           setCharacterLocation(response.data.location.name);
+          setCharacterLocationId(
+            response.data.location.url.substring(
+              response.data.location.url.lastIndexOf('/') + 1
+            )
+          );
         }
       });
   }, [characterId]);
@@ -69,7 +81,14 @@ const StaticCharacterProfile = () => {
         className="static-character-image"
       />
       <div className="static-character-info">
-        <div className="static-character-name">{characterName}</div>
+        <div className="static-character-name">
+          <Link
+            to={`/episodes/${episodeId}/characters/${characterId}`}
+            className="dynamic-character-link"
+          >
+            {characterName}
+          </Link>
+        </div>
         <div className="static-character-species">
           <div className={showCharacterStatus()}></div>
           {showCharacterGender()} - {showCharacterSpecies()}
@@ -78,11 +97,25 @@ const StaticCharacterProfile = () => {
           <span className="static-last-known-location">
             Last known location:
           </span>
-          <div>{showCharacterLocation()}</div>
+          <div>
+            <Link
+              to={`/locations/${characterLocationId}`}
+              className="dynamic-character-link"
+            >
+              {showCharacterLocation()}
+            </Link>
+          </div>
         </div>
         <div className="static-character-origin">
           <span className="static-first-seen-in">First seen in:</span>
-          <div>{showCharacterOrigin()}</div>
+          <div>
+            <Link
+              to={`/locations/${characterOriginId}`}
+              className="dynamic-character-link"
+            >
+              {showCharacterOrigin()}
+            </Link>
+          </div>
         </div>
       </div>
     </div>

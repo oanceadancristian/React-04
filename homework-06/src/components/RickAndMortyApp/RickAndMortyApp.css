@@ -80,6 +80,7 @@ main {
 
 .random-character-link {
   color: white;
+  text-decoration: none;
 }
 
 .random-character-link:hover {

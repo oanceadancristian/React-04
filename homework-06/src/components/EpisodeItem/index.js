@@ -8,7 +8,7 @@ const EpisodeItem = (props) => {
   return (
     <li>
       <Link to={`${id}`} className="episode-link">
-        <button className="episode-btn">Episode ID: {id}</button>
+        <button className="episode-btn">Episode {id}</button>
       </Link>
     </li>
   );
