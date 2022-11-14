@@ -20,6 +20,13 @@ const LocationDetails = () => {
       });
   }, []);
 
+  const showEpisodeDimension = () => {
+    return (
+      locationDetails?.dimension.charAt(0).toUpperCase() +
+      locationDetails?.dimension.slice(1)
+    );
+  };
+
   return (
     <div className="location-details">
       <div className="location-id">Location: {locationDetails?.id}</div>
@@ -27,13 +34,13 @@ const LocationDetails = () => {
         Location name: {locationDetails?.name}
       </div>
       <div className="location-dimension">
-        Location dimnesion: {locationDetails?.dimension}
+        Location dimnesion: {showEpisodeDimension()}
       </div>
       <div className="location-type">
         Location type: {locationDetails?.type}
       </div>
       <div className="see-characters">
-        <Link to={`/episodes/${locationId}/characters`}>
+        <Link to={`/locations/${locationId}/residents`}>
           <button className="see-characters-btn">See characters</button>
         </Link>
       </div>

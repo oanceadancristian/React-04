@@ -5,6 +5,7 @@ import EpisodeDetails from './components/EpisodeDetails';
 import CharacterList from './components/CharacterList';
 import StaticCharacterProfile from './components/StaticCharacterProfile';
 import LocationDetails from './components/LocationDetails';
+import LocationResidentList from './components/LocationResidentList';
 import './App.css';
 
 function App() {
@@ -24,6 +25,10 @@ function App() {
             element={<StaticCharacterProfile />}
           />
           <Route path="/locations/:locationId" element={<LocationDetails />} />
+          <Route
+            path="/locations/:locationId/residents"
+            element={<LocationResidentList />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
