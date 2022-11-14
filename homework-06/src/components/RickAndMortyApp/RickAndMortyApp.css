@@ -1,6 +1,6 @@
 header {
   background-color: white;
-  height: 350px;
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,16 +10,30 @@ h1 {
   margin: 0;
   text-align: center;
   color: black;
-  font-size: 100px;
+  font-size: 7.5vw;
   font-weight: bold;
 }
 
 main {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  row-gap: 25px;
-  column-gap: 25px;
-  margin: 50px 200px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.random-character-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.episodes-link-btn-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.episodes-link {
+  text-decoration: none;
 }
 
 .episodes-btn {
@@ -29,9 +43,6 @@ main {
   text-transform: uppercase;
   border-radius: 10px;
   cursor: pointer;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
 }
 
 .episodes-btn:hover {
@@ -39,34 +50,32 @@ main {
   color: white;
 }
 
-.episodes-link {
-  text-decoration: none;
-}
-
 .random-character-details {
   background-color: #3c3e44;
-  margin-bottom: 10px;
-  border-radius: 10px;
   box-shadow: 0px 0px 5px #999;
+  border-radius: 10px;
   display: flex;
+  width: 600px;
+  height: 200px;
 }
 
 .random-character-image {
-  border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  width: 50%;
+  border-bottom-left-radius: 10px;
+  width: 40%;
 }
 
 .random-character-info {
-  margin: 25px;
+  margin: 0 auto;
   text-align: center;
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .random-character-name {
-  margin-bottom: 10px;
   font-size: 25px;
-  color: #f08d49;
 }
 
 .random-character-link {
