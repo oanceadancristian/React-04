@@ -1,10 +1,10 @@
-import './App.css';
-import RickAndMortyApp from './components/RickAndMortyApp';
-import EpisodeDetails from './components/EpisodeDetails';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import RickAndMortyApp from './components/RickAndMortyApp';
+import EpisodeList from './components/EpisodeList';
+import EpisodeDetails from './components/EpisodeDetails';
 import CharacterList from './components/CharacterList';
 import StaticCharacterProfile from './components/StaticCharacterProfile';
-import EpisodeList from './components/EpisodeList';
+import './App.css';
 
 function App() {
   return (
