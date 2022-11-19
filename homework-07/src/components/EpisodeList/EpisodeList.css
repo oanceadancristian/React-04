@@ -1,0 +1,10 @@
+ul {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}

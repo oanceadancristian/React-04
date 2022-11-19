@@ -1,0 +1,128 @@
+header {
+  background-color: white;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  color: black;
+  font-size: 7.5vw;
+  font-weight: bold;
+}
+
+main {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.random-character-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.episodes-link-btn-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.episodes-link {
+  text-decoration: none;
+}
+
+.episodes-btn {
+  width: 175px;
+  padding: 15px 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.episodes-btn:hover {
+  background-color: #f08d49;
+  color: white;
+}
+
+.random-character-details {
+  background-color: #3c3e44;
+  box-shadow: 0px 0px 5px #999;
+  border-radius: 10px;
+  display: flex;
+  width: 600px;
+  height: 200px;
+}
+
+.random-character-image {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 40%;
+}
+
+.random-character-info {
+  margin: 0 auto;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.random-character-name {
+  font-size: 25px;
+}
+
+.random-character-link {
+  color: white;
+  text-decoration: none;
+}
+
+.random-character-link:hover {
+  color: #f08d49;
+}
+
+.random-character-species,
+.random-character-gender,
+.random-character-origin,
+.random-character-location {
+  margin: 10px;
+}
+
+.random-last-known-location,
+.random-first-seen-in {
+  color: #9e9e9e;
+}
+
+.random-green {
+  height: 10px;
+  width: 10px;
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.random-red {
+  height: 10px;
+  width: 10px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.random-dark-gray {
+  height: 10px;
+  width: 10px;
+  background-color: darkgray;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
