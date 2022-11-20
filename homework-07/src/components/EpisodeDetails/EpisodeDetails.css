@@ -15,7 +15,9 @@
   margin-top: 25px;
 }
 
-.see-characters-btn {
+.see-characters-btn,
+.go-back-btn {
+  margin: 5px;
   padding: 15px 30px;
   font-weight: bold;
   text-transform: uppercase;
@@ -24,7 +26,8 @@
   cursor: pointer;
 }
 
-.see-characters-btn:hover {
+.see-characters-btn:hover,
+.go-back-btn:hover {
   background-color: #f08d49;
   color: white;
 }

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const CharacterListSlice = createSlice({
+export const EpisodeCharacterListSlice = createSlice({
   name: 'character-list',
   initialState: {
     characterList: [],
@@ -13,6 +13,6 @@ export const CharacterListSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setCharacterList } = CharacterListSlice.actions;
+export const { setCharacterList } = EpisodeCharacterListSlice.actions;
 
-export default CharacterListSlice.reducer;
+export default EpisodeCharacterListSlice.reducer;

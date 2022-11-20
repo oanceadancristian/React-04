@@ -1,8 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import RickAndMortyApp from './components/RickAndMortyApp';
-import EpisodeList from './components/EpisodeList';
-import EpisodeDetails from './components/EpisodeDetails';
 import CharacterList from './components/CharacterList';
+import EpisodeList from './components/EpisodeList';
+import LocationList from './components/LocationList';
+import EpisodeDetails from './components/EpisodeDetails';
+import EpisodeCharacterList from './components/EpisodeCharacterList';
 import StaticCharacterProfile from './components/StaticCharacterProfile';
 import LocationDetails from './components/LocationDetails';
 import LocationResidentList from './components/LocationResidentList';
@@ -15,14 +17,20 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<RickAndMortyApp />} />
+          <Route path="/characters" element={<CharacterList />} />
           <Route path="/episodes" element={<EpisodeList />} />
+          <Route path="/locations" element={<LocationList />} />
           <Route path="/episodes/:episodeId" element={<EpisodeDetails />} />
           <Route
             path="/episodes/:episodeId/characters"
-            element={<CharacterList />}
+            element={<EpisodeCharacterList />}
           />
           <Route
             path="/episodes/:episodeId/characters/:characterId"
+            element={<StaticCharacterProfile />}
+          />
+          <Route
+            path="/characters/:characterId"
             element={<StaticCharacterProfile />}
           />
           <Route path="/locations/:locationId" element={<LocationDetails />} />

@@ -26,18 +26,23 @@ main {
   gap: 25px;
 }
 
-.episodes-link-btn-container {
+.api-link-btn-container {
   margin-top: 50px;
   margin-bottom: 50px;
-  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.episodes-link {
+.episodes-link,
+.locations-link,
+.characters-link {
   text-decoration: none;
 }
 
-.episodes-btn {
-  width: 175px;
+.episodes-btn,
+.locations-btn,
+.characters-btn {
+  width: 200px;
   padding: 15px 30px;
   font-weight: bold;
   text-transform: uppercase;
@@ -46,7 +51,9 @@ main {
   cursor: pointer;
 }
 
-.episodes-btn:hover {
+.episodes-btn:hover,
+.locations-btn:hover,
+.characters-btn:hover {
   background-color: #f08d49;
   color: white;
 }

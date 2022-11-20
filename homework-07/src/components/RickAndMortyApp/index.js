@@ -43,6 +43,17 @@ const RickAndMortyApp = () => {
         <h1>The Rick and Morty API</h1>
       </header>
       <main>
+        <div className="api-link-btn-container">
+          <Link to="/characters" className="characters-link">
+            <button className="characters-btn">See characters</button>
+          </Link>
+          <Link to="/episodes" className="episodes-link">
+            <button className="episodes-btn">See episodes</button>
+          </Link>
+          <Link to="/locations" className="locations-link">
+            <button className="locations-btn">See locations</button>
+          </Link>
+        </div>
         <div className="random-character-container">
           {randomCharacterList.map((randomCharacter) => {
             const randomCharacterEpisodeUrl =
@@ -151,11 +162,6 @@ const RickAndMortyApp = () => {
               </div>
             );
           })}
-        </div>
-        <div className="episodes-link-btn-container">
-          <Link to="/episodes" className="episodes-link">
-            <button className="episodes-btn">See episodes</button>
-          </Link>
         </div>
       </main>
     </>

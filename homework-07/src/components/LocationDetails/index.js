@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import {
@@ -13,6 +13,11 @@ import './LocationDetails.css';
 const LocationDetails = () => {
   const params = useParams();
   const { locationId } = params;
+
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate('/episodes');
+  };
 
   const locationDetails = useSelector((state) => state.locationDetails);
   const dispatch = useDispatch();
@@ -55,6 +60,9 @@ const LocationDetails = () => {
           <button className="see-characters-btn">See characters</button>
         </Link>
       </div>
+      <button className="go-back-btn" onClick={goBack}>
+        Go back
+      </button>
     </div>
   );
 };

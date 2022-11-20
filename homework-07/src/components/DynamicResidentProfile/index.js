@@ -1,6 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import {
+  setCharacterImg,
+  setCharacterName,
+  setCharacterStatus,
+  setCharacterSpecies,
+  setCharacterGender,
+  setCharacterOrigin,
+  setCharacterOriginId,
+  setCharacterLocation,
+  setCharacterLocationId,
+} from '../slices/DynamicResidentProfileSlice';
 import './DynamicResidentProfile.css';
 
 const DynamicResidentProfile = (props) => {
@@ -11,36 +23,46 @@ const DynamicResidentProfile = (props) => {
 
   let residentId = locationResidentParam;
 
-  const [characterImg, setCharacterImg] = useState('');
-  const [characterName, setCharacterName] = useState('');
-  const [characterStatus, setCharacterStatus] = useState('');
-  const [characterSpecies, setCharacterSpecies] = useState('');
-  const [characterGender, setCharacterGender] = useState('');
-  const [characterOrigin, setCharacterOrigin] = useState('');
-  const [characterOriginId, setCharacterOriginId] = useState('');
-  const [characterLocation, setCharacterLocation] = useState('');
-  const [characterLocationId, setCharacterLocationId] = useState('');
+  const dynamicResidentProfile = useSelector(
+    (state) => state.dynamicResidentProfile
+  );
+  const {
+    characterImg,
+    characterName,
+    characterStatus,
+    characterSpecies,
+    characterGender,
+    characterOrigin,
+    characterOriginId,
+    characterLocation,
+    characterLocationId,
+  } = dynamicResidentProfile;
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios
       .get(`https://rickandmortyapi.com/api/character/${locationResidentParam}`)
       .then((response) => {
         if (response.status === 200) {
-          setCharacterImg(response.data.image);
-          setCharacterName(response.data.name);
-          setCharacterStatus(response.data.status);
-          setCharacterSpecies(response.data.species);
-          setCharacterGender(response.data.gender);
-          setCharacterOrigin(response.data.origin.name);
-          setCharacterOriginId(
-            response.data.origin.url.substring(
-              response.data.origin.url.lastIndexOf('/') + 1
+          dispatch(setCharacterImg(response.data.image));
+          dispatch(setCharacterName(response.data.name));
+          dispatch(setCharacterStatus(response.data.status));
+          dispatch(setCharacterSpecies(response.data.species));
+          dispatch(setCharacterGender(response.data.gender));
+          dispatch(setCharacterOrigin(response.data.origin.name));
+          dispatch(
+            setCharacterOriginId(
+              response.data.origin.url.substring(
+                response.data.origin.url.lastIndexOf('/') + 1
+              )
             )
           );
-          setCharacterLocation(response.data.location.name);
-          setCharacterLocationId(
-            response.data.location.url.substring(
-              response.data.location.url.lastIndexOf('/') + 1
+          dispatch(setCharacterLocation(response.data.location.name));
+          dispatch(
+            setCharacterLocationId(
+              response.data.location.url.substring(
+                response.data.location.url.lastIndexOf('/') + 1
+              )
             )
           );
         }
