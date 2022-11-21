@@ -1,18 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import {
-  setCharacterImg,
-  setCharacterName,
-  setCharacterStatus,
-  setCharacterSpecies,
-  setCharacterGender,
-  setCharacterOrigin,
-  setCharacterOriginId,
-  setCharacterLocation,
-  setCharacterLocationId,
-} from '../slices/DynamicCharacterProfileSlice';
 import './DynamicCharacterProfile.css';
 
 const DynamicCharacterProfile = (props) => {
@@ -20,47 +8,38 @@ const DynamicCharacterProfile = (props) => {
 
   const params = useParams();
   const { episodeId } = params;
+  let characterId = episodeId;
 
-  const dynamicCharacterProfile = useSelector(
-    (state) => state.dynamicCharacterProfile
-  );
-  const {
-    characterImg,
-    characterName,
-    characterStatus,
-    characterSpecies,
-    characterGender,
-    characterOrigin,
-    characterOriginId,
-    characterLocation,
-    characterLocationId,
-  } = dynamicCharacterProfile;
-  const dispatch = useDispatch();
+  const [characterImg, setCharacterImg] = useState('');
+  const [characterName, setCharacterName] = useState('');
+  const [characterStatus, setCharacterStatus] = useState('');
+  const [characterSpecies, setCharacterSpecies] = useState('');
+  const [characterGender, setCharacterGender] = useState('');
+  const [characterOrigin, setCharacterOrigin] = useState('');
+  const [characterOriginId, setCharacterOriginId] = useState('');
+  const [characterLocation, setCharacterLocation] = useState('');
+  const [characterLocationId, setCharacterLocationId] = useState('');
 
   useEffect(() => {
     axios
       .get(`https://rickandmortyapi.com/api/character/${characterParam}`)
       .then((response) => {
         if (response.status === 200) {
-          dispatch(setCharacterImg(response.data.image));
-          dispatch(setCharacterName(response.data.name));
-          dispatch(setCharacterStatus(response.data.status));
-          dispatch(setCharacterSpecies(response.data.species));
-          dispatch(setCharacterGender(response.data.gender));
-          dispatch(setCharacterOrigin(response.data.origin.name));
-          dispatch(
-            setCharacterOriginId(
-              response.data.origin.url.substring(
-                response.data.origin.url.lastIndexOf('/') + 1
-              )
+          setCharacterImg(response.data.image);
+          setCharacterName(response.data.name);
+          setCharacterStatus(response.data.status);
+          setCharacterSpecies(response.data.species);
+          setCharacterGender(response.data.gender);
+          setCharacterOrigin(response.data.origin.name);
+          setCharacterOriginId(
+            response.data.origin.url.substring(
+              response.data.origin.url.lastIndexOf('/') + 1
             )
           );
-          dispatch(setCharacterLocation(response.data.location.name));
-          dispatch(
-            setCharacterLocationId(
-              response.data.location.url.substring(
-                response.data.location.url.lastIndexOf('/') + 1
-              )
+          setCharacterLocation(response.data.location.name);
+          setCharacterLocationId(
+            response.data.location.url.substring(
+              response.data.location.url.lastIndexOf('/') + 1
             )
           );
         }
@@ -106,7 +85,7 @@ const DynamicCharacterProfile = (props) => {
       <div className="dynamic-character-info">
         <div className="dynamic-character-name">
           <Link
-            to={`/episodes/${episodeId}/characters/${characterParam}`}
+            to={`/episodes/${episodeId}/characters/${characterId}`}
             className="dynamic-character-link"
           >
             {characterName}

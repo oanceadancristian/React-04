@@ -20,6 +20,10 @@ function App() {
           <Route path="/characters" element={<CharacterList />} />
           <Route path="/episodes" element={<EpisodeList />} />
           <Route path="/locations" element={<LocationList />} />
+          <Route
+            path="/characters/:characterId"
+            element={<StaticCharacterProfile />}
+          />
           <Route path="/episodes/:episodeId" element={<EpisodeDetails />} />
           <Route
             path="/episodes/:episodeId/characters"
@@ -27,10 +31,6 @@ function App() {
           />
           <Route
             path="/episodes/:episodeId/characters/:characterId"
-            element={<StaticCharacterProfile />}
-          />
-          <Route
-            path="/characters/:characterId"
             element={<StaticCharacterProfile />}
           />
           <Route path="/locations/:locationId" element={<LocationDetails />} />

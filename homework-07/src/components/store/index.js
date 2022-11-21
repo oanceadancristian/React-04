@@ -4,12 +4,10 @@ import CharacterListSlice from '../slices/CharacterListSlice';
 import EpisodeListSlice from '../slices/EpisodeListSlice';
 import LocationListSlice from '../slices/LocationListSlice';
 import EpisodeDetailsSlice from '../slices/EpisodeDetailsSlice';
+import EpisodeCharacterListSlice from '../slices/EpisodeCharacterListSlice';
+import StaticCharacterProfileSlice from '../slices/StaticCharacterProfileSlice';
 import LocationDetailsSlice from '../slices/LocationDetailsSlice';
 import LocationResidentListSlice from '../slices/LocationResidentListSlice';
-import EpisodeCharacterListSlice from '../slices/EpisodeCharacterListSlice';
-import DynamicCharacterProfileSlice from '../slices/DynamicCharacterProfileSlice';
-import DynamicResidentProfileSlice from '../slices/DynamicResidentProfileSlice';
-import StaticCharacterProfileSlice from '../slices/StaticCharacterProfileSlice';
 import StaticResidentProfileSlice from '../slices/StaticResidentProfileSlice';
 
 export default configureStore({
@@ -17,14 +15,12 @@ export default configureStore({
     rickAndMortyApp: RickAndMortyAppSlice,
     characters: CharacterListSlice,
     episodes: EpisodeListSlice,
+    locations: LocationListSlice,
     episodeDetails: EpisodeDetailsSlice,
+    episodeCharacters: EpisodeCharacterListSlice,
+    staticCharacterProfile: StaticCharacterProfileSlice,
     locationDetails: LocationDetailsSlice,
     locationResidents: LocationResidentListSlice,
-    episodeCharacters: EpisodeCharacterListSlice,
-    dynamicCharacterProfile: DynamicCharacterProfileSlice,
-    dynamicResidentProfile: DynamicResidentProfileSlice,
-    staticCharacterProfile: StaticCharacterProfileSlice,
     staticResidentProfile: StaticResidentProfileSlice,
-    locations: LocationListSlice,
   },
 });
