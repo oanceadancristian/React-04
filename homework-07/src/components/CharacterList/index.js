@@ -1,34 +1,46 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import Search from '../Search';
 import CharacterItem from '../CharacterItem';
-import { setCharacterList } from '../slices/CharacterListSlice';
+import Pagination from '../Pagination';
+import { setCharacterList, setInfo } from '../slices/CharacterListSlice';
 import './CharacterList.css';
 
 const CharacterList = () => {
   const characters = useSelector((state) => state.characters);
-  const { characterList } = characters;
+  const { characterList, info } = characters;
+  const { count, pages, prev, next } = info;
   const dispatch = useDispatch();
 
+  const [pageNumber, setPageNumber] = useState(1);
+  const [search, setSearch] = useState('');
+
   useEffect(() => {
-    axios.get('https://rickandmortyapi.com/api/character').then((response) => {
-      const {
-        status,
-        data: { results },
-      } = response;
-      if (status === 200) {
-        dispatch(setCharacterList(results));
-      }
-    });
-  }, []);
+    axios
+      .get(
+        `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`
+      )
+      .then((response) => {
+        const {
+          status,
+          data: { results, info },
+        } = response;
+        if (status === 200) {
+          dispatch(setCharacterList(results));
+          dispatch(setInfo(info));
+        }
+      });
+  }, [pageNumber, search]);
 
   return (
-    <ul>
-      {characterList.map((episode) => {
-        const { id } = episode;
-        return <CharacterItem key={id} id={id} />;
-      })}
-    </ul>
+    <>
+      <Search setSearch={setSearch} setPageNumber={setPageNumber} />
+      <div className="character-list">
+        <CharacterItem characterList={characterList} />
+      </div>
+      <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} />
+    </>
   );
 };
 

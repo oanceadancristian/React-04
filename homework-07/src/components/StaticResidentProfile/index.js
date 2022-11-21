@@ -104,8 +104,8 @@ const StaticResidentProfile = () => {
       <div className="static-resident-info">
         <div className="static-resident-name">
           <Link
-            to={`/locations/${locationId}/characters/${residentId}`}
-            className="dynamic-character-link"
+            to={`/locations/${locationId}/residents/${residentId}`}
+            className="static-resident-link"
           >
             {characterName}
           </Link>
@@ -121,7 +121,7 @@ const StaticResidentProfile = () => {
           <div>
             <Link
               to={`/locations/${characterLocationId}`}
-              className="dynamic-character-link"
+              className="static-resident-link"
             >
               {showCharacterLocation()}
             </Link>
@@ -132,7 +132,7 @@ const StaticResidentProfile = () => {
           <div>
             <Link
               to={`/locations/${characterOriginId}`}
-              className="dynamic-character-link"
+              className="static-resident-link"
             >
               {showCharacterOrigin()}
             </Link>

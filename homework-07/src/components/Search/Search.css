@@ -1,0 +1,36 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.form-search {
+  width: 33%;
+  height: 25px;
+  font-size: 15px;
+  font-weight: bold;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 10px 20px;
+  box-shadow: 0px 0px 5px #999;
+}
+
+.form-search:focus {
+  outline: none;
+}
+
+.form-btn {
+  padding: 10px 20px;
+  background-color: #f08d49;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.form-btn:hover {
+  background-color: #f07149;
+}

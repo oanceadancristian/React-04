@@ -1,10 +1,8 @@
-ul {
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
+.character-list {
+  margin: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20%, 250px));
   justify-content: center;
-  gap: 25px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  column-gap: 25px;
+  row-gap: 25px;
 }

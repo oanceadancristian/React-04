@@ -141,7 +141,7 @@ const RickAndMortyApp = () => {
                     <div>
                       <Link
                         to={`/locations/${characterLocationId}`}
-                        className="dynamic-character-link"
+                        className="random-character-link"
                       >
                         {showCharacterLocation()}
                       </Link>
@@ -152,7 +152,7 @@ const RickAndMortyApp = () => {
                     <div>
                       <Link
                         to={`/locations/${characterOriginId}`}
-                        className="dynamic-character-link"
+                        className="random-character-link"
                       >
                         {showCharacterOrigin()}
                       </Link>

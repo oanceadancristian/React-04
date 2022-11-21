@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import DynamicCharacterProfile from '../DynamicCharacterProfile';
+import CharacterItem from '../CharacterItem';
 import { setCharacterList } from '../slices/CharacterListSlice';
 import './EpisodeCharacterList.css';
 
@@ -32,10 +32,10 @@ const EpisodeCharacterList = () => {
           character.lastIndexOf('/') + 1
         );
         return (
-          <DynamicCharacterProfile
+          <CharacterItem
             key={index}
             characterParam={characterParam}
-          ></DynamicCharacterProfile>
+          ></CharacterItem>
         );
       })}
     </div>
