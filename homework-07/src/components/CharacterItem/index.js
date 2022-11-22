@@ -21,7 +21,7 @@ const CharacterItem = (props) => {
         location,
       } = character;
 
-      const showCharacterStatus = () => {
+      const getCharacterStatusClassName = () => {
         let className = '';
         if (status === 'Alive') {
           return (className = 'green');
@@ -30,6 +30,10 @@ const CharacterItem = (props) => {
         } else {
           return (className = 'dark-gray');
         }
+      };
+
+      const showCharacterStatus = () => {
+        return status.charAt(0).toUpperCase() + status.slice(1);
       };
 
       const showCharacterGender = () => {
@@ -59,6 +63,9 @@ const CharacterItem = (props) => {
       return (
         <div className="character-details" key={id}>
           <img src={image} alt={name} className="character-image" />
+          <div className={getCharacterStatusClassName()}>
+            {showCharacterStatus()}
+          </div>
           <div className="character-info">
             <div className="character-name">
               <Link to={`/characters/${id}`} className="character-link">
@@ -66,7 +73,6 @@ const CharacterItem = (props) => {
               </Link>
             </div>
             <div className="character-species">
-              <div className={showCharacterStatus()}></div>
               {showCharacterGender()} - {showCharacterSpecies()}
             </div>
             <div className="character-location">

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import Search from '../Search';
+import Filters from '../Filters';
 import CharacterItem from '../CharacterItem';
 import Pagination from '../Pagination';
 import { setCharacterList, setInfo } from '../slices/CharacterListSlice';
@@ -10,16 +11,18 @@ import './CharacterList.css';
 const CharacterList = () => {
   const characters = useSelector((state) => state.characters);
   const { characterList, info } = characters;
-  const { count, pages, prev, next } = info;
   const dispatch = useDispatch();
 
   const [pageNumber, setPageNumber] = useState(1);
   const [search, setSearch] = useState('');
+  const [status, setStatus] = useState('');
+  const [gender, setGender] = useState('');
+  const [species, setSpecies] = useState('');
 
   useEffect(() => {
     axios
       .get(
-        `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`
+        `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`
       )
       .then((response) => {
         const {
@@ -31,15 +34,31 @@ const CharacterList = () => {
           dispatch(setInfo(info));
         }
       });
-  }, [pageNumber, search]);
+  }, [pageNumber, search, status, gender, species]);
 
   return (
     <>
       <Search setSearch={setSearch} setPageNumber={setPageNumber} />
-      <div className="character-list">
-        <CharacterItem characterList={characterList} />
+      <div className="filters-and-characters">
+        <div className="filters">
+          <Filters
+            setStatus={setStatus}
+            setSpecies={setSpecies}
+            setGender={setGender}
+            setPageNumber={setPageNumber}
+          />
+        </div>
+        <div className="character-list">
+          <CharacterItem characterList={characterList} />
+        </div>
       </div>
-      <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} />
+      <div className="pagination-container">
+        <Pagination
+          info={info}
+          pageNumber={pageNumber}
+          setPageNumber={setPageNumber}
+        />
+      </div>
     </>
   );
 };
