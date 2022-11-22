@@ -1,34 +1,54 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
-import EpisodeItem from '../EpisodeItem';
-import { setEpisodeList } from '../slices/EpisodeListSlice';
+import Navbar from '../Navbar';
+import SelectEpisode from '../Select/SelectEpisode';
+import CharacterItem from '../CharacterItem';
+import { setEpisodeDetails } from '../slices/EpisodeDetailsSlice';
 import './EpisodeList.css';
 
 const EpisodeList = () => {
   const episodes = useSelector((state) => state.episodes);
-  const { episodeList } = episodes;
+  const { episodeDetails } = episodes;
+  const { air_date, name } = episodeDetails;
   const dispatch = useDispatch();
+  const [episodeId, setEpisodeId] = useState(1);
+  const [characterList, setCharacterList] = useState([]);
 
   useEffect(() => {
-    axios.get('https://rickandmortyapi.com/api/episode').then((response) => {
-      const {
-        status,
-        data: { results },
-      } = response;
-      if (status === 200) {
-        dispatch(setEpisodeList(results));
-      }
-    });
-  }, []);
+    (async function () {
+      const data = await fetch(
+        `https://rickandmortyapi.com/api/episode/${episodeId}`
+      ).then((response) => response.json());
+      dispatch(setEpisodeDetails(data));
+
+      const allEpisodeCharacters = await Promise.all(
+        data.characters.map((character) => {
+          return fetch(character).then((response) => response.json());
+        })
+      );
+      setCharacterList(allEpisodeCharacters);
+    })();
+  }, [episodeId]);
 
   return (
-    <ul>
-      {episodeList.map((episode) => {
-        const { id } = episode;
-        return <EpisodeItem key={id} id={id} />;
-      })}
-    </ul>
+    <>
+      <Navbar />
+      <h1 className="subheader-episode-name">
+        Episode name:{' '}
+        <span className="episode-name">{name === '' ? 'Unknown' : name}</span>
+      </h1>
+      <h2 className="subheader-episode-air-date">
+        Air date: {air_date === '' ? 'Unknown' : air_date}
+      </h2>
+      <div className="select-and-characters">
+        <div className="select">
+          <SelectEpisode total={51} setEpisodeId={setEpisodeId} />
+        </div>
+        <div className="character-list">
+          <CharacterItem characterList={characterList} />
+        </div>
+      </div>
+    </>
   );
 };
 

@@ -1,12 +1,14 @@
 .pagination {
-  position: static;
   gap: 10px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
 }
 
 .prev-btn,
 .next-btn {
   padding: 10px 15px;
-  background-color: #f08d49;
+  background-color: #7300e6;
   color: white;
   font-weight: 500;
   border: none;
@@ -16,7 +18,7 @@
 
 .prev-btn:hover,
 .next-btn:hover {
-  background-color: #f07149;
+  background-color: #8c1aff;
 }
 
 .page-link {
@@ -33,10 +35,10 @@
 }
 
 .page-active-link {
-  background-color: #f08d49;
+  background-color: #7300e6;
   color: white;
 }
 
 .page-active-link:hover {
-  background-color: #f07149;
+  background-color: #8c1aff;
 }

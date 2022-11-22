@@ -1,0 +1,26 @@
+.select-container {
+  text-align: center;
+}
+
+.select-title {
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #3c3e44;
+}
+
+.select-dropdown {
+  width: 100%;
+  margin-top: 10px;
+  border: 1px solid blakc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #3c3e44;
+  color: white;
+}
+
+option:checked {
+  background-color: #7300e6;
+}

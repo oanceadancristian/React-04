@@ -15,16 +15,15 @@ const Status = (props) => {
   const statusList = ['Alive', 'Dead', 'Unknown'];
 
   return (
-    <Accordion
-      expanded={true}
-      sx={{ backgroundColor: '#3c3e44', color: '#fff' }}
-    >
+    <Accordion sx={{ backgroundColor: '#C0C0C0', color: '#000' }}>
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon sx={{ color: '#fff' }} />}
+        expandIcon={<ExpandMoreIcon sx={{ color: '#000' }} />}
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography component={'span'}>Status</Typography>
+        <Typography component={'span'} sx={{ fontWeight: 'bold' }}>
+          Status
+        </Typography>
       </AccordionSummary>
       <AccordionDetails>
         <Typography component={'span'}>

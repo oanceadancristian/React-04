@@ -28,7 +28,7 @@ const CharacterItem = (props) => {
         } else if (status === 'Dead') {
           return (className = 'red');
         } else {
-          return (className = 'dark-gray');
+          return (className = 'gray');
         }
       };
 
@@ -78,22 +78,11 @@ const CharacterItem = (props) => {
             </div>
             <div className="character-location">
               <span className="last-known-location">Last known location:</span>
-              <div>
-                <Link
-                  to={`/locations/${locationId}`}
-                  className="character-link"
-                >
-                  {showCharacterLocation()}
-                </Link>
-              </div>
+              <div>{showCharacterLocation()}</div>
             </div>
             <div className="character-origin">
               <span className="first-seen-in">First seen in:</span>
-              <div>
-                <Link to={`/locations/${originId}`} className="character-link">
-                  {showCharacterOrigin()}
-                </Link>
-              </div>
+              <div>{showCharacterOrigin()}</div>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 .character-details {
-  background-color: #3c3e44;
+  background-color: #c0c0c0;
   border-radius: 10px;
-  box-shadow: 0px 0px 5px #999;
+  box-shadow: 0px 0px 25px #000;
 }
 
 .character-image {
@@ -17,16 +17,15 @@
 .character-name {
   margin-bottom: 10px;
   font-size: 25px;
-  color: #f08d49;
 }
 
 .character-link {
-  color: white;
+  color: #3c3e44;
   text-decoration: none;
 }
 
 .character-link:hover {
-  color: #f08d49;
+  color: #8c1aff;
 }
 
 .character-species,
@@ -38,7 +37,7 @@
 
 .last-known-location,
 .first-seen-in {
-  color: #9e9e9e;
+  color: #3c3e44;
 }
 
 .green {
@@ -57,12 +56,16 @@
   background-color: red;
   text-align: center;
   font-weight: bold;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
-.dark-gray {
+.gray {
   height: 25px;
   width: 100%;
   background-color: darkgray;
   text-align: center;
   font-weight: bold;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }

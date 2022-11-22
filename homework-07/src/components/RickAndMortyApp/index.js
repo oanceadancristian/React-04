@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { setRandomCharacterList } from '../slices/RickAndMortyAppSlice';
+import Navbar from '../Navbar';
 import './RickAndMortyApp.css';
 
 const RickAndMortyApp = () => {
@@ -39,39 +40,21 @@ const RickAndMortyApp = () => {
 
   return (
     <>
-      <header>
-        <h1>The Rick and Morty API</h1>
-      </header>
-      <main>
-        <div className="api-link-btn-container">
-          <Link to="/characters" className="characters-link">
-            <button className="characters-btn">See characters</button>
-          </Link>
-          <Link to="/episodes" className="episodes-link">
-            <button className="episodes-btn">See episodes</button>
-          </Link>
-          <Link to="/locations" className="locations-link">
-            <button className="locations-btn">See locations</button>
-          </Link>
-        </div>
+      <Navbar />
+      <div className="subheader">
+        <h1 className="subheader-title">The Rick and Morty API</h1>
+      </div>
+      <div className="main-content">
         <div className="random-character-container">
           {randomCharacterList.map((randomCharacter) => {
-            const randomCharacterEpisodeUrl =
-              randomCharacter.episode.toString();
-
-            const randomCharacterEpisodeId =
-              randomCharacterEpisodeUrl.substring(
-                randomCharacterEpisodeUrl.lastIndexOf('/') + 1
-              );
-
             const showCharacterStatus = () => {
               let className = '';
               if (randomCharacter.status === 'Alive') {
-                return (className = 'dynamic-green');
+                return (className = 'random-green');
               } else if (randomCharacter.status === 'Dead') {
-                return (className = 'dynamic-red');
+                return (className = 'random-red');
               } else {
-                return (className = 'dynamic-dark-gray');
+                return (className = 'random-gray');
               }
             };
 
@@ -103,14 +86,6 @@ const RickAndMortyApp = () => {
               );
             };
 
-            const characterLocationId = randomCharacter.location.url.substring(
-              randomCharacter.location.url.lastIndexOf('/') + 1
-            );
-
-            const characterOriginId = randomCharacter.origin.url.substring(
-              randomCharacter.origin.url.lastIndexOf('/') + 1
-            );
-
             return (
               <div
                 className="random-character-details"
@@ -124,7 +99,7 @@ const RickAndMortyApp = () => {
                 <div className="random-character-info">
                   <div className="random-character-name">
                     <Link
-                      to={`/episodes/${randomCharacterEpisodeId}/characters/${randomCharacter.id}`}
+                      to={`/characters/${randomCharacter.id}`}
                       className="random-character-link"
                     >
                       {randomCharacter.name}
@@ -138,32 +113,18 @@ const RickAndMortyApp = () => {
                     <span className="random-last-known-location">
                       Last known location:
                     </span>
-                    <div>
-                      <Link
-                        to={`/locations/${characterLocationId}`}
-                        className="random-character-link"
-                      >
-                        {showCharacterLocation()}
-                      </Link>
-                    </div>
+                    <div>{showCharacterLocation()}</div>
                   </div>
                   <div className="random-character-origin">
                     <span className="random-first-seen-in">First seen in:</span>
-                    <div>
-                      <Link
-                        to={`/locations/${characterOriginId}`}
-                        className="random-character-link"
-                      >
-                        {showCharacterOrigin()}
-                      </Link>
-                    </div>
+                    <div>{showCharacterOrigin()}</div>
                   </div>
                 </div>
               </div>
             );
           })}
         </div>
-      </main>
+      </div>
     </>
   );
 };

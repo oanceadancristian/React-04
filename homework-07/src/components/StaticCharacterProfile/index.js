@@ -9,15 +9,13 @@ import {
   setCharacterSpecies,
   setCharacterGender,
   setCharacterOrigin,
-  setCharacterOriginId,
   setCharacterLocation,
-  setCharacterLocationId,
 } from '../slices/StaticCharacterProfileSlice';
 import './StaticCharacterProfile.css';
 
 const StaticCharacterProfile = () => {
   const params = useParams();
-  const { episodeId, characterId } = params;
+  const { characterId } = params;
 
   const staticCharacterProfile = useSelector(
     (state) => state.staticCharacterProfile
@@ -29,9 +27,7 @@ const StaticCharacterProfile = () => {
     characterSpecies,
     characterGender,
     characterOrigin,
-    characterOriginId,
     characterLocation,
-    characterLocationId,
   } = staticCharacterProfile;
   const dispatch = useDispatch();
 
@@ -46,21 +42,7 @@ const StaticCharacterProfile = () => {
           dispatch(setCharacterSpecies(response.data.species));
           dispatch(setCharacterGender(response.data.gender));
           dispatch(setCharacterOrigin(response.data.origin.name));
-          dispatch(
-            setCharacterOriginId(
-              response.data.origin.url.substring(
-                response.data.origin.url.lastIndexOf('/') + 1
-              )
-            )
-          );
           dispatch(setCharacterLocation(response.data.location.name));
-          dispatch(
-            setCharacterLocationId(
-              response.data.location.url.substring(
-                response.data.location.url.lastIndexOf('/') + 1
-              )
-            )
-          );
         }
       });
   }, [characterId]);
@@ -72,7 +54,7 @@ const StaticCharacterProfile = () => {
     } else if (characterStatus === 'Dead') {
       return (className = 'static-red');
     } else {
-      return (className = 'static-dark-gray');
+      return (className = 'static-gray');
     }
   };
 
@@ -102,14 +84,7 @@ const StaticCharacterProfile = () => {
         className="static-character-image"
       />
       <div className="static-character-info">
-        <div className="static-character-name">
-          <Link
-            to={`/characters/${characterId}`}
-            className="static-character-link"
-          >
-            {characterName}
-          </Link>
-        </div>
+        <div className="static-character-name">{characterName}</div>
         <div className="static-character-species">
           <div className={showCharacterStatus()}></div>
           {showCharacterGender()} - {showCharacterSpecies()}
@@ -118,25 +93,11 @@ const StaticCharacterProfile = () => {
           <span className="static-last-known-location">
             Last known location:
           </span>
-          <div>
-            <Link
-              to={`/locations/${characterLocationId}`}
-              className="static-character-link"
-            >
-              {showCharacterLocation()}
-            </Link>
-          </div>
+          <div>{showCharacterLocation()}</div>
         </div>
         <div className="static-character-origin">
           <span className="static-first-seen-in">First seen in:</span>
-          <div>
-            <Link
-              to={`/locations/${characterOriginId}`}
-              className="static-character-link"
-            >
-              {showCharacterOrigin()}
-            </Link>
-          </div>
+          <div>{showCharacterOrigin()}</div>
         </div>
       </div>
     </div>

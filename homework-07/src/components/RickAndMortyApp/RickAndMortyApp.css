@@ -1,4 +1,4 @@
-header {
+.subheader {
   background-color: white;
   height: 50vh;
   display: flex;
@@ -6,7 +6,7 @@ header {
   align-items: center;
 }
 
-h1 {
+.subheader-title {
   margin: 0;
   text-align: center;
   color: black;
@@ -14,7 +14,7 @@ h1 {
   font-weight: bold;
 }
 
-main {
+.main-content {
   margin-top: 50px;
   margin-bottom: 50px;
 }
@@ -26,45 +26,13 @@ main {
   gap: 25px;
 }
 
-.api-link-btn-container {
-  margin-top: 50px;
-  margin-bottom: 50px;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.episodes-link,
-.locations-link,
-.characters-link {
-  text-decoration: none;
-}
-
-.episodes-btn,
-.locations-btn,
-.characters-btn {
-  width: 200px;
-  padding: 15px 30px;
-  font-weight: bold;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.episodes-btn:hover,
-.locations-btn:hover,
-.characters-btn:hover {
-  background-color: #f08d49;
-  color: white;
-}
-
 .random-character-details {
   background-color: #3c3e44;
   box-shadow: 0px 0px 5px #999;
   border-radius: 10px;
   display: flex;
-  width: 600px;
-  height: 200px;
+  width: 650px;
+  height: 250px;
 }
 
 .random-character-image {
@@ -114,6 +82,14 @@ main {
   border-radius: 50%;
   display: inline-block;
   margin-right: 10px;
+  box-shadow: 0 0 0 0 green;
+  animation: pulse-alive 1s infinite;
+}
+
+@keyframes pulse-alive {
+  100% {
+    box-shadow: 0 0 0 3px darkgreen;
+  }
 }
 
 .random-red {
@@ -123,13 +99,29 @@ main {
   border-radius: 50%;
   display: inline-block;
   margin-right: 10px;
+  box-shadow: 0 0 0 0 red;
+  animation: pulse-dead 1s infinite;
 }
 
-.random-dark-gray {
+@keyframes pulse-dead {
+  100% {
+    box-shadow: 0 0 0 3px darkred;
+  }
+}
+
+.random-gray {
   height: 10px;
   width: 10px;
-  background-color: darkgray;
+  background-color: gray;
   border-radius: 50%;
   display: inline-block;
   margin-right: 10px;
+  box-shadow: 0 0 0 0 gray;
+  animation: pulse-unknown 1s infinite;
+}
+
+@keyframes pulse-unknown {
+  100% {
+    box-shadow: 0 0 0 3px darkgray;
+  }
 }

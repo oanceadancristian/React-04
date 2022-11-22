@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import Navbar from '../Navbar';
 import Search from '../Search';
 import Filters from '../Filters';
 import CharacterItem from '../CharacterItem';
@@ -38,6 +39,7 @@ const CharacterList = () => {
 
   return (
     <>
+      <Navbar />
       <Search setSearch={setSearch} setPageNumber={setPageNumber} />
       <div className="filters-and-characters">
         <div className="filters">

@@ -4,7 +4,7 @@ import './Pagination.css';
 
 const Pagination = (props) => {
   const { info, pageNumber, setPageNumber } = props;
-  const { count, pages, prev, next } = info;
+  const { pages } = info;
 
   const handlePageChange = (data) => {
     setPageNumber(data.selected + 1);

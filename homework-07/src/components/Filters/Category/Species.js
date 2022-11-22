@@ -27,13 +27,15 @@ const Species = (props) => {
   ];
 
   return (
-    <Accordion sx={{ backgroundColor: '#3c3e44', color: '#fff' }}>
+    <Accordion sx={{ backgroundColor: '#C0C0C0', color: '#000' }}>
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon sx={{ color: '#fff' }} />}
+        expandIcon={<ExpandMoreIcon sx={{ color: '#000' }} />}
         aria-controls="panel2a-content"
         id="panel2a-header"
       >
-        <Typography component={'span'}>Species</Typography>
+        <Typography component={'span'} sx={{ fontWeight: 'bold' }}>
+          Species
+        </Typography>
       </AccordionSummary>
       <AccordionDetails>
         <Typography component={'span'}>

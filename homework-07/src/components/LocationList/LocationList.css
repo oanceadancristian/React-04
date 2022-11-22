@@ -1,10 +1,29 @@
-ul {
-  padding: 0;
+.subheader-location-name,
+.subheader-location-dimension,
+.subheader-location-type {
+  text-align: center;
+}
+
+.location-name {
+  color: #7300e6;
+}
+
+.select-and-characters {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 25px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  margin: 50px;
+}
+
+.select {
+  width: 25%;
+}
+
+.character-list {
+  width: 75%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25%, 250px));
+  justify-content: center;
+  column-gap: 50px;
+  row-gap: 50px;
 }

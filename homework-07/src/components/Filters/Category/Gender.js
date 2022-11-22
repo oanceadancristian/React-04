@@ -15,13 +15,15 @@ const Gender = (props) => {
   const genderList = ['Male', 'Female', 'Genderless', 'Unknown'];
 
   return (
-    <Accordion sx={{ backgroundColor: '#3c3e44', color: '#fff' }}>
+    <Accordion sx={{ backgroundColor: '#C0C0C0', color: '#000' }}>
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon sx={{ color: '#fff' }} />}
+        expandIcon={<ExpandMoreIcon sx={{ color: '#000' }} />}
         aria-controls="panel3a-content"
         id="panel3a-header"
       >
-        <Typography component={'span'}>Gender</Typography>
+        <Typography component={'span'} sx={{ fontWeight: 'bold' }}>
+          Gender
+        </Typography>
       </AccordionSummary>
       <AccordionDetails>
         <Typography component={'span'}>

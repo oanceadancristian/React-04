@@ -9,9 +9,7 @@ export const StaticCharacterProfilSlice = createSlice({
     characterSpecies: '',
     characterGender: '',
     characterOrigin: '',
-    characterOriginId: '',
     characterLocation: '',
-    characterLocationId: '',
   },
   reducers: {
     setCharacterImg: (state, action) => {
@@ -32,14 +30,8 @@ export const StaticCharacterProfilSlice = createSlice({
     setCharacterOrigin: (state, action) => {
       state.characterOrigin = action.payload;
     },
-    setCharacterOriginId: (state, action) => {
-      state.characterOriginId = action.payload;
-    },
     setCharacterLocation: (state, action) => {
       state.characterLocation = action.payload;
-    },
-    setCharacterLocationId: (state, action) => {
-      state.characterLocationId = action.payload;
     },
   },
 });
@@ -52,9 +44,7 @@ export const {
   setCharacterSpecies,
   setCharacterGender,
   setCharacterOrigin,
-  setCharacterOriginId,
   setCharacterLocation,
-  setCharacterLocationId,
 } = StaticCharacterProfilSlice.actions;
 
 export default StaticCharacterProfilSlice.reducer;

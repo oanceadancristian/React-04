@@ -1,10 +1,10 @@
 .static-character-details {
-  background-color: #3c3e44;
-  box-shadow: 0px 0px 5px #999;
+  background-color: #c0c0c0;
+  box-shadow: 0px 0px 25px #000;
   border-radius: 10px;
   display: flex;
-  width: 600px;
-  height: 200px;
+  width: 650px;
+  height: 250px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -28,15 +28,7 @@
 
 .static-character-name {
   font-size: 25px;
-}
-
-.static-character-link {
-  text-decoration: none;
-  color: white;
-}
-
-.static-character-link:hover {
-  color: #f08d49;
+  color: #3c3e44;
 }
 
 .static-character-species,
@@ -48,7 +40,7 @@
 
 .static-last-known-location,
 .static-first-seen-in {
-  color: #9e9e9e;
+  color: #3c3e44;
 }
 
 .static-green {
@@ -58,6 +50,14 @@
   border-radius: 50%;
   display: inline-block;
   margin-right: 10px;
+  box-shadow: 0 0 0 0 green;
+  animation: pulse-alive 1s infinite;
+}
+
+@keyframes pulse-alive {
+  100% {
+    box-shadow: 0 0 0 3px darkgreen;
+  }
 }
 
 .static-red {
@@ -67,13 +67,29 @@
   border-radius: 50%;
   display: inline-block;
   margin-right: 10px;
+  box-shadow: 0 0 0 0 red;
+  animation: pulse-dead 1s infinite;
 }
 
-.static-dark-gray {
+@keyframes pulse-dead {
+  100% {
+    box-shadow: 0 0 0 3px darkred;
+  }
+}
+
+.static-gray {
   height: 10px;
   width: 10px;
-  background-color: darkgray;
+  background-color: gray;
   border-radius: 50%;
   display: inline-block;
   margin-right: 10px;
+  box-shadow: 0 0 0 0 gray;
+  animation: pulse-unknown 1s infinite;
+}
+
+@keyframes pulse-unknown {
+  100% {
+    box-shadow: 0 0 0 3px darkgray;
+  }
 }
