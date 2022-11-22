@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import Navbar from '../Navbar';
 import SelectLocation from '../Select/SelectLocation';
 import CharacterItem from '../CharacterItem';
@@ -30,6 +31,9 @@ const LocationList = () => {
     })();
   }, [locationId]);
 
+  const location = useLocation();
+  const { pathname } = location;
+
   return (
     <>
       <Navbar />
@@ -48,7 +52,7 @@ const LocationList = () => {
           <SelectLocation total={126} setLocationId={setLocationId} />
         </div>
         <div className="character-list">
-          <CharacterItem characterList={characterList} />
+          <CharacterItem characterList={characterList} pathname={pathname} />
         </div>
       </div>
     </>

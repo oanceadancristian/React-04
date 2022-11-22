@@ -1,11 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SelectLocation.css';
 
 const SelectLocation = (props) => {
   const { total, setLocationId } = props;
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setLocationId(e.target.value);
+    navigate(`/locations/${e.target.value}`);
   };
 
   return (

@@ -4,9 +4,10 @@
 
 .select-title {
   padding: 10px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
-  background-color: #3c3e44;
+  background-color: #c0c0c0;
+  color: black;
 }
 
 .select-dropdown {
@@ -15,12 +16,13 @@
   border: 1px solid blakc;
   border-radius: 5px;
   padding: 5px 10px;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
-  background-color: #3c3e44;
-  color: white;
+  background-color: #c0c0c0;
+  color: black;
 }
 
 option:checked {
   background-color: #7300e6;
+  color: white;
 }

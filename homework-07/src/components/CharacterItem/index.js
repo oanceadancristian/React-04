@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './CharacterItem.css';
 
 const CharacterItem = (props) => {
-  const { characterList } = props;
+  const { characterList, pathname } = props;
 
   let display;
 
@@ -20,6 +20,20 @@ const CharacterItem = (props) => {
 
         location,
       } = character;
+
+      const setNavigationUrl = () => {
+        if (pathname === `/episodes`) {
+          return `${pathname}/1/characters/${id}`;
+        } else if (pathname?.includes(`/episodes/`)) {
+          return `${pathname}/characters/${id}`;
+        } else if (pathname === `/locations`) {
+          return `${pathname}/1/characters/${id}`;
+        } else if (pathname?.includes(`/locations/`)) {
+          return `${pathname}/characters/${id}`;
+        } else if (pathname === undefined) {
+          return `/characters/${id}`;
+        }
+      };
 
       const getCharacterStatusClassName = () => {
         let className = '';
@@ -48,17 +62,9 @@ const CharacterItem = (props) => {
         return location.name.charAt(0).toUpperCase() + location.name.slice(1);
       };
 
-      const locationId = character.location.url.substring(
-        character.location.url.lastIndexOf('/') + 1
-      );
-
       const showCharacterOrigin = () => {
         return origin.name.charAt(0).toUpperCase() + origin.name.slice(1);
       };
-
-      const originId = character.origin.url.substring(
-        character.origin.url.lastIndexOf('/') + 1
-      );
 
       return (
         <div className="character-details" key={id}>
@@ -69,7 +75,7 @@ const CharacterItem = (props) => {
 
           <div className="character-info">
             <div className="character-name">
-              <Link to={`/characters/${id}`} className="character-link">
+              <Link to={setNavigationUrl()} className="character-link">
                 {name}
               </Link>
             </div>

@@ -1,7 +1,7 @@
 .character-details {
-  background-color: #c0c0c0;
+  background-color: #dcdcdc;
   border-radius: 10px;
-  box-shadow: 0px 0px 25px #000;
+  box-shadow: 0px 0px 25px black;
 }
 
 .character-image {
@@ -9,7 +9,7 @@
 }
 
 .character-info {
-  margin: 25px 25px 0 25px;
+  margin: 10px 25px;
   text-align: center;
   font-weight: bold;
 }
@@ -20,7 +20,7 @@
 }
 
 .character-link {
-  color: #3c3e44;
+  color: black;
   text-decoration: none;
 }
 
@@ -33,39 +33,52 @@
 .character-origin,
 .character-location {
   margin: 10px;
+  color: #888;
 }
 
 .last-known-location,
 .first-seen-in {
-  color: #3c3e44;
+  color: black;
 }
 
 .green {
-  height: 25px;
+  height: 35px;
   width: 100%;
-  background-color: green;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkgreen;
+  color: white;
   font-weight: bold;
+  text-transform: uppercase;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }
 
 .red {
-  height: 25px;
+  height: 35px;
   width: 100%;
-  background-color: red;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkred;
+  color: white;
   font-weight: bold;
+  text-transform: uppercase;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }
 
 .gray {
-  height: 25px;
+  height: 35px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: darkgray;
-  text-align: center;
+  color: white;
   font-weight: bold;
+  text-transform: uppercase;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }

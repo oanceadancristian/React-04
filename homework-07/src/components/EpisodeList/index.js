@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import Navbar from '../Navbar';
 import SelectEpisode from '../Select/SelectEpisode';
 import CharacterItem from '../CharacterItem';
@@ -30,6 +31,9 @@ const EpisodeList = () => {
     })();
   }, [episodeId]);
 
+  const location = useLocation();
+  const { pathname } = location;
+
   return (
     <>
       <Navbar />
@@ -45,7 +49,7 @@ const EpisodeList = () => {
           <SelectEpisode total={51} setEpisodeId={setEpisodeId} />
         </div>
         <div className="character-list">
-          <CharacterItem characterList={characterList} />
+          <CharacterItem characterList={characterList} pathname={pathname} />
         </div>
       </div>
     </>

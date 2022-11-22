@@ -1,11 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SelectEpisode.css';
 
 const SelectEpisode = (props) => {
   const { total, setEpisodeId } = props;
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setEpisodeId(e.target.value);
+    navigate(`/episodes/${e.target.value}`);
   };
 
   return (

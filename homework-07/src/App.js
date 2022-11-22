@@ -19,6 +19,16 @@ function App() {
             path="/characters/:characterId"
             element={<StaticCharacterProfile />}
           />
+          <Route path="/episodes/:episodeId" element={<EpisodeList />} />
+          <Route
+            path="/episodes/:episodeId/characters/:characterId"
+            element={<StaticCharacterProfile />}
+          />
+          <Route path="/locations/:locationId" element={<LocationList />} />
+          <Route
+            path="/locations/:locationId/characters/:characterId"
+            element={<StaticCharacterProfile />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
