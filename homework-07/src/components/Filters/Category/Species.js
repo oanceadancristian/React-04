@@ -6,6 +6,9 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FilterButton from './FilterButton';
 
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControl from '@mui/material/FormControl';
+
 const Species = (props) => {
   const { setSpecies, setPageNumber } = props;
 
@@ -30,18 +33,25 @@ const Species = (props) => {
         aria-controls="panel2a-content"
         id="panel2a-header"
       >
-        <Typography>Species</Typography>
+        <Typography component={'span'}>Species</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography>
-          {speciesList.map((element, index) => (
-            <FilterButton
-              action={setSpecies}
-              setPageNumber={setPageNumber}
-              key={index}
-              element={element}
-            />
-          ))}
+        <Typography component={'span'}>
+          <FormControl>
+            <RadioGroup
+              aria-labelledby="demo-controlled-radio-buttons-group"
+              name="controlled-radio-buttons-group"
+            >
+              {speciesList.map((element, index) => (
+                <FilterButton
+                  action={setSpecies}
+                  setPageNumber={setPageNumber}
+                  key={index}
+                  element={element}
+                />
+              ))}
+            </RadioGroup>
+          </FormControl>
         </Typography>
       </AccordionDetails>
     </Accordion>

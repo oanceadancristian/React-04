@@ -6,6 +6,9 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FilterButton from './FilterButton';
 
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControl from '@mui/material/FormControl';
+
 const Status = (props) => {
   const { setStatus, setPageNumber } = props;
 
@@ -21,18 +24,25 @@ const Status = (props) => {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography>Status</Typography>
+        <Typography component={'span'}>Status</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography>
-          {statusList.map((element, index) => (
-            <FilterButton
-              action={setStatus}
-              setPageNumber={setPageNumber}
-              key={index}
-              element={element}
-            />
-          ))}
+        <Typography component={'span'}>
+          <FormControl>
+            <RadioGroup
+              aria-labelledby="demo-controlled-radio-buttons-group"
+              name="controlled-radio-buttons-group"
+            >
+              {statusList.map((element, index) => (
+                <FilterButton
+                  action={setStatus}
+                  setPageNumber={setPageNumber}
+                  key={index}
+                  element={element}
+                />
+              ))}
+            </RadioGroup>
+          </FormControl>
         </Typography>
       </AccordionDetails>
     </Accordion>

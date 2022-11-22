@@ -62,10 +62,11 @@ const CharacterItem = (props) => {
 
       return (
         <div className="character-details" key={id}>
-          <img src={image} alt={name} className="character-image" />
           <div className={getCharacterStatusClassName()}>
             {showCharacterStatus()}
           </div>
+          <img src={image} alt={name} className="character-image" />
+
           <div className="character-info">
             <div className="character-name">
               <Link to={`/characters/${id}`} className="character-link">

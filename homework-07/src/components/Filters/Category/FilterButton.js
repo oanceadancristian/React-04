@@ -1,38 +1,34 @@
-import React, { useState } from 'react';
-import Button from '@mui/material/Button';
+import React from 'react';
 import './FilterButton.css';
+
+import Radio from '@mui/material/Radio';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 const FilterButton = (props) => {
   const { action, setPageNumber, element } = props;
 
-  const [clicked, setClicked] = useState(false);
-
   const handleClick = () => {
-    setClicked(!clicked);
     action(element);
     setPageNumber(1);
   };
 
   return (
-    <div className="buttons-container">
-      <Button
-        variant="outlined"
-        onClick={handleClick}
-        sx={{
-          width: '100%',
-          backgroundColor: clicked ? '#f08d49' : '#fff',
-          color: clicked ? '#fff' : '#000',
-          border: clicked ? '1px solid #f08d49' : '1px solid #fff',
-          '&:hover': {
-            backgroundColor: clicked ? '#f08d49' : '#f08d49',
-            color: clicked ? '#fff' : '#fff',
-            border: clicked ? '1px solid #f08d49' : '1px solid #f08d49',
-          },
-        }}
-      >
-        {element}
-      </Button>
-    </div>
+    <FormControlLabel
+      value={element}
+      control={
+        <Radio
+          sx={{
+            color: '#f08d49',
+            '&.Mui-checked': {
+              color: '#f08d49',
+            },
+          }}
+        />
+      }
+      label={element}
+      sx={{ display: 'flex', color: '#fff' }}
+      onClick={handleClick}
+    />
   );
 };
 

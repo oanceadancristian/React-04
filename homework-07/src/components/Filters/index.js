@@ -18,8 +18,8 @@ const Filters = (props) => {
   return (
     <div className="filters-container">
       <div className="filters-title">Filters</div>
-      <div onClick={handleClick} className="clear-filters">
-        Clear filters
+      <div className="clear-filters">
+        <span onClick={handleClick}>Clear filters</span>
       </div>
       <div className="accordition-container">
         <Status setStatus={setStatus} setPageNumber={setPageNumber} />
