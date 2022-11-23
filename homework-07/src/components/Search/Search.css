@@ -4,33 +4,3 @@
   gap: 15px;
   margin-top: 50px;
 }
-
-.form-search {
-  width: 33%;
-  height: 25px;
-  font-size: 15px;
-  font-weight: bold;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 10px 20px;
-  box-shadow: 0px 0px 5px black;
-}
-
-.form-search:focus {
-  outline: none;
-}
-
-.form-btn {
-  padding: 10px 20px;
-  background-color: #7300e6;
-  color: white;
-  font-weight: bold;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.form-btn:hover {
-  background-color: #8c1aff;
-}

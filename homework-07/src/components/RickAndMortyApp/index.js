@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Navbar from '../Navbar';
 import axios from 'axios';
 import { setRandomCharacterList } from '../slices/RickAndMortyAppSlice';
-import Navbar from '../Navbar';
 import './RickAndMortyApp.css';
 
 const RickAndMortyApp = () => {

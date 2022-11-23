@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './SelectEpisode.css';
-
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -19,9 +17,20 @@ const SelectEpisode = (props) => {
   };
 
   return (
-    <div className="select-container">
-      <div className="select-title">Select episode</div>
-      <div className="option-container">
+    <Box sx={{ textAlign: 'center' }}>
+      <Box
+        sx={{
+          marginBottom: '10px',
+          padding: '10px',
+          fontSize: '18px',
+          fontWeight: 'bold',
+          backgroundColor: '#c0c0c0',
+          borderRadius: '5px',
+        }}
+      >
+        Select episode
+      </Box>
+      <Box>
         <Box sx={{ width: '100%' }}>
           <FormControl fullWidth>
             <InputLabel
@@ -67,8 +76,8 @@ const SelectEpisode = (props) => {
             </Select>
           </FormControl>
         </Box>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

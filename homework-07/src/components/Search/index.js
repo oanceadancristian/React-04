@@ -1,8 +1,8 @@
 import React from 'react';
-import './Search.css';
-
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import './Search.css';
 
 const Search = (props) => {
   const { setSearch, setPageNumber } = props;
@@ -30,6 +30,7 @@ const Search = (props) => {
           id="fullWidth"
           onChange={handleChange}
           sx={{
+            fontSize: '40',
             '& label.Mui-focused': {
               color: '#7300e6',
             },
@@ -41,9 +42,18 @@ const Search = (props) => {
           }}
         />
       </Box>
-      <button onClick={handleClick} className="form-btn">
+      <Button
+        variant="contained"
+        onClick={handleClick}
+        sx={{
+          backgroundColor: '#7300e6',
+          '&:hover': {
+            background: '#8c1aff',
+          },
+        }}
+      >
         Search
-      </button>
+      </Button>
     </form>
   );
 };

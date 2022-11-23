@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 import './Pagination.css';
 
 const Pagination = (props) => {
   const { info, pageNumber, setPageNumber } = props;
   const { pages } = info;
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  });
 
   const handlePageChange = (data) => {
     setPageNumber(data.selected + 1);

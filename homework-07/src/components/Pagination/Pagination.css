@@ -3,10 +3,11 @@
   list-style: none;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.prev-btn,
-.next-btn {
+.prev-btn a,
+.next-btn a {
   padding: 10px 15px;
   background-color: #7300e6;
   color: white;
@@ -16,8 +17,8 @@
   cursor: pointer;
 }
 
-.prev-btn:hover,
-.next-btn:hover {
+.prev-btn a:hover,
+.next-btn a:hover {
   background-color: #8c1aff;
 }
 

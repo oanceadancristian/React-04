@@ -1,6 +1,4 @@
 import React from 'react';
-import './FilterButton.css';
-
 import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
@@ -14,7 +12,6 @@ const FilterButton = (props) => {
 
   return (
     <FormControlLabel
-      value={element}
       control={
         <Radio
           sx={{
@@ -26,8 +23,9 @@ const FilterButton = (props) => {
         />
       }
       label={element}
-      sx={{ display: 'flex', color: 'black' }}
+      value={element}
       onClick={handleClick}
+      sx={{ display: 'flex', color: 'black' }}
     />
   );
 };
