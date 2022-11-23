@@ -38,7 +38,6 @@ const SelectLocation = (props) => {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               label="Choose..."
-              value="1"
               onChange={handleChange}
               sx={{
                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
