@@ -52,7 +52,6 @@
 
 .random-character-name {
   font-size: 25px;
-  color: #3c3e44;
 }
 
 .random-character-link {
@@ -69,7 +68,7 @@
 .random-character-origin,
 .random-character-location {
   margin: 10px;
-  color: #888;
+  color: #555;
 }
 
 .random-last-known-location,

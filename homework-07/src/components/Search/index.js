@@ -1,6 +1,9 @@
 import React from 'react';
 import './Search.css';
 
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+
 const Search = (props) => {
   const { setSearch, setPageNumber } = props;
 
@@ -15,12 +18,29 @@ const Search = (props) => {
 
   return (
     <form className="form-container">
-      <input
-        onChange={handleChange}
-        placeholder="Search for characters"
-        type="text"
-        className="form-search"
-      />
+      <Box
+        sx={{
+          width: 750,
+          maxWidth: '100%',
+        }}
+      >
+        <TextField
+          fullWidth
+          label="Search for characters"
+          id="fullWidth"
+          onChange={handleChange}
+          sx={{
+            '& label.Mui-focused': {
+              color: '#7300e6',
+            },
+            '& .MuiOutlinedInput-root': {
+              '&.Mui-focused fieldset': {
+                borderColor: '#7300e6',
+              },
+            },
+          }}
+        />
+      </Box>
       <button onClick={handleClick} className="form-btn">
         Search
       </button>

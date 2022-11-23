@@ -15,7 +15,7 @@ const Navbar = () => {
             display: 'flex',
             justifyContent: 'center',
             gap: '25px',
-            backgroundColor: '#000',
+            backgroundColor: 'black',
           }}
         >
           <Typography variant="h6" component="div">

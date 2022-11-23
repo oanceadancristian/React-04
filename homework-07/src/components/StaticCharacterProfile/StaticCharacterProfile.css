@@ -28,7 +28,6 @@
 
 .static-character-name {
   font-size: 25px;
-  color: #3c3e44;
 }
 
 .static-character-species,
@@ -36,11 +35,12 @@
 .static-character-origin,
 .static-character-location {
   margin: 10px;
+  color: #555;
 }
 
 .static-last-known-location,
 .static-first-seen-in {
-  color: #3c3e44;
+  color: black;
 }
 
 .static-green {

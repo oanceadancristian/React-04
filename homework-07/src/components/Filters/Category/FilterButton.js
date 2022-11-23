@@ -18,7 +18,7 @@ const FilterButton = (props) => {
       control={
         <Radio
           sx={{
-            color: '#7300e6',
+            color: 'black',
             '&.Mui-checked': {
               color: '#7300e6',
             },
@@ -26,7 +26,7 @@ const FilterButton = (props) => {
         />
       }
       label={element}
-      sx={{ display: 'flex', color: '#000' }}
+      sx={{ display: 'flex', color: 'black' }}
       onClick={handleClick}
     />
   );
