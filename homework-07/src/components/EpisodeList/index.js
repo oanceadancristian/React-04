@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import Navbar from '../Navbar';
 import SelectEpisode from '../Select/SelectEpisode';
 import CharacterItem from '../CharacterItem';
@@ -12,7 +12,10 @@ const EpisodeList = () => {
   const { episodeDetails } = episodes;
   const { air_date, name } = episodeDetails;
   const dispatch = useDispatch();
-  const [episodeId, setEpisodeId] = useState(1);
+  const params = useParams();
+  const [episodeId, setEpisodeId] = useState(
+    params.episodeId === undefined ? 1 : params.episodeId
+  );
   const [characterList, setCharacterList] = useState([]);
 
   useEffect(() => {
@@ -46,7 +49,11 @@ const EpisodeList = () => {
       </h2>
       <div className="select-and-characters">
         <div className="select">
-          <SelectEpisode total={51} setEpisodeId={setEpisodeId} />
+          <SelectEpisode
+            total={51}
+            episodeId={episodeId}
+            setEpisodeId={setEpisodeId}
+          />
         </div>
         <div className="character-list">
           <CharacterItem characterList={characterList} pathname={pathname} />

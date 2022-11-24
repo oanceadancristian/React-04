@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,6 +7,9 @@ import Typography from '@mui/material/Typography';
 import './Navbar.css';
 
 const Navbar = () => {
+  const params = useParams();
+  const { episodeId, locationId } = params;
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -36,7 +39,7 @@ const Navbar = () => {
           </Typography>
           <Typography variant="h6" component="div">
             <NavLink
-              to="/episodes"
+              to={`/episodes/${episodeId === undefined ? 1 : episodeId}`}
               className={({ isActive }) => (isActive ? 'active' : 'inactive')}
             >
               Episodes
@@ -44,7 +47,7 @@ const Navbar = () => {
           </Typography>
           <Typography variant="h6" component="div">
             <NavLink
-              to="/locations"
+              to={`/locations/${locationId === undefined ? 1 : locationId}`}
               className={({ isActive }) => (isActive ? 'active' : 'inactive')}
             >
               Locations

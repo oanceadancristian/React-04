@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -8,11 +8,22 @@ import Select from '@mui/material/Select';
 import MovieIcon from '@mui/icons-material/Movie';
 
 const SelectEpisode = (props) => {
-  const { total, setEpisodeId } = props;
+  const { total, episodeId, setEpisodeId } = props;
 
   const navigate = useNavigate();
 
+  const params = useParams();
+
+  useEffect(() => {
+    if (Object.keys(params).length === 0) {
+      navigate('/episodes/1');
+    }
+  }, [navigate, params]);
+
+  const [value, setValue] = useState(episodeId);
+
   const handleChange = (e) => {
+    setValue(e.target.value);
     setEpisodeId(e.target.value);
     navigate(`/episodes/${e.target.value}`);
   };
@@ -51,6 +62,7 @@ const SelectEpisode = (props) => {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               label="Choose..."
+              value={value}
               onChange={handleChange}
               sx={{
                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': {

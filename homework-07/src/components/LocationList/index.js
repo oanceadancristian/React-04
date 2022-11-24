@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import Navbar from '../Navbar';
 import SelectLocation from '../Select/SelectLocation';
 import CharacterItem from '../CharacterItem';
 import { setLocationDetails } from '../slices/LocationDetailsSlice';
 import './LocationList.css';
+import axios from 'axios';
 
 const LocationList = () => {
   const locations = useSelector((state) => state.locations);
   const { locationDetails } = locations;
   const { dimension, name, type } = locationDetails;
   const dispatch = useDispatch();
-  const [locationId, setLocationId] = useState(1);
+  const params = useParams();
+  const [locationId, setLocationId] = useState(
+    params.locationId === undefined ? 1 : params.locationId
+  );
   const [characterList, setCharacterList] = useState([]);
 
   useEffect(() => {
@@ -49,7 +53,11 @@ const LocationList = () => {
       </h3>
       <div className="select-and-characters">
         <div className="select">
-          <SelectLocation total={126} setLocationId={setLocationId} />
+          <SelectLocation
+            total={126}
+            locationId={locationId}
+            setLocationId={setLocationId}
+          />
         </div>
         <div className="character-list">
           <CharacterItem characterList={characterList} pathname={pathname} />

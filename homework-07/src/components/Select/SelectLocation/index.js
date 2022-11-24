@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -8,11 +8,22 @@ import Select from '@mui/material/Select';
 import PlaceIcon from '@mui/icons-material/LocationOn';
 
 const SelectLocation = (props) => {
-  const { total, setLocationId } = props;
+  const { total, locationId, setLocationId } = props;
 
   const navigate = useNavigate();
 
+  const params = useParams();
+
+  useEffect(() => {
+    if (Object.keys(params).length === 0) {
+      navigate('/locations/1');
+    }
+  }, [navigate, params]);
+
+  const [value, setValue] = useState(locationId);
+
   const handleChange = (e) => {
+    setValue(e.target.value);
     setLocationId(e.target.value);
     navigate(`/locations/${e.target.value}`);
   };
@@ -51,6 +62,7 @@ const SelectLocation = (props) => {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               label="Choose..."
+              value={value}
               onChange={handleChange}
               sx={{
                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': {

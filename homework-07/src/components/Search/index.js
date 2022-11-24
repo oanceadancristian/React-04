@@ -14,12 +14,12 @@ const Search = (props) => {
     setSearch(e.target.value);
   };
 
-  const handleClick = (e) => {
-    e.preventDefault();
-  };
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  // };
 
   return (
-    <form className="form-container">
+    <div className="form-container">
       <Box
         sx={{
           width: 750,
@@ -56,7 +56,7 @@ const Search = (props) => {
       </Box>
       <Button
         variant="contained"
-        onClick={handleClick}
+        // onClick={handleClick}
         sx={{
           backgroundColor: '#7300e6',
           '&:hover': {
@@ -66,7 +66,7 @@ const Search = (props) => {
       >
         Search
       </Button>
-    </form>
+    </div>
   );
 };
 
