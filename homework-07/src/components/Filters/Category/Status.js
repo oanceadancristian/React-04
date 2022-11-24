@@ -13,6 +13,10 @@ const Status = (props) => {
 
   const statusList = ['Alive', 'Dead', 'Unknown'];
 
+  const handleStatusChange = (e) => {
+    localStorage.setItem('Status', e.target.value);
+  };
+
   return (
     <Accordion sx={{ backgroundColor: '#C0C0C0', color: '#000' }}>
       <AccordionSummary
@@ -26,7 +30,7 @@ const Status = (props) => {
       </AccordionSummary>
       <AccordionDetails>
         <Typography component={'span'}>
-          <FormControl>
+          <FormControl onChange={handleStatusChange}>
             <RadioGroup
               aria-labelledby="demo-controlled-radio-buttons-group"
               name="controlled-radio-buttons-group"

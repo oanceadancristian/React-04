@@ -6,6 +6,7 @@ import Box from '@mui/system/Box';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
 import { useNavigate } from 'react-router-dom';
+import { Typography } from '@mui/material';
 
 const Filters = (props) => {
   const { setStatus, setSpecies, setGender, setPageNumber } = props;
@@ -17,6 +18,9 @@ const Filters = (props) => {
     setSpecies('');
     setGender('');
     setPageNumber('');
+    localStorage.removeItem('Status');
+    localStorage.removeItem('Species');
+    localStorage.removeItem('Gender');
     navigate('/characters/pages/1');
     window.location.reload();
   };
@@ -49,8 +53,6 @@ const Filters = (props) => {
           padding: '10px',
           fontSize: '16px',
           marginTop: '10px',
-          textDecoration: 'underline',
-          cursor: 'pointer',
           borderBottomLeftRadius: '5px',
           borderBottomRightRadius: '5px',
         }}
@@ -58,7 +60,16 @@ const Filters = (props) => {
         <Box
           component="span"
           onClick={handleClick}
-          sx={{ display: 'flex', justifyContent: 'center' }}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            fontWeight: 'normal',
+            textDecoration: 'underline',
+            cursor: 'pointer',
+            '&:hover': {
+              color: '#8c1aff',
+            },
+          }}
         >
           <FilterAltOffIcon fontSize="medium" sx={{ marginRight: '3px' }} />
           Clear filters

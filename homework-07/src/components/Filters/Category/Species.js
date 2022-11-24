@@ -25,6 +25,10 @@ const Species = (props) => {
     'Planet',
   ];
 
+  const handleSpeciesChange = (e) => {
+    localStorage.setItem('Species', e.target.value);
+  };
+
   return (
     <Accordion sx={{ backgroundColor: '#C0C0C0', color: '#000' }}>
       <AccordionSummary
@@ -38,7 +42,7 @@ const Species = (props) => {
       </AccordionSummary>
       <AccordionDetails>
         <Typography component={'span'}>
-          <FormControl>
+          <FormControl onChange={handleSpeciesChange}>
             <RadioGroup
               aria-labelledby="demo-controlled-radio-buttons-group"
               name="controlled-radio-buttons-group"

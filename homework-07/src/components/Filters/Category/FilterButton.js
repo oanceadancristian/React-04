@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
@@ -8,15 +8,11 @@ const FilterButton = (props) => {
 
   const navigate = useNavigate();
 
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const handleClick = () => {
+  const handleChange = () => {
     action(element);
     setPageNumber(1);
 
     navigate('/characters/pages/1');
-
-    setSearchParams({});
   };
 
   return (
@@ -31,9 +27,14 @@ const FilterButton = (props) => {
           }}
         />
       }
+      checked={
+        element === localStorage.getItem('Status') ||
+        element === localStorage.getItem('Species') ||
+        element === localStorage.getItem('Gender')
+      }
       label={element}
       value={element}
-      onClick={handleClick}
+      onChange={handleChange}
       sx={{ color: 'black' }}
     />
   );

@@ -13,6 +13,10 @@ const Gender = (props) => {
 
   const genderList = ['Male', 'Female', 'Genderless', 'Unknown'];
 
+  const handleGenderChange = (e) => {
+    localStorage.setItem('Gender', e.target.value);
+  };
+
   return (
     <Accordion sx={{ backgroundColor: '#C0C0C0', color: '#000' }}>
       <AccordionSummary
@@ -26,7 +30,7 @@ const Gender = (props) => {
       </AccordionSummary>
       <AccordionDetails>
         <Typography component={'span'}>
-          <FormControl>
+          <FormControl onChange={handleGenderChange}>
             <RadioGroup
               aria-labelledby="demo-controlled-radio-buttons-group"
               name="controlled-radio-buttons-group"

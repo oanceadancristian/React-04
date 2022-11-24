@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../Navbar';
 import Search from '../Search';
@@ -22,6 +22,34 @@ const CharacterList = () => {
   const [status, setStatus] = useState('');
   const [gender, setGender] = useState('');
   const [species, setSpecies] = useState('');
+
+  ////////////////////////////////////////////////////////////
+
+  // localStorage.getItem('Status')
+  // localStorage.getItem('Species')
+  // localStorage.getItem('Gender')
+
+  const [queryParams, setQueryParamas] = useSearchParams();
+
+  useEffect(() => {
+    setQueryParamas({
+      ...queryParams,
+      statusFilter:
+        localStorage.getItem('Status') === null
+          ? ''
+          : localStorage.getItem('Status'),
+      speciesFilter:
+        localStorage.getItem('Species') === null
+          ? ''
+          : localStorage.getItem('Species'),
+      genderFilter:
+        localStorage.getItem('Gender') === null
+          ? ''
+          : localStorage.getItem('Gender'),
+    });
+  }, [queryParams, setQueryParamas]);
+
+  ////////////////////////////////////////////////////////////
 
   useEffect(() => {
     axios
