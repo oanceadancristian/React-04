@@ -4,7 +4,7 @@ import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 const FilterButton = (props) => {
-  const { action, setPageNumber, element, status, species, gender } = props;
+  const { action, setPageNumber, element } = props;
 
   const navigate = useNavigate();
 
@@ -16,10 +16,7 @@ const FilterButton = (props) => {
 
     navigate('/characters/pages/1');
 
-    // const paramsObj = { status: status, species: species, gender: gender };
-    // const searchParamsObj = new URLSearchParams(paramsObj);
-
-    // setSearchParams(searchParamsObj);
+    setSearchParams({});
   };
 
   return (

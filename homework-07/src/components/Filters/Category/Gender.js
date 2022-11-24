@@ -37,7 +37,6 @@ const Gender = (props) => {
                   setPageNumber={setPageNumber}
                   key={index}
                   element={element}
-                  gender={element}
                 />
               ))}
             </RadioGroup>

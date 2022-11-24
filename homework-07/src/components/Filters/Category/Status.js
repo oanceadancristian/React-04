@@ -37,7 +37,6 @@ const Status = (props) => {
                   action={setStatus}
                   setPageNumber={setPageNumber}
                   element={element}
-                  status={element}
                 />
               ))}
             </RadioGroup>
