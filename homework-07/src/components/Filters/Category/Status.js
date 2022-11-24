@@ -33,10 +33,11 @@ const Status = (props) => {
             >
               {statusList.map((element, index) => (
                 <FilterButton
+                  key={index}
                   action={setStatus}
                   setPageNumber={setPageNumber}
-                  key={index}
                   element={element}
+                  status={element}
                 />
               ))}
             </RadioGroup>

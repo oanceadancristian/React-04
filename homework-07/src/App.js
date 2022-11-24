@@ -26,6 +26,7 @@ function App() {
             path="/characters/:characterId"
             element={<StaticCharacterProfile />}
           />
+          <Route path="/characters/pages/:pageId" element={<CharacterList />} />
           <Route path="/episodes/:episodeId" element={<EpisodeList />} />
           <Route
             path="/episodes/:episodeId/characters/:characterId"

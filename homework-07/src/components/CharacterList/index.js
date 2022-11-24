@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../Navbar';
 import Search from '../Search';
@@ -13,8 +14,10 @@ const CharacterList = () => {
   const characters = useSelector((state) => state.characters);
   const { characterList, info } = characters;
   const dispatch = useDispatch();
-
-  const [pageNumber, setPageNumber] = useState(1);
+  const params = useParams();
+  const [pageNumber, setPageNumber] = useState(
+    params.pageId === undefined ? 1 : params.pageId
+  );
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState('');
   const [gender, setGender] = useState('');

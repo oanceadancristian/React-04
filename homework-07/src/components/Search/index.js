@@ -2,7 +2,6 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
-import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
 import './Search.css';
 
@@ -14,12 +13,15 @@ const Search = (props) => {
     setSearch(e.target.value);
   };
 
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  // };
-
   return (
-    <div className="form-container">
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '15px',
+        marginTop: '50px',
+      }}
+    >
       <Box
         sx={{
           width: 750,
@@ -40,6 +42,7 @@ const Search = (props) => {
           sx={{
             borderRadius: '5px',
             fontSize: '40',
+            boxShadow: '0px 2px 5px #757575',
             '& label': {
               fontWeight: '600',
             },
@@ -54,19 +57,7 @@ const Search = (props) => {
           }}
         />
       </Box>
-      <Button
-        variant="contained"
-        // onClick={handleClick}
-        sx={{
-          backgroundColor: '#7300e6',
-          '&:hover': {
-            background: '#8c1aff',
-          },
-        }}
-      >
-        Search
-      </Button>
-    </div>
+    </Box>
   );
 };
 

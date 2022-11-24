@@ -5,15 +5,19 @@ import Gender from './Category/Gender';
 import Box from '@mui/system/Box';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
+import { useNavigate } from 'react-router-dom';
 
 const Filters = (props) => {
   const { setStatus, setSpecies, setGender, setPageNumber } = props;
+
+  const navigate = useNavigate();
 
   const handleClick = () => {
     setStatus('');
     setSpecies('');
     setGender('');
     setPageNumber('');
+    navigate('/characters/pages/1');
     window.location.reload();
   };
 

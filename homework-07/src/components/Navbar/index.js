@@ -8,7 +8,7 @@ import './Navbar.css';
 
 const Navbar = () => {
   const params = useParams();
-  const { episodeId, locationId } = params;
+  const { pageId, episodeId, locationId } = params;
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -31,7 +31,7 @@ const Navbar = () => {
           </Typography>
           <Typography variant="h6" component="div">
             <NavLink
-              to="/characters"
+              to={`/characters/pages/${pageId === undefined ? 1 : pageId}`}
               className={({ isActive }) => (isActive ? 'active' : 'inactive')}
             >
               Characters

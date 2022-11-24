@@ -49,6 +49,7 @@ const Species = (props) => {
                   setPageNumber={setPageNumber}
                   key={index}
                   element={element}
+                  species={element}
                 />
               ))}
             </RadioGroup>

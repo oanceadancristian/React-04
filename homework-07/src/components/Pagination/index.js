@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
+import { useNavigate, useParams } from 'react-router-dom';
 import './Pagination.css';
 
 const Pagination = (props) => {
@@ -14,8 +15,19 @@ const Pagination = (props) => {
     });
   });
 
+  const navigate = useNavigate();
+
+  const params = useParams();
+
+  useEffect(() => {
+    if (Object.keys(params).length === 0) {
+      navigate('/characters/pages/1');
+    }
+  }, [navigate, params]);
+
   const handlePageChange = (data) => {
     setPageNumber(data.selected + 1);
+    navigate(`/characters/pages/${data.selected + 1}`);
   };
 
   return (
