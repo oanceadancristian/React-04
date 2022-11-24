@@ -12,9 +12,9 @@ const Buttons = () => {
         gap: '10px',
         margin: '0px',
         position: 'absolute',
-        top: '50%',
+        top: '75%',
         left: '50%',
-        transform: 'translate(-50%, 350%)',
+        transform: 'translate(-50%, 50%)',
       }}
     >
       <Link

@@ -23,7 +23,9 @@ const NavbarNoAccount = () => {
             <Typography variant="h6" component="div">
               <NavLink
                 to="/"
-                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+                className={({ isActive }) =>
+                  isActive ? 'active-no-account' : 'inactive-no-account'
+                }
               >
                 Rick And Morty API
               </NavLink>
@@ -33,7 +35,9 @@ const NavbarNoAccount = () => {
             <Typography variant="h6" component="div">
               <NavLink
                 to="/signin"
-                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+                className={({ isActive }) =>
+                  isActive ? 'active-no-account' : 'inactive-no-account'
+                }
               >
                 <Box
                   sx={{
