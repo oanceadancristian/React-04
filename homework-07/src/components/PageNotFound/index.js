@@ -1,12 +1,14 @@
 import React from 'react';
-import Header from '../Header';
+import NavbarNoAccount from '../NavbarNoAccount';
+import Navbar from '../Navbar';
 import Box from '@mui/system/Box';
 import Typography from '@mui/material/Typography';
 
 const PageNotFound = () => {
   return (
     <Box>
-      <Header />
+      <NavbarNoAccount />
+      <Navbar />
       <Typography
         variant="h1"
         sx={{

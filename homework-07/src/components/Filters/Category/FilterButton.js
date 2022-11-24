@@ -25,7 +25,7 @@ const FilterButton = (props) => {
       label={element}
       value={element}
       onClick={handleClick}
-      sx={{ display: 'flex', color: 'black' }}
+      sx={{ color: 'black' }}
     />
   );
 };

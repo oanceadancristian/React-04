@@ -1,9 +1,18 @@
 .pagination {
-  gap: 10px;
-  list-style: none;
+  margin-bottom: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 5px;
+  list-style: none;
+}
+
+.prev-btn {
+  margin-right: 10px;
+}
+
+.next-btn {
+  margin-left: 10px;
 }
 
 .prev-btn a,
@@ -13,7 +22,7 @@
   color: white;
   font-weight: 500;
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
 }
 
@@ -27,7 +36,7 @@
   background-color: #c8c8c8;
   color: black;
   padding: 10px 15px;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
 }
 

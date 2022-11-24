@@ -5,6 +5,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import PlaceIcon from '@mui/icons-material/LocationOn';
 
 const SelectLocation = (props) => {
   const { total, setLocationId } = props;
@@ -26,8 +27,11 @@ const SelectLocation = (props) => {
           fontWeight: 'bold',
           backgroundColor: '#c0c0c0',
           borderRadius: '5px',
+          display: 'flex',
+          justifyContent: 'center',
         }}
       >
+        <PlaceIcon fontSize="medium" sx={{ marginRight: '3px' }} />
         Select location
       </Box>
       <Box>
@@ -60,6 +64,8 @@ const SelectLocation = (props) => {
                     key={index}
                     value={number + 1}
                     sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
                       '&:hover': {
                         backgroundColor: '#8c1aff',
                         color: 'white',

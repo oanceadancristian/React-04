@@ -20,7 +20,7 @@ const Navbar = () => {
         >
           <Typography variant="h6" component="div">
             <NavLink
-              to="/home"
+              to="/homepage"
               className={({ isActive }) => (isActive ? 'active' : 'inactive')}
             >
               Home

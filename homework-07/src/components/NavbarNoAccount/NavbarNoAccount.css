@@ -1,0 +1,14 @@
+.active {
+  color: #7300e6;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.inactive {
+  color: white;
+  text-decoration: none;
+}
+
+.inactive:hover {
+  color: #8c1aff;
+}

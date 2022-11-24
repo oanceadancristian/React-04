@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from '../Header/';
-import SignupForm from '../SignupForm/';
+import NavbarNoAccount from '../NavbarNoAccount/';
+import SignupForm from './SignupForm';
 import Box from '@mui/system/Box';
 
 const Signup = () => {
   return (
     <Box sx={{ height: '100vh' }}>
-      <Header />
+      <NavbarNoAccount />
       <SignupForm />
     </Box>
   );

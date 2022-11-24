@@ -14,7 +14,7 @@ const Buttons = () => {
         position: 'absolute',
         top: '50%',
         left: '50%',
-        transform: 'translate(-50%,-50%)',
+        transform: 'translate(-50%, 350%)',
       }}
     >
       <Link
@@ -29,6 +29,7 @@ const Buttons = () => {
         <Button
           variant="contained"
           sx={{
+            width: '125px',
             textTransform: 'capitalize',
             backgroundColor: '#7300e6',
             padding: '10px 20px',
@@ -55,6 +56,7 @@ const Buttons = () => {
         <Button
           variant="contained"
           sx={{
+            width: '125px',
             textTransform: 'capitalize',
             backgroundColor: '#7300e6',
             padding: '10px 20px',

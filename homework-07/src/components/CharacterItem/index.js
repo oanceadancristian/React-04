@@ -79,7 +79,7 @@ const CharacterItem = (props) => {
                 {name}
               </Link>
             </div>
-            <div className="character-species">
+            <div className="character-gender-and-species">
               {showCharacterGender()} - {showCharacterSpecies()}
             </div>
             <div className="character-location">

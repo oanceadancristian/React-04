@@ -85,7 +85,7 @@ const StaticCharacterProfile = () => {
       />
       <div className="static-character-info">
         <div className="static-character-name">{characterName}</div>
-        <div className="static-character-species">
+        <div className="static-character-gender-and-species">
           <div className={showCharacterStatus()}></div>
           {showCharacterGender()} - {showCharacterSpecies()}
         </div>

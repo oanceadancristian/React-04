@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Homepage from '../src/components/Homepage';
+import HomepageNoAccount from '../src/components/HomepageNoAccount';
 import Signin from '../src/components/Signin/';
 import Signup from '../src/components/Signup/';
-import RickAndMortyApp from './components/RickAndMortyApp';
+import Homepage from './components/Homepage';
 import CharacterList from './components/CharacterList';
 import EpisodeList from './components/EpisodeList';
 import LocationList from './components/LocationList';
@@ -15,10 +15,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<HomepageNoAccount />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/home" element={<RickAndMortyApp />} />
+          <Route path="/homepage" element={<Homepage />} />
           <Route path="/characters" element={<CharacterList />} />
           <Route path="/episodes" element={<EpisodeList />} />
           <Route path="/locations" element={<LocationList />} />

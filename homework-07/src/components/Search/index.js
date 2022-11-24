@@ -1,7 +1,9 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
 import Button from '@mui/material/Button';
+import SearchIcon from '@mui/icons-material/Search';
 import './Search.css';
 
 const Search = (props) => {
@@ -26,11 +28,21 @@ const Search = (props) => {
       >
         <TextField
           fullWidth
-          label="Search for characters"
           id="fullWidth"
           onChange={handleChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
           sx={{
+            borderRadius: '5px',
             fontSize: '40',
+            '& label': {
+              fontWeight: '600',
+            },
             '& label.Mui-focused': {
               color: '#7300e6',
             },

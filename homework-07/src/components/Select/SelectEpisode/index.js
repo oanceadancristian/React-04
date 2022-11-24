@@ -5,6 +5,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import MovieIcon from '@mui/icons-material/Movie';
 
 const SelectEpisode = (props) => {
   const { total, setEpisodeId } = props;
@@ -26,8 +27,11 @@ const SelectEpisode = (props) => {
           fontWeight: 'bold',
           backgroundColor: '#c0c0c0',
           borderRadius: '5px',
+          display: 'flex',
+          justifyContent: 'center',
         }}
       >
+        <MovieIcon fontSize="medium" sx={{ marginRight: '3px' }} />
         Select episode
       </Box>
       <Box>
@@ -63,6 +67,8 @@ const SelectEpisode = (props) => {
                     key={index}
                     value={number + 1}
                     sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
                       '&:hover': {
                         backgroundColor: '#8c1aff',
                         color: 'white',

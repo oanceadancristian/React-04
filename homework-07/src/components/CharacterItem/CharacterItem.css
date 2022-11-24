@@ -1,7 +1,7 @@
 .character-details {
-  background-color: #dcdcdc;
+  background-color: #c0c0c0;
   border-radius: 10px;
-  box-shadow: 0px 0px 25px black;
+  box-shadow: 5px 5px 25px #252525;
 }
 
 .character-image {
@@ -9,7 +9,7 @@
 }
 
 .character-info {
-  margin: 10px 25px;
+  margin: 10px;
   text-align: center;
   font-weight: bold;
 }
@@ -28,17 +28,18 @@
   color: #8c1aff;
 }
 
-.character-species,
-.character-gender,
-.character-origin,
-.character-location {
-  margin: 10px;
+.character-gender-and-species,
+.character-location,
+.character-origin {
+  margin-bottom: 10px;
   color: #555;
 }
 
 .last-known-location,
 .first-seen-in {
   color: black;
+  display: inline-block;
+  margin-bottom: 5px;
 }
 
 .green {

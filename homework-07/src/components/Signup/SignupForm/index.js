@@ -4,6 +4,9 @@ import FormControl from '@mui/material/FormControl';
 import Typography from '@mui/material/Typography';
 import PersonIcon from '@mui/icons-material/Person';
 import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import EmailIcon from '@mui/icons-material/Email';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 
@@ -36,11 +39,11 @@ const SignupForm = () => {
           fontSize: '20px',
           fontWeight: 'bold',
           display: 'flex',
+          justifyContent: 'center',
           alignItems: 'center',
           flexWrap: 'wrap',
         }}
       >
-        <PersonIcon fontSize="large" />
         Create your account
       </Typography>
       <TextField
@@ -50,8 +53,15 @@ const SignupForm = () => {
         size="small"
         id="outlined-basic-name"
         required
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <PersonIcon />
+            </InputAdornment>
+          ),
+        }}
         sx={{
-          marginTop: '15px',
+          marginTop: '25px',
           width: '100%',
           '& label.Mui-focused': {
             color: '#7300e6',
@@ -70,8 +80,15 @@ const SignupForm = () => {
         size="small"
         id="outlined-basic-email-address"
         required
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <EmailIcon />
+            </InputAdornment>
+          ),
+        }}
         sx={{
-          marginTop: '15px',
+          marginTop: '25px',
           width: '100%',
           '& label.Mui-focused': {
             color: '#7300e6',
@@ -90,8 +107,15 @@ const SignupForm = () => {
         size="small"
         id="outlined-basic-password"
         required
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <VpnKeyIcon />
+            </InputAdornment>
+          ),
+        }}
         sx={{
-          marginTop: '15px',
+          marginTop: '25px',
           width: '100%',
           '& label.Mui-focused': {
             color: '#7300e6',
@@ -110,8 +134,15 @@ const SignupForm = () => {
         size="small"
         id="outlined-basic-confirm-password"
         required
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <VpnKeyIcon />
+            </InputAdornment>
+          ),
+        }}
         sx={{
-          marginTop: '15px',
+          marginTop: '25px',
           width: '100%',
           '& label.Mui-focused': {
             color: '#7300e6',
@@ -127,7 +158,7 @@ const SignupForm = () => {
         type="submit"
         variant="contained"
         sx={{
-          marginTop: '15px',
+          marginTop: '25px',
           textTransform: 'capitalize',
           backgroundColor: '#7300e6',
           padding: '10px 20px',
@@ -142,7 +173,13 @@ const SignupForm = () => {
         Register
       </Button>
       <Typography
-        sx={{ marginTop: '25px', fontSize: '20px', fontWeight: 'bold' }}
+        sx={{
+          marginTop: '25px',
+          fontSize: '20px',
+          fontWeight: 'bold',
+          display: 'flex',
+          justifyContent: 'center',
+        }}
       >
         Already have an account?
         <Link
@@ -155,6 +192,7 @@ const SignupForm = () => {
             color: '#7300e6',
             '&:hover': {
               color: '#8c1aff',
+              textDecoration: 'underline',
             },
           }}
         >
