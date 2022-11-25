@@ -16,7 +16,7 @@ const NavbarNoAccount = () => {
           sx={{
             display: 'flex',
             justifyContent: 'space-between',
-            backgroundColor: 'black',
+            backgroundColor: '#202329',
           }}
         >
           <Box sx={{ marginLeft: '50px' }}>
@@ -57,7 +57,9 @@ const NavbarNoAccount = () => {
             <Typography variant="h6" component="div">
               <NavLink
                 to="/signup"
-                className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+                className={({ isActive }) =>
+                  isActive ? 'active-no-account' : 'inactive-no-account'
+                }
               >
                 <Box
                   sx={{

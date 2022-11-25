@@ -56,7 +56,6 @@ const LocationList = () => {
       >
         <CircularProgress color="inherit" />
       </Backdrop>
-
       <Navbar />
       <h1 className="subheader-location-name">
         Location name:{' '}

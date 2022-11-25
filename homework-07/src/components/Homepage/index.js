@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import {
+  Link as RouterLink,
+  NavLink,
+  useParams,
+  useLocation,
+} from 'react-router-dom';
 import Navbar from '../Navbar';
 import axios from 'axios';
 import { setRandomCharacterList } from '../slices/RickAndMortyAppSlice';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import './Homepage.css';
 
 const Homepage = () => {
@@ -48,6 +56,12 @@ const Homepage = () => {
     localStorage.removeItem('Species');
     localStorage.removeItem('Gender');
   }, []);
+
+  const params = useParams();
+  const { pageId, episodeId, locationId } = params;
+
+  const location = useLocation();
+  const { search } = location;
 
   return (
     <>
@@ -116,6 +130,7 @@ const Homepage = () => {
                 <div className="random-character-info">
                   <div className="random-character-name">
                     <Link
+                      component={RouterLink}
                       to={`/characters/${randomCharacter.id}`}
                       className="random-character-link"
                     >
@@ -142,6 +157,77 @@ const Homepage = () => {
           })}
         </div>
       </div>
+      <Box
+        sx={{
+          paddingBottom: '50px',
+          backgroundColor: '#202329',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '25px',
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '25px',
+          }}
+        >
+          <Box>
+            <NavLink
+              to={`/characters/pages/${
+                pageId === undefined ? 1 : pageId
+              }${search}`}
+              className={({ isActive }) =>
+                isActive ? 'footer-active' : 'footer-inactive'
+              }
+            >
+              Characters: 826
+            </NavLink>
+          </Box>
+          <Box>
+            <NavLink
+              to={`/episodes/${episodeId === undefined ? 1 : episodeId}`}
+              className={({ isActive }) =>
+                isActive ? 'footer-active' : 'footer-inactive'
+              }
+            >
+              Episodes: 51
+            </NavLink>
+          </Box>
+          <Box>
+            <NavLink
+              to={`/locations/${locationId === undefined ? 1 : locationId}`}
+              className={({ isActive }) =>
+                isActive ? 'footer-active' : 'footer-inactive'
+              }
+            >
+              Locations: 126
+            </NavLink>
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <Box>
+            <Link href="https://github.com/oanceadancristian" target="_blank">
+              <GitHubIcon
+                fontSize="large"
+                sx={{
+                  color: 'white',
+                  '&:hover': {
+                    color: '#8c1aff',
+                    cursor: 'pointer',
+                  },
+                }}
+              />
+            </Link>
+          </Box>
+        </Box>
+      </Box>
     </>
   );
 };

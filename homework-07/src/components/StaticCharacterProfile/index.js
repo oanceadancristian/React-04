@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -12,6 +12,8 @@ import {
   setCharacterOrigin,
   setCharacterLocation,
 } from '../slices/StaticCharacterProfileSlice';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 import './StaticCharacterProfile.css';
 
 const StaticCharacterProfile = () => {
@@ -32,11 +34,14 @@ const StaticCharacterProfile = () => {
   } = staticCharacterProfile;
   const dispatch = useDispatch();
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     axios
       .get(`https://rickandmortyapi.com/api/character/${characterId}`)
       .then((response) => {
         if (response.status === 200) {
+          setLoading(false);
           dispatch(setCharacterImg(response.data.image));
           dispatch(setCharacterName(response.data.name));
           dispatch(setCharacterStatus(response.data.status));
@@ -79,28 +84,36 @@ const StaticCharacterProfile = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="static-character-details">
-        <img
-          src={characterImg}
-          alt={characterName}
-          className="static-character-image"
-        />
-        <div className="static-character-info">
-          <div className="static-character-name">{characterName}</div>
-          <div className="static-character-gender-and-species">
-            <div className={showCharacterStatus()}></div>
-            {showCharacterGender()} - {showCharacterSpecies()}
-          </div>
-          <div className="static-character-location">
-            <span className="static-last-known-location">
-              Last known location:
-            </span>
-            <div>{showCharacterLocation()}</div>
-          </div>
-          <div className="static-character-origin">
-            <span className="static-first-seen-in">First seen in:</span>
-            <div>{showCharacterOrigin()}</div>
+      <Backdrop
+        sx={{ color: '#7300e6', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={loading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      <div className="wrapper">
+        <Navbar />
+        <div className="static-character-details">
+          <img
+            src={characterImg}
+            alt={characterName}
+            className="static-character-image"
+          />
+          <div className="static-character-info">
+            <div className="static-character-name">{characterName}</div>
+            <div className="static-character-gender-and-species">
+              <div className={showCharacterStatus()}></div>
+              {showCharacterGender()} - {showCharacterSpecies()}
+            </div>
+            <div className="static-character-location">
+              <span className="static-last-known-location">
+                Last known location:
+              </span>
+              <div>{showCharacterLocation()}</div>
+            </div>
+            <div className="static-character-origin">
+              <span className="static-first-seen-in">First seen in:</span>
+              <div>{showCharacterOrigin()}</div>
+            </div>
           </div>
         </div>
       </div>

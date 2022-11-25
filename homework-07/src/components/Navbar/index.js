@@ -21,13 +21,15 @@ const Navbar = () => {
             display: 'flex',
             justifyContent: 'center',
             gap: '25px',
-            backgroundColor: 'black',
+            backgroundColor: '#202329',
           }}
         >
           <Typography variant="h6" component="div">
             <NavLink
               to="/homepage"
-              className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+              className={({ isActive }) =>
+                isActive ? 'navbar-active' : 'navbar-inactive'
+              }
             >
               Home
             </NavLink>
@@ -37,7 +39,9 @@ const Navbar = () => {
               to={`/characters/pages/${
                 pageId === undefined ? 1 : pageId
               }${search}`}
-              className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+              className={({ isActive }) =>
+                isActive ? 'navbar-active' : 'navbar-inactive'
+              }
             >
               Characters
             </NavLink>
@@ -45,7 +49,9 @@ const Navbar = () => {
           <Typography variant="h6" component="div">
             <NavLink
               to={`/episodes/${episodeId === undefined ? 1 : episodeId}`}
-              className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+              className={({ isActive }) =>
+                isActive ? 'navbar-active' : 'navbar-inactive'
+              }
             >
               Episodes
             </NavLink>
@@ -53,7 +59,9 @@ const Navbar = () => {
           <Typography variant="h6" component="div">
             <NavLink
               to={`/locations/${locationId === undefined ? 1 : locationId}`}
-              className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+              className={({ isActive }) =>
+                isActive ? 'navbar-active' : 'navbar-inactive'
+              }
             >
               Locations
             </NavLink>
