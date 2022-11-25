@@ -1,7 +1,7 @@
 import React from 'react';
 import NavbarNoAccount from '../NavbarNoAccount/';
 import Buttons from './Buttons';
-import HomepageNoAccountImage from '../../../src/images/homepage-no-account.png';
+import HomepageNoAccounNoBackgroundtImage from '../../../src/images/homepage-no-account-no-background.png';
 import Box from '@mui/system/Box';
 import './HomepageNoAccount.css';
 
@@ -10,9 +10,9 @@ const HomepageNoAccount = () => {
     <Box>
       <NavbarNoAccount />
       <img
-        src={HomepageNoAccountImage}
+        src={HomepageNoAccounNoBackgroundtImage}
         alt="Rick And Morty"
-        className="homepage-no-account-image"
+        className="homepage-no-account-no-background-image"
       />
       <Buttons />
     </Box>

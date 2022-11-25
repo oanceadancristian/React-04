@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import Navbar from '../Navbar';
 import {
   setCharacterImg,
   setCharacterName,
@@ -77,30 +78,33 @@ const StaticCharacterProfile = () => {
   };
 
   return (
-    <div className="static-character-details">
-      <img
-        src={characterImg}
-        alt={characterName}
-        className="static-character-image"
-      />
-      <div className="static-character-info">
-        <div className="static-character-name">{characterName}</div>
-        <div className="static-character-gender-and-species">
-          <div className={showCharacterStatus()}></div>
-          {showCharacterGender()} - {showCharacterSpecies()}
-        </div>
-        <div className="static-character-location">
-          <span className="static-last-known-location">
-            Last known location:
-          </span>
-          <div>{showCharacterLocation()}</div>
-        </div>
-        <div className="static-character-origin">
-          <span className="static-first-seen-in">First seen in:</span>
-          <div>{showCharacterOrigin()}</div>
+    <>
+      <Navbar />
+      <div className="static-character-details">
+        <img
+          src={characterImg}
+          alt={characterName}
+          className="static-character-image"
+        />
+        <div className="static-character-info">
+          <div className="static-character-name">{characterName}</div>
+          <div className="static-character-gender-and-species">
+            <div className={showCharacterStatus()}></div>
+            {showCharacterGender()} - {showCharacterSpecies()}
+          </div>
+          <div className="static-character-location">
+            <span className="static-last-known-location">
+              Last known location:
+            </span>
+            <div>{showCharacterLocation()}</div>
+          </div>
+          <div className="static-character-origin">
+            <span className="static-first-seen-in">First seen in:</span>
+            <div>{showCharacterOrigin()}</div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

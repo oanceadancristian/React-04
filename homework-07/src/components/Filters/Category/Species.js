@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import FilterButton from './FilterButton';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -26,6 +26,12 @@ const Species = (props) => {
     'Croneberg',
     'Planet',
   ];
+
+  const location = useLocation();
+
+  useEffect(() => {
+    location.pathname = '/characters/pages/1';
+  }, [location]);
 
   const [queryParams, setQueryParamas] = useSearchParams();
 
