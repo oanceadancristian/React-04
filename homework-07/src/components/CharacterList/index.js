@@ -42,6 +42,8 @@ const CharacterList = () => {
 
   const [loading, setLoading] = useState(true);
 
+  console.log(pageNumber);
+
   useEffect(() => {
     axios
       .get(

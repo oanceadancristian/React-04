@@ -3,12 +3,16 @@
   box-shadow: 0px 0px 10px #757575;
   border-radius: 10px;
   display: flex;
-  width: 650px;
-  height: 250px;
+  width: 780px;
+  height: 300px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.static-character-details:hover {
+  box-shadow: 0px 0px 50px black;
 }
 
 .static-character-image {

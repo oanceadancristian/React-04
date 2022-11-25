@@ -4,6 +4,10 @@
   box-shadow: 5px 5px 25px #252525;
 }
 
+.character-details:hover {
+  box-shadow: 0px 0px 50px black;
+}
+
 .character-image {
   width: 100%;
 }
