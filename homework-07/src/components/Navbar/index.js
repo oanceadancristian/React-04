@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, useLocation } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,6 +9,9 @@ import './Navbar.css';
 const Navbar = () => {
   const params = useParams();
   const { pageId, episodeId, locationId } = params;
+
+  const location = useLocation();
+  const { search } = location;
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -31,7 +34,9 @@ const Navbar = () => {
           </Typography>
           <Typography variant="h6" component="div">
             <NavLink
-              to={`/characters/pages/${pageId === undefined ? 1 : pageId}`}
+              to={`/characters/pages/${
+                pageId === undefined ? 1 : pageId
+              }${search}`}
               className={({ isActive }) => (isActive ? 'active' : 'inactive')}
             >
               Characters

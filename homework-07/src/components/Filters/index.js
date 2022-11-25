@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Status from './Category/Status';
 import Species from './Category/Species';
 import Gender from './Category/Gender';
@@ -10,6 +11,35 @@ import { useNavigate } from 'react-router-dom';
 const Filters = (props) => {
   const { setStatus, setSpecies, setGender, setPageNumber } = props;
 
+  const [queryParams] = useSearchParams();
+
+  const [expandedStatus, setExpandedStatus] = useState(
+    queryParams.get('statusFilter') !== null &&
+      queryParams.get('statusFilter') !== ''
+  );
+
+  const handleExpandedStatus = () => {
+    setExpandedStatus(!expandedStatus);
+  };
+
+  const [expandedSpecies, setExpandedSpecies] = useState(
+    queryParams.get('speciesFilter') !== null &&
+      queryParams.get('speciesFilter') !== ''
+  );
+
+  const handleExpandedSpecies = () => {
+    setExpandedSpecies(!expandedSpecies);
+  };
+
+  const [expandedGender, setExpandedGender] = useState(
+    queryParams.get('genderFilter') !== null &&
+      queryParams.get('genderFilter') !== ''
+  );
+
+  const handleExpandedGender = () => {
+    setExpandedGender(!expandedGender);
+  };
+
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -17,6 +47,9 @@ const Filters = (props) => {
     setSpecies('');
     setGender('');
     setPageNumber('');
+    setExpandedStatus(false);
+    setExpandedSpecies(false);
+    setExpandedGender(false);
     localStorage.removeItem('Status');
     localStorage.removeItem('Species');
     localStorage.removeItem('Gender');
@@ -41,9 +74,24 @@ const Filters = (props) => {
         Filters
       </Box>
       <Box>
-        <Status setStatus={setStatus} setPageNumber={setPageNumber} />
-        <Species setSpecies={setSpecies} setPageNumber={setPageNumber} />
-        <Gender setGender={setGender} setPageNumber={setPageNumber} />
+        <Status
+          expandedStatus={expandedStatus}
+          handleExpandedStatus={handleExpandedStatus}
+          setStatus={setStatus}
+          setPageNumber={setPageNumber}
+        />
+        <Species
+          expandedSpecies={expandedSpecies}
+          handleExpandedSpecies={handleExpandedSpecies}
+          setSpecies={setSpecies}
+          setPageNumber={setPageNumber}
+        />
+        <Gender
+          expandedGender={expandedGender}
+          handleExpandedGender={handleExpandedGender}
+          setGender={setGender}
+          setPageNumber={setPageNumber}
+        />
       </Box>
       <Box
         sx={{

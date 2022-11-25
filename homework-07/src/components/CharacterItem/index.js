@@ -7,7 +7,7 @@ const CharacterItem = (props) => {
 
   let display;
 
-  if (characterList) {
+  if (characterList.length !== 0) {
     display = characterList.map((character) => {
       const {
         id,

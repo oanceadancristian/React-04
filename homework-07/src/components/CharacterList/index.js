@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../Navbar';
 import Search from '../Search';
@@ -16,11 +16,14 @@ const CharacterList = () => {
   const characters = useSelector((state) => state.characters);
   const { characterList, info } = characters;
   const dispatch = useDispatch();
+
   const params = useParams();
+
   const [pageNumber, setPageNumber] = useState(
     params.pageId === undefined ? 1 : params.pageId
   );
   const [search, setSearch] = useState('');
+
   const [status, setStatus] = useState(
     localStorage.getItem('Status') === null
       ? ''
@@ -36,26 +39,6 @@ const CharacterList = () => {
       ? ''
       : localStorage.getItem('Gender')
   );
-
-  const [queryParams, setQueryParamas] = useSearchParams();
-
-  useEffect(() => {
-    setQueryParamas({
-      ...queryParams,
-      statusFilter:
-        localStorage.getItem('Status') === null
-          ? ''
-          : localStorage.getItem('Status'),
-      speciesFilter:
-        localStorage.getItem('Species') === null
-          ? ''
-          : localStorage.getItem('Species'),
-      genderFilter:
-        localStorage.getItem('Gender') === null
-          ? ''
-          : localStorage.getItem('Gender'),
-    });
-  }, [queryParams, setQueryParamas]);
 
   const [loading, setLoading] = useState(true);
 

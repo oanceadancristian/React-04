@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import FilterButton from './FilterButton';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -9,16 +10,39 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 
 const Gender = (props) => {
-  const { setGender, setPageNumber } = props;
+  const { expandedGender, handleExpandedGender, setGender, setPageNumber } =
+    props;
 
   const genderList = ['Male', 'Female', 'Genderless', 'Unknown'];
 
+  const [queryParams, setQueryParamas] = useSearchParams();
+
   const handleGenderChange = (e) => {
     localStorage.setItem('Gender', e.target.value);
+
+    setQueryParamas({
+      ...queryParams,
+      statusFilter:
+        localStorage.getItem('Status') === null
+          ? ''
+          : localStorage.getItem('Status'),
+      speciesFilter:
+        localStorage.getItem('Species') === null
+          ? ''
+          : localStorage.getItem('Species'),
+      genderFilter:
+        localStorage.getItem('Gender') === null
+          ? ''
+          : localStorage.getItem('Gender'),
+    });
   };
 
   return (
-    <Accordion sx={{ backgroundColor: '#C0C0C0', color: '#000' }}>
+    <Accordion
+      sx={{ backgroundColor: '#C0C0C0', color: '#000' }}
+      expanded={expandedGender}
+      onChange={handleExpandedGender}
+    >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon sx={{ color: '#000' }} />}
         aria-controls="panel3a-content"

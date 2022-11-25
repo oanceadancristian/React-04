@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import FilterButton from './FilterButton';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -9,7 +10,8 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 
 const Species = (props) => {
-  const { setSpecies, setPageNumber } = props;
+  const { expandedSpecies, handleExpandedSpecies, setSpecies, setPageNumber } =
+    props;
 
   const speciesList = [
     'Human',
@@ -25,12 +27,34 @@ const Species = (props) => {
     'Planet',
   ];
 
+  const [queryParams, setQueryParamas] = useSearchParams();
+
   const handleSpeciesChange = (e) => {
     localStorage.setItem('Species', e.target.value);
+
+    setQueryParamas({
+      ...queryParams,
+      statusFilter:
+        localStorage.getItem('Status') === null
+          ? ''
+          : localStorage.getItem('Status'),
+      speciesFilter:
+        localStorage.getItem('Species') === null
+          ? ''
+          : localStorage.getItem('Species'),
+      genderFilter:
+        localStorage.getItem('Gender') === null
+          ? ''
+          : localStorage.getItem('Gender'),
+    });
   };
 
   return (
-    <Accordion sx={{ backgroundColor: '#C0C0C0', color: '#000' }}>
+    <Accordion
+      sx={{ backgroundColor: '#C0C0C0', color: '#000' }}
+      expanded={expandedSpecies}
+      onChange={handleExpandedSpecies}
+    >
       <AccordionSummary
         expandIcon={<ExpandMoreIcon sx={{ color: '#000' }} />}
         aria-controls="panel2a-content"
