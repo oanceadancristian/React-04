@@ -13,7 +13,7 @@ const Gender = (props) => {
   const { expandedGender, handleExpandedGender, setGender, setPageNumber } =
     props;
 
-  const genderList = ['Male', 'Female', 'Genderless', 'Unknown'];
+  const genderList = ['Male', 'Female', 'Genderless', 'Unknown gender'];
 
   const [queryParams, setQueryParamas] = useSearchParams();
 

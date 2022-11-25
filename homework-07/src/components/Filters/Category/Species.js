@@ -19,7 +19,7 @@ const Species = (props) => {
     'Humanoid',
     'Poopybutthole',
     'Mythological',
-    'Unknown',
+    'Unknown species',
     'Animal',
     'Disease',
     'Robot',

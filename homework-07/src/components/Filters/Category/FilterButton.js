@@ -9,7 +9,16 @@ const FilterButton = (props) => {
   const navigate = useNavigate();
 
   const handleChange = () => {
-    action(element);
+    if (
+      element === 'Unknown status' ||
+      element === 'Unknown species' ||
+      element === 'Unknown gender'
+    ) {
+      action(element.slice(0, 7));
+    } else {
+      action(element);
+    }
+
     setPageNumber(1);
 
     navigate('/characters/pages/1');
@@ -32,7 +41,13 @@ const FilterButton = (props) => {
         element === localStorage.getItem('Species') ||
         element === localStorage.getItem('Gender')
       }
-      label={element}
+      label={
+        element === 'Unknown status' ||
+        element === 'Unknown species' ||
+        element === 'Unknown gender'
+          ? 'Unknown'
+          : element
+      }
       value={element}
       onChange={handleChange}
       sx={{ color: 'black' }}

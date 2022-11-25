@@ -27,17 +27,17 @@ const CharacterList = () => {
   const [status, setStatus] = useState(
     localStorage.getItem('Status') === null
       ? ''
-      : localStorage.getItem('Status')
+      : localStorage.getItem('Status').slice(0, 7)
   );
   const [species, setSpecies] = useState(
     localStorage.getItem('Species') === null
       ? ''
-      : localStorage.getItem('Species')
+      : localStorage.getItem('Species').slice(0, 7)
   );
   const [gender, setGender] = useState(
     localStorage.getItem('Gender') === null
       ? ''
-      : localStorage.getItem('Gender')
+      : localStorage.getItem('Gender').slice(0, 7)
   );
 
   const [loading, setLoading] = useState(true);

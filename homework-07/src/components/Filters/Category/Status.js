@@ -13,7 +13,7 @@ const Status = (props) => {
   const { expandedStatus, handleExpandedStatus, setStatus, setPageNumber } =
     props;
 
-  const statusList = ['Alive', 'Dead', 'Unknown'];
+  const statusList = ['Alive', 'Dead', 'Unknown status'];
 
   const [queryParams, setQueryParamas] = useSearchParams();
 
