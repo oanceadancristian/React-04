@@ -17,6 +17,9 @@ const SelectLocation = (props) => {
   useEffect(() => {
     if (Object.keys(params).length === 0) {
       navigate('/locations/1');
+    } else {
+      setValue(params.locationId);
+      setLocationId(params.locationId);
     }
   }, [navigate, params]);
 

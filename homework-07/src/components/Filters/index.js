@@ -6,7 +6,6 @@ import Box from '@mui/system/Box';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
 import { useNavigate } from 'react-router-dom';
-import { Typography } from '@mui/material';
 
 const Filters = (props) => {
   const { setStatus, setSpecies, setGender, setPageNumber } = props;
@@ -22,7 +21,6 @@ const Filters = (props) => {
     localStorage.removeItem('Species');
     localStorage.removeItem('Gender');
     navigate('/characters/pages/1');
-    window.location.reload();
   };
 
   return (

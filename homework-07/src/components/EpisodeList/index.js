@@ -5,6 +5,8 @@ import Navbar from '../Navbar';
 import SelectEpisode from '../Select/SelectEpisode';
 import CharacterItem from '../CharacterItem';
 import { setEpisodeDetails } from '../slices/EpisodeDetailsSlice';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 import './EpisodeList.css';
 
 const EpisodeList = () => {
@@ -18,6 +20,8 @@ const EpisodeList = () => {
   );
   const [characterList, setCharacterList] = useState([]);
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     (async function () {
       const data = await fetch(
@@ -30,6 +34,7 @@ const EpisodeList = () => {
           return fetch(character).then((response) => response.json());
         })
       );
+      setLoading(false);
       setCharacterList(allEpisodeCharacters);
     })();
   }, [episodeId]);
@@ -37,8 +42,21 @@ const EpisodeList = () => {
   const location = useLocation();
   const { pathname } = location;
 
+  useEffect(() => {
+    localStorage.removeItem('Status');
+    localStorage.removeItem('Species');
+    localStorage.removeItem('Gender');
+  }, []);
+
   return (
     <>
+      <Backdrop
+        sx={{ color: '#7300e6', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={loading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+
       <Navbar />
       <h1 className="subheader-episode-name">
         Episode name:{' '}

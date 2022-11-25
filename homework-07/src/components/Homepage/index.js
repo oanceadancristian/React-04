@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar';
 import axios from 'axios';
 import { setRandomCharacterList } from '../slices/RickAndMortyAppSlice';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 import './Homepage.css';
 
 const Homepage = () => {
@@ -25,6 +27,8 @@ const Homepage = () => {
     return endPoint;
   };
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     axios
       .get(
@@ -33,13 +37,26 @@ const Homepage = () => {
       .then((response) => {
         const { status, data } = response;
         if (status === 200) {
+          setLoading(false);
           dispatch(setRandomCharacterList(data));
         }
       });
   }, []);
 
+  useEffect(() => {
+    localStorage.removeItem('Status');
+    localStorage.removeItem('Species');
+    localStorage.removeItem('Gender');
+  }, []);
+
   return (
     <>
+      <Backdrop
+        sx={{ color: '#7300e6', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={loading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Navbar />
       <div className="subheader">
         <h1 className="subheader-title">The Rick and Morty API</h1>

@@ -8,6 +8,8 @@ import Filters from '../Filters';
 import CharacterItem from '../CharacterItem';
 import Pagination from '../Pagination';
 import { setCharacterList, setInfo } from '../slices/CharacterListSlice';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 import './CharacterList.css';
 
 const CharacterList = () => {
@@ -19,15 +21,21 @@ const CharacterList = () => {
     params.pageId === undefined ? 1 : params.pageId
   );
   const [search, setSearch] = useState('');
-  const [status, setStatus] = useState('');
-  const [gender, setGender] = useState('');
-  const [species, setSpecies] = useState('');
-
-  ////////////////////////////////////////////////////////////
-
-  // localStorage.getItem('Status')
-  // localStorage.getItem('Species')
-  // localStorage.getItem('Gender')
+  const [status, setStatus] = useState(
+    localStorage.getItem('Status') === null
+      ? ''
+      : localStorage.getItem('Status')
+  );
+  const [species, setSpecies] = useState(
+    localStorage.getItem('Species') === null
+      ? ''
+      : localStorage.getItem('Species')
+  );
+  const [gender, setGender] = useState(
+    localStorage.getItem('Gender') === null
+      ? ''
+      : localStorage.getItem('Gender')
+  );
 
   const [queryParams, setQueryParamas] = useSearchParams();
 
@@ -49,7 +57,7 @@ const CharacterList = () => {
     });
   }, [queryParams, setQueryParamas]);
 
-  ////////////////////////////////////////////////////////////
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -62,6 +70,7 @@ const CharacterList = () => {
           data: { results, info },
         } = response;
         if (status === 200) {
+          setLoading(false);
           dispatch(setCharacterList(results));
           dispatch(setInfo(info));
         }
@@ -70,6 +79,12 @@ const CharacterList = () => {
 
   return (
     <>
+      <Backdrop
+        sx={{ color: '#7300e6', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={loading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Navbar />
       <Search setSearch={setSearch} setPageNumber={setPageNumber} />
       <div className="filters-and-characters">

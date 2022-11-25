@@ -17,6 +17,9 @@ const SelectEpisode = (props) => {
   useEffect(() => {
     if (Object.keys(params).length === 0) {
       navigate('/episodes/1');
+    } else {
+      setValue(params.episodeId);
+      setEpisodeId(params.episodeId);
     }
   }, [navigate, params]);
 
