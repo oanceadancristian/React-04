@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@mui/material/Link';
 import './CharacterItem.css';
 
 const CharacterItem = (props) => {
@@ -67,18 +68,27 @@ const CharacterItem = (props) => {
       };
 
       return (
-        <div className="character-details" key={id}>
+        <Link
+          key={id}
+          component={RouterLink}
+          to={setNavigationUrl()}
+          sx={{
+            backgroundColor: '#f6efe4',
+            borderRadius: '10px',
+            boxShadow: '0px 0px 25px #555;',
+            color: 'black',
+            textDecoration: 'none',
+            '&:hover': {
+              boxShadow: '0px 0px 25px black',
+            },
+          }}
+        >
           <div className={getCharacterStatusClassName()}>
             {showCharacterStatus()}
           </div>
           <img src={image} alt={name} className="character-image" />
-
           <div className="character-info">
-            <div className="character-name">
-              <Link to={setNavigationUrl()} className="character-link">
-                {name}
-              </Link>
-            </div>
+            <div className="character-name">{name}</div>
             <div className="character-gender-and-species">
               {showCharacterGender()} - {showCharacterSpecies()}
             </div>
@@ -91,7 +101,7 @@ const CharacterItem = (props) => {
               <div>{showCharacterOrigin()}</div>
             </div>
           </div>
-        </div>
+        </Link>
       );
     });
   } else {

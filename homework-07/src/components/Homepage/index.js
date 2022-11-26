@@ -119,40 +119,46 @@ const Homepage = () => {
 
             return (
               <Link
+                key={randomCharacter.id}
                 component={RouterLink}
                 to={`/characters/${randomCharacter.id}`}
-                className="random-character-link"
-                sx={{ color: 'white', textDecoration: 'none' }}
+                // className="random-character-details"
+                sx={{
+                  backgroundColor: '#3c3e44',
+                  borderRadius: '10px',
+                  boxShadow: '0px 0px 10px black',
+                  display: 'flex',
+                  width: '600px',
+                  height: '250px',
+                  color: 'white',
+                  textDecoration: 'none',
+                  '&:hover': {
+                    boxShadow: '0px 0px 10px white;',
+                  },
+                }}
               >
-                <div
-                  className="random-character-details"
-                  key={randomCharacter.id}
-                >
-                  <img
-                    src={randomCharacter.image}
-                    alt={randomCharacter.name}
-                    className="random-character-image"
-                  />
-                  <div className="random-character-info">
-                    <div className="random-character-name">
-                      {randomCharacter.name}
-                    </div>
-                    <div className="random-character-status-gender-and-species">
-                      <div className={showCharacterStatus()}></div>
-                      {showCharacterGender()} - {showCharacterSpecies()}
-                    </div>
-                    <div className="random-character-location">
-                      <span className="random-last-known-location">
-                        Last known location:
-                      </span>
-                      <div>{showCharacterLocation()}</div>
-                    </div>
-                    <div className="random-character-origin">
-                      <span className="random-first-seen-in">
-                        First seen in:
-                      </span>
-                      <div>{showCharacterOrigin()}</div>
-                    </div>
+                <img
+                  src={randomCharacter.image}
+                  alt={randomCharacter.name}
+                  className="random-character-image"
+                />
+                <div className="random-character-info">
+                  <div className="random-character-name">
+                    {randomCharacter.name}
+                  </div>
+                  <div className="random-character-status-gender-and-species">
+                    <div className={showCharacterStatus()}></div>
+                    {showCharacterGender()} - {showCharacterSpecies()}
+                  </div>
+                  <div className="random-character-location">
+                    <span className="random-last-known-location">
+                      Last known location:
+                    </span>
+                    <div>{showCharacterLocation()}</div>
+                  </div>
+                  <div className="random-character-origin">
+                    <span className="random-first-seen-in">First seen in:</span>
+                    <div>{showCharacterOrigin()}</div>
                   </div>
                 </div>
               </Link>

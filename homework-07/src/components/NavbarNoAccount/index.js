@@ -27,7 +27,7 @@ const NavbarNoAccount = () => {
                   isActive ? 'active-no-account' : 'inactive-no-account'
                 }
               >
-                Rick And Morty API
+                The Rick and Morty API
               </NavLink>
             </Typography>
           </Box>

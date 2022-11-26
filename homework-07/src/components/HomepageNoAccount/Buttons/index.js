@@ -46,7 +46,7 @@ const Buttons = () => {
       </Link>
       <Link
         component={RouteLink}
-        to="/signin"
+        to="/signup"
         sx={{
           color: '#fff',
           textDecoration: 'none',
