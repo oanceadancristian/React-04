@@ -28,6 +28,7 @@ const SignupForm = () => {
           fontWeight: 'bold',
           fontSize: '40px',
           textAlign: 'center',
+          textTransform: 'uppercase',
         }}
       >
         Sign in
@@ -104,7 +105,7 @@ const SignupForm = () => {
         variant="contained"
         sx={{
           marginTop: '25px',
-          textTransform: 'capitalize',
+          textTransform: 'uppercase',
           backgroundColor: '#7300e6',
           padding: '10px 20px',
           borderRadius: '5px',
