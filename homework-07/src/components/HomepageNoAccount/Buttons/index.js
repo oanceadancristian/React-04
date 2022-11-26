@@ -30,7 +30,7 @@ const Buttons = () => {
           variant="contained"
           sx={{
             width: '125px',
-            textTransform: 'capitalize',
+            textTransform: 'uppercase',
             backgroundColor: '#7300e6',
             padding: '10px 20px',
             borderRadius: '5px',
@@ -41,7 +41,7 @@ const Buttons = () => {
             },
           }}
         >
-          Sign In
+          Sign in
         </Button>
       </Link>
       <Link
@@ -57,7 +57,7 @@ const Buttons = () => {
           variant="contained"
           sx={{
             width: '125px',
-            textTransform: 'capitalize',
+            textTransform: 'uppercase',
             backgroundColor: '#7300e6',
             padding: '10px 20px',
             borderRadius: '5px',

@@ -31,7 +31,7 @@ const NavbarNoAccount = () => {
               </NavLink>
             </Typography>
           </Box>
-          <Box sx={{ marginRight: '50px', display: 'flex', gap: '25px' }}>
+          <Box sx={{ marginRight: '50px', display: 'flex', gap: '20px' }}>
             <Typography variant="h6" component="div">
               <NavLink
                 to="/signin"
@@ -44,6 +44,7 @@ const NavbarNoAccount = () => {
                     display: 'flex',
                     alignItems: 'center',
                     flexWrap: 'wrap',
+                    textTransform: 'uppercase',
                   }}
                 >
                   <LoginOutlinedIcon
@@ -66,6 +67,7 @@ const NavbarNoAccount = () => {
                     display: 'flex',
                     alignItems: 'center',
                     flexWrap: 'wrap',
+                    textTransform: 'uppercase',
                   }}
                 >
                   <PersonIcon fontSize="medium" sx={{ marginRight: '3px' }} />
