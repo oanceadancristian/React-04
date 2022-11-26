@@ -1,7 +1,7 @@
 .character-details {
   background-color: #c0c0c0;
   border-radius: 10px;
-  box-shadow: 5px 5px 25px #252525;
+  box-shadow: 0px 0px 25px #555;
 }
 
 .character-details:hover {

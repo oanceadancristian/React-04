@@ -11,6 +11,7 @@ import {
   setCharacterGender,
   setCharacterOrigin,
   setCharacterLocation,
+  setCharacterType,
 } from '../slices/StaticCharacterProfileSlice';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -31,6 +32,7 @@ const StaticCharacterProfile = () => {
     characterGender,
     characterOrigin,
     characterLocation,
+    characterType,
   } = staticCharacterProfile;
   const dispatch = useDispatch();
 
@@ -49,6 +51,7 @@ const StaticCharacterProfile = () => {
           dispatch(setCharacterGender(response.data.gender));
           dispatch(setCharacterOrigin(response.data.origin.name));
           dispatch(setCharacterLocation(response.data.location.name));
+          dispatch(setCharacterType(response.data.type));
         }
       });
   }, [characterId]);
@@ -82,6 +85,12 @@ const StaticCharacterProfile = () => {
     return characterOrigin.charAt(0).toUpperCase() + characterOrigin.slice(1);
   };
 
+  const showCharacterType = () => {
+    return characterType.charAt(0).toUpperCase() + characterType.slice(1) === ''
+      ? 'Unknown'
+      : characterType.charAt(0).toUpperCase() + characterType.slice(1);
+  };
+
   return (
     <>
       <Backdrop
@@ -100,7 +109,7 @@ const StaticCharacterProfile = () => {
           />
           <div className="static-character-info">
             <div className="static-character-name">{characterName}</div>
-            <div className="static-character-gender-and-species">
+            <div className="static-character-status-gender-and-species">
               <div className={showCharacterStatus()}></div>
               {showCharacterGender()} - {showCharacterSpecies()}
             </div>
@@ -113,6 +122,10 @@ const StaticCharacterProfile = () => {
             <div className="static-character-origin">
               <span className="static-first-seen-in">First seen in:</span>
               <div>{showCharacterOrigin()}</div>
+            </div>
+            <div className="static-character-type">
+              <span className="static-type">Type:</span>
+              <div>{showCharacterType()}</div>
             </div>
           </div>
         </div>

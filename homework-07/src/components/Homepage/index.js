@@ -133,11 +133,12 @@ const Homepage = () => {
                       component={RouterLink}
                       to={`/characters/${randomCharacter.id}`}
                       className="random-character-link"
+                      sx={{ color: 'white', textDecoration: 'none' }}
                     >
                       {randomCharacter.name}
                     </Link>
                   </div>
-                  <div className="random-character-gender-and-species">
+                  <div className="random-character-status-gender-and-species">
                     <div className={showCharacterStatus()}></div>
                     {showCharacterGender()} - {showCharacterSpecies()}
                   </div>
