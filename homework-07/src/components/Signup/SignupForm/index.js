@@ -20,31 +20,42 @@ const SignupForm = () => {
     password: '',
   });
 
+  const [confirmPassword, setConfirmPassword] = useState('');
+
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const url = 'http://localhost:8080/api/signup';
-      const { data: res } = await axios.post(url, data);
-      navigate('/signin');
-      console.log(res.message);
-    } catch (error) {
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        setError(error.response.data.message);
+
+    if (confirmPassword === data.password) {
+      try {
+        const url = 'http://localhost:8080/api/signup';
+        const { data: res } = await axios.post(url, data);
+        navigate('/signin');
+        console.log(res.message);
+      } catch (error) {
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          setError(error.response.data.message);
+        }
       }
+    } else {
+      setError('Passwords do not match!');
     }
   };
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
     setError('');
+  };
+
+  const handleConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
   };
 
   const handleFirstNameBlur = (e) => {
@@ -76,6 +87,14 @@ const SignupForm = () => {
       setPasswordError(true);
     } else {
       setPasswordError(false);
+    }
+  };
+
+  const handleConfirmPasswordBlur = (e) => {
+    if (!e.target.value) {
+      setConfirmPasswordError(true);
+    } else {
+      setConfirmPasswordError(false);
     }
   };
 
@@ -115,8 +134,15 @@ const SignupForm = () => {
 
   const [passwordError, setPasswordError] = useState(false);
   useEffect(() => {
-    if (error.startsWith('"Password"')) {
+    if (error.startsWith('"Password"') || error === 'Passwords do not match!') {
       setPasswordError(true);
+    }
+  }, [error]);
+
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+  useEffect(() => {
+    if (error === 'Passwords do not match!') {
+      setConfirmPasswordError(true);
     }
   }, [error]);
 
@@ -274,7 +300,12 @@ const SignupForm = () => {
             },
           }}
         />
-        {/* <TextField
+        <TextField
+          error={confirmPasswordError}
+          name="confirmPassword"
+          onChange={handleConfirmPasswordChange}
+          onBlur={handleConfirmPasswordBlur}
+          value={confirmPassword}
           type="password"
           label="Confirm Password"
           variant="outlined"
@@ -283,7 +314,9 @@ const SignupForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <VpnKeyIcon />
+                <VpnKeyIcon
+                  sx={{ color: confirmPasswordError ? '#c24839' : 'gray' }}
+                />
               </InputAdornment>
             ),
           }}
@@ -299,7 +332,7 @@ const SignupForm = () => {
               },
             },
           }}
-        /> */}
+        />
         {error && (
           <Box
             sx={{
