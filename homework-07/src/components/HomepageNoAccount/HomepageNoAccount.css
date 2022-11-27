@@ -1,5 +1,6 @@
 .homepage-no-account-no-background-image {
-  width: 25%;
+  width: 45%;
+  max-width: 400px;
   position: absolute;
   top: 45%;
   left: 50%;

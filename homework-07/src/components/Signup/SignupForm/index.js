@@ -59,7 +59,7 @@ const SignupForm = () => {
   };
 
   const handleFirstNameBlur = (e) => {
-    if (!e.target.value) {
+    if (!e.target.value.trim()) {
       setFirstNameError(true);
     } else {
       setFirstNameError(false);
@@ -67,7 +67,7 @@ const SignupForm = () => {
   };
 
   const handleLastNameBlur = (e) => {
-    if (!e.target.value) {
+    if (!e.target.value.trim()) {
       setLastNameError(true);
     } else {
       setLastNameError(false);
@@ -184,9 +184,7 @@ const SignupForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <PersonIcon
-                  sx={{ color: firstNameError ? '#c24839' : 'gray' }}
-                />
+                <PersonIcon sx={{ color: 'gray' }} />
               </InputAdornment>
             ),
           }}
@@ -217,9 +215,7 @@ const SignupForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <PersonIcon
-                  sx={{ color: lastNameError ? '#c24839' : 'gray' }}
-                />
+                <PersonIcon sx={{ color: 'gray' }} />
               </InputAdornment>
             ),
           }}
@@ -250,7 +246,7 @@ const SignupForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <EmailIcon sx={{ color: emailError ? '#c24839' : 'gray' }} />
+                <EmailIcon sx={{ color: 'gray' }} />
               </InputAdornment>
             ),
           }}
@@ -281,9 +277,7 @@ const SignupForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <VpnKeyIcon
-                  sx={{ color: passwordError ? '#c24839' : 'gray' }}
-                />
+                <VpnKeyIcon sx={{ color: 'gray' }} />
               </InputAdornment>
             ),
           }}
@@ -314,9 +308,7 @@ const SignupForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <VpnKeyIcon
-                  sx={{ color: confirmPasswordError ? '#c24839' : 'gray' }}
-                />
+                <VpnKeyIcon sx={{ color: 'gray' }} />
               </InputAdornment>
             ),
           }}
