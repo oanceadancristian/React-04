@@ -54,6 +54,12 @@ const SigninForm = () => {
     secureLocalStorage.removeItem('password');
     setData({ ...data, [input.name]: input.value });
     setError('');
+
+    if (input.name === 'email') {
+      setEmailError(false);
+    } else if (input.name === 'password') {
+      setPasswordError(false);
+    }
   };
 
   const handleEmailBlur = (e) => {
@@ -61,6 +67,7 @@ const SigninForm = () => {
       setEmailError(true);
     } else {
       setEmailError(false);
+      setEmailIconColor('gray');
     }
   };
 
@@ -69,6 +76,7 @@ const SigninForm = () => {
       setPasswordError(true);
     } else {
       setPasswordError(false);
+      setPasswordIconColor('gray');
     }
   };
 
@@ -119,6 +127,9 @@ const SigninForm = () => {
     }
   }, [error]);
 
+  const [passwordIconColor, setPasswordIconColor] = useState('gray');
+  const [emailIconColor, setEmailIconColor] = useState('gray');
+
   return (
     <form onSubmit={handleSubmit}>
       <FormControl
@@ -147,6 +158,7 @@ const SigninForm = () => {
           name="email"
           onChange={handleChange}
           onBlur={handleEmailBlur}
+          onFocus={() => setEmailIconColor('#7300e6')}
           value={data.email}
           inputRef={setEmailRef}
           type="email"
@@ -157,7 +169,9 @@ const SigninForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <EmailIcon sx={{ color: 'gray' }} />
+                <EmailIcon
+                  sx={{ color: emailError ? '#c24839' : emailIconColor }}
+                />
               </InputAdornment>
             ),
             endAdornment: (
@@ -170,11 +184,11 @@ const SigninForm = () => {
             marginTop: '25px',
             width: '100%',
             '& label.Mui-focused': {
-              color: '#7300e6',
+              color: emailError ? '#c24839' : '#7300e6',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: '#7300e6',
+                borderColor: emailError ? '#c24839' : '#7300e6',
               },
             },
           }}
@@ -184,6 +198,7 @@ const SigninForm = () => {
           name="password"
           onChange={handleChange}
           onBlur={handlePasswordBlur}
+          onFocus={() => setPasswordIconColor('#7300e6')}
           value={data.password}
           type="password"
           label="Password"
@@ -193,7 +208,9 @@ const SigninForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <VpnKeyIcon sx={{ color: 'gray' }} />
+                <VpnKeyIcon
+                  sx={{ color: passwordError ? '#c24839' : passwordIconColor }}
+                />
               </InputAdornment>
             ),
             endAdornment: (
@@ -206,11 +223,11 @@ const SigninForm = () => {
             marginTop: '25px',
             width: '100%',
             '& label.Mui-focused': {
-              color: '#7300e6',
+              color: passwordError ? '#c24839' : '#7300e6',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: '#7300e6',
+                borderColor: passwordError ? '#c24839' : '#7300e6',
               },
             },
           }}

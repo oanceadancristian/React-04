@@ -53,10 +53,24 @@ const SignupForm = () => {
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
     setError('');
+
+    if (input.name === 'firstName') {
+      setFirstNameError(false);
+    } else if (input.name === 'lastName') {
+      setLastNameError(false);
+    } else if (input.name === 'email') {
+      setEmailError(false);
+    } else if (input.name === 'password') {
+      setPasswordError(false);
+    }
   };
 
   const handleConfirmPasswordChange = (e) => {
     setConfirmPassword(e.target.value);
+
+    if (e.target.name === 'confirmPassword') {
+      setConfirmPasswordError(false);
+    }
   };
 
   const handleFirstNameBlur = (e) => {
@@ -64,6 +78,7 @@ const SignupForm = () => {
       setFirstNameError(true);
     } else {
       setFirstNameError(false);
+      setFirstNameIconColor('gray');
     }
   };
 
@@ -72,6 +87,7 @@ const SignupForm = () => {
       setLastNameError(true);
     } else {
       setLastNameError(false);
+      setLastNameIconColor('gray');
     }
   };
 
@@ -80,6 +96,7 @@ const SignupForm = () => {
       setEmailError(true);
     } else {
       setEmailError(false);
+      setEmailIconColor('gray');
     }
   };
 
@@ -88,6 +105,7 @@ const SignupForm = () => {
       setPasswordError(true);
     } else {
       setPasswordError(false);
+      setPasswordIconColor('gray');
     }
   };
 
@@ -96,6 +114,7 @@ const SignupForm = () => {
       setConfirmPasswordError(true);
     } else {
       setConfirmPasswordError(false);
+      setConfirmPasswordIconColor('gray');
     }
   };
 
@@ -147,6 +166,13 @@ const SignupForm = () => {
     }
   }, [error]);
 
+  const [firstNameIconColor, setFirstNameIconColor] = useState('gray');
+  const [lastNameIconColor, setLastNameIconColor] = useState('gray');
+  const [emailIconColor, setEmailIconColor] = useState('gray');
+  const [passwordIconColor, setPasswordIconColor] = useState('gray');
+  const [confirmPasswordIconColor, setConfirmPasswordIconColor] =
+    useState('gray');
+
   return (
     <form onSubmit={handleSubmit}>
       <FormControl
@@ -175,6 +201,7 @@ const SignupForm = () => {
           name="firstName"
           onChange={handleChange}
           onBlur={handleFirstNameBlur}
+          onFocus={() => setFirstNameIconColor('#7300e6')}
           value={data.firstName}
           inputRef={setFirstNameRef}
           type="text"
@@ -185,7 +212,11 @@ const SignupForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <PersonIcon sx={{ color: 'gray' }} />
+                <PersonIcon
+                  sx={{
+                    color: firstNameError ? '#c24839' : firstNameIconColor,
+                  }}
+                />
               </InputAdornment>
             ),
             endAdornment: (
@@ -198,11 +229,11 @@ const SignupForm = () => {
             marginTop: '25px',
             width: '100%',
             '& label.Mui-focused': {
-              color: '#7300e6',
+              color: firstNameError ? '#c24839' : '#7300e6',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: '#7300e6',
+                borderColor: firstNameError ? '#c24839' : '#7300e6',
               },
             },
           }}
@@ -212,6 +243,7 @@ const SignupForm = () => {
           name="lastName"
           onChange={handleChange}
           onBlur={handleLastNameBlur}
+          onFocus={() => setLastNameIconColor('#7300e6')}
           value={data.lastName}
           type="text"
           label="Last Name"
@@ -221,7 +253,9 @@ const SignupForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <PersonIcon sx={{ color: 'gray' }} />
+                <PersonIcon
+                  sx={{ color: lastNameError ? '#c24839' : lastNameIconColor }}
+                />
               </InputAdornment>
             ),
             endAdornment: (
@@ -234,11 +268,11 @@ const SignupForm = () => {
             marginTop: '25px',
             width: '100%',
             '& label.Mui-focused': {
-              color: '#7300e6',
+              color: lastNameError ? '#c24839' : '#7300e6',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: '#7300e6',
+                borderColor: lastNameError ? '#c24839' : '#7300e6',
               },
             },
           }}
@@ -248,6 +282,7 @@ const SignupForm = () => {
           name="email"
           onChange={handleChange}
           onBlur={handleEmailBlur}
+          onFocus={() => setEmailIconColor('#7300e6')}
           value={data.email}
           type="email"
           label="Email Address"
@@ -257,7 +292,9 @@ const SignupForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <EmailIcon sx={{ color: 'gray' }} />
+                <EmailIcon
+                  sx={{ color: emailError ? '#c24839' : emailIconColor }}
+                />
               </InputAdornment>
             ),
             endAdornment: (
@@ -270,11 +307,11 @@ const SignupForm = () => {
             marginTop: '25px',
             width: '100%',
             '& label.Mui-focused': {
-              color: '#7300e6',
+              color: emailError ? '#c24839' : '#7300e6',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: '#7300e6',
+                borderColor: emailError ? '#c24839' : '#7300e6',
               },
             },
           }}
@@ -284,6 +321,7 @@ const SignupForm = () => {
           name="password"
           onChange={handleChange}
           onBlur={handlePasswordBlur}
+          onFocus={() => setPasswordIconColor('#7300e6')}
           value={data.password}
           type="password"
           label="Password"
@@ -293,7 +331,9 @@ const SignupForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <VpnKeyIcon sx={{ color: 'gray' }} />
+                <VpnKeyIcon
+                  sx={{ color: passwordError ? '#c24839' : passwordIconColor }}
+                />
               </InputAdornment>
             ),
             endAdornment: (
@@ -306,11 +346,11 @@ const SignupForm = () => {
             marginTop: '25px',
             width: '100%',
             '& label.Mui-focused': {
-              color: '#7300e6',
+              color: passwordError ? '#c24839' : '#7300e6',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: '#7300e6',
+                borderColor: passwordError ? '#c24839' : '#7300e6',
               },
             },
           }}
@@ -320,6 +360,7 @@ const SignupForm = () => {
           name="confirmPassword"
           onChange={handleConfirmPasswordChange}
           onBlur={handleConfirmPasswordBlur}
+          onFocus={() => setConfirmPasswordIconColor('#7300e6')}
           value={confirmPassword}
           type="password"
           label="Confirm Password"
@@ -329,7 +370,13 @@ const SignupForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <VpnKeyIcon sx={{ color: 'gray' }} />
+                <VpnKeyIcon
+                  sx={{
+                    color: confirmPasswordError
+                      ? '#c24839'
+                      : confirmPasswordIconColor,
+                  }}
+                />
               </InputAdornment>
             ),
             endAdornment: (
@@ -346,11 +393,11 @@ const SignupForm = () => {
             marginTop: '25px',
             width: '100%',
             '& label.Mui-focused': {
-              color: '#7300e6',
+              color: confirmPasswordError ? '#c24839' : '#7300e6',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: '#7300e6',
+                borderColor: confirmPasswordError ? '#c24839' : '#7300e6',
               },
             },
           }}
