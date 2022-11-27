@@ -48,6 +48,9 @@ const SigninForm = () => {
   };
 
   const handleChange = ({ currentTarget: input }) => {
+    secureLocalStorage.removeItem('remember_me');
+    secureLocalStorage.removeItem('email');
+    secureLocalStorage.removeItem('password');
     setData({ ...data, [input.name]: input.value });
     setError('');
   };
