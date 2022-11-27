@@ -4,10 +4,12 @@ import Navbar from '../Navbar';
 import Typography from '@mui/material/Typography';
 
 const PageNotFound = () => {
+  const user = localStorage.getItem('token');
+
   return (
     <>
-      <NavbarNoAccount />
-      <Navbar />
+      {!user && <NavbarNoAccount />}
+      {user && <Navbar />}
       <Typography
         variant="h1"
         sx={{

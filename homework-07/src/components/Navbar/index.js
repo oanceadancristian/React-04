@@ -4,6 +4,7 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import LogoutIcon from '@mui/icons-material/Logout';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -12,6 +13,13 @@ const Navbar = () => {
 
   const location = useLocation();
   const { search } = location;
+
+  const user = localStorage.getItem('token');
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location = '/';
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -66,6 +74,29 @@ const Navbar = () => {
               Locations
             </NavLink>
           </Typography>
+          {user && (
+            <Typography variant="h6" component="div">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? 'navbar-active' : 'navbar-inactive'
+                }
+              >
+                <Box
+                  onClick={handleLogout}
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    flexWrap: 'wrap',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  <LogoutIcon fontSize="medium" sx={{ marginRight: '3px' }} />
+                  Sign out
+                </Box>
+              </NavLink>
+            </Typography>
+          )}
         </Toolbar>
       </AppBar>
     </Box>

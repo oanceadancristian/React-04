@@ -11,32 +11,47 @@ import PageNotFound from './components/PageNotFound';
 import './App.css';
 
 function App() {
+  const user = localStorage.getItem('token');
+
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomepageNoAccount />} />
-          <Route path="/signin" element={<Signin />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/homepage" element={<Homepage />} />
-          <Route path="/characters" element={<CharacterList />} />
-          <Route path="/episodes" element={<EpisodeList />} />
-          <Route path="/locations" element={<LocationList />} />
-          <Route
-            path="/characters/:characterId"
-            element={<StaticCharacterProfile />}
-          />
-          <Route path="/characters/pages/:pageId" element={<CharacterList />} />
-          <Route path="/episodes/:episodeId" element={<EpisodeList />} />
-          <Route
-            path="/episodes/:episodeId/characters/:characterId"
-            element={<StaticCharacterProfile />}
-          />
-          <Route path="/locations/:locationId" element={<LocationList />} />
-          <Route
-            path="/locations/:locationId/characters/:characterId"
-            element={<StaticCharacterProfile />}
-          />
+          {!user && (
+            <>
+              <Route path="/" element={<HomepageNoAccount />} />
+              <Route path="/signin" element={<Signin />} />
+              <Route path="/signup" element={<Signup />} />
+            </>
+          )}
+
+          {user && (
+            <>
+              <Route path="/homepage" element={<Homepage />} />
+              <Route path="/characters" element={<CharacterList />} />
+              <Route path="/episodes" element={<EpisodeList />} />
+              <Route path="/locations" element={<LocationList />} />
+              <Route
+                path="/characters/:characterId"
+                element={<StaticCharacterProfile />}
+              />
+              <Route
+                path="/characters/pages/:pageId"
+                element={<CharacterList />}
+              />
+              <Route path="/episodes/:episodeId" element={<EpisodeList />} />
+              <Route
+                path="/episodes/:episodeId/characters/:characterId"
+                element={<StaticCharacterProfile />}
+              />
+              <Route path="/locations/:locationId" element={<LocationList />} />
+              <Route
+                path="/locations/:locationId/characters/:characterId"
+                element={<StaticCharacterProfile />}
+              />
+            </>
+          )}
+
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
