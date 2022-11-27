@@ -89,7 +89,7 @@ const SignupForm = () => {
     firstNameRef.current = element;
   };
 
-  const [firtNameError, setFirstNameError] = useState(false);
+  const [firstNameError, setFirstNameError] = useState(false);
   useEffect(() => {
     if (error.startsWith('"First Name"')) {
       setFirstNameError(true);
@@ -144,7 +144,7 @@ const SignupForm = () => {
           Create your account
         </Typography>
         <TextField
-          error={firtNameError}
+          error={firstNameError}
           name="firstName"
           onChange={handleChange}
           onBlur={handleFirstNameBlur}
@@ -158,7 +158,9 @@ const SignupForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <PersonIcon />
+                <PersonIcon
+                  sx={{ color: firstNameError ? '#c24839' : 'gray' }}
+                />
               </InputAdornment>
             ),
           }}
@@ -189,7 +191,9 @@ const SignupForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <PersonIcon />
+                <PersonIcon
+                  sx={{ color: lastNameError ? '#c24839' : 'gray' }}
+                />
               </InputAdornment>
             ),
           }}
@@ -220,7 +224,7 @@ const SignupForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <EmailIcon />
+                <EmailIcon sx={{ color: emailError ? '#c24839' : 'gray' }} />
               </InputAdornment>
             ),
           }}
@@ -251,7 +255,9 @@ const SignupForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <VpnKeyIcon />
+                <VpnKeyIcon
+                  sx={{ color: passwordError ? '#c24839' : 'gray' }}
+                />
               </InputAdornment>
             ),
           }}

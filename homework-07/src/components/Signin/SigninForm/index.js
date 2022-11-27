@@ -153,7 +153,7 @@ const SigninForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <EmailIcon />
+                <EmailIcon sx={{ color: emailError ? '#c24839' : 'gray' }} />
               </InputAdornment>
             ),
           }}
@@ -184,7 +184,9 @@ const SigninForm = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <VpnKeyIcon />
+                <VpnKeyIcon
+                  sx={{ color: passwordError ? '#c24839' : 'gray' }}
+                />
               </InputAdornment>
             ),
           }}
