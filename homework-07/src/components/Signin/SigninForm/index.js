@@ -8,16 +8,16 @@ import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import EmailIcon from '@mui/icons-material/Email';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-
 const SigninForm = () => {
   const [data, setData] = useState({ email: '', password: '' });
+
   const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
@@ -49,6 +49,7 @@ const SigninForm = () => {
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
+    setError('');
   };
 
   const emailRef = useRef();
@@ -62,7 +63,9 @@ const SigninForm = () => {
   };
 
   const [checked, setChecked] = useState(
-    secureLocalStorage.getItem('remember_me')
+    secureLocalStorage.getItem('remember_me') === null
+      ? false
+      : secureLocalStorage.getItem('remember_me')
   );
 
   const handleCheckboxChange = () => {
@@ -78,6 +81,23 @@ const SigninForm = () => {
       setChecked(checked);
     }
   }, [checked, data.email, data.password]);
+
+  const [emailError, setEmailError] = useState(false);
+  useEffect(() => {
+    if (error.startsWith('"Email"') || error === 'Invalid Email or Password!') {
+      setEmailError(true);
+    }
+  }, [error]);
+
+  const [passwordError, setPasswordError] = useState(false);
+  useEffect(() => {
+    if (
+      error.startsWith('"Password"') ||
+      error === 'Invalid Email or Password!'
+    ) {
+      setPasswordError(true);
+    }
+  }, [error]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -103,8 +123,15 @@ const SigninForm = () => {
           Sign in to your account
         </Typography>
         <TextField
+          error={emailError}
           name="email"
           onChange={handleChange}
+          inputProps={{
+            onBlur: () => {
+              setEmailError(!emailError);
+              setError('');
+            },
+          }}
           value={data.email}
           inputRef={setEmailRef}
           type="email"
@@ -112,7 +139,6 @@ const SigninForm = () => {
           variant="outlined"
           size="small"
           id="outlined-basic-email-address"
-          required
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -134,15 +160,21 @@ const SigninForm = () => {
           }}
         />
         <TextField
+          error={passwordError}
           name="password"
           onChange={handleChange}
+          inputProps={{
+            onBlur: () => {
+              setPasswordError(!passwordError);
+              setError('');
+            },
+          }}
           value={data.password}
           type="password"
           label="Password"
           variant="outlined"
           size="small"
           id="outlined-basic-password"
-          required
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">

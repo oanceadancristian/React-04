@@ -44,6 +44,7 @@ const SignupForm = () => {
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
+    setError('');
   };
 
   const firstNameRef = useRef();
@@ -55,6 +56,37 @@ const SignupForm = () => {
   const setFirstNameRef = (element) => {
     firstNameRef.current = element;
   };
+
+  const [firtNameError, setFirstNameError] = useState(false);
+  useEffect(() => {
+    if (error.startsWith('"First Name"')) {
+      setFirstNameError(true);
+    }
+  }, [error]);
+
+  const [lastNameError, setLastNameError] = useState(false);
+  useEffect(() => {
+    if (error.startsWith('"Last Name"')) {
+      setLastNameError(true);
+    }
+  }, [error]);
+
+  const [emailError, setEmailError] = useState(false);
+  useEffect(() => {
+    if (
+      error.startsWith('"Email"') ||
+      error === 'An account with this email already exists!'
+    ) {
+      setEmailError(true);
+    }
+  }, [error]);
+
+  const [passwordError, setPasswordError] = useState(false);
+  useEffect(() => {
+    if (error.startsWith('"Password"')) {
+      setPasswordError(true);
+    }
+  }, [error]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -80,6 +112,7 @@ const SignupForm = () => {
           Create your account
         </Typography>
         <TextField
+          error={firtNameError}
           name="firstName"
           onChange={handleChange}
           value={data.firstName}
@@ -89,7 +122,6 @@ const SignupForm = () => {
           variant="outlined"
           size="small"
           id="outlined-basic-first-name"
-          required
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -111,6 +143,7 @@ const SignupForm = () => {
           }}
         />
         <TextField
+          error={lastNameError}
           name="lastName"
           onChange={handleChange}
           value={data.lastName}
@@ -119,7 +152,6 @@ const SignupForm = () => {
           variant="outlined"
           size="small"
           id="outlined-basic-last-name"
-          required
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -141,6 +173,7 @@ const SignupForm = () => {
           }}
         />
         <TextField
+          error={emailError}
           name="email"
           onChange={handleChange}
           value={data.email}
@@ -149,7 +182,6 @@ const SignupForm = () => {
           variant="outlined"
           size="small"
           id="outlined-basic-email-address"
-          required
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -171,6 +203,7 @@ const SignupForm = () => {
           }}
         />
         <TextField
+          error={passwordError}
           name="password"
           onChange={handleChange}
           value={data.password}
@@ -179,7 +212,6 @@ const SignupForm = () => {
           variant="outlined"
           size="small"
           id="outlined-basic-password"
-          required
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -206,7 +238,6 @@ const SignupForm = () => {
           variant="outlined"
           size="small"
           id="outlined-basic-confirm-password"
-          required
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
