@@ -52,6 +52,22 @@ const SigninForm = () => {
     setError('');
   };
 
+  const handleEmailBlur = (e) => {
+    if (!e.target.value) {
+      setEmailError(true);
+    } else {
+      setEmailError(false);
+    }
+  };
+
+  const handlePasswordBlur = (e) => {
+    if (!e.target.value) {
+      setPasswordError(true);
+    } else {
+      setPasswordError(false);
+    }
+  };
+
   const emailRef = useRef();
 
   useEffect(() => {
@@ -126,12 +142,7 @@ const SigninForm = () => {
           error={emailError}
           name="email"
           onChange={handleChange}
-          inputProps={{
-            onBlur: () => {
-              setEmailError(!emailError);
-              setError('');
-            },
-          }}
+          onBlur={handleEmailBlur}
           value={data.email}
           inputRef={setEmailRef}
           type="email"
@@ -163,12 +174,7 @@ const SigninForm = () => {
           error={passwordError}
           name="password"
           onChange={handleChange}
-          inputProps={{
-            onBlur: () => {
-              setPasswordError(!passwordError);
-              setError('');
-            },
-          }}
+          onBlur={handlePasswordBlur}
           value={data.password}
           type="password"
           label="Password"

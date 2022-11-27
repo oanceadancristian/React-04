@@ -47,6 +47,38 @@ const SignupForm = () => {
     setError('');
   };
 
+  const handleFirstNameBlur = (e) => {
+    if (!e.target.value) {
+      setFirstNameError(true);
+    } else {
+      setFirstNameError(false);
+    }
+  };
+
+  const handleLastNameBlur = (e) => {
+    if (!e.target.value) {
+      setLastNameError(true);
+    } else {
+      setLastNameError(false);
+    }
+  };
+
+  const handleEmailBlur = (e) => {
+    if (!e.target.value) {
+      setEmailError(true);
+    } else {
+      setEmailError(false);
+    }
+  };
+
+  const handlePasswordBlur = (e) => {
+    if (!e.target.value) {
+      setPasswordError(true);
+    } else {
+      setPasswordError(false);
+    }
+  };
+
   const firstNameRef = useRef();
 
   useEffect(() => {
@@ -115,6 +147,7 @@ const SignupForm = () => {
           error={firtNameError}
           name="firstName"
           onChange={handleChange}
+          onBlur={handleFirstNameBlur}
           value={data.firstName}
           inputRef={setFirstNameRef}
           type="text"
@@ -146,6 +179,7 @@ const SignupForm = () => {
           error={lastNameError}
           name="lastName"
           onChange={handleChange}
+          onBlur={handleLastNameBlur}
           value={data.lastName}
           type="text"
           label="Last Name"
@@ -176,6 +210,7 @@ const SignupForm = () => {
           error={emailError}
           name="email"
           onChange={handleChange}
+          onBlur={handleEmailBlur}
           value={data.email}
           type="email"
           label="Email Address"
@@ -206,6 +241,7 @@ const SignupForm = () => {
           error={passwordError}
           name="password"
           onChange={handleChange}
+          onBlur={handlePasswordBlur}
           value={data.password}
           type="password"
           label="Password"
