@@ -3,11 +3,12 @@ import { Link as RouteLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import FormControl from '@mui/material/FormControl';
 import Typography from '@mui/material/Typography';
-import PersonIcon from '@mui/icons-material/Person';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
+import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import ErrorIcon from '@mui/icons-material/Error';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
@@ -187,6 +188,11 @@ const SignupForm = () => {
                 <PersonIcon sx={{ color: 'gray' }} />
               </InputAdornment>
             ),
+            endAdornment: (
+              <InputAdornment position="end">
+                {firstNameError ? <ErrorIcon sx={{ color: '#c24839' }} /> : ''}
+              </InputAdornment>
+            ),
           }}
           sx={{
             marginTop: '25px',
@@ -216,6 +222,11 @@ const SignupForm = () => {
             startAdornment: (
               <InputAdornment position="start">
                 <PersonIcon sx={{ color: 'gray' }} />
+              </InputAdornment>
+            ),
+            endAdornment: (
+              <InputAdornment position="end">
+                {lastNameError ? <ErrorIcon sx={{ color: '#c24839' }} /> : ''}
               </InputAdornment>
             ),
           }}
@@ -249,6 +260,11 @@ const SignupForm = () => {
                 <EmailIcon sx={{ color: 'gray' }} />
               </InputAdornment>
             ),
+            endAdornment: (
+              <InputAdornment position="end">
+                {emailError ? <ErrorIcon sx={{ color: '#c24839' }} /> : ''}
+              </InputAdornment>
+            ),
           }}
           sx={{
             marginTop: '25px',
@@ -278,6 +294,11 @@ const SignupForm = () => {
             startAdornment: (
               <InputAdornment position="start">
                 <VpnKeyIcon sx={{ color: 'gray' }} />
+              </InputAdornment>
+            ),
+            endAdornment: (
+              <InputAdornment position="end">
+                {passwordError ? <ErrorIcon sx={{ color: '#c24839' }} /> : ''}
               </InputAdornment>
             ),
           }}
@@ -311,6 +332,15 @@ const SignupForm = () => {
                 <VpnKeyIcon sx={{ color: 'gray' }} />
               </InputAdornment>
             ),
+            endAdornment: (
+              <InputAdornment position="end">
+                {confirmPasswordError ? (
+                  <ErrorIcon sx={{ color: '#c24839' }} />
+                ) : (
+                  ''
+                )}
+              </InputAdornment>
+            ),
           }}
           sx={{
             marginTop: '25px',
@@ -334,8 +364,13 @@ const SignupForm = () => {
               color: 'white',
               textAlign: 'center',
               borderRadius: '5px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '3px',
             }}
           >
+            <ErrorIcon sx={{ color: 'white' }} />
             {error}
           </Box>
         )}

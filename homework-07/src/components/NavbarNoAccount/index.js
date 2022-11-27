@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
-import PersonIcon from '@mui/icons-material/Person';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import './NavbarNoAccount.css';
 
 const NavbarNoAccount = () => {
@@ -70,7 +70,10 @@ const NavbarNoAccount = () => {
                     textTransform: 'uppercase',
                   }}
                 >
-                  <PersonIcon fontSize="medium" sx={{ marginRight: '3px' }} />
+                  <PersonAddIcon
+                    fontSize="medium"
+                    sx={{ marginRight: '3px' }}
+                  />
                   Sign up
                 </Box>
               </NavLink>

@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import EmailIcon from '@mui/icons-material/Email';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import ErrorIcon from '@mui/icons-material/Error';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -159,6 +160,11 @@ const SigninForm = () => {
                 <EmailIcon sx={{ color: 'gray' }} />
               </InputAdornment>
             ),
+            endAdornment: (
+              <InputAdornment position="end">
+                {emailError ? <ErrorIcon sx={{ color: '#c24839' }} /> : ''}
+              </InputAdornment>
+            ),
           }}
           sx={{
             marginTop: '25px',
@@ -188,6 +194,11 @@ const SigninForm = () => {
             startAdornment: (
               <InputAdornment position="start">
                 <VpnKeyIcon sx={{ color: 'gray' }} />
+              </InputAdornment>
+            ),
+            endAdornment: (
+              <InputAdornment position="end">
+                {passwordError ? <ErrorIcon sx={{ color: '#c24839' }} /> : ''}
               </InputAdornment>
             ),
           }}
@@ -229,8 +240,13 @@ const SigninForm = () => {
               color: 'white',
               textAlign: 'center',
               borderRadius: '5px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '3px',
             }}
           >
+            <ErrorIcon sx={{ color: 'white' }} />
             {error}
           </Box>
         )}
