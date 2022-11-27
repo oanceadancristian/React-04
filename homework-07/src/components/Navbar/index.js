@@ -27,76 +27,79 @@ const Navbar = () => {
         <Toolbar
           sx={{
             display: 'flex',
-            justifyContent: 'center',
-            gap: '25px',
+            justifyContent: 'space-between',
             backgroundColor: '#202329',
           }}
         >
-          <Typography variant="h6" component="div">
-            <NavLink
-              to="/homepage"
-              className={({ isActive }) =>
-                isActive ? 'navbar-active' : 'navbar-inactive'
-              }
-            >
-              Home
-            </NavLink>
-          </Typography>
-          <Typography variant="h6" component="div">
-            <NavLink
-              to={`/characters/pages/${
-                pageId === undefined ? 1 : pageId
-              }${search}`}
-              className={({ isActive }) =>
-                isActive ? 'navbar-active' : 'navbar-inactive'
-              }
-            >
-              Characters
-            </NavLink>
-          </Typography>
-          <Typography variant="h6" component="div">
-            <NavLink
-              to={`/episodes/${episodeId === undefined ? 1 : episodeId}`}
-              className={({ isActive }) =>
-                isActive ? 'navbar-active' : 'navbar-inactive'
-              }
-            >
-              Episodes
-            </NavLink>
-          </Typography>
-          <Typography variant="h6" component="div">
-            <NavLink
-              to={`/locations/${locationId === undefined ? 1 : locationId}`}
-              className={({ isActive }) =>
-                isActive ? 'navbar-active' : 'navbar-inactive'
-              }
-            >
-              Locations
-            </NavLink>
-          </Typography>
-          {user && (
+          <Box sx={{ display: 'flex', gap: '20px', marginLeft: '50px' }}>
             <Typography variant="h6" component="div">
               <NavLink
-                to="/"
+                to="/homepage"
                 className={({ isActive }) =>
                   isActive ? 'navbar-active' : 'navbar-inactive'
                 }
               >
-                <Box
-                  onClick={handleLogout}
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    flexWrap: 'wrap',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  <LogoutIcon fontSize="medium" sx={{ marginRight: '3px' }} />
-                  Sign out
-                </Box>
+                Home
               </NavLink>
             </Typography>
-          )}
+            <Typography variant="h6" component="div">
+              <NavLink
+                to={`/characters/pages/${
+                  pageId === undefined ? 1 : pageId
+                }${search}`}
+                className={({ isActive }) =>
+                  isActive ? 'navbar-active' : 'navbar-inactive'
+                }
+              >
+                Characters
+              </NavLink>
+            </Typography>
+            <Typography variant="h6" component="div">
+              <NavLink
+                to={`/episodes/${episodeId === undefined ? 1 : episodeId}`}
+                className={({ isActive }) =>
+                  isActive ? 'navbar-active' : 'navbar-inactive'
+                }
+              >
+                Episodes
+              </NavLink>
+            </Typography>
+            <Typography variant="h6" component="div">
+              <NavLink
+                to={`/locations/${locationId === undefined ? 1 : locationId}`}
+                className={({ isActive }) =>
+                  isActive ? 'navbar-active' : 'navbar-inactive'
+                }
+              >
+                Locations
+              </NavLink>
+            </Typography>
+          </Box>
+          <Box sx={{ marginRight: '50px' }}>
+            {user && (
+              <Typography variant="h6" component="div">
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive ? 'sign-out-active' : 'sign-out-inactive'
+                  }
+                >
+                  <Box
+                    onClick={handleLogout}
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      flexWrap: 'wrap',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    <LogoutIcon fontSize="medium" sx={{ marginRight: '3px' }} />
+                    Sign out
+                  </Box>
+                </NavLink>
+              </Typography>
+            )}
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>

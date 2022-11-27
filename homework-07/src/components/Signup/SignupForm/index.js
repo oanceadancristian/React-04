@@ -27,7 +27,7 @@ const SignupForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = 'http://localhost:8080/api/users';
+      const url = 'http://localhost:8080/api/signup';
       const { data: res } = await axios.post(url, data);
       navigate('/signin');
       console.log(res.message);
@@ -264,7 +264,9 @@ const SignupForm = () => {
             marginTop: '25px',
             fontSize: '20px',
             fontWeight: 'bold',
-            textAlign: 'center',
+            display: 'flex',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
           }}
         >
           Already have an account?

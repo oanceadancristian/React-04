@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link as RouteLink } from 'react-router-dom';
 import axios from 'axios';
+import secureLocalStorage from 'react-secure-storage';
 import FormControl from '@mui/material/FormControl';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
@@ -11,6 +12,10 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+
 const SigninForm = () => {
   const [data, setData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
@@ -18,9 +23,18 @@ const SigninForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = 'http://localhost:8080/api/auth';
+      const url = 'http://localhost:8080/api/signin';
       const { data: res } = await axios.post(url, data);
       localStorage.setItem('token', res.data);
+      if (checked) {
+        secureLocalStorage.setItem('remember_me', checked);
+        secureLocalStorage.setItem('email', data.email);
+        secureLocalStorage.setItem('password', data.password);
+      } else {
+        secureLocalStorage.removeItem('remember_me');
+        secureLocalStorage.removeItem('email');
+        secureLocalStorage.removeItem('password');
+      }
       window.location = '/homepage';
     } catch (error) {
       if (
@@ -46,6 +60,24 @@ const SigninForm = () => {
   const setEmailRef = (element) => {
     emailRef.current = element;
   };
+
+  const [checked, setChecked] = useState(
+    secureLocalStorage.getItem('remember_me')
+  );
+
+  const handleCheckboxChange = () => {
+    setChecked(!checked);
+  };
+
+  useEffect(() => {
+    if (secureLocalStorage.getItem('remember_me')) {
+      setData({
+        email: secureLocalStorage.getItem('email', data.email),
+        password: secureLocalStorage.getItem('password', data.password),
+      });
+      setChecked(checked);
+    }
+  }, [checked, data.email, data.password]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -131,6 +163,22 @@ const SigninForm = () => {
             },
           }}
         />
+        <FormGroup>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={checked}
+                onChange={handleCheckboxChange}
+                sx={{
+                  '&.Mui-checked': {
+                    color: '#7300e6',
+                  },
+                }}
+              />
+            }
+            label="Remember me"
+          />
+        </FormGroup>
         {error && (
           <Box
             sx={{
@@ -168,7 +216,9 @@ const SigninForm = () => {
             marginTop: '25px',
             fontSize: '20px',
             fontWeight: 'bold',
-            textAlign: 'center',
+            display: 'flex',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
           }}
         >
           Don't have an account?

@@ -27,6 +27,9 @@ function App() {
 
           {user && (
             <>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/signin" element={<Homepage />} />
+              <Route path="/signup" element={<Homepage />} />
               <Route path="/homepage" element={<Homepage />} />
               <Route path="/characters" element={<CharacterList />} />
               <Route path="/episodes" element={<EpisodeList />} />

@@ -19,6 +19,7 @@ const PageNotFound = () => {
           transform: 'translate(-50%, -50%)',
           color: 'black',
           fontSize: '50px',
+          textAlign: 'center',
         }}
       >
         Ooops... Page not found!

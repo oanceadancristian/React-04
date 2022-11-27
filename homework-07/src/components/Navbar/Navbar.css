@@ -12,3 +12,19 @@
 .navbar-inactive:hover {
   color: #8c1aff;
 }
+
+.sign-out-active {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.sign-out-inactive {
+  color: white;
+  text-decoration: none;
+}
+
+.sign-out-active:hover,
+.sign-out-inactive:hover {
+  color: #8c1aff;
+}
