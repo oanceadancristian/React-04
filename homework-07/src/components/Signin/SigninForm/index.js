@@ -44,6 +44,8 @@ const SigninForm = () => {
         error.response.status <= 500
       ) {
         setError(error.response.data.message);
+      } else if (!error.response) {
+        setError('Network error! Please try again later!');
       }
     }
   };
@@ -154,6 +156,7 @@ const SigninForm = () => {
           Sign in to your account
         </Typography>
         <TextField
+          required
           error={emailError}
           name="email"
           onChange={handleChange}
@@ -194,6 +197,7 @@ const SigninForm = () => {
           }}
         />
         <TextField
+          required
           error={passwordError}
           name="password"
           onChange={handleChange}

@@ -43,6 +43,8 @@ const SignupForm = () => {
           error.response.status <= 500
         ) {
           setError(error.response.data.message);
+        } else if (!error.response) {
+          setError('Network error! Please try again later!');
         }
       }
     } else {
@@ -197,6 +199,7 @@ const SignupForm = () => {
           Create your account
         </Typography>
         <TextField
+          required
           error={firstNameError}
           name="firstName"
           onChange={handleChange}
@@ -239,6 +242,7 @@ const SignupForm = () => {
           }}
         />
         <TextField
+          required
           error={lastNameError}
           name="lastName"
           onChange={handleChange}
@@ -278,6 +282,7 @@ const SignupForm = () => {
           }}
         />
         <TextField
+          required
           error={emailError}
           name="email"
           onChange={handleChange}
@@ -317,6 +322,7 @@ const SignupForm = () => {
           }}
         />
         <TextField
+          required
           error={passwordError}
           name="password"
           onChange={handleChange}
@@ -356,6 +362,7 @@ const SignupForm = () => {
           }}
         />
         <TextField
+          required
           error={confirmPasswordError}
           name="confirmPassword"
           onChange={handleConfirmPasswordChange}
