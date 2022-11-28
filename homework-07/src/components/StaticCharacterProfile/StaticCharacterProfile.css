@@ -1,62 +1,7 @@
-.wrapper {
-  background-color: #202329;
-  height: 100vh;
-}
-
-.static-character-details {
-  background-color: #f0e4d3;
-  box-shadow: 0px 0px 25px #000;
-  border-radius: 10px;
-  margin: 0 auto;
-  display: flex;
-  width: 780px;
-  height: 300px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-}
-
-.static-character-details:hover {
-  box-shadow: 0px 0px 25px #fff;
-}
-
 .static-character-image {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   width: 40%;
-}
-
-.static-character-info {
-  margin: 0 auto;
-  text-align: center;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.static-character-name {
-  margin-bottom: 10px;
-  font-size: 25px;
-  color: black;
-}
-
-.static-character-status-gender-and-species,
-.static-character-location,
-.static-character-origin,
-.static-character-type {
-  margin-bottom: 20px;
-  color: #606060;
-}
-
-.static-last-known-location,
-.static-first-seen-in,
-.static-type {
-  color: black;
-  display: inline-block;
-  margin-bottom: 5px;
 }
 
 .static-green {

@@ -9,9 +9,10 @@ import {
 import Navbar from '../Navbar';
 import axios from 'axios';
 import { setRandomCharacterList } from '../slices/RickAndMortyAppSlice';
+import Box from '@mui/material/Box';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import './Homepage.css';
@@ -64,7 +65,7 @@ const Homepage = () => {
   const { search } = location;
 
   return (
-    <>
+    <Box>
       <Backdrop
         sx={{ color: '#7300e6', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={loading}
@@ -72,11 +73,43 @@ const Homepage = () => {
         <CircularProgress color="inherit" />
       </Backdrop>
       <Navbar />
-      <div className="subheader">
-        <h1 className="subheader-title">The Rick and Morty API</h1>
-      </div>
-      <div className="main-content">
-        <div className="random-character-container">
+      <Box
+        sx={{
+          backgroundColor: '#efefef',
+          height: '50vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Typography
+          variant="h1"
+          sx={{
+            margin: '0px',
+            textAlign: 'center',
+            color: 'black',
+            fontSize: '7.5vw',
+            fontWeight: 'bold',
+          }}
+        >
+          The Rick and Morty API
+        </Typography>
+      </Box>
+      <Box
+        sx={{
+          backgroundColor: '#202329',
+          paddingTop: '100px',
+          paddingBottom: '100px',
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            gap: '25px',
+          }}
+        >
           {randomCharacterList.map((randomCharacter) => {
             const showCharacterStatus = () => {
               let className = '';
@@ -122,7 +155,6 @@ const Homepage = () => {
                 key={randomCharacter.id}
                 component={RouterLink}
                 to={`/characters/${randomCharacter.id}`}
-                // className="random-character-details"
                 sx={{
                   backgroundColor: '#3c3e44',
                   borderRadius: '10px',
@@ -142,30 +174,55 @@ const Homepage = () => {
                   alt={randomCharacter.name}
                   className="random-character-image"
                 />
-                <div className="random-character-info">
-                  <div className="random-character-name">
+                <Box
+                  sx={{
+                    margin: '0px auto',
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Box sx={{ marginBottom: '10px', fontSize: '20px' }}>
                     {randomCharacter.name}
-                  </div>
-                  <div className="random-character-status-gender-and-species">
-                    <div className={showCharacterStatus()}></div>
+                  </Box>
+                  <Box sx={{ marginBottom: '20px', color: 'white' }}>
+                    <Box className={showCharacterStatus()}></Box>
                     {showCharacterGender()} - {showCharacterSpecies()}
-                  </div>
-                  <div className="random-character-location">
-                    <span className="random-last-known-location">
+                  </Box>
+                  <Box sx={{ marginBottom: '20px', color: 'white' }}>
+                    <Typography
+                      component="span"
+                      sx={{
+                        display: 'inline-block',
+                        marginBottom: '5px',
+                        color: '#9e9e9e',
+                      }}
+                    >
                       Last known location:
-                    </span>
-                    <div>{showCharacterLocation()}</div>
-                  </div>
-                  <div className="random-character-origin">
-                    <span className="random-first-seen-in">First seen in:</span>
-                    <div>{showCharacterOrigin()}</div>
-                  </div>
-                </div>
+                    </Typography>
+                    <Box>{showCharacterLocation()}</Box>
+                  </Box>
+                  <Box sx={{ marginBottom: '20px', color: 'white' }}>
+                    <Typography
+                      component="span"
+                      sx={{
+                        display: 'inline-block',
+                        marginBottom: '5px',
+                        color: '#9e9e9e',
+                      }}
+                    >
+                      First seen in:
+                    </Typography>
+                    <Box>{showCharacterOrigin()}</Box>
+                  </Box>
+                </Box>
               </Link>
             );
           })}
-        </div>
-      </div>
+        </Box>
+      </Box>
       <Box
         sx={{
           paddingBottom: '50px',
@@ -237,7 +294,7 @@ const Homepage = () => {
           </Box>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 };
 

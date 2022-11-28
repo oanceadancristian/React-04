@@ -1,10 +1,11 @@
 import React from 'react';
+import Box from '@mui/material/Box';
 import Navbar from '../Navbar';
 import Typography from '@mui/material/Typography';
 
 const PageNotFound = () => {
   return (
-    <>
+    <Box>
       <Navbar />
       <Typography
         variant="h1"
@@ -21,7 +22,7 @@ const PageNotFound = () => {
       >
         Page not found!
       </Typography>
-    </>
+    </Box>
   );
 };
 

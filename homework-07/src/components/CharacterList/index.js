@@ -8,9 +8,9 @@ import Filters from '../Filters';
 import CharacterItem from '../CharacterItem';
 import Pagination from '../Pagination';
 import { setCharacterList, setInfo } from '../slices/CharacterListSlice';
+import Box from '@mui/material/Box';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import './CharacterList.css';
 
 const CharacterList = () => {
   const characters = useSelector((state) => state.characters);
@@ -61,7 +61,7 @@ const CharacterList = () => {
   }, [pageNumber, search, status, gender, species]);
 
   return (
-    <>
+    <Box>
       <Backdrop
         sx={{ color: '#7300e6', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={loading}
@@ -70,27 +70,43 @@ const CharacterList = () => {
       </Backdrop>
       <Navbar />
       <Search setSearch={setSearch} setPageNumber={setPageNumber} />
-      <div className="filters-and-characters">
-        <div className="filters">
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '25px',
+          margin: '50px',
+        }}
+      >
+        <Box sx={{ width: '25%' }}>
           <Filters
             setStatus={setStatus}
             setSpecies={setSpecies}
             setGender={setGender}
             setPageNumber={setPageNumber}
           />
-        </div>
-        <div className="character-list">
+        </Box>
+        <Box
+          sx={{
+            width: '75%',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(25%, 250px))',
+            justifyContent: 'center',
+            columnGap: '50px',
+            rowGap: '50px',
+          }}
+        >
           <CharacterItem characterList={characterList} />
-        </div>
-      </div>
-      <div className="pagination-container">
+        </Box>
+      </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <Pagination
           info={info}
           pageNumber={pageNumber}
           setPageNumber={setPageNumber}
         />
-      </div>
-    </>
+      </Box>
+    </Box>
   );
 };
 

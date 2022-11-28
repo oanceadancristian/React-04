@@ -1,11 +1,12 @@
 import React from 'react';
+import Box from '@mui/material/Box';
 import NavbarNoAccount from '../NavbarNoAccount';
 import Typography from '@mui/material/Typography';
 import Buttons from '../HomepageNoAccount/Buttons';
 
 const AccessForbidden = () => {
   return (
-    <>
+    <Box>
       <NavbarNoAccount />
       <Typography
         variant="h1"
@@ -23,7 +24,7 @@ const AccessForbidden = () => {
         Access forbidden!
         <Buttons />
       </Typography>
-    </>
+    </Box>
   );
 };
 

@@ -2,31 +2,6 @@
   width: 100%;
 }
 
-.character-info {
-  margin: 10px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.character-name {
-  margin-bottom: 10px;
-  font-size: 25px;
-}
-
-.character-gender-and-species,
-.character-location,
-.character-origin {
-  margin-bottom: 10px;
-  color: #606060;
-}
-
-.last-known-location,
-.first-seen-in {
-  display: inline-block;
-  margin-bottom: 5px;
-  color: black;
-}
-
 .green {
   height: 35px;
   width: 100%;

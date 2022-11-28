@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/material/Link';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import './CharacterItem.css';
 
 const CharacterItem = (props) => {
@@ -83,24 +85,42 @@ const CharacterItem = (props) => {
             },
           }}
         >
-          <div className={getCharacterStatusClassName()}>
+          <Box className={getCharacterStatusClassName()}>
             {showCharacterStatus()}
-          </div>
+          </Box>
           <img src={image} alt={name} className="character-image" />
-          <div className="character-info">
-            <div className="character-name">{name}</div>
-            <div className="character-gender-and-species">
+          <Box sx={{ margin: '10px', textAlign: 'center', fontWeight: 'bold' }}>
+            <Box sx={{ marginBottom: '10px', fontSize: '25px' }}>{name}</Box>
+            <Box sx={{ marginBottom: '10px', color: '#606060' }}>
               {showCharacterGender()} - {showCharacterSpecies()}
-            </div>
-            <div className="character-location">
-              <span className="last-known-location">Last known location:</span>
-              <div>{showCharacterLocation()}</div>
-            </div>
-            <div className="character-origin">
-              <span className="first-seen-in">First seen in:</span>
-              <div>{showCharacterOrigin()}</div>
-            </div>
-          </div>
+            </Box>
+            <Box sx={{ marginBottom: '10px', color: '#606060' }}>
+              <Typography
+                component="span"
+                sx={{
+                  display: 'inline-block',
+                  marginBottom: '5px',
+                  color: 'black',
+                }}
+              >
+                Last known location:
+              </Typography>
+              <Box>{showCharacterLocation()}</Box>
+            </Box>
+            <Box sx={{ marginBottom: '10px', color: '#606060' }}>
+              <Typography
+                component="span"
+                sx={{
+                  display: 'inline-block',
+                  marginBottom: '5px',
+                  color: 'black',
+                }}
+              >
+                First seen in:
+              </Typography>
+              <Box>{showCharacterOrigin()}</Box>
+            </Box>
+          </Box>
         </Link>
       );
     });

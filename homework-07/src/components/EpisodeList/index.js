@@ -5,9 +5,10 @@ import Navbar from '../Navbar';
 import SelectEpisode from '../Select/SelectEpisode';
 import CharacterItem from '../CharacterItem';
 import { setEpisodeDetails } from '../slices/EpisodeDetailsSlice';
+import Box from '@mui/system/Box';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import './EpisodeList.css';
+import Typography from '@mui/material/Typography';
 
 const EpisodeList = () => {
   const episodes = useSelector((state) => state.episodes);
@@ -49,35 +50,57 @@ const EpisodeList = () => {
   }, []);
 
   return (
-    <>
+    <Box>
       <Backdrop
         sx={{ color: '#7300e6', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={loading}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
-
       <Navbar />
-      <h1 className="subheader-episode-name">
-        Episode name:{' '}
-        <span className="episode-name">{name === '' ? 'Unknown' : name}</span>
-      </h1>
-      <h2 className="subheader-episode-air-date">
-        Air date: {air_date === '' ? 'Unknown' : air_date}
-      </h2>
-      <div className="select-and-characters">
-        <div className="select">
+      <Box sx={{ margin: '50px' }}>
+        <Typography
+          variant="h3"
+          sx={{ textAlign: 'center', marginBottom: '10px' }}
+        >
+          Episode name:{' '}
+          <Typography variant="h3" component="span" sx={{ color: '#7300e6' }}>
+            {name === '' ? 'Unknown' : name}
+          </Typography>
+        </Typography>
+        <Typography variant="h5" sx={{ textAlign: 'center' }}>
+          Air date: {air_date === '' ? 'Unknown' : air_date}
+        </Typography>
+      </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '25px',
+          margin: '50px',
+        }}
+      >
+        <Box sx={{ width: '25%' }}>
           <SelectEpisode
             total={51}
             episodeId={episodeId}
             setEpisodeId={setEpisodeId}
           />
-        </div>
-        <div className="character-list">
+        </Box>
+        <Box
+          sx={{
+            width: '75%',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(25%, 250px))',
+            justifyContent: 'center',
+            columnGap: '50px',
+            rowGap: '50px',
+          }}
+        >
           <CharacterItem characterList={characterList} pathname={pathname} />
-        </div>
-      </div>
-    </>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

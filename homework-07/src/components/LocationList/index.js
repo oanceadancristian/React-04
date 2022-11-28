@@ -5,9 +5,10 @@ import Navbar from '../Navbar';
 import SelectLocation from '../Select/SelectLocation';
 import CharacterItem from '../CharacterItem';
 import { setLocationDetails } from '../slices/LocationDetailsSlice';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import './LocationList.css';
 
 const LocationList = () => {
   const locations = useSelector((state) => state.locations);
@@ -49,7 +50,7 @@ const LocationList = () => {
   }, []);
 
   return (
-    <>
+    <Box>
       <Backdrop
         sx={{ color: '#7300e6', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={loading}
@@ -57,32 +58,56 @@ const LocationList = () => {
         <CircularProgress color="inherit" />
       </Backdrop>
       <Navbar />
-      <h1 className="subheader-location-name">
-        Location name:{' '}
-        <span className="location-name">
-          {name === '' || name === 'unknown' ? 'Unknown' : name}
-        </span>
-      </h1>
-      <h2 className="subheader-location-dimension">
-        Dimension:{' '}
-        {dimension === '' || dimension === 'unknown' ? 'Unknown' : dimension}
-      </h2>
-      <h3 className="subheader-location-type">
-        Type: {type === '' || type === 'unknown' ? 'Unknown' : type}
-      </h3>
-      <div className="select-and-characters">
-        <div className="select">
+      <Box sx={{ margin: '50px' }}>
+        <Typography
+          variant="h3"
+          sx={{ textAlign: 'center', marginBottom: '10px' }}
+        >
+          Location name:{' '}
+          <Typography variant="h3" component="span" sx={{ color: '#7300e6' }}>
+            {name === '' || name === 'unknown' ? 'Unknown' : name}
+          </Typography>
+        </Typography>
+        <Typography
+          variant="h5"
+          sx={{ textAlign: 'center', marginBottom: '10px' }}
+        >
+          Dimension:{' '}
+          {dimension === '' || dimension === 'unknown' ? 'Unknown' : dimension}
+        </Typography>
+        <Typography variant="h5" sx={{ textAlign: 'center' }}>
+          Type: {type === '' || type === 'unknown' ? 'Unknown' : type}
+        </Typography>
+      </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '25px',
+          margin: '50px',
+        }}
+      >
+        <Box sx={{ width: '25%' }}>
           <SelectLocation
             total={126}
             locationId={locationId}
             setLocationId={setLocationId}
           />
-        </div>
-        <div className="character-list">
+        </Box>
+        <Box
+          sx={{
+            width: '75%',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(25%, 250px))',
+            justifyContent: 'center',
+            columnGap: '50px',
+            rowGap: '50px',
+          }}
+        >
           <CharacterItem characterList={characterList} pathname={pathname} />
-        </div>
-      </div>
-    </>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
