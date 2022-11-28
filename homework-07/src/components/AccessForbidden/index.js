@@ -15,8 +15,8 @@ const AccessForbidden = () => {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          color: 'black',
           fontSize: '50px',
+          color: 'black',
           textAlign: 'center',
           textTransform: 'uppercase',
         }}

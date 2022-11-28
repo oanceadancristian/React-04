@@ -1,10 +1,10 @@
 .pagination {
   margin-bottom: 50px;
+  list-style: none;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  list-style: none;
 }
 
 .prev-btn {
@@ -18,11 +18,11 @@
 .prev-btn a,
 .next-btn a {
   padding: 10px 15px;
-  background-color: #7300e6;
-  color: white;
   font-weight: 500;
   border: none;
   border-radius: 3px;
+  color: white;
+  background-color: #7300e6;
   cursor: pointer;
 }
 
@@ -32,11 +32,11 @@
 }
 
 .page-link {
-  display: inline-block;
-  background-color: #c8c8c8;
-  color: black;
   padding: 10px 15px;
   border-radius: 3px;
+  display: inline-block;
+  color: black;
+  background-color: #c8c8c8;
   cursor: pointer;
 }
 
@@ -45,8 +45,8 @@
 }
 
 .page-active-link {
-  background-color: #7300e6;
   color: white;
+  background-color: #7300e6;
 }
 
 .page-active-link:hover {

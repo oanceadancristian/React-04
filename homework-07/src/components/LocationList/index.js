@@ -6,6 +6,7 @@ import SelectLocation from '../Select/SelectLocation';
 import CharacterItem from '../CharacterItem';
 import { setLocationDetails } from '../slices/LocationDetailsSlice';
 import Box from '@mui/material/Box';
+import Stack from '@mui/system/Stack';
 import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -58,20 +59,14 @@ const LocationList = () => {
         <CircularProgress color="inherit" />
       </Backdrop>
       <Navbar />
-      <Box sx={{ margin: '50px' }}>
-        <Typography
-          variant="h3"
-          sx={{ textAlign: 'center', marginBottom: '10px' }}
-        >
+      <Box sx={{ m: 6 }}>
+        <Typography variant="h3" sx={{ mb: 2, textAlign: 'center' }}>
           Location name:{' '}
           <Typography variant="h3" component="span" sx={{ color: '#7300e6' }}>
             {name === '' || name === 'unknown' ? 'Unknown' : name}
           </Typography>
         </Typography>
-        <Typography
-          variant="h5"
-          sx={{ textAlign: 'center', marginBottom: '10px' }}
-        >
+        <Typography variant="h5" sx={{ mb: 2, textAlign: 'center' }}>
           Dimension:{' '}
           {dimension === '' || dimension === 'unknown' ? 'Unknown' : dimension}
         </Typography>
@@ -79,12 +74,12 @@ const LocationList = () => {
           Type: {type === '' || type === 'unknown' ? 'Unknown' : type}
         </Typography>
       </Box>
-      <Box
+      <Stack
+        direction="row"
+        justifyContent="center"
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '25px',
-          margin: '50px',
+          margin: 6,
+          gap: 3,
         }}
       >
         <Box sx={{ width: '25%' }}>
@@ -100,13 +95,13 @@ const LocationList = () => {
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(25%, 250px))',
             justifyContent: 'center',
-            columnGap: '50px',
-            rowGap: '50px',
+            columnGap: 6,
+            rowGap: 6,
           }}
         >
           <CharacterItem characterList={characterList} pathname={pathname} />
         </Box>
-      </Box>
+      </Stack>
     </Box>
   );
 };

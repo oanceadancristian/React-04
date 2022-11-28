@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import Status from './Category/Status';
 import Species from './Category/Species';
 import Gender from './Category/Gender';
 import Box from '@mui/system/Box';
+import Stack from '@mui/system/Stack';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff';
-import { useNavigate } from 'react-router-dom';
 
 const Filters = (props) => {
   const { setStatus, setSpecies, setGender, setPageNumber } = props;
@@ -58,21 +58,21 @@ const Filters = (props) => {
 
   return (
     <Box sx={{ textAlign: 'center', fontWeight: 'bold' }}>
-      <Box
+      <Stack
+        direction="row"
+        justifyContent="center"
         sx={{
-          backgroundColor: '#c0c0c0',
-          padding: '10px',
+          mb: 2,
+          p: 2,
           fontSize: '18px',
-          marginBottom: '10px',
-          borderTopLeftRadius: '5px',
-          borderTopRightRadius: '5px',
-          display: 'flex',
-          justifyContent: 'center',
+          borderTopLeftRadius: 3,
+          borderTopRightRadius: 3,
+          backgroundColor: '#c0c0c0',
         }}
       >
-        <FilterAltIcon fontSize="medium" sx={{ marginRight: '3px' }} />
+        <FilterAltIcon fontSize="medium" sx={{ mr: 0.5 }} />
         Filters
-      </Box>
+      </Stack>
       <Box>
         <Status
           expandedStatus={expandedStatus}
@@ -95,20 +95,20 @@ const Filters = (props) => {
       </Box>
       <Box
         sx={{
-          backgroundColor: '#c0c0c0',
-          padding: '10px',
+          mt: 2,
+          p: 2,
           fontSize: '16px',
-          marginTop: '10px',
-          borderBottomLeftRadius: '5px',
-          borderBottomRightRadius: '5px',
+          borderBottomLeftRadius: 3,
+          borderBottomRightRadius: 3,
+          backgroundColor: '#c0c0c0',
         }}
       >
-        <Box
+        <Stack
+          direction="row"
+          justifyContent="center"
           component="span"
           onClick={handleClick}
           sx={{
-            display: 'flex',
-            justifyContent: 'center',
             fontWeight: 'normal',
             textDecoration: 'underline',
             cursor: 'pointer',
@@ -117,9 +117,9 @@ const Filters = (props) => {
             },
           }}
         >
-          <FilterAltOffIcon fontSize="medium" sx={{ marginRight: '3px' }} />
+          <FilterAltOffIcon fontSize="medium" sx={{ mr: 0.5 }} />
           Clear filters
-        </Box>
+        </Stack>
       </Box>
     </Box>
   );

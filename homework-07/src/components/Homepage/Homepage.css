@@ -1,17 +1,17 @@
 .random-character-image {
+  width: 40%;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  width: 40%;
 }
 
 .random-green {
   height: 10px;
   width: 10px;
-  background-color: green;
-  border-radius: 50%;
-  display: inline-block;
   margin-right: 10px;
+  border-radius: 50%;
   box-shadow: 0 0 0 0 green;
+  display: inline-block;
+  background-color: green;
   animation: pulse-alive 1s infinite;
 }
 
@@ -24,11 +24,11 @@
 .random-red {
   height: 10px;
   width: 10px;
-  background-color: red;
-  border-radius: 50%;
-  display: inline-block;
   margin-right: 10px;
+  border-radius: 50%;
   box-shadow: 0 0 0 0 red;
+  display: inline-block;
+  background-color: red;
   animation: pulse-dead 1s infinite;
 }
 
@@ -41,11 +41,11 @@
 .random-gray {
   height: 10px;
   width: 10px;
-  background-color: gray;
-  border-radius: 50%;
-  display: inline-block;
   margin-right: 10px;
+  border-radius: 50%;
   box-shadow: 0 0 0 0 gray;
+  display: inline-block;
+  background-color: gray;
   animation: pulse-unknown 1s infinite;
 }
 
@@ -56,16 +56,16 @@
 }
 
 .footer-active {
-  color: #7300e6;
+  font-weight: bold;
   text-decoration: none;
   text-transform: uppercase;
-  font-weight: bold;
+  color: #7300e6;
 }
 
 .footer-inactive {
-  color: white;
   text-decoration: none;
   text-transform: uppercase;
+  color: white;
 }
 
 .footer-inactive:hover {

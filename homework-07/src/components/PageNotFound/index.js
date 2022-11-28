@@ -14,10 +14,10 @@ const PageNotFound = () => {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          color: 'black',
           fontSize: '50px',
           textAlign: 'center',
           textTransform: 'uppercase',
+          color: 'black',
         }}
       >
         Page not found!

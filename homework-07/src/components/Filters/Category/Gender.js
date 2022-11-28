@@ -45,12 +45,12 @@ const Gender = (props) => {
 
   return (
     <Accordion
-      sx={{ backgroundColor: '#C0C0C0', color: '#000' }}
+      sx={{ backgroundColor: '#C0C0C0', color: 'black' }}
       expanded={expandedGender}
       onChange={handleExpandedGender}
     >
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon sx={{ color: '#000' }} />}
+        expandIcon={<ExpandMoreIcon sx={{ color: 'black' }} />}
         aria-controls="panel3a-content"
         id="panel3a-header"
       >

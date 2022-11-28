@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Box from '@mui/material/Box';
+import Stack from '@mui/system/Stack';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
@@ -17,12 +18,12 @@ const Search = (props) => {
   const [searchIconColor, setSearchIconColor] = useState('gray');
 
   return (
-    <Box
+    <Stack
+      direction="row"
+      justifyContent="center"
       sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        gap: '15px',
-        marginTop: '50px',
+        mt: 6,
+        gap: 2,
       }}
     >
       <Box
@@ -47,8 +48,8 @@ const Search = (props) => {
             ),
           }}
           sx={{
-            borderRadius: '5px',
             fontSize: '40px',
+            borderRadius: '5px',
             '& label': {
               fontWeight: '600',
             },
@@ -60,7 +61,7 @@ const Search = (props) => {
           }}
         />
       </Box>
-    </Box>
+    </Stack>
   );
 };
 

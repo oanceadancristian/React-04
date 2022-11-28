@@ -76,50 +76,57 @@ const CharacterItem = (props) => {
           component={RouterLink}
           to={setNavigationUrl()}
           sx={{
-            backgroundColor: '#f6efe4',
-            borderRadius: '10px',
-            boxShadow: '0px 0px 25px #555;',
-            color: 'black',
             textDecoration: 'none',
-            '&:hover': {
-              boxShadow: '0px 0px 25px black',
-            },
           }}
         >
-          <Box className={getCharacterStatusClassName()}>
-            {showCharacterStatus()}
-          </Box>
-          <img src={image} alt={name} className="character-image" />
-          <Box sx={{ margin: '10px', textAlign: 'center', fontWeight: 'bold' }}>
-            <Box sx={{ marginBottom: '10px', fontSize: '25px' }}>{name}</Box>
-            <Box sx={{ marginBottom: '10px', color: '#606060' }}>
-              {showCharacterGender()} - {showCharacterSpecies()}
+          <Box
+            sx={{
+              height: '600px',
+              borderRadius: 3,
+              backgroundColor: '#f6efe4',
+              boxShadow: '0 0 25px #555;',
+              color: 'black',
+
+              '&:hover': {
+                boxShadow: '0 0 25px black',
+              },
+            }}
+          >
+            <Box className={getCharacterStatusClassName()}>
+              {showCharacterStatus()}
             </Box>
-            <Box sx={{ marginBottom: '10px', color: '#606060' }}>
-              <Typography
-                component="span"
-                sx={{
-                  display: 'inline-block',
-                  marginBottom: '5px',
-                  color: 'black',
-                }}
-              >
-                Last known location:
-              </Typography>
-              <Box>{showCharacterLocation()}</Box>
-            </Box>
-            <Box sx={{ marginBottom: '10px', color: '#606060' }}>
-              <Typography
-                component="span"
-                sx={{
-                  display: 'inline-block',
-                  marginBottom: '5px',
-                  color: 'black',
-                }}
-              >
-                First seen in:
-              </Typography>
-              <Box>{showCharacterOrigin()}</Box>
+            <img src={image} alt={name} className="character-image" />
+            <Box sx={{ m: 2, fontWeight: 'bold', textAlign: 'center' }}>
+              <Box sx={{ mb: 2, fontSize: '25px' }}>{name}</Box>
+              <Box sx={{ mb: 2, color: '#606060' }}>
+                {showCharacterGender()} - {showCharacterSpecies()}
+              </Box>
+              <Box sx={{ mb: 2, color: '#606060' }}>
+                <Typography
+                  component="span"
+                  sx={{
+                    marginBottom: 1,
+                    display: 'inline-block',
+                    color: 'black',
+                  }}
+                >
+                  Last known location:
+                </Typography>
+                <Box>{showCharacterLocation()}</Box>
+              </Box>
+              <Box sx={{ mb: 2, color: '#606060' }}>
+                <Typography
+                  component="span"
+                  sx={{
+                    mb: 1,
+                    display: 'inline-block',
+                    color: 'black',
+                  }}
+                >
+                  First seen in:
+                </Typography>
+                <Box>{showCharacterOrigin()}</Box>
+              </Box>
             </Box>
           </Box>
         </Link>

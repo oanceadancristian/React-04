@@ -14,10 +14,11 @@ import {
   setCharacterType,
 } from '../slices/StaticCharacterProfileSlice';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import './StaticCharacterProfile.css';
-import { Typography } from '@mui/material';
 
 const StaticCharacterProfile = () => {
   const params = useParams();
@@ -102,21 +103,21 @@ const StaticCharacterProfile = () => {
       >
         <CircularProgress color="inherit" />
       </Backdrop>
-      <Box sx={{ backgroundColor: '#202329', height: '100vh' }}>
+      <Box sx={{ height: '100vh', backgroundColor: '#202329' }}>
         <Navbar />
-        <Box
+        <Stack
+          direction="row"
           sx={{
-            backgroundColor: '#f0e4d3',
-            boxShadow: '0px 0px 25px black',
-            borderRadius: '10px',
-            margin: '0 auto',
-            display: 'flex',
-            width: '780px',
-            height: '300px',
+            my: 'auto',
+            width: '860px',
+            height: '330px',
             position: 'absolute',
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
+            borderRadius: '10px',
+            boxShadow: '0px 0px 25px black',
+            backgroundColor: '#f0e4d3',
             cursor: 'pointer',
             '&:hover': {
               boxShadow: '0px 0px 25px white',
@@ -128,30 +129,27 @@ const StaticCharacterProfile = () => {
             alt={characterName}
             className="static-character-image"
           />
-          <Box
+          <Stack
+            justifyContent="center"
             sx={{
-              margin: '0px auto',
-              textAlign: 'center',
+              mx: 'auto',
+              my: 0,
               fontWeight: 'bold',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
+              textAlign: 'center',
             }}
           >
-            <Box
-              sx={{ marginBottom: '10px', fontSize: '25px', color: 'black' }}
-            >
+            <Box sx={{ mb: 2, fontSize: '25px', color: 'black' }}>
               {characterName}
             </Box>
-            <Box sx={{ marginBottom: '20px', color: '#606060' }}>
+            <Box sx={{ mb: 3, color: '#606060' }}>
               <Box className={showCharacterStatus()}></Box>
               {showCharacterGender()} - {showCharacterSpecies()}
             </Box>
-            <Box sx={{ marginBottom: '20px', color: '#606060' }}>
+            <Box sx={{ mb: 3, color: '#606060' }}>
               <Typography
                 component="span"
                 sx={{
-                  marginBottom: '5px',
+                  mb: 1,
                   display: 'inline-block',
                   color: 'black',
                 }}
@@ -160,11 +158,11 @@ const StaticCharacterProfile = () => {
               </Typography>
               <Box>{showCharacterLocation()}</Box>
             </Box>
-            <Box sx={{ marginBottom: '20px', color: '#606060' }}>
+            <Box sx={{ mb: 3, color: '#606060' }}>
               <Typography
                 component="span"
                 sx={{
-                  marginBottom: '5px',
+                  mb: 1,
                   display: 'inline-block',
                   color: 'black',
                 }}
@@ -173,11 +171,11 @@ const StaticCharacterProfile = () => {
               </Typography>
               <Box>{showCharacterOrigin()}</Box>
             </Box>
-            <Box sx={{ marginBottom: '20px', color: '#606060' }}>
+            <Box sx={{ mb: 3, color: '#606060' }}>
               <Typography
                 component="span"
                 sx={{
-                  marginBottom: '5px',
+                  mb: 1,
                   display: 'inline-block',
                   color: 'black',
                 }}
@@ -186,8 +184,8 @@ const StaticCharacterProfile = () => {
               </Typography>
               <Box>{showCharacterType()}</Box>
             </Box>
-          </Box>
-        </Box>
+          </Stack>
+        </Stack>
       </Box>
     </Box>
   );

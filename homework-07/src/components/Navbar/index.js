@@ -1,8 +1,9 @@
 import React from 'react';
 import { NavLink, useParams, useLocation } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import HomeIcon from '@mui/icons-material/Home';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -32,7 +33,7 @@ const Navbar = () => {
         >
           <Box
             sx={{
-              marginLeft: '50px',
+              ml: 6,
             }}
           >
             <Typography variant="h6" component="div">
@@ -42,25 +43,24 @@ const Navbar = () => {
                   isActive ? 'navbar-active' : 'navbar-inactive'
                 }
               >
-                <Box
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  spacing={3}
                   sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    flexWrap: 'wrap',
                     textTransform: 'uppercase',
                   }}
                 >
-                  <HomeIcon fontSize="medium" sx={{ marginRight: '3px' }} />
+                  <HomeIcon fontSize="medium" sx={{ mr: 0.5 }} />
                   Home
-                </Box>
+                </Stack>
               </NavLink>
             </Typography>
           </Box>
-          <Box
+          <Stack
+            direction="row"
+            spacing={3}
             sx={{
-              display: 'flex',
-              gap: '25px',
-              flexWrap: 'wrap',
               textTransform: 'uppercase',
             }}
           >
@@ -96,8 +96,8 @@ const Navbar = () => {
                 Locations
               </NavLink>
             </Typography>
-          </Box>
-          <Box sx={{ marginRight: '50px' }}>
+          </Stack>
+          <Box sx={{ mr: 6 }}>
             <Typography variant="h6" component="div">
               <NavLink
                 to="/"
@@ -105,18 +105,18 @@ const Navbar = () => {
                   isActive ? 'sign-out-active' : 'sign-out-inactive'
                 }
               >
-                <Box
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  spacing={3}
                   onClick={handleLogout}
                   sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    flexWrap: 'wrap',
                     textTransform: 'uppercase',
                   }}
                 >
-                  <LogoutIcon fontSize="medium" sx={{ marginRight: '3px' }} />
+                  <LogoutIcon fontSize="medium" sx={{ mr: 0.5 }} />
                   Sign out
-                </Box>
+                </Stack>
               </NavLink>
             </Typography>
           </Box>

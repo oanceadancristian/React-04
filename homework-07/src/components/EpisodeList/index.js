@@ -6,6 +6,7 @@ import SelectEpisode from '../Select/SelectEpisode';
 import CharacterItem from '../CharacterItem';
 import { setEpisodeDetails } from '../slices/EpisodeDetailsSlice';
 import Box from '@mui/system/Box';
+import Stack from '@mui/system/Stack';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
@@ -58,11 +59,8 @@ const EpisodeList = () => {
         <CircularProgress color="inherit" />
       </Backdrop>
       <Navbar />
-      <Box sx={{ margin: '50px' }}>
-        <Typography
-          variant="h3"
-          sx={{ textAlign: 'center', marginBottom: '10px' }}
-        >
+      <Box sx={{ m: 6 }}>
+        <Typography variant="h3" sx={{ mb: 2, textAlign: 'center' }}>
           Episode name:{' '}
           <Typography variant="h3" component="span" sx={{ color: '#7300e6' }}>
             {name === '' ? 'Unknown' : name}
@@ -72,12 +70,12 @@ const EpisodeList = () => {
           Air date: {air_date === '' ? 'Unknown' : air_date}
         </Typography>
       </Box>
-      <Box
+      <Stack
+        direction="row"
+        justifyContent="center"
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '25px',
-          margin: '50px',
+          m: 6,
+          gap: 3,
         }}
       >
         <Box sx={{ width: '25%' }}>
@@ -93,13 +91,13 @@ const EpisodeList = () => {
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(25%, 250px))',
             justifyContent: 'center',
-            columnGap: '50px',
-            rowGap: '50px',
+            columnGap: 6,
+            rowGap: 6,
           }}
         >
           <CharacterItem characterList={characterList} pathname={pathname} />
         </Box>
-      </Box>
+      </Stack>
     </Box>
   );
 };

@@ -1,9 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import CameraRollIcon from '@mui/icons-material/CameraRoll';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import './NavbarNoAccount.css';
@@ -19,7 +21,7 @@ const NavbarNoAccount = () => {
             backgroundColor: '#202329',
           }}
         >
-          <Box sx={{ marginLeft: '50px' }}>
+          <Box sx={{ ml: 6 }}>
             <Typography variant="h6" component="div">
               <NavLink
                 to="/"
@@ -27,11 +29,21 @@ const NavbarNoAccount = () => {
                   isActive ? 'active-no-account' : 'inactive-no-account'
                 }
               >
-                The Rick and Morty API
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  spacing={3}
+                  sx={{
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  <CameraRollIcon fontSize="medium" sx={{ mr: 0.5 }} />
+                  The rick and morty api
+                </Stack>
               </NavLink>
             </Typography>
           </Box>
-          <Box sx={{ marginRight: '50px', display: 'flex', gap: '20px' }}>
+          <Stack direction="row" spacing={3} sx={{ mr: 6 }}>
             <Typography variant="h6" component="div">
               <NavLink
                 to="/signin"
@@ -39,20 +51,17 @@ const NavbarNoAccount = () => {
                   isActive ? 'active-no-account' : 'inactive-no-account'
                 }
               >
-                <Box
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  spacing={3}
                   sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    flexWrap: 'wrap',
                     textTransform: 'uppercase',
                   }}
                 >
-                  <LoginOutlinedIcon
-                    fontSize="medium"
-                    sx={{ marginRight: '3px' }}
-                  />
+                  <LoginOutlinedIcon fontSize="medium" sx={{ mr: 0.5 }} />
                   Sign in
-                </Box>
+                </Stack>
               </NavLink>
             </Typography>
             <Typography variant="h6" component="div">
@@ -62,23 +71,20 @@ const NavbarNoAccount = () => {
                   isActive ? 'active-no-account' : 'inactive-no-account'
                 }
               >
-                <Box
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  spacing={3}
                   sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    flexWrap: 'wrap',
                     textTransform: 'uppercase',
                   }}
                 >
-                  <PersonAddIcon
-                    fontSize="medium"
-                    sx={{ marginRight: '3px' }}
-                  />
+                  <PersonAddIcon fontSize="medium" sx={{ mr: 0.5 }} />
                   Sign up
-                </Box>
+                </Stack>
               </NavLink>
             </Typography>
-          </Box>
+          </Stack>
         </Toolbar>
       </AppBar>
     </Box>

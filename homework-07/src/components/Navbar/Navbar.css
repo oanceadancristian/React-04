@@ -1,12 +1,12 @@
 .navbar-active {
-  color: #7300e6;
-  text-decoration: none;
   font-weight: bold;
+  text-decoration: none;
+  color: #7300e6;
 }
 
 .navbar-inactive {
-  color: white;
   text-decoration: none;
+  color: white;
 }
 
 .navbar-inactive:hover {
@@ -14,14 +14,14 @@
 }
 
 .sign-out-active {
-  color: white;
-  text-decoration: none;
   font-weight: bold;
+  text-decoration: none;
+  color: white;
 }
 
 .sign-out-inactive {
-  color: white;
   text-decoration: none;
+  color: white;
 }
 
 .sign-out-active:hover,

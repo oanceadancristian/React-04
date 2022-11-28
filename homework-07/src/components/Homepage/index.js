@@ -10,6 +10,7 @@ import Navbar from '../Navbar';
 import axios from 'axios';
 import { setRandomCharacterList } from '../slices/RickAndMortyAppSlice';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
@@ -73,41 +74,37 @@ const Homepage = () => {
         <CircularProgress color="inherit" />
       </Backdrop>
       <Navbar />
-      <Box
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="center"
         sx={{
-          backgroundColor: '#efefef',
           height: '50vh',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
+          backgroundColor: '#efefef',
         }}
       >
         <Typography
           variant="h1"
           sx={{
-            margin: '0px',
-            textAlign: 'center',
-            color: 'black',
             fontSize: '7.5vw',
             fontWeight: 'bold',
           }}
         >
           The Rick and Morty API
         </Typography>
-      </Box>
+      </Stack>
       <Box
         sx={{
+          py: 10,
           backgroundColor: '#202329',
-          paddingTop: '100px',
-          paddingBottom: '100px',
         }}
       >
-        <Box
+        <Stack
+          direction="row"
+          justifyContent="center"
           sx={{
-            display: 'flex',
+            gap: 3,
             flexWrap: 'wrap',
-            justifyContent: 'center',
-            gap: '25px',
           }}
         >
           {randomCharacterList.map((randomCharacter) => {
@@ -157,87 +154,90 @@ const Homepage = () => {
                 component={RouterLink}
                 to={`/characters/${randomCharacter.id}`}
                 sx={{
-                  backgroundColor: '#3c3e44',
-                  borderRadius: '10px',
-                  boxShadow: '0px 0px 10px black',
-                  display: 'flex',
-                  width: '600px',
-                  height: '250px',
-                  color: 'white',
                   textDecoration: 'none',
-                  '&:hover': {
-                    boxShadow: '0px 0px 10px white;',
-                  },
                 }}
               >
-                <img
-                  src={randomCharacter.image}
-                  alt={randomCharacter.name}
-                  className="random-character-image"
-                />
-                <Box
+                <Stack
+                  direction="row"
                   sx={{
-                    margin: '0px auto',
-                    textAlign: 'center',
-                    fontWeight: 'bold',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
+                    width: '600px',
+                    height: '250px',
+                    borderRadius: 2,
+                    backgroundColor: '#3c3e44',
+                    boxShadow: '0 0 10px black',
+                    color: 'white',
+                    '&:hover': {
+                      boxShadow: '0 0 10px white;',
+                    },
                   }}
                 >
-                  <Box sx={{ marginBottom: '10px', fontSize: '20px' }}>
-                    {randomCharacter.name}
-                  </Box>
-                  <Box sx={{ marginBottom: '20px', color: 'white' }}>
-                    <Box className={showCharacterStatus()}></Box>
-                    {showCharacterGender()} - {showCharacterSpecies()}
-                  </Box>
-                  <Box sx={{ marginBottom: '20px', color: 'white' }}>
-                    <Typography
-                      component="span"
-                      sx={{
-                        display: 'inline-block',
-                        marginBottom: '5px',
-                        color: '#9e9e9e',
-                      }}
-                    >
-                      Last known location:
-                    </Typography>
-                    <Box>{showCharacterLocation()}</Box>
-                  </Box>
-                  <Box sx={{ marginBottom: '20px', color: 'white' }}>
-                    <Typography
-                      component="span"
-                      sx={{
-                        display: 'inline-block',
-                        marginBottom: '5px',
-                        color: '#9e9e9e',
-                      }}
-                    >
-                      First seen in:
-                    </Typography>
-                    <Box>{showCharacterOrigin()}</Box>
-                  </Box>
-                </Box>
+                  <img
+                    src={randomCharacter.image}
+                    alt={randomCharacter.name}
+                    className="random-character-image"
+                  />
+                  <Stack
+                    justifyContent="center"
+                    sx={{
+                      mx: 'auto',
+                      my: 0,
+                      fontWeight: 'bold',
+                      textAlign: 'center',
+                    }}
+                  >
+                    <Box sx={{ mb: 2, fontSize: '20px' }}>
+                      {randomCharacter.name}
+                    </Box>
+                    <Box sx={{ mb: 2, color: 'white' }}>
+                      <Box className={showCharacterStatus()}></Box>
+                      {showCharacterGender()} - {showCharacterSpecies()}
+                    </Box>
+                    <Box sx={{ mb: 2, color: 'white' }}>
+                      <Typography
+                        component="span"
+                        sx={{
+                          mb: 1,
+                          display: 'inline-block',
+                          color: '#9e9e9e',
+                        }}
+                      >
+                        Last known location:
+                      </Typography>
+                      <Box>{showCharacterLocation()}</Box>
+                    </Box>
+                    <Box sx={{ mb: 2, color: 'white' }}>
+                      <Typography
+                        component="span"
+                        sx={{
+                          mb: 1,
+                          display: 'inline-block',
+                          color: '#9e9e9e',
+                        }}
+                      >
+                        First seen in:
+                      </Typography>
+                      <Box>{showCharacterOrigin()}</Box>
+                    </Box>
+                  </Stack>
+                </Stack>
               </Link>
             );
           })}
-        </Box>
+        </Stack>
       </Box>
-      <Box
+      <Stack
+        direction="column"
         sx={{
-          paddingBottom: '50px',
+          pb: 6,
+          gap: 3,
           backgroundColor: '#202329',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '25px',
         }}
       >
-        <Box
+        <Stack
+          direction="row"
+          justifyContent="center"
           sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '25px',
+            gap: 3,
           }}
         >
           <Box>
@@ -272,13 +272,8 @@ const Homepage = () => {
               Locations: 126
             </NavLink>
           </Box>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
+        </Stack>
+        <Stack direction="row" justifyContent="center">
           <Box>
             <Link href="https://github.com/oanceadancristian" target="_blank">
               <GitHubIcon
@@ -293,8 +288,8 @@ const Homepage = () => {
               />
             </Link>
           </Box>
-        </Box>
-      </Box>
+        </Stack>
+      </Stack>
     </Box>
   );
 };

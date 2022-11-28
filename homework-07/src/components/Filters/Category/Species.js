@@ -57,12 +57,12 @@ const Species = (props) => {
 
   return (
     <Accordion
-      sx={{ backgroundColor: '#C0C0C0', color: '#000' }}
+      sx={{ backgroundColor: '#C0C0C0', color: 'black' }}
       expanded={expandedSpecies}
       onChange={handleExpandedSpecies}
     >
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon sx={{ color: '#000' }} />}
+        expandIcon={<ExpandMoreIcon sx={{ color: 'black' }} />}
         aria-controls="panel2a-content"
         id="panel2a-header"
       >

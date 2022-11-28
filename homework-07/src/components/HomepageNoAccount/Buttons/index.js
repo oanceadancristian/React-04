@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link as RouteLink } from 'react-router-dom';
-import Box from '@mui/system/Box';
+import Stack from '@mui/system/Stack';
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 
 const Buttons = () => {
   return (
-    <Box
+    <Stack
+      direction="row"
       sx={{
-        display: 'flex',
-        gap: '10px',
-        margin: '0px',
+        m: 0,
+        gap: 2,
         position: 'absolute',
         top: '75%',
         left: '50%',
@@ -21,7 +21,7 @@ const Buttons = () => {
         component={RouteLink}
         to="/signin"
         sx={{
-          color: '#fff',
+          color: 'white',
           textDecoration: 'none',
           '&:hover': { textDecoration: 'none' },
         }}
@@ -30,11 +30,11 @@ const Buttons = () => {
           variant="contained"
           sx={{
             width: '125px',
+            padding: 2,
+            borderRadius: 1,
+            fontWeight: 'bold',
             textTransform: 'uppercase',
             backgroundColor: '#7300e6',
-            padding: '15px',
-            borderRadius: '5px',
-            fontWeight: 'bold',
             cursor: 'pointer',
             '&:hover': {
               backgroundColor: '#8c1aff',
@@ -48,8 +48,8 @@ const Buttons = () => {
         component={RouteLink}
         to="/signup"
         sx={{
-          color: '#fff',
           textDecoration: 'none',
+          color: 'white',
           '&:hover': { textDecoration: 'none' },
         }}
       >
@@ -57,11 +57,11 @@ const Buttons = () => {
           variant="contained"
           sx={{
             width: '125px',
+            padding: 2,
+            borderRadius: 1,
+            fontWeight: 'bold',
             textTransform: 'uppercase',
             backgroundColor: '#7300e6',
-            padding: '15px',
-            borderRadius: '5px',
-            fontWeight: 'bold',
             cursor: 'pointer',
             '&:hover': {
               backgroundColor: '#8c1aff',
@@ -71,7 +71,7 @@ const Buttons = () => {
           Sign Up
         </Button>
       </Link>
-    </Box>
+    </Stack>
   );
 };
 

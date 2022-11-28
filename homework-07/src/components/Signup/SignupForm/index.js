@@ -9,7 +9,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import ErrorIcon from '@mui/icons-material/Error';
-import Box from '@mui/material/Box';
+import Stack from '@mui/system/Stack';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 
@@ -188,12 +188,12 @@ const SignupForm = () => {
       >
         <Typography
           sx={{
-            marginTop: '25px',
-            color: '#7300e6',
+            mt: 3,
             fontSize: '25px',
             fontWeight: 'bold',
-            textTransform: 'uppercase',
             textAlign: 'center',
+            textTransform: 'uppercase',
+            color: '#7300e6',
           }}
         >
           Create your account
@@ -229,7 +229,7 @@ const SignupForm = () => {
             ),
           }}
           sx={{
-            marginTop: '25px',
+            mt: 3,
             width: '100%',
             '& label.Mui-focused': {
               color: firstNameError ? '#c24839' : '#7300e6',
@@ -269,7 +269,7 @@ const SignupForm = () => {
             ),
           }}
           sx={{
-            marginTop: '25px',
+            mt: 3,
             width: '100%',
             '& label.Mui-focused': {
               color: lastNameError ? '#c24839' : '#7300e6',
@@ -309,7 +309,7 @@ const SignupForm = () => {
             ),
           }}
           sx={{
-            marginTop: '25px',
+            mt: 3,
             width: '100%',
             '& label.Mui-focused': {
               color: emailError ? '#c24839' : '#7300e6',
@@ -349,7 +349,7 @@ const SignupForm = () => {
             ),
           }}
           sx={{
-            marginTop: '25px',
+            mt: 3,
             width: '100%',
             '& label.Mui-focused': {
               color: passwordError ? '#c24839' : '#7300e6',
@@ -397,7 +397,7 @@ const SignupForm = () => {
             ),
           }}
           sx={{
-            marginTop: '25px',
+            mt: 3,
             width: '100%',
             '& label.Mui-focused': {
               color: confirmPasswordError ? '#c24839' : '#7300e6',
@@ -410,34 +410,35 @@ const SignupForm = () => {
           }}
         />
         {error && (
-          <Box
+          <Stack
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
             sx={{
-              marginTop: '10px',
-              padding: '10px',
-              backgroundColor: '#c24839',
-              color: 'white',
-              textAlign: 'center',
-              borderRadius: '5px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
+              mt: 2,
+              p: 2,
               gap: '3px',
+              borderRadius: '5px',
+              textAlign: 'center',
+              color: 'white',
+              backgroundColor: '#c24839',
             }}
           >
             <ErrorIcon sx={{ color: 'white' }} />
             {error}
-          </Box>
+          </Stack>
         )}
         <Button
           type="submit"
           variant="contained"
           sx={{
-            marginTop: '25px',
+            mt: 3,
+            px: 3,
+            py: 2,
+            borderRadius: 1,
+            fontWeight: 'bold',
             textTransform: 'uppercase',
             backgroundColor: '#7300e6',
-            padding: '10px 20px',
-            borderRadius: '5px',
-            fontWeight: 'bold',
             cursor: 'pointer',
             '&:hover': {
               backgroundColor: '#8c1aff',
@@ -446,13 +447,13 @@ const SignupForm = () => {
         >
           Sign up
         </Button>
-        <Typography
+        <Stack
+          direction="row"
+          justifyContent="center"
           sx={{
-            marginTop: '25px',
+            mt: 3,
             fontSize: '20px',
             fontWeight: 'bold',
-            display: 'flex',
-            justifyContent: 'center',
             flexWrap: 'wrap',
           }}
         >
@@ -461,19 +462,19 @@ const SignupForm = () => {
             component={RouteLink}
             to="/signin"
             sx={{
-              textTransform: 'capitalize',
+              ml: 2,
               textDecoration: 'none',
-              marginLeft: '10px',
+              textTransform: 'capitalize',
               color: '#7300e6',
               '&:hover': {
-                color: '#8c1aff',
                 textDecoration: 'underline',
+                color: '#8c1aff',
               },
             }}
           >
             Sign in
           </Link>
-        </Typography>
+        </Stack>
       </FormControl>
     </form>
   );

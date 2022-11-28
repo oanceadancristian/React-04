@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
+import Stack from '@mui/system/Stack';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -33,21 +34,21 @@ const SelectLocation = (props) => {
 
   return (
     <Box sx={{ textAlign: 'center' }}>
-      <Box
+      <Stack
+        direction="row"
+        justifyContent="center"
         sx={{
-          marginBottom: '10px',
-          padding: '10px',
+          mb: 2,
+          p: 2,
+          borderRadius: 3,
           fontSize: '18px',
           fontWeight: 'bold',
           backgroundColor: '#c0c0c0',
-          borderRadius: '5px',
-          display: 'flex',
-          justifyContent: 'center',
         }}
       >
-        <PlaceIcon fontSize="medium" sx={{ marginRight: '3px' }} />
+        <PlaceIcon fontSize="medium" sx={{ mr: 0.5 }} />
         Select location
-      </Box>
+      </Stack>
       <Box>
         <Box sx={{ width: '100%' }}>
           <FormControl fullWidth>
@@ -82,8 +83,8 @@ const SelectLocation = (props) => {
                       display: 'flex',
                       justifyContent: 'center',
                       '&:hover': {
-                        backgroundColor: '#8c1aff',
                         color: 'white',
+                        backgroundColor: '#8c1aff',
                       },
                     }}
                   >

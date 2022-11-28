@@ -5,41 +5,41 @@
 .green {
   height: 35px;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: darkgreen;
-  color: white;
   font-weight: bold;
   text-transform: uppercase;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: darkgreen;
 }
 
 .red {
   height: 35px;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: darkred;
-  color: white;
   font-weight: bold;
   text-transform: uppercase;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: darkred;
 }
 
 .gray {
   height: 35px;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: darkgray;
-  color: white;
   font-weight: bold;
   text-transform: uppercase;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: darkgray;
 }

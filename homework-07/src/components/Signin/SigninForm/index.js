@@ -12,7 +12,7 @@ import ErrorIcon from '@mui/icons-material/Error';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Box from '@mui/material/Box';
+import Stack from '@mui/system/Stack';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 
@@ -145,12 +145,12 @@ const SigninForm = () => {
       >
         <Typography
           sx={{
-            marginTop: '25px',
-            color: '#7300e6',
+            mt: 3,
             fontSize: '25px',
             fontWeight: 'bold',
-            textTransform: 'uppercase',
             textAlign: 'center',
+            textTransform: 'uppercase',
+            color: '#7300e6',
           }}
         >
           Sign in to your account
@@ -184,7 +184,7 @@ const SigninForm = () => {
             ),
           }}
           sx={{
-            marginTop: '25px',
+            mt: 3,
             width: '100%',
             '& label.Mui-focused': {
               color: emailError ? '#c24839' : '#7300e6',
@@ -224,7 +224,7 @@ const SigninForm = () => {
             ),
           }}
           sx={{
-            marginTop: '25px',
+            mt: 3,
             width: '100%',
             '& label.Mui-focused': {
               color: passwordError ? '#c24839' : '#7300e6',
@@ -253,34 +253,35 @@ const SigninForm = () => {
           />
         </FormGroup>
         {error && (
-          <Box
+          <Stack
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
             sx={{
-              marginTop: '10px',
-              padding: '10px',
-              backgroundColor: '#c24839',
-              color: 'white',
+              mt: 2,
+              p: 2,
+              gap: 0.5,
+              borderRadius: 1,
               textAlign: 'center',
-              borderRadius: '5px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: '3px',
+              color: 'white',
+              backgroundColor: '#c24839',
             }}
           >
             <ErrorIcon sx={{ color: 'white' }} />
             {error}
-          </Box>
+          </Stack>
         )}
         <Button
           type="submit"
           variant="contained"
           sx={{
-            marginTop: '25px',
+            mt: 3,
+            px: 3,
+            py: 2,
+            borderRadius: 1,
+            fontWeight: 'bold',
             textTransform: 'uppercase',
             backgroundColor: '#7300e6',
-            padding: '10px 20px',
-            borderRadius: '5px',
-            fontWeight: 'bold',
             cursor: 'pointer',
             '&:hover': {
               backgroundColor: '#8c1aff',
@@ -289,13 +290,13 @@ const SigninForm = () => {
         >
           Sign In
         </Button>
-        <Typography
+        <Stack
+          direction="row"
+          justifyContent="center"
           sx={{
-            marginTop: '25px',
+            mt: 3,
             fontSize: '20px',
             fontWeight: 'bold',
-            display: 'flex',
-            justifyContent: 'center',
             flexWrap: 'wrap',
           }}
         >
@@ -304,19 +305,19 @@ const SigninForm = () => {
             component={RouteLink}
             to="/signup"
             sx={{
-              textTransform: 'capitalize',
+              ml: 2,
               textDecoration: 'none',
-              marginLeft: '10px',
+              textTransform: 'capitalize',
               color: '#7300e6',
               '&:hover': {
-                color: '#8c1aff',
                 textDecoration: 'underline',
+                color: '#8c1aff',
               },
             }}
           >
             Sign up
           </Link>
-        </Typography>
+        </Stack>
       </FormControl>
     </form>
   );
