@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -12,6 +12,10 @@ const Search = (props) => {
     setSearch(e.target.value);
   };
 
+  const searchRef = useRef();
+
+  const [searchIconColor, setSearchIconColor] = useState('gray');
+
   return (
     <Box
       sx={{
@@ -23,30 +27,30 @@ const Search = (props) => {
     >
       <Box
         sx={{
-          width: 750,
-          maxWidth: '100%',
+          width: '750px',
+          maxWidth: '50%',
         }}
       >
         <TextField
+          placeholder="Search for character"
           fullWidth
           id="fullWidth"
+          inputRef={searchRef}
           onChange={handleChange}
+          onFocus={() => setSearchIconColor('#7300e6')}
+          onBlur={() => setSearchIconColor('gray')}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon />
+                <SearchIcon sx={{ color: searchIconColor }} />
               </InputAdornment>
             ),
           }}
           sx={{
             borderRadius: '5px',
-            fontSize: '40',
-            boxShadow: '0px 2px 5px #757575',
+            fontSize: '40px',
             '& label': {
               fontWeight: '600',
-            },
-            '& label.Mui-focused': {
-              color: '#7300e6',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
