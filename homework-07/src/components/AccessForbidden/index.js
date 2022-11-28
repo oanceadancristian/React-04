@@ -1,11 +1,12 @@
 import React from 'react';
-import Navbar from '../Navbar';
+import NavbarNoAccount from '../NavbarNoAccount';
 import Typography from '@mui/material/Typography';
+import Buttons from '../HomepageNoAccount/Buttons';
 
-const PageNotFound = () => {
+const AccessForbidden = () => {
   return (
     <>
-      <Navbar />
+      <NavbarNoAccount />
       <Typography
         variant="h1"
         sx={{
@@ -19,10 +20,11 @@ const PageNotFound = () => {
           textTransform: 'uppercase',
         }}
       >
-        Page not found!
+        Access forbidden!
+        <Buttons />
       </Typography>
     </>
   );
 };
 
-export default PageNotFound;
+export default AccessForbidden;

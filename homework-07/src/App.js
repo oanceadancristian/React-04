@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomepageNoAccount from '../src/components/HomepageNoAccount';
 import Signin from '../src/components/Signin/';
 import Signup from '../src/components/Signup/';
+import AccessForbidden from './components/AccessForbidden';
 import Homepage from './components/Homepage';
 import CharacterList from './components/CharacterList';
 import EpisodeList from './components/EpisodeList';
@@ -22,6 +23,7 @@ function App() {
               <Route path="/" element={<HomepageNoAccount />} />
               <Route path="/signin" element={<Signin />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="*" element={<AccessForbidden />} />
             </>
           )}
 
@@ -52,10 +54,9 @@ function App() {
                 path="/locations/:locationId/characters/:characterId"
                 element={<StaticCharacterProfile />}
               />
+              <Route path="*" element={<PageNotFound />} />
             </>
           )}
-
-          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
