@@ -41,12 +41,13 @@ const CharacterItem = (props) => {
       const getCharacterStatusClassName = () => {
         let className = '';
         if (status === 'Alive') {
-          return (className = 'green');
+          className = 'green';
         } else if (status === 'Dead') {
-          return (className = 'red');
+          className = 'red';
         } else {
-          return (className = 'gray');
+          className = 'gray';
         }
+        return className;
       };
 
       const showCharacterStatus = () => {

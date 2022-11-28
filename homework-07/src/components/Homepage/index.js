@@ -114,12 +114,13 @@ const Homepage = () => {
             const showCharacterStatus = () => {
               let className = '';
               if (randomCharacter.status === 'Alive') {
-                return (className = 'random-green');
+                className = 'random-green';
               } else if (randomCharacter.status === 'Dead') {
-                return (className = 'random-red');
+                className = 'random-red';
               } else {
-                return (className = 'random-gray');
+                className = 'random-gray';
               }
+              return className;
             };
 
             const showCharacterGender = () => {

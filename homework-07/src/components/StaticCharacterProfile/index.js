@@ -61,12 +61,13 @@ const StaticCharacterProfile = () => {
   const showCharacterStatus = () => {
     let className = '';
     if (characterStatus === 'Alive') {
-      return (className = 'static-green');
+      className = 'static-green';
     } else if (characterStatus === 'Dead') {
-      return (className = 'static-red');
+      className = 'static-red';
     } else {
-      return (className = 'static-gray');
+      className = 'static-gray';
     }
+    return className;
   };
 
   const showCharacterGender = () => {
