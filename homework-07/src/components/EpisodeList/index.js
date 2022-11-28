@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 import Navbar from '../Navbar';
 import SelectEpisode from '../Select/SelectEpisode';
@@ -7,9 +7,9 @@ import CharacterItem from '../CharacterItem';
 import { setEpisodeDetails } from '../slices/EpisodeDetailsSlice';
 import Box from '@mui/system/Box';
 import Stack from '@mui/system/Stack';
+import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import Typography from '@mui/material/Typography';
 
 const EpisodeList = () => {
   const episodes = useSelector((state) => state.episodes);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Status from './Category/Status';
 import Species from './Category/Species';
 import Gender from './Category/Gender';

@@ -5,8 +5,8 @@
 }
 
 .static-green {
-  height: 10px;
   width: 10px;
+  height: 10px;
   margin-right: 10px;
   border-radius: 50%;
   box-shadow: 0 0 0 0 green;
@@ -22,8 +22,8 @@
 }
 
 .static-red {
-  height: 10px;
   width: 10px;
+  height: 10px;
   margin-right: 10px;
   border-radius: 50%;
   box-shadow: 0 0 0 0 red;
@@ -39,8 +39,8 @@
 }
 
 .static-gray {
-  height: 10px;
   width: 10px;
+  height: 10px;
   margin-right: 10px;
   border-radius: 50%;
   box-shadow: 0 0 0 0 gray;

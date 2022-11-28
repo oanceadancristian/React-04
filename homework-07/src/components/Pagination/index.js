@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import './Pagination.css';
 
 const Pagination = (props) => {
