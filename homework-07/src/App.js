@@ -11,6 +11,9 @@ import StaticCharacterProfile from './components/StaticCharacterProfile';
 import PageNotFound from './components/PageNotFound';
 import './App.css';
 
+import ResponsiveNavBar from '../src/components/ResponsiveNavBar';
+import ResponsiveNavBarNoAccount from '../src/components/ResponsiveNavBarNoAccount';
+
 function App() {
   const user = localStorage.getItem('token');
 
@@ -20,7 +23,8 @@ function App() {
         <Routes>
           {!user && (
             <>
-              <Route path="/" element={<HomepageNoAccount />} />
+              {/* <Route path="/" element={<HomepageNoAccount />} /> */}
+              <Route path="/" element={<ResponsiveNavBarNoAccount />} />
               <Route path="/signin" element={<Signin />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="*" element={<AccessForbidden />} />
@@ -32,7 +36,8 @@ function App() {
               <Route path="/" element={<Homepage />} />
               <Route path="/signin" element={<Homepage />} />
               <Route path="/signup" element={<Homepage />} />
-              <Route path="/homepage" element={<Homepage />} />
+              {/* <Route path="/homepage" element={<Homepage />} /> */}
+              <Route path="/homepage" element={<ResponsiveNavBar />} />
               <Route path="/characters" element={<CharacterList />} />
               <Route path="/episodes" element={<EpisodeList />} />
               <Route path="/locations" element={<LocationList />} />
