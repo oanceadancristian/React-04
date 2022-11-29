@@ -179,8 +179,8 @@ const SigninForm = () => {
             ),
           }}
           sx={{
-            mt: 3,
             width: '100%',
+            mt: 3,
             '& label.Mui-focused': {
               color: emailError ? '#c24839' : '#7300e6',
             },
@@ -219,8 +219,8 @@ const SigninForm = () => {
             ),
           }}
           sx={{
-            mt: 3,
             width: '100%',
+            mt: 3,
             '& label.Mui-focused': {
               color: passwordError ? '#c24839' : '#7300e6',
             },
@@ -253,11 +253,11 @@ const SigninForm = () => {
             justifyContent="center"
             alignItems="center"
             sx={{
+              gap: 0.5,
               mt: 2,
               p: 2,
-              gap: 0.5,
-              borderRadius: 1,
               textAlign: 'center',
+              borderRadius: 1,
               color: 'white',
               backgroundColor: '#c24839',
             }}
@@ -273,9 +273,9 @@ const SigninForm = () => {
             mt: 3,
             px: 3,
             py: 2,
-            borderRadius: 1,
             fontWeight: 'bold',
             textTransform: 'uppercase',
+            borderRadius: 1,
             backgroundColor: '#7300e6',
             cursor: 'pointer',
             '&:hover': {
@@ -289,10 +289,10 @@ const SigninForm = () => {
           direction="row"
           justifyContent="center"
           sx={{
+            flexWrap: 'wrap',
             mt: 3,
             fontSize: '20px',
             fontWeight: 'bold',
-            flexWrap: 'wrap',
           }}
         >
           Don't have an account?

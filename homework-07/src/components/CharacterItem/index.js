@@ -104,8 +104,8 @@ const CharacterItem = (props) => {
                 <Typography
                   component="span"
                   sx={{
-                    mb: 1,
                     display: 'inline-block',
+                    mb: 1,
                     color: 'black',
                   }}
                 >
@@ -117,8 +117,8 @@ const CharacterItem = (props) => {
                 <Typography
                   component="span"
                   sx={{
-                    mb: 1,
                     display: 'inline-block',
+                    mb: 1,
                     color: 'black',
                   }}
                 >

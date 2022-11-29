@@ -113,16 +113,16 @@ const StaticCharacterProfile = () => {
         <Stack
           direction="row"
           sx={{
-            my: { xs: 5, md: 15 },
-            width: { xs: '250px', md: '860px' },
-            height: { xs: '575px', md: '330px' },
             display: { xs: 'block', md: 'flex' },
             position: 'absolute',
             left: '50%',
             transform: 'translate(-50%)',
+            width: { xs: '250px', md: '860px' },
+            height: { xs: '575px', md: '330px' },
+            my: { xs: 5, md: 15 },
             borderRadius: '10px',
-            boxShadow: '0px 0px 25px black',
             backgroundColor: '#f0e4d3',
+            boxShadow: '0px 0px 25px black',
             cursor: 'pointer',
             '&:hover': {
               boxShadow: '0px 0px 25px white',
@@ -160,8 +160,8 @@ const StaticCharacterProfile = () => {
               <Typography
                 component="span"
                 sx={{
-                  mb: 1,
                   display: 'inline-block',
+                  mb: 1,
                   color: 'black',
                 }}
               >
@@ -173,8 +173,8 @@ const StaticCharacterProfile = () => {
               <Typography
                 component="span"
                 sx={{
-                  mb: 1,
                   display: 'inline-block',
+                  mb: 1,
                   color: 'black',
                 }}
               >
@@ -186,8 +186,8 @@ const StaticCharacterProfile = () => {
               <Typography
                 component="span"
                 sx={{
-                  mb: 1,
                   display: 'inline-block',
+                  mb: 1,
                   color: 'black',
                 }}
               >

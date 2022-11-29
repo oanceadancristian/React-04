@@ -103,9 +103,9 @@ const Homepage = () => {
           direction="row"
           justifyContent="center"
           sx={{
-            mx: 3,
             gap: { xs: 10, md: 3 },
             flexWrap: 'wrap',
+            mx: 3,
           }}
         >
           {randomCharacterList.map((randomCharacter) => {
@@ -160,9 +160,9 @@ const Homepage = () => {
               >
                 <Box
                   sx={{
+                    display: { xs: 'block', md: 'flex' },
                     width: { xs: '250px', md: '600px' },
                     height: { xs: '535px', md: '250px' },
-                    display: { xs: 'block', md: 'flex' },
                     borderRadius: 2,
                     backgroundColor: '#3c3e44',
                     boxShadow: '0 0 10px black',
@@ -203,8 +203,8 @@ const Homepage = () => {
                       <Typography
                         component="span"
                         sx={{
-                          mb: 1,
                           display: 'inline-block',
+                          mb: 1,
                           color: '#9e9e9e',
                         }}
                       >
@@ -216,8 +216,8 @@ const Homepage = () => {
                       <Typography
                         component="span"
                         sx={{
-                          mb: 1,
                           display: 'inline-block',
+                          mb: 1,
                           color: '#9e9e9e',
                         }}
                       >
@@ -235,8 +235,8 @@ const Homepage = () => {
       <Stack
         direction="column"
         sx={{
-          pb: 6,
           gap: 3,
+          pb: 6,
           backgroundColor: '#202329',
         }}
       >

@@ -45,7 +45,7 @@ const Status = (props) => {
 
   return (
     <Accordion
-      sx={{ backgroundColor: '#C0C0C0', color: 'black' }}
+      sx={{ color: 'black', backgroundColor: '#C0C0C0' }}
       expanded={expandedStatus}
       onChange={handleExpandedStatus}
     >

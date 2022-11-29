@@ -57,7 +57,7 @@ const Filters = (props) => {
   };
 
   return (
-    <Box sx={{ textAlign: 'center', fontWeight: 'bold' }}>
+    <Box sx={{ fontWeight: 'bold', textAlign: 'center' }}>
       <Stack
         direction="row"
         justifyContent="center"

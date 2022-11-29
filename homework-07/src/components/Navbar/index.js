@@ -81,11 +81,11 @@ function ResponsiveNavBar() {
           </Typography>
           <Box
             sx={{
-              flexGrow: 1,
               display: { xs: 'none', md: 'flex' },
+              justifyContent: 'flex-end',
+              flexGrow: 1,
               gap: 2,
               mr: 4,
-              justifyContent: 'flex-end',
             }}
           >
             <Link
@@ -219,7 +219,7 @@ function ResponsiveNavBar() {
               </MenuItem>
             </Menu>
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ display: { xs: 'flex', md: 'none' }, flexGrow: 1 }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -315,13 +315,13 @@ function ResponsiveNavBar() {
             sx={{
               display: { xs: 'flex', md: 'none' },
               alignItems: 'center',
+              flexGrow: 1,
               fontSize: '20px',
               fontWeight: 700,
               fontFamily: 'monospace',
               letterSpacing: '.25rem',
               textDecoration: 'none',
               textTransform: 'uppercase',
-              flexGrow: 1,
               color: '#7300e6',
             }}
           >
@@ -334,7 +334,7 @@ function ResponsiveNavBar() {
             />
             Rick and Morty
           </Typography>
-          <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ display: { xs: 'flex', md: 'none' }, flexGrow: 0 }}>
             <IconButton
               onClick={handleOpenUserMenu}
               sx={{

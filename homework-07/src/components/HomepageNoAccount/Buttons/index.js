@@ -10,12 +10,12 @@ const Buttons = () => {
     <Box>
       <Stack
         sx={{
-          m: 0,
           gap: 2,
           position: 'absolute',
           top: '75%',
           left: '50%',
           transform: 'translate(-50%, -75%)',
+          m: 0,
         }}
       >
         <Link

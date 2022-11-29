@@ -224,8 +224,8 @@ const SignupForm = () => {
             ),
           }}
           sx={{
-            mt: 3,
             width: '100%',
+            mt: 3,
             '& label.Mui-focused': {
               color: firstNameError ? '#c24839' : '#7300e6',
             },
@@ -264,8 +264,8 @@ const SignupForm = () => {
             ),
           }}
           sx={{
-            mt: 3,
             width: '100%',
+            mt: 3,
             '& label.Mui-focused': {
               color: lastNameError ? '#c24839' : '#7300e6',
             },
@@ -304,8 +304,8 @@ const SignupForm = () => {
             ),
           }}
           sx={{
-            mt: 3,
             width: '100%',
+            mt: 3,
             '& label.Mui-focused': {
               color: emailError ? '#c24839' : '#7300e6',
             },
@@ -344,8 +344,8 @@ const SignupForm = () => {
             ),
           }}
           sx={{
-            mt: 3,
             width: '100%',
+            mt: 3,
             '& label.Mui-focused': {
               color: passwordError ? '#c24839' : '#7300e6',
             },
@@ -392,8 +392,8 @@ const SignupForm = () => {
             ),
           }}
           sx={{
-            mt: 3,
             width: '100%',
+            mt: 3,
             '& label.Mui-focused': {
               color: confirmPasswordError ? '#c24839' : '#7300e6',
             },
@@ -410,11 +410,11 @@ const SignupForm = () => {
             justifyContent="center"
             alignItems="center"
             sx={{
+              gap: '3px',
               mt: 2,
               p: 2,
-              gap: '3px',
-              borderRadius: '5px',
               textAlign: 'center',
+              borderRadius: '5px',
               color: 'white',
               backgroundColor: '#c24839',
             }}
@@ -430,9 +430,9 @@ const SignupForm = () => {
             mt: 3,
             px: 3,
             py: 2,
-            borderRadius: 1,
             fontWeight: 'bold',
             textTransform: 'uppercase',
+            borderRadius: 1,
             backgroundColor: '#7300e6',
             cursor: 'pointer',
             '&:hover': {
@@ -446,10 +446,10 @@ const SignupForm = () => {
           direction="row"
           justifyContent="center"
           sx={{
+            flexWrap: 'wrap',
             mt: 3,
             fontSize: '20px',
             fontWeight: 'bold',
-            flexWrap: 'wrap',
           }}
         >
           Already have an account?

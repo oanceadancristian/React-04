@@ -58,7 +58,7 @@ function ResponsiveNavBarNoAccount() {
             />
             Rick and Morty
           </Typography>
-          <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, flexGrow: 0 }}>
             <IconButton
               onClick={handleOpenUserMenu}
               sx={{
@@ -152,13 +152,13 @@ function ResponsiveNavBarNoAccount() {
             sx={{
               display: { xs: 'flex', md: 'none' },
               alignItems: 'center',
+              flexGrow: 1,
               fontSize: '20px',
               fontWeight: 700,
               fontFamily: 'monospace',
               letterSpacing: '.1rem',
               textDecoration: 'none',
               textTransform: 'uppercase',
-              flexGrow: 1,
               color: '#7300e6',
             }}
           >
@@ -171,7 +171,7 @@ function ResponsiveNavBarNoAccount() {
             />
             Rick and Morty
           </Typography>
-          <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ display: { xs: 'flex', md: 'none' }, flexGrow: 0 }}>
             <IconButton
               onClick={handleOpenUserMenu}
               sx={{
@@ -181,9 +181,9 @@ function ResponsiveNavBarNoAccount() {
               <Avatar sx={{ backgroundColor: '#202329' }}>
                 <AccountBoxIcon
                   sx={{
-                    color: anchorElUser ? '#8c1aff' : 'white',
                     mr: 1,
                     fontSize: '30px',
+                    color: anchorElUser ? '#8c1aff' : 'white',
                   }}
                 />
               </Avatar>

@@ -22,8 +22,8 @@ const Search = (props) => {
       direction="row"
       justifyContent="center"
       sx={{
-        mt: 6,
         gap: 2,
+        mt: 6,
       }}
     >
       <Box

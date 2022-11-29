@@ -9,11 +9,11 @@
 .random-green {
   height: 10px;
   width: 10px;
+  display: inline-block;
   margin-right: 10px;
   border-radius: 50%;
-  box-shadow: 0 0 0 0 green;
-  display: inline-block;
   background-color: green;
+  box-shadow: 0 0 0 0 green;
   animation: pulse-alive 1s infinite;
 }
 
@@ -26,11 +26,11 @@
 .random-red {
   height: 10px;
   width: 10px;
+  display: inline-block;
   margin-right: 10px;
   border-radius: 50%;
-  box-shadow: 0 0 0 0 red;
-  display: inline-block;
   background-color: red;
+  box-shadow: 0 0 0 0 red;
   animation: pulse-dead 1s infinite;
 }
 
@@ -43,11 +43,11 @@
 .random-gray {
   height: 10px;
   width: 10px;
+  display: inline-block;
   margin-right: 10px;
   border-radius: 50%;
-  box-shadow: 0 0 0 0 gray;
-  display: inline-block;
   background-color: gray;
+  box-shadow: 0 0 0 0 gray;
   animation: pulse-unknown 1s infinite;
 }
 

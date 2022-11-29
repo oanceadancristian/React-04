@@ -87,15 +87,15 @@ const EpisodeList = () => {
         justifyContent="center"
         sx={{
           display: { xs: 'block', md: 'flex' },
-          margin: 6,
           gap: 3,
+          margin: 6,
         }}
       >
         <Box
           sx={{
             width: { xs: '75%', md: '25%' },
-            my: { xs: 5 },
             mx: { xs: 'auto' },
+            my: { xs: 5 },
           }}
         >
           <SelectEpisode
@@ -106,12 +106,12 @@ const EpisodeList = () => {
         </Box>
         <Box
           sx={{
-            width: { xs: '100%', md: '75%' },
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(25%, 250px))',
             justifyContent: 'center',
             columnGap: { xs: 12, md: 8 },
             rowGap: 6,
+            width: { xs: '100%', md: '75%' },
           }}
         >
           <CharacterItem characterList={characterList} pathname={pathname} />
