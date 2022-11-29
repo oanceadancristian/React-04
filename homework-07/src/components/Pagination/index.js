@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import './Pagination.css';
@@ -32,6 +32,18 @@ const Pagination = (props) => {
     navigate(`/characters/pages/${data.selected + 1}${location.search}`);
   };
 
+  const [paginationWidth, setPaginationWidth] = useState(window.innerWidth);
+
+  const updatePaginationWidth = () => {
+    setPaginationWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', updatePaginationWidth);
+
+    return () => window.removeEventListener('resize', updatePaginationWidth);
+  }, []);
+
   return (
     <ReactPaginate
       className="pagination"
@@ -44,6 +56,8 @@ const Pagination = (props) => {
       onPageChange={handlePageChange}
       forcePage={pageNumber === 1 ? 0 : pageNumber - 1}
       pageCount={pages}
+      marginPagesDisplayed={paginationWidth < 900 ? 1 : 2}
+      pageRangeDisplayed={1}
     />
   );
 };

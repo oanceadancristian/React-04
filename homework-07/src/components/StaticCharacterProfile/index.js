@@ -103,7 +103,12 @@ const StaticCharacterProfile = () => {
       >
         <CircularProgress color="inherit" />
       </Backdrop>
-      <Box sx={{ height: '100vh', backgroundColor: '#202329' }}>
+      <Box
+        sx={{
+          height: '100vh',
+          backgroundColor: '#202329',
+        }}
+      >
         <Navbar />
         <Stack
           direction="row"

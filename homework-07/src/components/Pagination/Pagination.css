@@ -1,5 +1,6 @@
 .pagination {
   margin-bottom: 50px;
+  padding: 0;
   list-style: none;
   display: flex;
   justify-content: center;
@@ -9,6 +10,10 @@
 
 .prev-btn {
   margin-right: 10px;
+}
+
+.break {
+  cursor: pointer;
 }
 
 .next-btn {
