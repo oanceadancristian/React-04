@@ -1,94 +1,245 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@mui/material/Link';
 import AppBar from '@mui/material/AppBar';
+import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import IconButton from '@mui/material/IconButton';
 import CameraRollIcon from '@mui/icons-material/CameraRoll';
+import Avatar from '@mui/material/Avatar';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import './NavbarNoAccount.css';
 
-const NavbarNoAccount = () => {
+function ResponsiveNavBarNoAccount() {
+  const [anchorElUser, setAnchorElUser] = useState(null);
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            backgroundColor: '#202329',
-          }}
-        >
-          <Box sx={{ ml: 6 }}>
-            <Typography variant="h6" component="div">
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive ? 'active-no-account' : 'inactive-no-account'
-                }
-              >
-                <Stack
-                  direction="row"
-                  alignItems="center"
-                  spacing={3}
+    <AppBar position="static">
+      <Container maxWidth="xl" sx={{ backgroundColor: '#202329' }}>
+        <Toolbar sx={{ height: '50px' }}>
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              display: { xs: 'none', md: 'flex' },
+              alignItems: 'center',
+              flexGrow: 1,
+              fontSize: '22px',
+              fontWeight: 700,
+              fontFamily: 'monospace',
+              letterSpacing: '.25rem',
+              textDecoration: 'none',
+              textTransform: 'uppercase',
+              color: '#7300e6',
+            }}
+          >
+            <CameraRollIcon
+              sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
+            />
+            Rick and Morty
+          </Typography>
+          <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+            <IconButton
+              onClick={handleOpenUserMenu}
+              sx={{
+                p: 0,
+                fontSize: '22px',
+                fontFamily: 'monospace',
+                letterSpacing: '.25rem',
+                textTransform: 'uppercase',
+                color: anchorElUser ? '#8c1aff' : 'white',
+              }}
+            >
+              <Avatar sx={{ backgroundColor: '#202329' }}>
+                <AccountBoxIcon
+                  fontSize="large"
+                  sx={{ color: anchorElUser ? '#8c1aff' : 'white', mr: 1 }}
+                />
+              </Avatar>
+              Account
+            </IconButton>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Link
+                  component={RouterLink}
+                  to="/signin"
                   sx={{
-                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    color: 'black',
+                    '&:hover': { color: '#8c1aff' },
                   }}
                 >
-                  <CameraRollIcon fontSize="medium" sx={{ mr: 0.5 }} />
-                  The rick and morty api
-                </Stack>
-              </NavLink>
-            </Typography>
+                  <Stack direction="row" spacing={1}>
+                    <LoginOutlinedIcon />
+                    <Typography
+                      textAlign="center"
+                      sx={{
+                        fontFamily: 'monospace',
+                        textTransform: 'uppercase',
+                      }}
+                    >
+                      Sign in
+                    </Typography>
+                  </Stack>
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Link
+                  component={RouterLink}
+                  to="/signup"
+                  sx={{
+                    textDecoration: 'none',
+                    color: 'black',
+                    '&:hover': { color: '#8c1aff' },
+                  }}
+                >
+                  <Stack direction="row" spacing={1}>
+                    <PersonAddIcon />
+                    <Typography
+                      textAlign="center"
+                      sx={{ textTransform: 'uppercase' }}
+                    >
+                      Sign up
+                    </Typography>
+                  </Stack>
+                </Link>
+              </MenuItem>
+            </Menu>
           </Box>
-          <Stack direction="row" spacing={3} sx={{ mr: 6 }}>
-            <Typography variant="h6" component="div">
-              <NavLink
-                to="/signin"
-                className={({ isActive }) =>
-                  isActive ? 'active-no-account' : 'inactive-no-account'
-                }
-              >
-                <Stack
-                  direction="row"
-                  alignItems="center"
-                  spacing={3}
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              display: { xs: 'flex', md: 'none' },
+              alignItems: 'center',
+              fontSize: '22px',
+              fontWeight: 700,
+              fontFamily: 'monospace',
+              letterSpacing: '.25rem',
+              textDecoration: 'none',
+              textTransform: 'uppercase',
+              flexGrow: 1,
+              color: '#7300e6',
+            }}
+          >
+            <CameraRollIcon
+              sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+            />
+            Rick and Morty
+          </Typography>
+          <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              onClick={handleOpenUserMenu}
+              sx={{
+                p: 0,
+              }}
+            >
+              <Avatar sx={{ backgroundColor: '#202329' }}>
+                <AccountBoxIcon
+                  fontSize="large"
+                  sx={{ color: anchorElUser ? '#8c1aff' : 'white', mr: 1 }}
+                />
+              </Avatar>
+            </IconButton>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Link
+                  component={RouterLink}
+                  to="/signin"
                   sx={{
-                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    color: 'black',
+                    '&:hover': { color: '#8c1aff' },
                   }}
                 >
-                  <LoginOutlinedIcon fontSize="medium" sx={{ mr: 0.5 }} />
-                  Sign in
-                </Stack>
-              </NavLink>
-            </Typography>
-            <Typography variant="h6" component="div">
-              <NavLink
-                to="/signup"
-                className={({ isActive }) =>
-                  isActive ? 'active-no-account' : 'inactive-no-account'
-                }
-              >
-                <Stack
-                  direction="row"
-                  alignItems="center"
-                  spacing={3}
+                  <Stack direction="row" spacing={1}>
+                    <LoginOutlinedIcon />
+                    <Typography
+                      textAlign="center"
+                      sx={{
+                        fontFamily: 'monospace',
+                        textTransform: 'uppercase',
+                      }}
+                    >
+                      Sign in
+                    </Typography>
+                  </Stack>
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Link
+                  component={RouterLink}
+                  to="/signup"
                   sx={{
-                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    color: 'black',
+                    '&:hover': { color: '#8c1aff' },
                   }}
                 >
-                  <PersonAddIcon fontSize="medium" sx={{ mr: 0.5 }} />
-                  Sign up
-                </Stack>
-              </NavLink>
-            </Typography>
-          </Stack>
+                  <Stack direction="row" spacing={1}>
+                    <PersonAddIcon />
+                    <Typography
+                      textAlign="center"
+                      sx={{ textTransform: 'uppercase' }}
+                    >
+                      Sign up
+                    </Typography>
+                  </Stack>
+                </Link>
+              </MenuItem>
+            </Menu>
+          </Box>
         </Toolbar>
-      </AppBar>
-    </Box>
+      </Container>
+    </AppBar>
   );
-};
-
-export default NavbarNoAccount;
+}
+export default ResponsiveNavBarNoAccount;
