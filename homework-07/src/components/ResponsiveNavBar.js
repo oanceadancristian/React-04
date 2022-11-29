@@ -4,19 +4,18 @@ import Link from '@mui/material/Link';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
-import Tooltip from '@mui/material/Tooltip';
-import MenuIcon from '@mui/icons-material/Menu';
 import CameraRollIcon from '@mui/icons-material/CameraRoll';
+import MenuIcon from '@mui/icons-material/Menu';
+import Avatar from '@mui/material/Avatar';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LogoutIcon from '@mui/icons-material/Logout';
-import Stack from '@mui/material/Stack';
 
 function ResponsiveNavBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -61,8 +60,10 @@ function ResponsiveNavBar() {
             sx={{
               display: { xs: 'none', md: 'flex' },
               alignItems: 'center',
+              fontSize: '22px',
               fontWeight: 700,
-              letterSpacing: '.2rem',
+              fontFamily: 'monospace',
+              letterSpacing: '.25rem',
               textDecoration: 'none',
               textTransform: 'uppercase',
               color: pathname === '/homepage' ? '#7300e6' : '',
@@ -73,6 +74,145 @@ function ResponsiveNavBar() {
             />
             Rick and Morty
           </Typography>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: 'none', md: 'flex' },
+              gap: 2,
+              mr: 4,
+              justifyContent: 'flex-end',
+            }}
+          >
+            <Link
+              component={RouterLink}
+              to={`/characters/pages/${
+                pageId === undefined ? 1 : pageId
+              }${search}`}
+              sx={{ textDecoration: 'none' }}
+            >
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{
+                  display: 'block',
+                  my: 2,
+                  fontSize: '20px',
+                  fontFamily: 'monospace',
+                  color: pathname.startsWith('/characters')
+                    ? '#7300e6'
+                    : 'white',
+                  '&:hover': { color: '#8c1aff', backgroundColor: '#202329' },
+                }}
+              >
+                Characters
+              </Button>
+            </Link>
+            <Link
+              component={RouterLink}
+              to={`/episodes/${episodeId === undefined ? 1 : episodeId}`}
+              sx={{ textDecoration: 'none' }}
+            >
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{
+                  display: 'block',
+                  my: 2,
+                  fontSize: '20px',
+                  fontFamily: 'monospace',
+                  color: pathname.startsWith('/characters')
+                    ? '#7300e6'
+                    : 'white',
+
+                  '&:hover': { color: '#8c1aff', backgroundColor: '#202329' },
+                }}
+              >
+                Episodes
+              </Button>
+            </Link>
+            <Link
+              component={RouterLink}
+              to={`/locations/${locationId === undefined ? 1 : locationId}`}
+              sx={{ textDecoration: 'none' }}
+            >
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{
+                  display: 'block',
+                  my: 2,
+                  fontSize: '20px',
+                  fontFamily: 'monospace',
+                  color: pathname.startsWith('/characters')
+                    ? '#7300e6'
+                    : 'white',
+
+                  '&:hover': { color: '#8c1aff', backgroundColor: '#202329' },
+                }}
+              >
+                Locations
+              </Button>
+            </Link>
+          </Box>
+          <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+            <IconButton
+              onClick={handleOpenUserMenu}
+              sx={{
+                p: 0,
+                fontSize: '22px',
+                fontFamily: 'monospace',
+                letterSpacing: '.1rem',
+                textTransform: 'uppercase',
+                color: anchorElUser ? '#8c1aff' : 'white',
+              }}
+            >
+              <Avatar sx={{ backgroundColor: '#202329' }}>
+                <AccountBoxIcon
+                  fontSize="large"
+                  sx={{ color: anchorElUser ? '#8c1aff' : 'white', mr: 1 }}
+                />
+              </Avatar>
+              Account
+            </IconButton>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Link
+                  component={RouterLink}
+                  onClick={handleLogout}
+                  sx={{
+                    textDecoration: 'none',
+                    color: 'black',
+                    '&:hover': { color: '#8c1aff' },
+                  }}
+                >
+                  <Stack direction="row" spacing={1}>
+                    <LogoutIcon />
+                    <Typography
+                      textAlign="center"
+                      sx={{
+                        fontFamily: 'monospace',
+                        textTransform: 'uppercase',
+                      }}
+                    >
+                      Sign out
+                    </Typography>
+                  </Stack>
+                </Link>
+              </MenuItem>
+            </Menu>
+          </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -113,7 +253,12 @@ function ResponsiveNavBar() {
                 }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Characters</Typography>
+                  <Typography
+                    textAlign="center"
+                    sx={{ fontFamily: 'monospace' }}
+                  >
+                    Characters
+                  </Typography>
                 </MenuItem>
               </Link>
               <Link
@@ -127,7 +272,12 @@ function ResponsiveNavBar() {
                 }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Episodes</Typography>
+                  <Typography
+                    textAlign="center"
+                    sx={{ fontFamily: 'monospace' }}
+                  >
+                    Episodes
+                  </Typography>
                 </MenuItem>
               </Link>
               <Link
@@ -141,7 +291,12 @@ function ResponsiveNavBar() {
                 }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Locations</Typography>
+                  <Typography
+                    textAlign="center"
+                    sx={{ fontFamily: 'monospace' }}
+                  >
+                    Locations
+                  </Typography>
                 </MenuItem>
               </Link>
             </Menu>
@@ -154,8 +309,10 @@ function ResponsiveNavBar() {
             sx={{
               display: { xs: 'flex', md: 'none' },
               alignItems: 'center',
+              fontSize: '22px',
               fontWeight: 700,
-              letterSpacing: '.1rem',
+              fontFamily: 'monospace',
+              letterSpacing: '.25rem',
               textDecoration: 'none',
               textTransform: 'uppercase',
               flexGrow: 1,
@@ -167,89 +324,20 @@ function ResponsiveNavBar() {
             />
             Rick and Morty
           </Typography>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: 'none', md: 'flex' },
-              gap: 3,
-            }}
-          >
-            <Link
-              component={RouterLink}
-              to={`/characters/pages/${
-                pageId === undefined ? 1 : pageId
-              }${search}`}
-              sx={{ textDecoration: 'none' }}
+          <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              onClick={handleOpenUserMenu}
+              sx={{
+                p: 0,
+              }}
             >
-              <Button
-                onClick={handleCloseNavMenu}
-                sx={{
-                  display: 'block',
-                  my: 2,
-                  fontSize: '17px',
-                  color: pathname.startsWith('/characters')
-                    ? '#7300e6'
-                    : 'white',
-                  '&:hover': { color: '#8c1aff', backgroundColor: '#202329' },
-                }}
-              >
-                Characters
-              </Button>
-            </Link>
-            <Link
-              component={RouterLink}
-              to={`/episodes/${episodeId === undefined ? 1 : episodeId}`}
-              sx={{ textDecoration: 'none' }}
-            >
-              <Button
-                onClick={handleCloseNavMenu}
-                sx={{
-                  display: 'block',
-                  my: 2,
-                  fontSize: '17px',
-                  color: pathname.startsWith('/characters')
-                    ? '#7300e6'
-                    : 'white',
-
-                  '&:hover': { color: '#8c1aff', backgroundColor: '#202329' },
-                }}
-              >
-                Episodes
-              </Button>
-            </Link>
-            <Link
-              component={RouterLink}
-              to={`/locations/${locationId === undefined ? 1 : locationId}`}
-              sx={{ textDecoration: 'none' }}
-            >
-              <Button
-                onClick={handleCloseNavMenu}
-                sx={{
-                  display: 'block',
-                  my: 2,
-                  fontSize: '17px',
-                  color: pathname.startsWith('/characters')
-                    ? '#7300e6'
-                    : 'white',
-
-                  '&:hover': { color: '#8c1aff', backgroundColor: '#202329' },
-                }}
-              >
-                Locations
-              </Button>
-            </Link>
-          </Box>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Profile settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar sx={{ backgroundColor: '#202329' }}>
-                  <AccountBoxIcon
-                    fontSize="large"
-                    sx={{ color: anchorElUser ? '#8c1aff' : 'white' }}
-                  />
-                </Avatar>
-              </IconButton>
-            </Tooltip>
+              <Avatar sx={{ backgroundColor: '#202329' }}>
+                <AccountBoxIcon
+                  fontSize="large"
+                  sx={{ color: anchorElUser ? '#8c1aff' : 'white' }}
+                />
+              </Avatar>
+            </IconButton>
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -280,7 +368,10 @@ function ResponsiveNavBar() {
                     <LogoutIcon />
                     <Typography
                       textAlign="center"
-                      sx={{ textTransform: 'uppercase' }}
+                      sx={{
+                        fontFamily: 'monospace',
+                        textTransform: 'uppercase',
+                      }}
                     >
                       Sign out
                     </Typography>
