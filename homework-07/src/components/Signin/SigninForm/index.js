@@ -133,16 +133,11 @@ const SigninForm = () => {
   const [emailIconColor, setEmailIconColor] = useState('gray');
 
   return (
-    <form onSubmit={handleSubmit}>
-      <FormControl
-        sx={{
-          width: '33%',
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-        }}
-      >
+    <form
+      onSubmit={handleSubmit}
+      style={{ marginTop: '125px', textAlign: 'center' }}
+    >
+      <FormControl>
         <Typography
           sx={{
             mt: 3,
