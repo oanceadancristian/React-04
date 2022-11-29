@@ -103,7 +103,7 @@ const Homepage = () => {
           direction="row"
           justifyContent="center"
           sx={{
-            gap: { xs: 10, md: 3 },
+            gap: { xs: 10, md: 5 },
             flexWrap: 'wrap',
             mx: 3,
           }}
@@ -149,6 +149,16 @@ const Homepage = () => {
               );
             };
 
+            const showCharacterHoverColor = () => {
+              if (showCharacterStatus() === 'random-green') {
+                return '0 0 20px darkgreen';
+              } else if (showCharacterStatus() === 'random-red') {
+                return '0 0 20px darkred';
+              } else {
+                return '0 0 20px darkgray';
+              }
+            };
+
             return (
               <Link
                 key={randomCharacter.id}
@@ -168,7 +178,7 @@ const Homepage = () => {
                     boxShadow: '0 0 10px black',
                     color: 'white',
                     '&:hover': {
-                      boxShadow: '0 0 10px white;',
+                      boxShadow: showCharacterHoverColor(),
                     },
                   }}
                 >

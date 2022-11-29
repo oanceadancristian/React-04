@@ -2,7 +2,7 @@
   width: 100%;
 }
 
-.green {
+.green-bar {
   width: 100%;
   height: 35px;
   display: flex;
@@ -16,7 +16,7 @@
   background-color: darkgreen;
 }
 
-.red {
+.red-bar {
   width: 100%;
   height: 35px;
   display: flex;
@@ -30,7 +30,7 @@
   background-color: darkred;
 }
 
-.gray {
+.gray-bar {
   width: 100%;
   height: 35px;
   display: flex;
@@ -42,4 +42,55 @@
   border-top-left-radius: 10px;
   color: white;
   background-color: darkgray;
+}
+
+.green-life {
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: green;
+  box-shadow: 0 0 0 0 green;
+  animation: pulse-alive 1s infinite;
+}
+
+@keyframes pulse-alive {
+  100% {
+    box-shadow: 0 0 0 3px darkgreen;
+  }
+}
+
+.red-life {
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: red;
+  box-shadow: 0 0 0 0 red;
+  animation: pulse-dead 1s infinite;
+}
+
+@keyframes pulse-dead {
+  100% {
+    box-shadow: 0 0 0 3px darkred;
+  }
+}
+
+.gray-life {
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: gray;
+  box-shadow: 0 0 0 0 gray;
+  animation: pulse-unknown 1s infinite;
+}
+
+@keyframes pulse-unknown {
+  100% {
+    box-shadow: 0 0 0 3px darkgray;
+  }
 }

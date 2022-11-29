@@ -41,11 +41,23 @@ const CharacterItem = (props) => {
       const getCharacterStatusClassName = () => {
         let className = '';
         if (status === 'Alive') {
-          className = 'green';
+          className = 'green-bar';
         } else if (status === 'Dead') {
-          className = 'red';
+          className = 'red-bar';
         } else {
-          className = 'gray';
+          className = 'gray-bar';
+        }
+        return className;
+      };
+
+      const showCharacterLife = () => {
+        let className = '';
+        if (status === 'Alive') {
+          className = 'green-life';
+        } else if (status === 'Dead') {
+          className = 'red-life';
+        } else {
+          className = 'gray-life';
         }
         return className;
       };
@@ -98,6 +110,7 @@ const CharacterItem = (props) => {
             <Box sx={{ m: 2, fontWeight: 'bold', textAlign: 'center' }}>
               <Box sx={{ mb: 2, fontSize: '25px' }}>{name}</Box>
               <Box sx={{ mb: 2, color: '#606060' }}>
+                <Box className={showCharacterLife()}></Box>
                 {showCharacterGender()} - {showCharacterSpecies()}
               </Box>
               <Box sx={{ mb: 2, color: '#606060' }}>

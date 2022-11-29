@@ -95,6 +95,16 @@ const StaticCharacterProfile = () => {
       : characterType.charAt(0).toUpperCase() + characterType.slice(1);
   };
 
+  const showCharacterHoverColor = () => {
+    if (showCharacterStatus() === 'static-green') {
+      return '0 0 25px darkgreen';
+    } else if (showCharacterStatus() === 'static-red') {
+      return '0 0 25px darkred';
+    } else {
+      return '0 0 25px darkgray';
+    }
+  };
+
   return (
     <Box>
       <Backdrop
@@ -125,7 +135,7 @@ const StaticCharacterProfile = () => {
             boxShadow: '0px 0px 25px black',
             cursor: 'pointer',
             '&:hover': {
-              boxShadow: '0px 0px 25px white',
+              boxShadow: showCharacterHoverColor(),
             },
           }}
         >
