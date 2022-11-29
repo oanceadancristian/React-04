@@ -103,7 +103,8 @@ const Homepage = () => {
           direction="row"
           justifyContent="center"
           sx={{
-            gap: 3,
+            mx: 3,
+            gap: { xs: 10, md: 3 },
             flexWrap: 'wrap',
           }}
         >
@@ -157,11 +158,11 @@ const Homepage = () => {
                   textDecoration: 'none',
                 }}
               >
-                <Stack
-                  direction="row"
+                <Box
                   sx={{
-                    width: '600px',
-                    height: '250px',
+                    width: { xs: '250px', md: '600px' },
+                    height: { xs: '535px', md: '250px' },
+                    display: { xs: 'block', md: 'flex' },
                     borderRadius: 2,
                     backgroundColor: '#3c3e44',
                     boxShadow: '0 0 10px black',
@@ -171,16 +172,22 @@ const Homepage = () => {
                     },
                   }}
                 >
-                  <img
-                    src={randomCharacter.image}
-                    alt={randomCharacter.name}
-                    className="random-character-image"
-                  />
+                  <Box
+                    sx={{
+                      width: '250px',
+                    }}
+                  >
+                    <img
+                      src={randomCharacter.image}
+                      alt={randomCharacter.name}
+                      className="random-character-image"
+                    />
+                  </Box>
                   <Stack
                     justifyContent="center"
                     sx={{
                       mx: 'auto',
-                      my: 0,
+                      my: 2,
                       fontWeight: 'bold',
                       textAlign: 'center',
                     }}
@@ -219,7 +226,7 @@ const Homepage = () => {
                       <Box>{showCharacterOrigin()}</Box>
                     </Box>
                   </Stack>
-                </Stack>
+                </Box>
               </Link>
             );
           })}

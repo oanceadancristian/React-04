@@ -1,6 +1,8 @@
 .static-character-image {
-  width: 40%;
+  width: 100%;
   border-top-left-radius: 10px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   border-bottom-left-radius: 10px;
 }
 
@@ -52,5 +54,14 @@
 @keyframes pulse-unknown {
   100% {
     box-shadow: 0 0 0 3px darkgray;
+  }
+}
+
+@media (max-width: 900px) {
+  .static-character-image {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
   }
 }

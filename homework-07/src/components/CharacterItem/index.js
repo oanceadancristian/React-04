@@ -86,7 +86,6 @@ const CharacterItem = (props) => {
               backgroundColor: '#f6efe4',
               boxShadow: '0 0 25px #555;',
               color: 'black',
-
               '&:hover': {
                 boxShadow: '0 0 25px black',
               },
@@ -105,7 +104,7 @@ const CharacterItem = (props) => {
                 <Typography
                   component="span"
                   sx={{
-                    marginBottom: 1,
+                    mb: 1,
                     display: 'inline-block',
                     color: 'black',
                   }}

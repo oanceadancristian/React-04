@@ -43,14 +43,18 @@ function ResponsiveNavBarNoAccount() {
               fontSize: '22px',
               fontWeight: 700,
               fontFamily: 'monospace',
-              letterSpacing: '.25rem',
+              letterSpacing: '.1rem',
               textDecoration: 'none',
               textTransform: 'uppercase',
               color: '#7300e6',
             }}
           >
             <CameraRollIcon
-              sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+                mr: 1,
+                fontSize: '25px',
+              }}
             />
             Rick and Morty
           </Typography>
@@ -59,17 +63,20 @@ function ResponsiveNavBarNoAccount() {
               onClick={handleOpenUserMenu}
               sx={{
                 p: 0,
-                fontSize: '22px',
+                fontSize: '20px',
                 fontFamily: 'monospace',
-                letterSpacing: '.25rem',
+                letterSpacing: '.1rem',
                 textTransform: 'uppercase',
                 color: anchorElUser ? '#8c1aff' : 'white',
               }}
             >
               <Avatar sx={{ backgroundColor: '#202329' }}>
                 <AccountBoxIcon
-                  fontSize="large"
-                  sx={{ color: anchorElUser ? '#8c1aff' : 'white', mr: 1 }}
+                  sx={{
+                    color: anchorElUser ? '#8c1aff' : 'white',
+                    mr: 1,
+                    fontSize: '30px',
+                  }}
                 />
               </Avatar>
               Account
@@ -145,10 +152,10 @@ function ResponsiveNavBarNoAccount() {
             sx={{
               display: { xs: 'flex', md: 'none' },
               alignItems: 'center',
-              fontSize: '22px',
+              fontSize: '20px',
               fontWeight: 700,
               fontFamily: 'monospace',
-              letterSpacing: '.25rem',
+              letterSpacing: '.1rem',
               textDecoration: 'none',
               textTransform: 'uppercase',
               flexGrow: 1,
@@ -156,7 +163,11 @@ function ResponsiveNavBarNoAccount() {
             }}
           >
             <CameraRollIcon
-              sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+              sx={{
+                display: { xs: 'flex', md: 'none' },
+                mr: 1,
+                fontSize: '25px',
+              }}
             />
             Rick and Morty
           </Typography>
@@ -169,8 +180,11 @@ function ResponsiveNavBarNoAccount() {
             >
               <Avatar sx={{ backgroundColor: '#202329' }}>
                 <AccountBoxIcon
-                  fontSize="large"
-                  sx={{ color: anchorElUser ? '#8c1aff' : 'white', mr: 1 }}
+                  sx={{
+                    color: anchorElUser ? '#8c1aff' : 'white',
+                    mr: 1,
+                    fontSize: '30px',
+                  }}
                 />
               </Avatar>
             </IconButton>

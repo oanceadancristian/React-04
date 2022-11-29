@@ -60,7 +60,7 @@ function ResponsiveNavBar() {
             sx={{
               display: { xs: 'none', md: 'flex' },
               alignItems: 'center',
-              fontSize: '22px',
+              fontSize: '20px',
               fontWeight: 700,
               fontFamily: 'monospace',
               letterSpacing: '.25rem',
@@ -70,7 +70,11 @@ function ResponsiveNavBar() {
             }}
           >
             <CameraRollIcon
-              sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+                mr: 1,
+                fontSize: '25px',
+              }}
             />
             Rick and Morty
           </Typography>
@@ -154,7 +158,7 @@ function ResponsiveNavBar() {
               onClick={handleOpenUserMenu}
               sx={{
                 p: 0,
-                fontSize: '22px',
+                fontSize: '20px',
                 fontFamily: 'monospace',
                 letterSpacing: '.1rem',
                 textTransform: 'uppercase',
@@ -163,8 +167,11 @@ function ResponsiveNavBar() {
             >
               <Avatar sx={{ backgroundColor: '#202329' }}>
                 <AccountBoxIcon
-                  fontSize="large"
-                  sx={{ color: anchorElUser ? '#8c1aff' : 'white', mr: 1 }}
+                  sx={{
+                    color: anchorElUser ? '#8c1aff' : 'white',
+                    mr: 1,
+                    fontSize: '30px',
+                  }}
                 />
               </Avatar>
               Account
@@ -220,7 +227,7 @@ function ResponsiveNavBar() {
               onClick={handleOpenNavMenu}
               sx={{ color: anchorElNav ? '#8c1aff' : 'white' }}
             >
-              <MenuIcon />
+              <MenuIcon sx={{ fontSize: '30px' }} />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -307,7 +314,7 @@ function ResponsiveNavBar() {
             sx={{
               display: { xs: 'flex', md: 'none' },
               alignItems: 'center',
-              fontSize: '22px',
+              fontSize: '20px',
               fontWeight: 700,
               fontFamily: 'monospace',
               letterSpacing: '.25rem',
@@ -318,7 +325,11 @@ function ResponsiveNavBar() {
             }}
           >
             <CameraRollIcon
-              sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+              sx={{
+                display: { xs: 'flex', md: 'none' },
+                mr: 1,
+                fontSize: '25px',
+              }}
             />
             Rick and Morty
           </Typography>
@@ -331,8 +342,10 @@ function ResponsiveNavBar() {
             >
               <Avatar sx={{ backgroundColor: '#202329' }}>
                 <AccountBoxIcon
-                  fontSize="large"
-                  sx={{ color: anchorElUser ? '#8c1aff' : 'white' }}
+                  sx={{
+                    color: anchorElUser ? '#8c1aff' : 'white',
+                    fontSize: '30px',
+                  }}
                 />
               </Avatar>
             </IconButton>

@@ -108,13 +108,13 @@ const StaticCharacterProfile = () => {
         <Stack
           direction="row"
           sx={{
-            my: 'auto',
-            width: '860px',
-            height: '330px',
+            my: { xs: 5, md: 15 },
+            width: { xs: '250px', md: '860px' },
+            height: { xs: '575px', md: '330px' },
+            display: { xs: 'block', md: 'flex' },
             position: 'absolute',
-            top: '50%',
             left: '50%',
-            transform: 'translate(-50%, -50%)',
+            transform: 'translate(-50%)',
             borderRadius: '10px',
             boxShadow: '0px 0px 25px black',
             backgroundColor: '#f0e4d3',
@@ -124,11 +124,17 @@ const StaticCharacterProfile = () => {
             },
           }}
         >
-          <img
-            src={characterImg}
-            alt={characterName}
-            className="static-character-image"
-          />
+          <Box
+            sx={{
+              width: { xs: '250px', md: '330px' },
+            }}
+          >
+            <img
+              src={characterImg}
+              alt={characterName}
+              className="static-character-image"
+            />
+          </Box>
           <Stack
             justifyContent="center"
             sx={{
@@ -138,14 +144,14 @@ const StaticCharacterProfile = () => {
               textAlign: 'center',
             }}
           >
-            <Box sx={{ mb: 2, fontSize: '25px', color: 'black' }}>
+            <Box sx={{ mb: 1, fontSize: '25px', color: 'black' }}>
               {characterName}
             </Box>
-            <Box sx={{ mb: 3, color: '#606060' }}>
+            <Box sx={{ mb: 2, color: '#606060' }}>
               <Box className={showCharacterStatus()}></Box>
               {showCharacterGender()} - {showCharacterSpecies()}
             </Box>
-            <Box sx={{ mb: 3, color: '#606060' }}>
+            <Box sx={{ mb: 2, color: '#606060' }}>
               <Typography
                 component="span"
                 sx={{
@@ -158,7 +164,7 @@ const StaticCharacterProfile = () => {
               </Typography>
               <Box>{showCharacterLocation()}</Box>
             </Box>
-            <Box sx={{ mb: 3, color: '#606060' }}>
+            <Box sx={{ mb: 2, color: '#606060' }}>
               <Typography
                 component="span"
                 sx={{
@@ -171,7 +177,7 @@ const StaticCharacterProfile = () => {
               </Typography>
               <Box>{showCharacterOrigin()}</Box>
             </Box>
-            <Box sx={{ mb: 3, color: '#606060' }}>
+            <Box sx={{ mb: 2, color: '#606060' }}>
               <Typography
                 component="span"
                 sx={{

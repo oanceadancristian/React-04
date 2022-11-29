@@ -22,8 +22,8 @@ const AccessForbidden = () => {
         }}
       >
         Access forbidden!
-        <Buttons />
       </Typography>
+      <Buttons />
     </Box>
   );
 };

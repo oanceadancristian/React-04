@@ -1,6 +1,8 @@
 .random-character-image {
-  width: 40%;
+  width: 100%;
   border-top-left-radius: 10px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   border-bottom-left-radius: 10px;
 }
 
@@ -70,4 +72,13 @@
 
 .footer-inactive:hover {
   color: #8c1aff;
+}
+
+@media (max-width: 900px) {
+  .random-character-image {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 }
