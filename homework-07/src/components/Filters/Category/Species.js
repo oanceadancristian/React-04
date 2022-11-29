@@ -66,7 +66,10 @@ const Species = (props) => {
         aria-controls="panel2a-content"
         id="panel2a-header"
       >
-        <Typography component={'span'} sx={{ fontWeight: 'bold' }}>
+        <Typography
+          component={'span'}
+          sx={{ fontWeight: 'bold', fontFamily: 'monospace' }}
+        >
           Species
         </Typography>
       </AccordionSummary>
@@ -76,6 +79,7 @@ const Species = (props) => {
             <RadioGroup
               aria-labelledby="demo-controlled-radio-buttons-group"
               name="controlled-radio-buttons-group"
+              sx={{ display: 'block' }}
             >
               {speciesList.map((element, index) => (
                 <FilterButton

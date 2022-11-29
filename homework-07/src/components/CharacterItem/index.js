@@ -95,11 +95,11 @@ const CharacterItem = (props) => {
             sx={{
               height: '600px',
               borderRadius: 3,
-              backgroundColor: '#f6efe4',
+              backgroundColor: '#414850',
               boxShadow: '0 0 25px #555;',
-              color: 'black',
+              color: 'white',
               '&:hover': {
-                boxShadow: '0 0 25px black',
+                boxShadow: '0 0 25px  black',
               },
             }}
           >
@@ -109,30 +109,30 @@ const CharacterItem = (props) => {
             <img src={image} alt={name} className="character-image" />
             <Box sx={{ m: 2, fontWeight: 'bold', textAlign: 'center' }}>
               <Box sx={{ mb: 2, fontSize: '25px' }}>{name}</Box>
-              <Box sx={{ mb: 2, color: '#606060' }}>
+              <Box sx={{ mb: 2, color: 'white' }}>
                 <Box className={showCharacterLife()}></Box>
                 {showCharacterGender()} - {showCharacterSpecies()}
               </Box>
-              <Box sx={{ mb: 2, color: '#606060' }}>
+              <Box sx={{ mb: 2, color: 'white' }}>
                 <Typography
                   component="span"
                   sx={{
                     display: 'inline-block',
                     mb: 1,
-                    color: 'black',
+                    color: '#9e9e9e',
                   }}
                 >
                   Last known location:
                 </Typography>
                 <Box>{showCharacterLocation()}</Box>
               </Box>
-              <Box sx={{ mb: 2, color: '#606060' }}>
+              <Box sx={{ mb: 2, color: 'white' }}>
                 <Typography
                   component="span"
                   sx={{
                     display: 'inline-block',
                     mb: 1,
-                    color: 'black',
+                    color: '#9e9e9e',
                   }}
                 >
                   First seen in:

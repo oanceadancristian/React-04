@@ -54,7 +54,10 @@ const Status = (props) => {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography component={'span'} sx={{ fontWeight: 'bold' }}>
+        <Typography
+          component={'span'}
+          sx={{ fontWeight: 'bold', fontFamily: 'monospace' }}
+        >
           Status
         </Typography>
       </AccordionSummary>
@@ -64,6 +67,7 @@ const Status = (props) => {
             <RadioGroup
               aria-labelledby="demo-controlled-radio-buttons-group"
               name="controlled-radio-buttons-group"
+              sx={{ display: 'block' }}
             >
               {statusList.map((element, index) => (
                 <FilterButton

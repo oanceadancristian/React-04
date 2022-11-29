@@ -88,6 +88,7 @@ const Homepage = () => {
           sx={{
             fontSize: '7.5vw',
             fontWeight: 'bold',
+            fontFamily: 'monospace',
           }}
         >
           The Rick and Morty API
@@ -151,11 +152,11 @@ const Homepage = () => {
 
             const showCharacterHoverColor = () => {
               if (showCharacterStatus() === 'random-green') {
-                return '0 0 20px darkgreen';
+                return '0 0 25px darkgreen';
               } else if (showCharacterStatus() === 'random-red') {
-                return '0 0 20px darkred';
+                return '0 0 25px darkred';
               } else {
-                return '0 0 20px darkgray';
+                return '0 0 25px darkgray';
               }
             };
 

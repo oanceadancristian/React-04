@@ -50,7 +50,12 @@ const FilterButton = (props) => {
       }
       value={element}
       onChange={handleChange}
-      sx={{ color: 'black' }}
+      sx={{
+        color: 'black',
+        '.MuiFormControlLabel-label': {
+          fontFamily: 'monospace',
+        },
+      }}
     />
   );
 };

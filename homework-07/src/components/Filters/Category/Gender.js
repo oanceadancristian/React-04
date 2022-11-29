@@ -54,7 +54,10 @@ const Gender = (props) => {
         aria-controls="panel3a-content"
         id="panel3a-header"
       >
-        <Typography component={'span'} sx={{ fontWeight: 'bold' }}>
+        <Typography
+          component={'span'}
+          sx={{ fontWeight: 'bold', fontFamily: 'monospace' }}
+        >
           Gender
         </Typography>
       </AccordionSummary>
@@ -64,6 +67,7 @@ const Gender = (props) => {
             <RadioGroup
               aria-labelledby="demo-controlled-radio-buttons-group"
               name="controlled-radio-buttons-group"
+              sx={{ display: 'block' }}
             >
               {genderList.map((element, index) => (
                 <FilterButton

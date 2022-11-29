@@ -37,12 +37,14 @@ const SelectLocation = (props) => {
       <Stack
         direction="row"
         justifyContent="center"
+        alignItems="center"
         sx={{
           mb: 2,
           p: 2,
           borderRadius: 3,
           fontSize: '18px',
           fontWeight: 'bold',
+          fontFamily: 'monospace',
           backgroundColor: '#c0c0c0',
         }}
       >
@@ -55,6 +57,7 @@ const SelectLocation = (props) => {
             <InputLabel
               id="demo-simple-select-label"
               sx={{
+                fontFamily: 'monospace',
                 '&.Mui-focused': {
                   color: '#7300e6',
                 },
@@ -69,6 +72,7 @@ const SelectLocation = (props) => {
               value={value}
               onChange={handleChange}
               sx={{
+                fontFamily: 'monospace',
                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
                   borderColor: '#7300e6',
                 },
@@ -82,6 +86,7 @@ const SelectLocation = (props) => {
                     sx={{
                       display: 'flex',
                       justifyContent: 'center',
+                      fontFamily: 'monospace',
                       '&:hover': {
                         color: 'white',
                         backgroundColor: '#8c1aff',

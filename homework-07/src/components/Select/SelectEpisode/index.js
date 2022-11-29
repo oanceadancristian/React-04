@@ -37,11 +37,13 @@ const SelectEpisode = (props) => {
       <Stack
         direction="row"
         justifyContent="center"
+        alignItems="center"
         sx={{
           mb: 2,
           p: 2,
           fontSize: '18px',
           fontWeight: 'bold',
+          fontFamily: 'monospace',
           borderRadius: 3,
           backgroundColor: '#c0c0c0',
         }}
@@ -55,6 +57,7 @@ const SelectEpisode = (props) => {
             <InputLabel
               id="demo-simple-select-label"
               sx={{
+                fontFamily: 'monospace',
                 '&.Mui-focused': {
                   color: '#7300e6',
                 },
@@ -69,6 +72,7 @@ const SelectEpisode = (props) => {
               value={value}
               onChange={handleChange}
               sx={{
+                fontFamily: 'monospace',
                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
                   borderColor: '#7300e6',
                 },
@@ -85,6 +89,7 @@ const SelectEpisode = (props) => {
                     sx={{
                       display: 'flex',
                       justifyContent: 'center',
+                      fontFamily: 'monospace',
                       '&:hover': {
                         color: 'white',
                         backgroundColor: '#8c1aff',

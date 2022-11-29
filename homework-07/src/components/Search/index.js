@@ -54,6 +54,7 @@ const Search = (props) => {
               fontWeight: '600',
             },
             '& .MuiOutlinedInput-root': {
+              fontFamily: 'monospace',
               '&.Mui-focused fieldset': {
                 borderColor: '#7300e6',
               },

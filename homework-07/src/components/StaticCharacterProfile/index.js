@@ -131,7 +131,7 @@ const StaticCharacterProfile = () => {
             height: { xs: '575px', md: '330px' },
             my: { xs: 5, md: 15 },
             borderRadius: '10px',
-            backgroundColor: '#f0e4d3',
+            backgroundColor: '#3c3e44',
             boxShadow: '0px 0px 25px black',
             cursor: 'pointer',
             '&:hover': {
@@ -159,46 +159,46 @@ const StaticCharacterProfile = () => {
               textAlign: 'center',
             }}
           >
-            <Box sx={{ mb: 1, fontSize: '25px', color: 'black' }}>
+            <Box sx={{ mb: 1, fontSize: '25px', color: 'white' }}>
               {characterName}
             </Box>
-            <Box sx={{ mb: 2, color: '#606060' }}>
+            <Box sx={{ mb: 2, color: 'white' }}>
               <Box className={showCharacterStatus()}></Box>
               {showCharacterGender()} - {showCharacterSpecies()}
             </Box>
-            <Box sx={{ mb: 2, color: '#606060' }}>
+            <Box sx={{ mb: 2, color: 'white' }}>
               <Typography
                 component="span"
                 sx={{
                   display: 'inline-block',
                   mb: 1,
-                  color: 'black',
+                  color: '#9e9e9e',
                 }}
               >
                 Last known location:
               </Typography>
               <Box>{showCharacterLocation()}</Box>
             </Box>
-            <Box sx={{ mb: 2, color: '#606060' }}>
+            <Box sx={{ mb: 2, color: 'white' }}>
               <Typography
                 component="span"
                 sx={{
                   display: 'inline-block',
                   mb: 1,
-                  color: 'black',
+                  color: '#9e9e9e',
                 }}
               >
                 First seen in:
               </Typography>
               <Box>{showCharacterOrigin()}</Box>
             </Box>
-            <Box sx={{ mb: 2, color: '#606060' }}>
+            <Box sx={{ mb: 2, color: 'white' }}>
               <Typography
                 component="span"
                 sx={{
                   display: 'inline-block',
                   mb: 1,
-                  color: 'black',
+                  color: '#9e9e9e',
                 }}
               >
                 Type:

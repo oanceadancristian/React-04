@@ -59,38 +59,55 @@ const LocationList = () => {
       </Backdrop>
       <Navbar />
       <Box sx={{ m: 6 }}>
-        <Typography variant="h3" sx={{ mb: 2, textAlign: 'center' }}>
+        <Typography
+          variant="h3"
+          sx={{ mb: 2, fontFamily: 'monospace', textAlign: 'center' }}
+        >
           Location name:{' '}
           <Typography
             variant="h3"
             component="span"
             sx={{
               display: { xs: 'block', md: 'inline-block' },
+              fontFamily: 'monospace',
               color: '#7300e6',
             }}
           >
             {name === '' || name === 'unknown' ? 'Unknown' : name}
           </Typography>
         </Typography>
-        <Typography variant="h5" sx={{ mb: 2, textAlign: 'center' }}>
+        <Typography
+          variant="h5"
+          sx={{ mb: 2, fontFamily: 'monospace', textAlign: 'center' }}
+        >
           Dimension:{' '}
           <Typography
             variant="h5"
             component="span"
-            sx={{ display: { xs: 'block', md: 'inline-block' } }}
+            sx={{
+              display: { xs: 'block', md: 'inline-block' },
+              fontFamily: 'monospace',
+            }}
           >
             {dimension === '' || dimension === 'unknown'
               ? 'Unknown'
               : dimension}
           </Typography>
         </Typography>
-        <Typography variant="h5" sx={{ textAlign: 'center' }}>
+        <Typography
+          variant="h5"
+          sx={{ fontFamily: 'monospace', textAlign: 'center' }}
+        >
+          Type:
           <Typography
             variant="h5"
             component="span"
-            sx={{ display: { xs: 'block', md: 'inline-block' } }}
+            sx={{
+              display: { xs: 'block', md: 'inline-block' },
+              fontFamily: 'monospace',
+            }}
           >
-            Type: {type === '' || type === 'unknown' ? 'Unknown' : type}
+            {type === '' || type === 'unknown' ? 'Unknown' : type}
           </Typography>
         </Typography>
       </Box>
