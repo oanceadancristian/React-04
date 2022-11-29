@@ -6,7 +6,6 @@ import SelectEpisode from '../Select/SelectEpisode';
 import CharacterItem from '../CharacterItem';
 import { setEpisodeDetails } from '../slices/EpisodeDetailsSlice';
 import Box from '@mui/system/Box';
-import Stack from '@mui/system/Stack';
 import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -62,23 +61,43 @@ const EpisodeList = () => {
       <Box sx={{ m: 6 }}>
         <Typography variant="h3" sx={{ mb: 2, textAlign: 'center' }}>
           Episode name:{' '}
-          <Typography variant="h3" component="span" sx={{ color: '#7300e6' }}>
+          <Typography
+            variant="h3"
+            component="span"
+            sx={{
+              display: { xs: 'block', md: 'inline-block' },
+              color: '#7300e6',
+            }}
+          >
             {name === '' ? 'Unknown' : name}
           </Typography>
         </Typography>
         <Typography variant="h5" sx={{ textAlign: 'center' }}>
-          Air date: {air_date === '' ? 'Unknown' : air_date}
+          Air date:{' '}
+          <Typography
+            variant="h5"
+            component="span"
+            sx={{ display: { xs: 'block', md: 'inline-block' } }}
+          >
+            {air_date === '' ? 'Unknown' : air_date}
+          </Typography>
         </Typography>
       </Box>
-      <Stack
-        direction="row"
+      <Box
         justifyContent="center"
         sx={{
-          m: 6,
+          display: { xs: 'block', md: 'flex' },
+          margin: 6,
           gap: 3,
         }}
       >
-        <Box sx={{ width: '25%' }}>
+        <Box
+          sx={{
+            width: { xs: '75%', md: '25%' },
+            my: { xs: 5 },
+            mx: { xs: 'auto' },
+          }}
+        >
           <SelectEpisode
             total={51}
             episodeId={episodeId}
@@ -87,17 +106,17 @@ const EpisodeList = () => {
         </Box>
         <Box
           sx={{
-            width: '75%',
+            width: { xs: '100%', md: '75%' },
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(25%, 250px))',
             justifyContent: 'center',
-            columnGap: 6,
+            columnGap: { xs: 12, md: 8 },
             rowGap: 6,
           }}
         >
           <CharacterItem characterList={characterList} pathname={pathname} />
         </Box>
-      </Stack>
+      </Box>
     </Box>
   );
 };

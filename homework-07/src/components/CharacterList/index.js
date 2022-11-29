@@ -9,7 +9,6 @@ import CharacterItem from '../CharacterItem';
 import Pagination from '../Pagination';
 import { setCharacterList, setInfo } from '../slices/CharacterListSlice';
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -71,15 +70,21 @@ const CharacterList = () => {
       </Backdrop>
       <Navbar />
       <Search setSearch={setSearch} setPageNumber={setPageNumber} />
-      <Stack
-        direction="row"
+      <Box
         justifyContent="center"
         sx={{
+          display: { xs: 'block', md: 'flex' },
           margin: 6,
           gap: 3,
         }}
       >
-        <Box sx={{ width: '25%' }}>
+        <Box
+          sx={{
+            width: { xs: '75%', md: '25%' },
+            my: { xs: 5 },
+            mx: { xs: 'auto' },
+          }}
+        >
           <Filters
             setStatus={setStatus}
             setSpecies={setSpecies}
@@ -89,17 +94,17 @@ const CharacterList = () => {
         </Box>
         <Box
           sx={{
-            width: '75%',
+            width: { xs: '100%', md: '75%' },
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(25%, 250px))',
             justifyContent: 'center',
-            columnGap: 6,
+            columnGap: { xs: 12, md: 8 },
             rowGap: 6,
           }}
         >
           <CharacterItem characterList={characterList} />
         </Box>
-      </Stack>
+      </Box>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <Pagination
           info={info}

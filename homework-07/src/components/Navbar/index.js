@@ -51,7 +51,7 @@ function ResponsiveNavBar() {
   return (
     <AppBar position="static">
       <Container maxWidth="xl" sx={{ backgroundColor: '#202329' }}>
-        <Toolbar sx={{ height: '50px' }}>
+        <Toolbar disableGutters sx={{ height: '50px' }}>
           <Typography
             variant="h6"
             noWrap
@@ -67,6 +67,7 @@ function ResponsiveNavBar() {
               textDecoration: 'none',
               textTransform: 'uppercase',
               color: pathname === '/homepage' ? '#7300e6' : 'white',
+              '&:hover': { color: '#8c1aff' },
             }}
           >
             <CameraRollIcon
@@ -168,9 +169,9 @@ function ResponsiveNavBar() {
               <Avatar sx={{ backgroundColor: '#202329' }}>
                 <AccountBoxIcon
                   sx={{
-                    color: anchorElUser ? '#8c1aff' : 'white',
                     mr: 1,
                     fontSize: '30px',
+                    color: anchorElUser ? '#8c1aff' : 'white',
                   }}
                 />
               </Avatar>

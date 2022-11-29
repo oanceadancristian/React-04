@@ -30,7 +30,7 @@ function ResponsiveNavBarNoAccount() {
   return (
     <AppBar position="static">
       <Container maxWidth="xl" sx={{ backgroundColor: '#202329' }}>
-        <Toolbar sx={{ height: '50px' }}>
+        <Toolbar disableGutters sx={{ height: '50px' }}>
           <Typography
             variant="h6"
             noWrap

@@ -6,7 +6,6 @@ import SelectLocation from '../Select/SelectLocation';
 import CharacterItem from '../CharacterItem';
 import { setLocationDetails } from '../slices/LocationDetailsSlice';
 import Box from '@mui/material/Box';
-import Stack from '@mui/system/Stack';
 import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -62,27 +61,54 @@ const LocationList = () => {
       <Box sx={{ m: 6 }}>
         <Typography variant="h3" sx={{ mb: 2, textAlign: 'center' }}>
           Location name:{' '}
-          <Typography variant="h3" component="span" sx={{ color: '#7300e6' }}>
+          <Typography
+            variant="h3"
+            component="span"
+            sx={{
+              display: { xs: 'block', md: 'inline-block' },
+              color: '#7300e6',
+            }}
+          >
             {name === '' || name === 'unknown' ? 'Unknown' : name}
           </Typography>
         </Typography>
         <Typography variant="h5" sx={{ mb: 2, textAlign: 'center' }}>
           Dimension:{' '}
-          {dimension === '' || dimension === 'unknown' ? 'Unknown' : dimension}
+          <Typography
+            variant="h5"
+            component="span"
+            sx={{ display: { xs: 'block', md: 'inline-block' } }}
+          >
+            {dimension === '' || dimension === 'unknown'
+              ? 'Unknown'
+              : dimension}
+          </Typography>
         </Typography>
         <Typography variant="h5" sx={{ textAlign: 'center' }}>
-          Type: {type === '' || type === 'unknown' ? 'Unknown' : type}
+          <Typography
+            variant="h5"
+            component="span"
+            sx={{ display: { xs: 'block', md: 'inline-block' } }}
+          >
+            Type: {type === '' || type === 'unknown' ? 'Unknown' : type}
+          </Typography>
         </Typography>
       </Box>
-      <Stack
-        direction="row"
+      <Box
         justifyContent="center"
         sx={{
+          display: { xs: 'block', md: 'flex' },
           margin: 6,
           gap: 3,
         }}
       >
-        <Box sx={{ width: '25%' }}>
+        <Box
+          sx={{
+            width: { xs: '75%', md: '25%' },
+            my: { xs: 5 },
+            mx: { xs: 'auto' },
+          }}
+        >
           <SelectLocation
             total={126}
             locationId={locationId}
@@ -91,17 +117,17 @@ const LocationList = () => {
         </Box>
         <Box
           sx={{
-            width: '75%',
+            width: { xs: '100%', md: '75%' },
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(25%, 250px))',
             justifyContent: 'center',
-            columnGap: 6,
+            columnGap: { xs: 12, md: 8 },
             rowGap: 6,
           }}
         >
           <CharacterItem characterList={characterList} pathname={pathname} />
         </Box>
-      </Stack>
+      </Box>
     </Box>
   );
 };
