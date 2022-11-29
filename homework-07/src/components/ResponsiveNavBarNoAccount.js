@@ -44,7 +44,6 @@ function ResponsiveNavBarNoAccount() {
               display: { xs: 'none', md: 'flex' },
               alignItems: 'center',
               flexGrow: 1,
-              mr: 2,
               fontWeight: 700,
               letterSpacing: '.2rem',
               textDecoration: 'none',
@@ -65,7 +64,6 @@ function ResponsiveNavBarNoAccount() {
             sx={{
               display: { xs: 'flex', md: 'none' },
               alignItems: 'center',
-              mr: 2,
               fontWeight: 700,
               letterSpacing: '.1rem',
               textDecoration: 'none',

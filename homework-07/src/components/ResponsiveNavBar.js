@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { NavLink, useLocation, useParams } from 'react-router-dom';
+import { Link as RouterLink, useLocation, useParams } from 'react-router-dom';
+import Link from '@mui/material/Link';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,9 +15,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuIcon from '@mui/icons-material/Menu';
 import CameraRollIcon from '@mui/icons-material/CameraRoll';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
-
-const pages = ['Characters', 'Episodes', 'Locations'];
-const settings = ['Sign out'];
+import LogoutIcon from '@mui/icons-material/Logout';
+import Stack from '@mui/material/Stack';
 
 function ResponsiveNavBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -42,7 +42,7 @@ function ResponsiveNavBar() {
   const { pageId, episodeId, locationId } = params;
 
   const location = useLocation();
-  const { search } = location;
+  const { pathname, search } = location;
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -53,7 +53,6 @@ function ResponsiveNavBar() {
     <AppBar position="static">
       <Container maxWidth="xl" sx={{ backgroundColor: '#202329' }}>
         <Toolbar>
-          <CameraRollIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -61,14 +60,17 @@ function ResponsiveNavBar() {
             href="/homepage"
             sx={{
               display: { xs: 'none', md: 'flex' },
-              mr: 2,
+              alignItems: 'center',
               fontWeight: 700,
               letterSpacing: '.2rem',
               textDecoration: 'none',
               textTransform: 'uppercase',
-              color: 'inherit',
+              color: pathname === '/homepage' ? '#7300e6' : '',
             }}
           >
+            <CameraRollIcon
+              sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
+            />
             Rick and Morty
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -78,7 +80,7 @@ function ResponsiveNavBar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              sx={{ color: anchorElNav ? '#8c1aff' : 'white' }}
             >
               <MenuIcon />
             </IconButton>
@@ -100,14 +102,50 @@ function ResponsiveNavBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              <Link
+                component={RouterLink}
+                to="/characters"
+                sx={{
+                  textDecoration: 'none',
+                  textTransform: 'uppercase',
+                  color: 'black',
+                  '&:hover': { color: '#8c1aff' },
+                }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Characters</Typography>
                 </MenuItem>
-              ))}
+              </Link>
+              <Link
+                component={RouterLink}
+                to="/episodes"
+                sx={{
+                  textDecoration: 'none',
+                  textTransform: 'uppercase',
+                  color: 'black',
+                  '&:hover': { color: '#8c1aff' },
+                }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Episodes</Typography>
+                </MenuItem>
+              </Link>
+              <Link
+                component={RouterLink}
+                to="/locations"
+                sx={{
+                  textDecoration: 'none',
+                  textTransform: 'uppercase',
+                  color: 'black',
+                  '&:hover': { color: '#8c1aff' },
+                }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Locations</Typography>
+                </MenuItem>
+              </Link>
             </Menu>
           </Box>
-          <CameraRollIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -115,34 +153,100 @@ function ResponsiveNavBar() {
             href="/homepage"
             sx={{
               display: { xs: 'flex', md: 'none' },
-              mr: 2,
+              alignItems: 'center',
               fontWeight: 700,
               letterSpacing: '.1rem',
               textDecoration: 'none',
               textTransform: 'uppercase',
               flexGrow: 1,
-              color: 'inherit',
+              color: pathname === '/homepage' ? '#7300e6' : '',
             }}
           >
+            <CameraRollIcon
+              sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+            />
             Rick and Morty
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: 'none', md: 'flex' },
+              gap: 3,
+            }}
+          >
+            <Link
+              component={RouterLink}
+              to={`/characters/pages/${
+                pageId === undefined ? 1 : pageId
+              }${search}`}
+              sx={{ textDecoration: 'none' }}
+            >
               <Button
-                key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ display: 'block', my: 2, color: 'white' }}
+                sx={{
+                  display: 'block',
+                  my: 2,
+                  fontSize: '17px',
+                  color: pathname.startsWith('/characters')
+                    ? '#7300e6'
+                    : 'white',
+                  '&:hover': { color: '#8c1aff', backgroundColor: '#202329' },
+                }}
               >
-                {page}
+                Characters
               </Button>
-            ))}
-          </Box>
+            </Link>
+            <Link
+              component={RouterLink}
+              to={`/episodes/${episodeId === undefined ? 1 : episodeId}`}
+              sx={{ textDecoration: 'none' }}
+            >
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{
+                  display: 'block',
+                  my: 2,
+                  fontSize: '17px',
+                  color: pathname.startsWith('/characters')
+                    ? '#7300e6'
+                    : 'white',
 
+                  '&:hover': { color: '#8c1aff', backgroundColor: '#202329' },
+                }}
+              >
+                Episodes
+              </Button>
+            </Link>
+            <Link
+              component={RouterLink}
+              to={`/locations/${locationId === undefined ? 1 : locationId}`}
+              sx={{ textDecoration: 'none' }}
+            >
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{
+                  display: 'block',
+                  my: 2,
+                  fontSize: '17px',
+                  color: pathname.startsWith('/characters')
+                    ? '#7300e6'
+                    : 'white',
+
+                  '&:hover': { color: '#8c1aff', backgroundColor: '#202329' },
+                }}
+              >
+                Locations
+              </Button>
+            </Link>
+          </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Profile settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar sx={{ backgroundColor: '#202329' }}>
-                  <AccountBoxIcon fontSize="large" />
+                  <AccountBoxIcon
+                    fontSize="large"
+                    sx={{ color: anchorElUser ? '#8c1aff' : 'white' }}
+                  />
                 </Avatar>
               </IconButton>
             </Tooltip>
@@ -162,11 +266,27 @@ function ResponsiveNavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Link
+                  component={RouterLink}
+                  onClick={handleLogout}
+                  sx={{
+                    textDecoration: 'none',
+                    color: 'black',
+                    '&:hover': { color: '#8c1aff' },
+                  }}
+                >
+                  <Stack direction="row" spacing={1}>
+                    <LogoutIcon />
+                    <Typography
+                      textAlign="center"
+                      sx={{ textTransform: 'uppercase' }}
+                    >
+                      Sign out
+                    </Typography>
+                  </Stack>
+                </Link>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
