@@ -20,7 +20,7 @@ const PageNotFound = () => {
           color: 'black',
         }}
       >
-        Page not found!
+        Page not found
       </Typography>
     </Box>
   );

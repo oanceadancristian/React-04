@@ -43,14 +43,14 @@ const CharacterList = () => {
 
   const [loading, setLoading] = useState(true);
 
-  const [characterPage, setCharacterPage] = useState(true);
+  const [characterPageError, setCharacterPageError] = useState('');
 
   useEffect(() => {
     setPageNumber(params.pageId);
 
     axios
       .get(
-        `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`
+        `https:/rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`
       )
       .then((response) => {
         const {
@@ -63,10 +63,18 @@ const CharacterList = () => {
           dispatch(setInfo(info));
         }
       })
-      .catch((error) => {
-        if (error.response.status === 404) {
+      .catch(function (error) {
+        if (error.response) {
+          if (error.response.status === 404) {
+            setLoading(false);
+            setCharacterPageError(error.response.data.error);
+          }
+        } else if (error.request) {
           setLoading(false);
-          setCharacterPage(false);
+          setCharacterPageError('No response received');
+        } else {
+          setLoading(false);
+          setCharacterPageError(error.message);
         }
       });
   }, [params.pageId, pageNumber, search, status, gender, species, dispatch]);
@@ -80,7 +88,7 @@ const CharacterList = () => {
         <CircularProgress color="inherit" />
       </Backdrop>
       <Navbar />
-      {characterPage ? (
+      {!characterPageError ? (
         <>
           <Search setSearch={setSearch} setPageNumber={setPageNumber} />
           <Box
@@ -138,7 +146,7 @@ const CharacterList = () => {
             color: 'black',
           }}
         >
-          Page not found!
+          {characterPageError}
         </Typography>
       )}
     </Box>
