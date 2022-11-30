@@ -21,7 +21,7 @@ const AccessForbidden = () => {
           textTransform: 'uppercase',
         }}
       >
-        Access forbidden!
+        Access forbidden
       </Typography>
       <Buttons />
     </Box>
