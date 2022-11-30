@@ -22,7 +22,7 @@ import './StaticCharacterProfile.css';
 
 const StaticCharacterProfile = () => {
   const params = useParams();
-  const { characterId } = params;
+  const { episodeId, locationId, characterId } = params;
 
   const staticCharacterProfile = useSelector(
     (state) => state.staticCharacterProfile
@@ -42,6 +42,43 @@ const StaticCharacterProfile = () => {
   const [loading, setLoading] = useState(true);
 
   const [characterFound, setCharacterFound] = useState(true);
+
+  const [episodeCharacterList, setEpisodeCharacterList] = useState([]);
+  const [locationCharacterList, setLocationCharacterList] = useState([]);
+
+  useEffect(() => {
+    if (params.episodeId !== undefined) {
+      axios
+        .get(`https://rickandmortyapi.com/api/episode/${episodeId}`)
+        .then((response) => {
+          if (response.status === 200) {
+            setEpisodeCharacterList(response.data.characters);
+          }
+        });
+    } else if (params.locationId !== undefined) {
+      axios
+        .get(`https://rickandmortyapi.com/api/location/${locationId}`)
+        .then((response) => {
+          if (response.status === 200) {
+            setLocationCharacterList(response.data.residents);
+          }
+        });
+    }
+  }, [params.episodeId, episodeId, params.locationId, locationId]);
+
+  const episodeCharacterListId = episodeCharacterList.map(
+    (episodeCharacter) => {
+      return episodeCharacter.substring(episodeCharacter.lastIndexOf('/') + 1);
+    }
+  );
+
+  const locationCharacterListId = locationCharacterList.map(
+    (locationCharacter) => {
+      return locationCharacter.substring(
+        locationCharacter.lastIndexOf('/') + 1
+      );
+    }
+  );
 
   useEffect(() => {
     axios
@@ -128,7 +165,8 @@ const StaticCharacterProfile = () => {
         }}
       >
         <Navbar />
-        {characterFound ? (
+        {(episodeCharacterListId.includes(characterId) && characterFound) ||
+        (locationCharacterListId.includes(characterId) && characterFound) ? (
           <Stack
             direction="row"
             sx={{
