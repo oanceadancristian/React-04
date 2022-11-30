@@ -166,7 +166,8 @@ const StaticCharacterProfile = () => {
       >
         <Navbar />
         {(episodeCharacterListId.includes(characterId) && characterFound) ||
-        (locationCharacterListId.includes(characterId) && characterFound) ? (
+        (locationCharacterListId.includes(characterId) && characterFound) ||
+        characterFound ? (
           <Stack
             direction="row"
             sx={{
