@@ -41,6 +41,8 @@ const StaticCharacterProfile = () => {
 
   const [loading, setLoading] = useState(true);
 
+  const [characterFound, setCharacterFound] = useState(true);
+
   useEffect(() => {
     axios
       .get(`https://rickandmortyapi.com/api/character/${characterId}`)
@@ -55,6 +57,12 @@ const StaticCharacterProfile = () => {
           dispatch(setCharacterOrigin(response.data.origin.name));
           dispatch(setCharacterLocation(response.data.location.name));
           dispatch(setCharacterType(response.data.type));
+        }
+      })
+      .catch((error) => {
+        if (error.response.status === 404) {
+          setLoading(false);
+          setCharacterFound(false);
         }
       });
   }, [characterId]);
@@ -120,93 +128,109 @@ const StaticCharacterProfile = () => {
         }}
       >
         <Navbar />
-        <Stack
-          direction="row"
-          sx={{
-            display: { xs: 'block', md: 'flex' },
-            position: 'absolute',
-            left: '50%',
-            transform: 'translate(-50%)',
-            width: { xs: '250px', md: '860px' },
-            height: { xs: '575px', md: '330px' },
-            my: { xs: 5, md: 15 },
-            borderRadius: '10px',
-            backgroundColor: '#3c3e44',
-            boxShadow: '0px 0px 25px black',
-            cursor: 'pointer',
-            '&:hover': {
-              boxShadow: showCharacterHoverColor(),
-            },
-          }}
-        >
-          <Box
-            sx={{
-              width: { xs: '250px', md: '330px' },
-            }}
-          >
-            <img
-              src={characterImg}
-              alt={characterName}
-              className="static-character-image"
-            />
-          </Box>
+        {characterFound ? (
           <Stack
-            justifyContent="center"
+            direction="row"
             sx={{
-              mx: 'auto',
-              my: 0,
-              fontWeight: 'bold',
-              textAlign: 'center',
+              display: { xs: 'block', lg: 'flex' },
+              position: 'absolute',
+              left: '50%',
+              transform: 'translate(-50%)',
+              width: { xs: '300px', lg: '860px' },
+              height: { xs: '600px', lg: '330px' },
+              my: { xs: 5, lg: 15 },
+              borderRadius: '10px',
+              backgroundColor: '#3c3e44',
+              boxShadow: '0px 0px 25px black',
+              cursor: 'pointer',
+              '&:hover': {
+                boxShadow: showCharacterHoverColor(),
+              },
             }}
           >
-            <Box sx={{ mb: 1, fontSize: '25px', color: 'white' }}>
-              {characterName}
+            <Box
+              sx={{
+                width: { xs: '300px', lg: '330px' },
+              }}
+            >
+              <img
+                src={characterImg}
+                alt={characterName}
+                className="static-character-image"
+              />
             </Box>
-            <Box sx={{ mb: 2, color: 'white' }}>
-              <Box className={showCharacterStatus()}></Box>
-              {showCharacterGender()} - {showCharacterSpecies()}
-            </Box>
-            <Box sx={{ mb: 2, color: 'white' }}>
-              <Typography
-                component="span"
-                sx={{
-                  display: 'inline-block',
-                  mb: 1,
-                  color: '#9e9e9e',
-                }}
-              >
-                Last known location:
-              </Typography>
-              <Box>{showCharacterLocation()}</Box>
-            </Box>
-            <Box sx={{ mb: 2, color: 'white' }}>
-              <Typography
-                component="span"
-                sx={{
-                  display: 'inline-block',
-                  mb: 1,
-                  color: '#9e9e9e',
-                }}
-              >
-                First seen in:
-              </Typography>
-              <Box>{showCharacterOrigin()}</Box>
-            </Box>
-            <Box sx={{ mb: 2, color: 'white' }}>
-              <Typography
-                component="span"
-                sx={{
-                  display: 'inline-block',
-                  mb: 1,
-                  color: '#9e9e9e',
-                }}
-              >
-                Type:
-              </Typography>
-              <Box>{showCharacterType()}</Box>
-            </Box>
+            <Stack
+              justifyContent="center"
+              sx={{
+                mx: 'auto',
+                my: 1,
+                fontWeight: 'bold',
+                textAlign: 'center',
+              }}
+            >
+              <Box sx={{ mb: 2, fontSize: '25px', color: 'white' }}>
+                {characterName}
+              </Box>
+              <Box sx={{ mb: 2, color: 'white' }}>
+                <Box className={showCharacterStatus()}></Box>
+                {showCharacterGender()} - {showCharacterSpecies()}
+              </Box>
+              <Box sx={{ mb: 2, color: 'white' }}>
+                <Typography
+                  component="span"
+                  sx={{
+                    display: 'inline-block',
+                    mb: 1,
+                    color: '#9e9e9e',
+                  }}
+                >
+                  Last known location:
+                </Typography>
+                <Box>{showCharacterLocation()}</Box>
+              </Box>
+              <Box sx={{ mb: 2, color: 'white' }}>
+                <Typography
+                  component="span"
+                  sx={{
+                    display: 'inline-block',
+                    mb: 1,
+                    color: '#9e9e9e',
+                  }}
+                >
+                  First seen in:
+                </Typography>
+                <Box>{showCharacterOrigin()}</Box>
+              </Box>
+              <Box sx={{ mb: 2, color: 'white' }}>
+                <Typography
+                  component="span"
+                  sx={{
+                    display: 'inline-block',
+                    mb: 1,
+                    color: '#9e9e9e',
+                  }}
+                >
+                  Type:
+                </Typography>
+                <Box>{showCharacterType()}</Box>
+              </Box>
+            </Stack>
           </Stack>
-        </Stack>
+        ) : (
+          <Typography
+            variant="h5"
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              textTransform: 'uppercase',
+              color: 'white',
+            }}
+          >
+            Character not found!
+          </Typography>
+        )}
       </Box>
     </Box>
   );

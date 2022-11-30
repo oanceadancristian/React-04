@@ -94,6 +94,7 @@ const CharacterItem = (props) => {
           <Box
             sx={{
               height: '600px',
+              width: '300px',
               borderRadius: 3,
               backgroundColor: '#414850',
               boxShadow: '0 0 25px #555;',
@@ -145,7 +146,7 @@ const CharacterItem = (props) => {
       );
     });
   } else {
-    display = 'No characters found';
+    display = 'NO CHARACTERS FOUND!';
   }
 
   return <>{display}</>;

@@ -23,6 +23,8 @@ const EpisodeList = () => {
 
   const [loading, setLoading] = useState(true);
 
+  const [episodeFound, setEpisodeFound] = useState(true);
+
   useEffect(() => {
     (async function () {
       const data = await fetch(
@@ -58,75 +60,96 @@ const EpisodeList = () => {
         <CircularProgress color="inherit" />
       </Backdrop>
       <Navbar />
-      <Box sx={{ m: 6 }}>
-        <Typography
-          variant="h3"
-          sx={{ mb: 2, fontFamily: 'monospace', textAlign: 'center' }}
-        >
-          Episode name:{' '}
-          <Typography
-            variant="h3"
-            component="span"
+      {episodeFound ? (
+        <>
+          <Box sx={{ m: 6 }}>
+            <Typography
+              variant="h3"
+              sx={{ mb: 2, fontFamily: 'monospace', textAlign: 'center' }}
+            >
+              Episode name:{' '}
+              <Typography
+                variant="h3"
+                component="span"
+                sx={{
+                  display: { xs: 'block', md: 'inline-block' },
+                  fontFamily: 'monospace',
+                  color: '#7300e6',
+                }}
+              >
+                {name === '' ? 'Unknown' : name}
+              </Typography>
+            </Typography>
+            <Typography
+              variant="h5"
+              sx={{ fontFamily: 'monospace', textAlign: 'center' }}
+            >
+              Air date:{' '}
+              <Typography
+                variant="h5"
+                component="span"
+                sx={{
+                  display: { xs: 'block', md: 'inline-block' },
+                  fontFamily: 'monospace',
+                }}
+              >
+                {air_date === '' ? 'Unknown' : air_date}
+              </Typography>
+            </Typography>
+          </Box>
+          <Box
+            justifyContent="center"
             sx={{
-              display: { xs: 'block', md: 'inline-block' },
-              fontFamily: 'monospace',
-              color: '#7300e6',
+              display: { xs: 'block', md: 'flex' },
+              gap: 3,
+              margin: 6,
             }}
           >
-            {name === '' ? 'Unknown' : name}
-          </Typography>
-        </Typography>
+            <Box
+              sx={{
+                width: { xs: '75%', md: '25%' },
+                mx: { xs: 'auto' },
+                my: { xs: 5 },
+              }}
+            >
+              <SelectEpisode
+                total={51}
+                episodeId={episodeId}
+                setEpisodeId={setEpisodeId}
+              />
+            </Box>
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(25%, 300px))',
+                justifyContent: 'center',
+                columnGap: { xs: 12, md: 8 },
+                rowGap: 6,
+                width: { xs: '100%', md: '75%' },
+              }}
+            >
+              <CharacterItem
+                characterList={characterList}
+                pathname={pathname}
+              />
+            </Box>
+          </Box>
+        </>
+      ) : (
         <Typography
           variant="h5"
-          sx={{ fontFamily: 'monospace', textAlign: 'center' }}
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            textTransform: 'uppercase',
+            color: 'black',
+          }}
         >
-          Air date:{' '}
-          <Typography
-            variant="h5"
-            component="span"
-            sx={{
-              display: { xs: 'block', md: 'inline-block' },
-              fontFamily: 'monospace',
-            }}
-          >
-            {air_date === '' ? 'Unknown' : air_date}
-          </Typography>
+          Episode not found!
         </Typography>
-      </Box>
-      <Box
-        justifyContent="center"
-        sx={{
-          display: { xs: 'block', md: 'flex' },
-          gap: 3,
-          margin: 6,
-        }}
-      >
-        <Box
-          sx={{
-            width: { xs: '75%', md: '25%' },
-            mx: { xs: 'auto' },
-            my: { xs: 5 },
-          }}
-        >
-          <SelectEpisode
-            total={51}
-            episodeId={episodeId}
-            setEpisodeId={setEpisodeId}
-          />
-        </Box>
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(25%, 250px))',
-            justifyContent: 'center',
-            columnGap: { xs: 12, md: 8 },
-            rowGap: 6,
-            width: { xs: '100%', md: '75%' },
-          }}
-        >
-          <CharacterItem characterList={characterList} pathname={pathname} />
-        </Box>
-      </Box>
+      )}
     </Box>
   );
 };

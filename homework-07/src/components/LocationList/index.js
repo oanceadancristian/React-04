@@ -23,6 +23,8 @@ const LocationList = () => {
 
   const [loading, setLoading] = useState(true);
 
+  const [locationFound, setLocationFound] = useState(true);
+
   useEffect(() => {
     (async function () {
       const data = await fetch(
@@ -58,93 +60,114 @@ const LocationList = () => {
         <CircularProgress color="inherit" />
       </Backdrop>
       <Navbar />
-      <Box sx={{ m: 6 }}>
-        <Typography
-          variant="h3"
-          sx={{ mb: 2, fontFamily: 'monospace', textAlign: 'center' }}
-        >
-          Location name:{' '}
-          <Typography
-            variant="h3"
-            component="span"
+      {locationFound ? (
+        <>
+          <Box sx={{ m: 6 }}>
+            <Typography
+              variant="h3"
+              sx={{ mb: 2, fontFamily: 'monospace', textAlign: 'center' }}
+            >
+              Location name:{' '}
+              <Typography
+                variant="h3"
+                component="span"
+                sx={{
+                  display: { xs: 'block', md: 'inline-block' },
+                  fontFamily: 'monospace',
+                  color: '#7300e6',
+                }}
+              >
+                {name === '' || name === 'unknown' ? 'Unknown' : name}
+              </Typography>
+            </Typography>
+            <Typography
+              variant="h5"
+              sx={{ mb: 2, fontFamily: 'monospace', textAlign: 'center' }}
+            >
+              Dimension:{' '}
+              <Typography
+                variant="h5"
+                component="span"
+                sx={{
+                  display: { xs: 'block', md: 'inline-block' },
+                  fontFamily: 'monospace',
+                }}
+              >
+                {dimension === '' || dimension === 'unknown'
+                  ? 'Unknown'
+                  : dimension}
+              </Typography>
+            </Typography>
+            <Typography
+              variant="h5"
+              sx={{ fontFamily: 'monospace', textAlign: 'center' }}
+            >
+              Type:
+              <Typography
+                variant="h5"
+                component="span"
+                sx={{
+                  display: { xs: 'block', md: 'inline-block' },
+                  fontFamily: 'monospace',
+                }}
+              >
+                {type === '' || type === 'unknown' ? 'Unknown' : type}
+              </Typography>
+            </Typography>
+          </Box>
+          <Box
+            justifyContent="center"
             sx={{
-              display: { xs: 'block', md: 'inline-block' },
-              fontFamily: 'monospace',
-              color: '#7300e6',
+              display: { xs: 'block', md: 'flex' },
+              gap: 3,
+              margin: 6,
             }}
           >
-            {name === '' || name === 'unknown' ? 'Unknown' : name}
-          </Typography>
-        </Typography>
+            <Box
+              sx={{
+                width: { xs: '75%', md: '25%' },
+                mx: { xs: 'auto' },
+                my: { xs: 5 },
+              }}
+            >
+              <SelectLocation
+                total={126}
+                locationId={locationId}
+                setLocationId={setLocationId}
+              />
+            </Box>
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(25%, 300px))',
+                justifyContent: 'center',
+                columnGap: { xs: 12, md: 8 },
+                rowGap: 6,
+                width: { xs: '100%', md: '75%' },
+              }}
+            >
+              <CharacterItem
+                characterList={characterList}
+                pathname={pathname}
+              />
+            </Box>
+          </Box>
+        </>
+      ) : (
         <Typography
           variant="h5"
-          sx={{ mb: 2, fontFamily: 'monospace', textAlign: 'center' }}
-        >
-          Dimension:{' '}
-          <Typography
-            variant="h5"
-            component="span"
-            sx={{
-              display: { xs: 'block', md: 'inline-block' },
-              fontFamily: 'monospace',
-            }}
-          >
-            {dimension === '' || dimension === 'unknown'
-              ? 'Unknown'
-              : dimension}
-          </Typography>
-        </Typography>
-        <Typography
-          variant="h5"
-          sx={{ fontFamily: 'monospace', textAlign: 'center' }}
-        >
-          Type:
-          <Typography
-            variant="h5"
-            component="span"
-            sx={{
-              display: { xs: 'block', md: 'inline-block' },
-              fontFamily: 'monospace',
-            }}
-          >
-            {type === '' || type === 'unknown' ? 'Unknown' : type}
-          </Typography>
-        </Typography>
-      </Box>
-      <Box
-        justifyContent="center"
-        sx={{
-          display: { xs: 'block', md: 'flex' },
-          gap: 3,
-          margin: 6,
-        }}
-      >
-        <Box
           sx={{
-            width: { xs: '75%', md: '25%' },
-            mx: { xs: 'auto' },
-            my: { xs: 5 },
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            textTransform: 'uppercase',
+            color: 'black',
           }}
         >
-          <SelectLocation
-            total={126}
-            locationId={locationId}
-            setLocationId={setLocationId}
-          />
-        </Box>
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(25%, 250px))',
-            justifyContent: 'center',
-            columnGap: { xs: 12, md: 8 },
-            rowGap: 6,
-            width: { xs: '100%', md: '75%' },
-          }}
-        >
-          <CharacterItem characterList={characterList} pathname={pathname} />
-        </Box>
-      </Box>
+          Location not found!
+        </Typography>
+      )}
     </Box>
   );
 };

@@ -9,6 +9,7 @@ import CharacterItem from '../CharacterItem';
 import Pagination from '../Pagination';
 import { setCharacterList, setInfo } from '../slices/CharacterListSlice';
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -42,6 +43,8 @@ const CharacterList = () => {
 
   const [loading, setLoading] = useState(true);
 
+  const [characterPage, setCharacterPage] = useState(true);
+
   useEffect(() => {
     axios
       .get(
@@ -57,6 +60,12 @@ const CharacterList = () => {
           dispatch(setCharacterList(results));
           dispatch(setInfo(info));
         }
+      })
+      .catch((error) => {
+        if (error.response.status === 404) {
+          setLoading(false);
+          setCharacterPage(false);
+        }
       });
   }, [pageNumber, search, status, gender, species]);
 
@@ -69,49 +78,67 @@ const CharacterList = () => {
         <CircularProgress color="inherit" />
       </Backdrop>
       <Navbar />
-      <Search setSearch={setSearch} setPageNumber={setPageNumber} />
-      <Box
-        justifyContent="center"
-        sx={{
-          display: { xs: 'block', md: 'flex' },
-          gap: 3,
-          margin: 6,
-        }}
-      >
-        <Box
+      {characterPage ? (
+        <>
+          <Search setSearch={setSearch} setPageNumber={setPageNumber} />
+          <Box
+            justifyContent="center"
+            sx={{
+              display: { xs: 'block', md: 'flex' },
+              gap: 3,
+              margin: 6,
+            }}
+          >
+            <Box
+              sx={{
+                width: { xs: '75%', md: '25%' },
+                mx: { xs: 'auto' },
+                mb: { xs: 5 },
+              }}
+            >
+              <Filters
+                setStatus={setStatus}
+                setSpecies={setSpecies}
+                setGender={setGender}
+                setPageNumber={setPageNumber}
+              />
+            </Box>
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(25%, 300px))',
+                justifyContent: 'space-evenly',
+                columnGap: { sm: 12, md: 3, lg: 0, xl: 4 },
+                rowGap: 6,
+                width: { xs: '100%', md: '75%' },
+              }}
+            >
+              <CharacterItem characterList={characterList} />
+            </Box>
+          </Box>
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            <Pagination
+              info={info}
+              pageNumber={pageNumber}
+              setPageNumber={setPageNumber}
+            />
+          </Box>
+        </>
+      ) : (
+        <Typography
+          variant="h5"
           sx={{
-            width: { xs: '75%', md: '25%' },
-            mx: { xs: 'auto' },
-            my: { xs: 5 },
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            textTransform: 'uppercase',
+            color: 'black',
           }}
         >
-          <Filters
-            setStatus={setStatus}
-            setSpecies={setSpecies}
-            setGender={setGender}
-            setPageNumber={setPageNumber}
-          />
-        </Box>
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(25%, 250px))',
-            justifyContent: 'center',
-            columnGap: { xs: 12, md: 8 },
-            rowGap: 6,
-            width: { xs: '100%', md: '75%' },
-          }}
-        >
-          <CharacterItem characterList={characterList} />
-        </Box>
-      </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <Pagination
-          info={info}
-          pageNumber={pageNumber}
-          setPageNumber={setPageNumber}
-        />
-      </Box>
+          Page not found!
+        </Typography>
+      )}
     </Box>
   );
 };
