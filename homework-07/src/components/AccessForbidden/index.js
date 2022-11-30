@@ -1,28 +1,40 @@
 import React from 'react';
-import Box from '@mui/material/Box';
 import NavbarNoAccount from '../NavbarNoAccount';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import BugReportIcon from '@mui/icons-material/BugReport';
 import Buttons from '../HomepageNoAccount/Buttons';
 
 const AccessForbidden = () => {
   return (
     <Box>
       <NavbarNoAccount />
-      <Typography
-        variant="h1"
+      <Box
+        mt={15}
         sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          fontSize: '50px',
-          color: 'black',
           textAlign: 'center',
-          textTransform: 'uppercase',
+          color: 'black',
         }}
       >
-        Access forbidden
-      </Typography>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          sx={{ color: '#7300e6' }}
+        >
+          {' '}
+          <BugReportIcon sx={{ fontSize: '50px' }} />
+          <Typography variant="h3" mb={2}>
+            403
+          </Typography>
+        </Stack>
+        <Typography variant="h4" mb={2} sx={{ textTransform: 'uppercase' }}>
+          Access forbidden
+        </Typography>
+        <Typography variant="p" sx={{ fontSize: '20px' }}>
+          We're sorry, you don't have access to the page you requested.
+        </Typography>
+      </Box>
       <Buttons />
     </Box>
   );

@@ -1,27 +1,41 @@
 import React from 'react';
 import Navbar from '../Navbar';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import BugReportIcon from '@mui/icons-material/BugReport';
+import Buttons from '../HomepageNoAccount/Buttons';
 
 const PageNotFound = () => {
   return (
     <Box>
       <Navbar />
-      <Typography
-        variant="h1"
+      <Box
+        mt={15}
         sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          fontSize: '50px',
           textAlign: 'center',
-          textTransform: 'uppercase',
           color: 'black',
         }}
       >
-        Page not found
-      </Typography>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          sx={{ color: '#7300e6' }}
+        >
+          {' '}
+          <BugReportIcon sx={{ fontSize: '50px' }} />
+          <Typography variant="h3" mb={2}>
+            404
+          </Typography>
+        </Stack>
+        <Typography variant="h4" mb={2} sx={{ textTransform: 'uppercase' }}>
+          Page not found
+        </Typography>
+        <Typography variant="p" sx={{ fontSize: '20px' }}>
+          We're sorry, the page you requested could not be found.
+        </Typography>
+      </Box>
+      <Buttons />
     </Box>
   );
 };
