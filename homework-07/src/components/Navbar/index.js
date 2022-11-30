@@ -4,6 +4,7 @@ import Link from '@mui/material/Link';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
+import Tooltip from '@mui/material/Tooltip';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
@@ -155,28 +156,30 @@ function ResponsiveNavBar() {
             </Link>
           </Box>
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
-            <IconButton
-              onClick={handleOpenUserMenu}
-              sx={{
-                p: 0,
-                fontSize: '20px',
-                fontFamily: 'monospace',
-                letterSpacing: '.1rem',
-                textTransform: 'uppercase',
-                color: anchorElUser ? '#8c1aff' : 'white',
-              }}
-            >
-              <Avatar sx={{ backgroundColor: '#202329' }}>
-                <AccountBoxIcon
-                  sx={{
-                    mr: 1,
-                    fontSize: '30px',
-                    color: anchorElUser ? '#8c1aff' : 'white',
-                  }}
-                />
-              </Avatar>
-              Account
-            </IconButton>
+            <Tooltip title="Open profile">
+              <IconButton
+                onClick={handleOpenUserMenu}
+                sx={{
+                  p: 0,
+                  fontSize: '20px',
+                  fontFamily: 'monospace',
+                  letterSpacing: '.1rem',
+                  textTransform: 'uppercase',
+                  color: anchorElUser ? '#8c1aff' : 'white',
+                }}
+              >
+                <Avatar sx={{ backgroundColor: '#202329' }}>
+                  <AccountBoxIcon
+                    sx={{
+                      mr: 1,
+                      fontSize: '30px',
+                      color: anchorElUser ? '#8c1aff' : 'white',
+                      '&:hover': { color: '#8c1aff' },
+                    }}
+                  />
+                </Avatar>
+              </IconButton>
+            </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -226,7 +229,10 @@ function ResponsiveNavBar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              sx={{ color: anchorElNav ? '#8c1aff' : 'white' }}
+              sx={{
+                color: anchorElNav ? '#8c1aff' : 'white',
+                '&:hover': { color: '#8c1aff' },
+              }}
             >
               <MenuIcon sx={{ fontSize: '30px' }} />
             </IconButton>
@@ -335,21 +341,24 @@ function ResponsiveNavBar() {
             Rick and Morty
           </Typography>
           <Box sx={{ display: { xs: 'flex', md: 'none' }, flexGrow: 0 }}>
-            <IconButton
-              onClick={handleOpenUserMenu}
-              sx={{
-                p: 0,
-              }}
-            >
-              <Avatar sx={{ backgroundColor: '#202329' }}>
-                <AccountBoxIcon
-                  sx={{
-                    color: anchorElUser ? '#8c1aff' : 'white',
-                    fontSize: '30px',
-                  }}
-                />
-              </Avatar>
-            </IconButton>
+            <Tooltip title="Open profile">
+              <IconButton
+                onClick={handleOpenUserMenu}
+                sx={{
+                  p: 0,
+                }}
+              >
+                <Avatar sx={{ backgroundColor: '#202329' }}>
+                  <AccountBoxIcon
+                    sx={{
+                      fontSize: '30px',
+                      color: anchorElUser ? '#8c1aff' : 'white',
+                      '&:hover': { color: '#8c1aff' },
+                    }}
+                  />
+                </Avatar>
+              </IconButton>
+            </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
