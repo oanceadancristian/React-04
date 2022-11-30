@@ -46,6 +46,8 @@ const CharacterList = () => {
   const [characterPage, setCharacterPage] = useState(true);
 
   useEffect(() => {
+    setPageNumber(params.pageId);
+
     axios
       .get(
         `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`
@@ -67,7 +69,7 @@ const CharacterList = () => {
           setCharacterPage(false);
         }
       });
-  }, [pageNumber, search, status, gender, species]);
+  }, [params.pageId, pageNumber, search, status, gender, species, dispatch]);
 
   return (
     <Box>
