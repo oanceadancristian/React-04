@@ -26,6 +26,13 @@ const EpisodeList = () => {
   const [episodeFound, setEpisodeFound] = useState(true);
 
   useEffect(() => {
+    if (episodeId > 51) {
+      setLoading(false);
+      setEpisodeFound(false);
+    }
+  }, [episodeId]);
+
+  useEffect(() => {
     (async function () {
       const data = await fetch(
         `https://rickandmortyapi.com/api/episode/${episodeId}`

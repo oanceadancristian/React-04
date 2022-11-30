@@ -26,6 +26,13 @@ const LocationList = () => {
   const [locationFound, setLocationFound] = useState(true);
 
   useEffect(() => {
+    if (locationId > 126) {
+      setLoading(false);
+      setLocationFound(false);
+    }
+  }, [locationId]);
+
+  useEffect(() => {
     (async function () {
       const data = await fetch(
         `https://rickandmortyapi.com/api/location/${locationId}`
