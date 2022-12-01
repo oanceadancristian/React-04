@@ -27,18 +27,22 @@ const LocationList = () => {
 
   const [locationFound, setLocationFound] = useState(true);
 
+  const [characterPageError, setCharacterPageError] = useState('');
+
   useEffect(() => {
     if (locationId > 126) {
       setLoading(false);
       setLocationFound(false);
+      setCharacterPageError('Location not found!');
     }
   }, [locationId]);
 
   useEffect(() => {
-    (async function () {
+    const getLocationCharacters = async () => {
       const data = await fetch(
         `https://rickandmortyapi.com/api/location/${locationId}`
       ).then((response) => response.json());
+
       dispatch(setLocationDetails(data));
 
       const allLocationCharacters = await Promise.all(
@@ -46,9 +50,12 @@ const LocationList = () => {
           return fetch(resident).then((response) => response.json());
         })
       );
+
       setLoading(false);
       setCharacterList(allLocationCharacters);
-    })();
+    };
+
+    getLocationCharacters();
   }, [locationId, dispatch]);
 
   const location = useLocation();
@@ -174,7 +181,7 @@ const LocationList = () => {
             color: 'black',
           }}
         >
-          Location not found!
+          {characterPageError}
         </Typography>
       )}
     </Box>

@@ -27,18 +27,22 @@ const EpisodeList = () => {
 
   const [episodeFound, setEpisodeFound] = useState(true);
 
+  const [characterPageError, setCharacterPageError] = useState('');
+
   useEffect(() => {
     if (episodeId > 51) {
       setLoading(false);
       setEpisodeFound(false);
+      setCharacterPageError('Episode not found!');
     }
   }, [episodeId]);
 
   useEffect(() => {
-    (async function () {
+    const getEpisodeCharacters = async () => {
       const data = await fetch(
         `https://rickandmortyapi.com/api/episode/${episodeId}`
       ).then((response) => response.json());
+
       dispatch(setEpisodeDetails(data));
 
       const allEpisodeCharacters = await Promise.all(
@@ -46,9 +50,12 @@ const EpisodeList = () => {
           return fetch(character).then((response) => response.json());
         })
       );
+
       setLoading(false);
       setCharacterList(allEpisodeCharacters);
-    })();
+    };
+
+    getEpisodeCharacters();
   }, [episodeId, dispatch]);
 
   const location = useLocation();
@@ -156,7 +163,7 @@ const EpisodeList = () => {
             color: 'black',
           }}
         >
-          Episode not found!
+          {characterPageError}
         </Typography>
       )}
     </Box>
