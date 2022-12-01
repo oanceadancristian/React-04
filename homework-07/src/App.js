@@ -7,7 +7,8 @@ import Homepage from './components/Homepage';
 import CharacterList from './components/CharacterList';
 import EpisodeList from './components/EpisodeList';
 import LocationList from './components/LocationList';
-import StaticCharacterProfile from './components/StaticCharacterProfile';
+import RandomCharacterProfile from './components/RandomCharacterProfile';
+import EpisodeOrLocationCharacterProfile from './components/EpisodeOrLocationCharacterProfile';
 import PageNotFound from './components/PageNotFound';
 import './App.css';
 
@@ -38,7 +39,7 @@ function App() {
               <Route path="/locations" element={<LocationList />} />
               <Route
                 path="/characters/:characterId"
-                element={<StaticCharacterProfile />}
+                element={<RandomCharacterProfile />}
               />
               <Route
                 path="/characters/pages/:pageId"
@@ -47,12 +48,12 @@ function App() {
               <Route path="/episodes/:episodeId" element={<EpisodeList />} />
               <Route
                 path="/episodes/:episodeId/characters/:characterId"
-                element={<StaticCharacterProfile />}
+                element={<EpisodeOrLocationCharacterProfile />}
               />
               <Route path="/locations/:locationId" element={<LocationList />} />
               <Route
                 path="/locations/:locationId/characters/:characterId"
-                element={<StaticCharacterProfile />}
+                element={<EpisodeOrLocationCharacterProfile />}
               />
               <Route path="*" element={<PageNotFound />} />
             </>

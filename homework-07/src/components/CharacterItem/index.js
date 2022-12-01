@@ -146,7 +146,7 @@ const CharacterItem = (props) => {
       );
     });
   } else {
-    display = 'NO CHARACTERS FOUND!';
+    display = 'NO CHARACTERS FOUND';
   }
 
   return <>{display}</>;

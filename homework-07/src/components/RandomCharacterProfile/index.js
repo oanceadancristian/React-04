@@ -12,20 +12,20 @@ import {
   setCharacterOrigin,
   setCharacterLocation,
   setCharacterType,
-} from '../slices/StaticCharacterProfileSlice';
+} from '../slices/RandomCharacterProfileSlice';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import './StaticCharacterProfile.css';
+import './RandomCharacterProfile.css';
 
-const StaticCharacterProfile = () => {
+const RandomCharacterProfile = () => {
   const params = useParams();
-  const { episodeId, locationId, characterId } = params;
+  const { characterId } = params;
 
-  const staticCharacterProfile = useSelector(
-    (state) => state.staticCharacterProfile
+  const randomCharacterProfile = useSelector(
+    (state) => state.randomCharacterProfile
   );
   const {
     characterImg,
@@ -36,49 +36,12 @@ const StaticCharacterProfile = () => {
     characterOrigin,
     characterLocation,
     characterType,
-  } = staticCharacterProfile;
+  } = randomCharacterProfile;
   const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(true);
 
-  const [characterFound, setCharacterFound] = useState(true);
-
-  const [episodeCharacterList, setEpisodeCharacterList] = useState([]);
-  const [locationCharacterList, setLocationCharacterList] = useState([]);
-
-  useEffect(() => {
-    if (params.episodeId !== undefined) {
-      axios
-        .get(`https://rickandmortyapi.com/api/episode/${episodeId}`)
-        .then((response) => {
-          if (response.status === 200) {
-            setEpisodeCharacterList(response.data.characters);
-          }
-        });
-    } else if (params.locationId !== undefined) {
-      axios
-        .get(`https://rickandmortyapi.com/api/location/${locationId}`)
-        .then((response) => {
-          if (response.status === 200) {
-            setLocationCharacterList(response.data.residents);
-          }
-        });
-    }
-  }, [params.episodeId, episodeId, params.locationId, locationId]);
-
-  const episodeCharacterListId = episodeCharacterList.map(
-    (episodeCharacter) => {
-      return episodeCharacter.substring(episodeCharacter.lastIndexOf('/') + 1);
-    }
-  );
-
-  const locationCharacterListId = locationCharacterList.map(
-    (locationCharacter) => {
-      return locationCharacter.substring(
-        locationCharacter.lastIndexOf('/') + 1
-      );
-    }
-  );
+  const [characterPageError, setCharacterPageError] = useState('');
 
   useEffect(() => {
     axios
@@ -96,22 +59,40 @@ const StaticCharacterProfile = () => {
           dispatch(setCharacterType(response.data.type));
         }
       })
-      .catch((error) => {
-        if (error.response.status === 404) {
+      .catch(function (error) {
+        if (error.response) {
+          if (error.response.status === 404) {
+            setLoading(false);
+            setCharacterPageError(error.response.data.error);
+          }
+        } else if (error.request) {
           setLoading(false);
-          setCharacterFound(false);
+          setCharacterPageError('No response received');
+        } else {
+          setLoading(false);
+          setCharacterPageError(error.message);
         }
       });
-  }, [characterId]);
+  }, [characterId, dispatch]);
+
+  const showCharacterHoverColor = () => {
+    if (showCharacterStatus() === 'random-green') {
+      return '0 0 25px darkgreen';
+    } else if (showCharacterStatus() === 'random-red') {
+      return '0 0 25px darkred';
+    } else {
+      return '0 0 25px darkgray';
+    }
+  };
 
   const showCharacterStatus = () => {
     let className = '';
     if (characterStatus === 'Alive') {
-      className = 'static-green';
+      className = 'random-green';
     } else if (characterStatus === 'Dead') {
-      className = 'static-red';
+      className = 'random-red';
     } else {
-      className = 'static-gray';
+      className = 'random-gray';
     }
     return className;
   };
@@ -140,16 +121,6 @@ const StaticCharacterProfile = () => {
       : characterType.charAt(0).toUpperCase() + characterType.slice(1);
   };
 
-  const showCharacterHoverColor = () => {
-    if (showCharacterStatus() === 'static-green') {
-      return '0 0 25px darkgreen';
-    } else if (showCharacterStatus() === 'static-red') {
-      return '0 0 25px darkred';
-    } else {
-      return '0 0 25px darkgray';
-    }
-  };
-
   return (
     <Box>
       <Backdrop
@@ -165,9 +136,7 @@ const StaticCharacterProfile = () => {
         }}
       >
         <Navbar />
-        {(episodeCharacterListId.includes(characterId) && characterFound) ||
-        (locationCharacterListId.includes(characterId) && characterFound) ||
-        characterFound ? (
+        {!characterPageError ? (
           <Stack
             direction="row"
             sx={{
@@ -195,7 +164,7 @@ const StaticCharacterProfile = () => {
               <img
                 src={characterImg}
                 alt={characterName}
-                className="static-character-image"
+                className="random-character-image"
               />
             </Box>
             <Stack
@@ -267,7 +236,7 @@ const StaticCharacterProfile = () => {
               color: 'white',
             }}
           >
-            Character not found!
+            {characterPageError}
           </Typography>
         )}
       </Box>
@@ -275,4 +244,4 @@ const StaticCharacterProfile = () => {
   );
 };
 
-export default StaticCharacterProfile;
+export default RandomCharacterProfile;

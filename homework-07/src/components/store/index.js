@@ -3,7 +3,8 @@ import RickAndMortyAppSlice from '../slices/RickAndMortyAppSlice';
 import CharacterListSlice from '../slices/CharacterListSlice';
 import EpisodeDetailsSlice from '../slices/EpisodeDetailsSlice';
 import LocationDetailsSlice from '../slices/LocationDetailsSlice';
-import StaticCharacterProfileSlice from '../slices/StaticCharacterProfileSlice';
+import RandomCharacterProfileSlice from '../slices/RandomCharacterProfileSlice';
+import EpisodeOrLocationCharacterProfileSlice from '../slices/EpisodeOrLocationCharacterProfileSlice';
 
 export default configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export default configureStore({
     characters: CharacterListSlice,
     episodes: EpisodeDetailsSlice,
     locations: LocationDetailsSlice,
-    staticCharacterProfile: StaticCharacterProfileSlice,
+    randomCharacterProfile: RandomCharacterProfileSlice,
+    episodeOrLocationCharacterProfile: EpisodeOrLocationCharacterProfileSlice,
   },
 });
