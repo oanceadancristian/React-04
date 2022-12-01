@@ -39,20 +39,27 @@ const LocationList = () => {
 
   useEffect(() => {
     const getLocationCharacters = async () => {
-      const data = await fetch(
+      const locationData = await fetch(
         `https://rickandmortyapi.com/api/location/${locationId}`
       ).then((response) => response.json());
 
-      dispatch(setLocationDetails(data));
+      dispatch(setLocationDetails(locationData));
 
-      const allLocationCharacters = await Promise.all(
-        data.residents.map((resident) => {
-          return fetch(resident).then((response) => response.json());
-        })
-      );
+      const locationCharacterIdList = [];
+      locationData.residents.forEach((resident) => {
+        let locationCharacterId = resident.substring(
+          resident.lastIndexOf('/') + 1
+        );
+        locationCharacterIdList.push(locationCharacterId);
+      });
+      const endpoint = locationCharacterIdList.toString();
 
-      setLoading(false);
-      setCharacterList(allLocationCharacters);
+      fetch(`https://rickandmortyapi.com/api/character/${endpoint}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setLoading(false);
+          setCharacterList(data);
+        });
     };
 
     getLocationCharacters();

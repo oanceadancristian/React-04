@@ -39,20 +39,27 @@ const EpisodeList = () => {
 
   useEffect(() => {
     const getEpisodeCharacters = async () => {
-      const data = await fetch(
+      const episodeData = await fetch(
         `https://rickandmortyapi.com/api/episode/${episodeId}`
       ).then((response) => response.json());
 
-      dispatch(setEpisodeDetails(data));
+      dispatch(setEpisodeDetails(episodeData));
 
-      const allEpisodeCharacters = await Promise.all(
-        data.characters.map((character) => {
-          return fetch(character).then((response) => response.json());
-        })
-      );
+      const episodeCharacterIdList = [];
+      episodeData.characters.forEach((character) => {
+        let episodeCharacterId = character.substring(
+          character.lastIndexOf('/') + 1
+        );
+        episodeCharacterIdList.push(episodeCharacterId);
+      });
+      const endpoint = episodeCharacterIdList.toString();
 
-      setLoading(false);
-      setCharacterList(allEpisodeCharacters);
+      fetch(`https://rickandmortyapi.com/api/character/${endpoint}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setLoading(false);
+          setCharacterList(data);
+        });
     };
 
     getEpisodeCharacters();
