@@ -23,9 +23,13 @@ const Homepage = () => {
   const { randomCharacterList } = rickAndMortyApp;
   const dispatch = useDispatch();
 
-  const generateRandomCharacterList = () => {
-    let sixCharacterList = [];
-    let characterCount = 826;
+  const [loading, setLoading] = useState(true);
+
+  const [characterPageError, setCharacterPageError] = useState('');
+
+  useEffect(() => {
+    const sixCharacterList = [];
+    const characterCount = 826;
     for (let i = 0; i < 6; i++) {
       let randomNumber = Math.floor(Math.random() * characterCount) + 1;
       if (sixCharacterList.indexOf(randomNumber) === -1) {
@@ -34,24 +38,31 @@ const Homepage = () => {
     }
 
     const endPoint = sixCharacterList.join(',');
-    return endPoint;
-  };
 
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
     axios
-      .get(
-        `https://rickandmortyapi.com/api/character/${generateRandomCharacterList()}`
-      )
+      .get(`https://rickandmortyapi.com/api/character/${endPoint}`)
       .then((response) => {
         const { status, data } = response;
         if (status === 200) {
           setLoading(false);
           dispatch(setRandomCharacterList(data));
         }
+      })
+      .catch(function (error) {
+        if (error.response) {
+          if (error.response.status === 404) {
+            setLoading(false);
+            setCharacterPageError(error.response.data.error);
+          }
+        } else if (error.request) {
+          setLoading(false);
+          setCharacterPageError('No response received');
+        } else {
+          setLoading(false);
+          setCharacterPageError(error.message);
+        }
       });
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     localStorage.removeItem('Status');
@@ -66,7 +77,7 @@ const Homepage = () => {
   const { search } = location;
 
   return (
-    <Box>
+    <Box sx={{ position: 'relative', minHeight: '100vh' }}>
       <Backdrop
         sx={{ color: '#7300e6', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={loading}
@@ -94,160 +105,181 @@ const Homepage = () => {
           The Rick and Morty API
         </Typography>
       </Stack>
-      <Box
-        sx={{
-          py: 10,
-          backgroundColor: '#202329',
-        }}
-      >
-        <Stack
-          direction="row"
-          justifyContent="center"
+      {!characterPageError ? (
+        <Box
           sx={{
-            gap: { xs: 10, md: 5 },
-            flexWrap: 'wrap',
-            mx: 3,
+            pt: 10,
+            pb: 25,
+            backgroundColor: '#202329',
           }}
         >
-          {randomCharacterList.map((randomCharacter) => {
-            const showCharacterStatus = () => {
-              let className = '';
-              if (randomCharacter.status === 'Alive') {
-                className = 'random-green';
-              } else if (randomCharacter.status === 'Dead') {
-                className = 'random-red';
-              } else {
-                className = 'random-gray';
-              }
-              return className;
-            };
+          <Stack
+            direction="row"
+            justifyContent="center"
+            sx={{
+              gap: { xs: 10, md: 5 },
+              flexWrap: 'wrap',
+              mx: 3,
+            }}
+          >
+            {randomCharacterList.map((randomCharacter) => {
+              const showCharacterHoverColor = () => {
+                if (showCharacterStatus() === 'random-green') {
+                  return '0 0 25px darkgreen';
+                } else if (showCharacterStatus() === 'random-red') {
+                  return '0 0 25px darkred';
+                } else {
+                  return '0 0 25px darkgray';
+                }
+              };
 
-            const showCharacterGender = () => {
+              const showCharacterStatus = () => {
+                let className = '';
+                if (randomCharacter.status === 'Alive') {
+                  className = 'random-green';
+                } else if (randomCharacter.status === 'Dead') {
+                  className = 'random-red';
+                } else {
+                  className = 'random-gray';
+                }
+                return className;
+              };
+
+              const showCharacterGender = () => {
+                return (
+                  randomCharacter.gender.charAt(0).toUpperCase() +
+                  randomCharacter.gender.slice(1)
+                );
+              };
+
+              const showCharacterSpecies = () => {
+                return (
+                  randomCharacter.species.charAt(0).toUpperCase() +
+                  randomCharacter.species.slice(1)
+                );
+              };
+
+              const showCharacterLocation = () => {
+                return (
+                  randomCharacter.location.name.charAt(0).toUpperCase() +
+                  randomCharacter.location.name.slice(1)
+                );
+              };
+
+              const showCharacterOrigin = () => {
+                return (
+                  randomCharacter.origin.name.charAt(0).toUpperCase() +
+                  randomCharacter.origin.name.slice(1)
+                );
+              };
+
               return (
-                randomCharacter.gender.charAt(0).toUpperCase() +
-                randomCharacter.gender.slice(1)
-              );
-            };
-
-            const showCharacterSpecies = () => {
-              return (
-                randomCharacter.species.charAt(0).toUpperCase() +
-                randomCharacter.species.slice(1)
-              );
-            };
-
-            const showCharacterLocation = () => {
-              return (
-                randomCharacter.location.name.charAt(0).toUpperCase() +
-                randomCharacter.location.name.slice(1)
-              );
-            };
-
-            const showCharacterOrigin = () => {
-              return (
-                randomCharacter.origin.name.charAt(0).toUpperCase() +
-                randomCharacter.origin.name.slice(1)
-              );
-            };
-
-            const showCharacterHoverColor = () => {
-              if (showCharacterStatus() === 'random-green') {
-                return '0 0 25px darkgreen';
-              } else if (showCharacterStatus() === 'random-red') {
-                return '0 0 25px darkred';
-              } else {
-                return '0 0 25px darkgray';
-              }
-            };
-
-            return (
-              <Link
-                key={randomCharacter.id}
-                component={RouterLink}
-                to={`/characters/${randomCharacter.id}`}
-                sx={{
-                  textDecoration: 'none',
-                }}
-              >
-                <Box
+                <Link
+                  key={randomCharacter.id}
+                  component={RouterLink}
+                  to={`/characters/${randomCharacter.id}`}
                   sx={{
-                    display: { xs: 'block', md: 'flex' },
-                    width: { xs: '250px', md: '600px' },
-                    height: { xs: '535px', md: '250px' },
-                    borderRadius: 2,
-                    backgroundColor: '#3c3e44',
-                    boxShadow: '0 0 10px black',
-                    color: 'white',
-                    '&:hover': {
-                      boxShadow: showCharacterHoverColor(),
-                    },
+                    textDecoration: 'none',
                   }}
                 >
                   <Box
                     sx={{
-                      width: '250px',
+                      display: { xs: 'block', md: 'flex' },
+                      width: { xs: '250px', md: '600px' },
+                      height: { xs: '535px', md: '250px' },
+                      borderRadius: 2,
+                      backgroundColor: '#3c3e44',
+                      boxShadow: '0 0 10px black',
+                      color: 'white',
+                      '&:hover': {
+                        boxShadow: showCharacterHoverColor(),
+                      },
                     }}
                   >
-                    <img
-                      src={randomCharacter.image}
-                      alt={randomCharacter.name}
-                      className="random-character-image"
-                    />
+                    <Box
+                      sx={{
+                        width: '250px',
+                      }}
+                    >
+                      <img
+                        src={randomCharacter.image}
+                        alt={randomCharacter.name}
+                        className="random-character-image"
+                      />
+                    </Box>
+                    <Stack
+                      justifyContent="center"
+                      sx={{
+                        mx: 'auto',
+                        my: 2,
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                      }}
+                    >
+                      <Box sx={{ mb: 2, fontSize: '20px' }}>
+                        {randomCharacter.name}
+                      </Box>
+                      <Box sx={{ mb: 2, color: 'white' }}>
+                        <Box className={showCharacterStatus()}></Box>
+                        {showCharacterGender()} - {showCharacterSpecies()}
+                      </Box>
+                      <Box sx={{ mb: 2, color: 'white' }}>
+                        <Typography
+                          component="span"
+                          sx={{
+                            display: 'inline-block',
+                            mb: 1,
+                            color: '#9e9e9e',
+                          }}
+                        >
+                          Last known location:
+                        </Typography>
+                        <Box>{showCharacterLocation()}</Box>
+                      </Box>
+                      <Box sx={{ mb: 2, color: 'white' }}>
+                        <Typography
+                          component="span"
+                          sx={{
+                            display: 'inline-block',
+                            mb: 1,
+                            color: '#9e9e9e',
+                          }}
+                        >
+                          First seen in:
+                        </Typography>
+                        <Box>{showCharacterOrigin()}</Box>
+                      </Box>
+                    </Stack>
                   </Box>
-                  <Stack
-                    justifyContent="center"
-                    sx={{
-                      mx: 'auto',
-                      my: 2,
-                      fontWeight: 'bold',
-                      textAlign: 'center',
-                    }}
-                  >
-                    <Box sx={{ mb: 2, fontSize: '20px' }}>
-                      {randomCharacter.name}
-                    </Box>
-                    <Box sx={{ mb: 2, color: 'white' }}>
-                      <Box className={showCharacterStatus()}></Box>
-                      {showCharacterGender()} - {showCharacterSpecies()}
-                    </Box>
-                    <Box sx={{ mb: 2, color: 'white' }}>
-                      <Typography
-                        component="span"
-                        sx={{
-                          display: 'inline-block',
-                          mb: 1,
-                          color: '#9e9e9e',
-                        }}
-                      >
-                        Last known location:
-                      </Typography>
-                      <Box>{showCharacterLocation()}</Box>
-                    </Box>
-                    <Box sx={{ mb: 2, color: 'white' }}>
-                      <Typography
-                        component="span"
-                        sx={{
-                          display: 'inline-block',
-                          mb: 1,
-                          color: '#9e9e9e',
-                        }}
-                      >
-                        First seen in:
-                      </Typography>
-                      <Box>{showCharacterOrigin()}</Box>
-                    </Box>
-                  </Stack>
-                </Box>
-              </Link>
-            );
-          })}
-        </Stack>
-      </Box>
+                </Link>
+              );
+            })}
+          </Stack>
+        </Box>
+      ) : (
+        <Typography
+          variant="h5"
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            textTransform: 'uppercase',
+            color: 'black',
+          }}
+        >
+          {characterPageError}
+        </Typography>
+      )}
       <Stack
         direction="column"
         sx={{
+          position: 'absolute',
+          bottom: '0',
+          width: '100%',
+          height: '50px',
           gap: 3,
-          pb: 6,
+          py: 6,
           backgroundColor: '#202329',
         }}
       >
