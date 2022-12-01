@@ -54,6 +54,20 @@ const EpisodeOrLocationCharacterProfile = () => {
           if (response.status === 200) {
             setEpisodeCharacterList(response.data.characters);
           }
+        })
+        .catch(function (error) {
+          if (error.response) {
+            if (error.response.status === 404) {
+              setLoading(false);
+              setCharacterPageError(error.response.data.error);
+            }
+          } else if (error.request) {
+            setLoading(false);
+            setCharacterPageError('No response received');
+          } else {
+            setLoading(false);
+            setCharacterPageError(error.message);
+          }
         });
     } else if (params.locationId !== undefined) {
       axios
@@ -61,6 +75,20 @@ const EpisodeOrLocationCharacterProfile = () => {
         .then((response) => {
           if (response.status === 200) {
             setLocationCharacterList(response.data.residents);
+          }
+        })
+        .catch(function (error) {
+          if (error.response) {
+            if (error.response.status === 404) {
+              setLoading(false);
+              setCharacterPageError(error.response.data.error);
+            }
+          } else if (error.request) {
+            setLoading(false);
+            setCharacterPageError('No response received');
+          } else {
+            setLoading(false);
+            setCharacterPageError(error.message);
           }
         });
     }

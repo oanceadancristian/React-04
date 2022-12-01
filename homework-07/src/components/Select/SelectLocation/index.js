@@ -11,9 +11,9 @@ import PlaceIcon from '@mui/icons-material/LocationOn';
 const SelectLocation = (props) => {
   const { total, locationId, setLocationId } = props;
 
-  const navigate = useNavigate();
-
   const params = useParams();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (Object.keys(params).length === 0) {
@@ -22,7 +22,7 @@ const SelectLocation = (props) => {
       setValue(params.locationId);
       setLocationId(params.locationId);
     }
-  }, [navigate, params]);
+  }, [params, navigate, setLocationId]);
 
   const [value, setValue] = useState(locationId);
 

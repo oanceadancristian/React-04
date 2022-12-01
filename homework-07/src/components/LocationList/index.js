@@ -15,7 +15,9 @@ const LocationList = () => {
   const { locationDetails } = locations;
   const { dimension, name, type } = locationDetails;
   const dispatch = useDispatch();
+
   const params = useParams();
+
   const [locationId, setLocationId] = useState(
     params.locationId === undefined ? 1 : params.locationId
   );
@@ -47,7 +49,7 @@ const LocationList = () => {
       setLoading(false);
       setCharacterList(allLocationCharacters);
     })();
-  }, [locationId]);
+  }, [locationId, dispatch]);
 
   const location = useLocation();
   const { pathname } = location;

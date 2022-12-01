@@ -14,6 +14,16 @@ import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 
 const SignupForm = () => {
+  const firstNameRef = useRef();
+
+  useEffect(() => {
+    firstNameRef.current?.focus();
+  }, [firstNameRef]);
+
+  const setFirstNameRef = (element) => {
+    firstNameRef.current = element;
+  };
+
   const [data, setData] = useState({
     firstName: '',
     lastName: '',
@@ -51,6 +61,49 @@ const SignupForm = () => {
       setError('Passwords do not match!');
     }
   };
+
+  const [firstNameError, setFirstNameError] = useState(false);
+
+  useEffect(() => {
+    if (error.startsWith('"First Name"')) {
+      setFirstNameError(true);
+    }
+  }, [error]);
+
+  const [lastNameError, setLastNameError] = useState(false);
+
+  useEffect(() => {
+    if (error.startsWith('"Last Name"')) {
+      setLastNameError(true);
+    }
+  }, [error]);
+
+  const [emailError, setEmailError] = useState(false);
+
+  useEffect(() => {
+    if (
+      error.startsWith('"Email"') ||
+      error === 'An account with this email already exists!'
+    ) {
+      setEmailError(true);
+    }
+  }, [error]);
+
+  const [passwordError, setPasswordError] = useState(false);
+
+  useEffect(() => {
+    if (error.startsWith('"Password"') || error === 'Passwords do not match!') {
+      setPasswordError(true);
+    }
+  }, [error]);
+
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+
+  useEffect(() => {
+    if (error === 'Passwords do not match!') {
+      setConfirmPasswordError(true);
+    }
+  }, [error]);
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
@@ -120,60 +173,36 @@ const SignupForm = () => {
     }
   };
 
-  const firstNameRef = useRef();
+  const [firstNameIconColor, setFirstNameIconColor] = useState('gray');
 
-  useEffect(() => {
-    firstNameRef.current?.focus();
-  }, [firstNameRef]);
-
-  const setFirstNameRef = (element) => {
-    firstNameRef.current = element;
+  const handleFirstNameFocus = () => {
+    setFirstNameIconColor('#7300e6');
   };
 
-  const [firstNameError, setFirstNameError] = useState(false);
-  useEffect(() => {
-    if (error.startsWith('"First Name"')) {
-      setFirstNameError(true);
-    }
-  }, [error]);
-
-  const [lastNameError, setLastNameError] = useState(false);
-  useEffect(() => {
-    if (error.startsWith('"Last Name"')) {
-      setLastNameError(true);
-    }
-  }, [error]);
-
-  const [emailError, setEmailError] = useState(false);
-  useEffect(() => {
-    if (
-      error.startsWith('"Email"') ||
-      error === 'An account with this email already exists!'
-    ) {
-      setEmailError(true);
-    }
-  }, [error]);
-
-  const [passwordError, setPasswordError] = useState(false);
-  useEffect(() => {
-    if (error.startsWith('"Password"') || error === 'Passwords do not match!') {
-      setPasswordError(true);
-    }
-  }, [error]);
-
-  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
-  useEffect(() => {
-    if (error === 'Passwords do not match!') {
-      setConfirmPasswordError(true);
-    }
-  }, [error]);
-
-  const [firstNameIconColor, setFirstNameIconColor] = useState('gray');
   const [lastNameIconColor, setLastNameIconColor] = useState('gray');
+
+  const handleLastNameFocus = () => {
+    setLastNameIconColor('#7300e6');
+  };
+
   const [emailIconColor, setEmailIconColor] = useState('gray');
+
+  const handleEmailFocus = () => {
+    setEmailIconColor('#7300e6');
+  };
+
   const [passwordIconColor, setPasswordIconColor] = useState('gray');
+
+  const handlePasswordFocus = () => {
+    setPasswordIconColor('#7300e6');
+  };
+
   const [confirmPasswordIconColor, setConfirmPasswordIconColor] =
     useState('gray');
+
+  const handleConfirmPasswordFocus = () => {
+    setConfirmPasswordIconColor('#7300e6');
+  };
 
   return (
     <form
@@ -199,7 +228,7 @@ const SignupForm = () => {
           name="firstName"
           onChange={handleChange}
           onBlur={handleFirstNameBlur}
-          onFocus={() => setFirstNameIconColor('#7300e6')}
+          onFocus={handleFirstNameFocus}
           value={data.firstName}
           inputRef={setFirstNameRef}
           type="text"
@@ -242,7 +271,7 @@ const SignupForm = () => {
           name="lastName"
           onChange={handleChange}
           onBlur={handleLastNameBlur}
-          onFocus={() => setLastNameIconColor('#7300e6')}
+          onFocus={handleLastNameFocus}
           value={data.lastName}
           type="text"
           label="Last Name"
@@ -282,7 +311,7 @@ const SignupForm = () => {
           name="email"
           onChange={handleChange}
           onBlur={handleEmailBlur}
-          onFocus={() => setEmailIconColor('#7300e6')}
+          onFocus={handleEmailFocus}
           value={data.email}
           type="email"
           label="Email Address"
@@ -322,7 +351,7 @@ const SignupForm = () => {
           name="password"
           onChange={handleChange}
           onBlur={handlePasswordBlur}
-          onFocus={() => setPasswordIconColor('#7300e6')}
+          onFocus={handlePasswordFocus}
           value={data.password}
           type="password"
           label="Password"
@@ -362,7 +391,7 @@ const SignupForm = () => {
           name="confirmPassword"
           onChange={handleConfirmPasswordChange}
           onBlur={handleConfirmPasswordBlur}
-          onFocus={() => setConfirmPasswordIconColor('#7300e6')}
+          onFocus={handleConfirmPasswordFocus}
           value={confirmPassword}
           type="password"
           label="Confirm Password"

@@ -17,6 +17,16 @@ import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 
 const SigninForm = () => {
+  const emailRef = useRef();
+
+  useEffect(() => {
+    emailRef.current?.focus();
+  }, [emailRef]);
+
+  const setEmailRef = (element) => {
+    emailRef.current = element;
+  };
+
   const [data, setData] = useState({ email: '', password: '' });
 
   const [error, setError] = useState('');
@@ -50,6 +60,25 @@ const SigninForm = () => {
     }
   };
 
+  const [emailError, setEmailError] = useState(false);
+
+  useEffect(() => {
+    if (error.startsWith('"Email"') || error === 'Invalid Email or Password!') {
+      setEmailError(true);
+    }
+  }, [error]);
+
+  const [passwordError, setPasswordError] = useState(false);
+
+  useEffect(() => {
+    if (
+      error.startsWith('"Password"') ||
+      error === 'Invalid Email or Password!'
+    ) {
+      setPasswordError(true);
+    }
+  }, [error]);
+
   const handleChange = ({ currentTarget: input }) => {
     secureLocalStorage.removeItem('remember_me');
     secureLocalStorage.removeItem('email');
@@ -82,14 +111,16 @@ const SigninForm = () => {
     }
   };
 
-  const emailRef = useRef();
+  const [emailIconColor, setEmailIconColor] = useState('gray');
 
-  useEffect(() => {
-    emailRef.current?.focus();
-  }, [emailRef]);
+  const handleEmailFocus = () => {
+    setEmailIconColor('#7300e6');
+  };
 
-  const setEmailRef = (element) => {
-    emailRef.current = element;
+  const [passwordIconColor, setPasswordIconColor] = useState('gray');
+
+  const handlePasswordFocus = () => {
+    setPasswordIconColor('#7300e6');
   };
 
   const [checked, setChecked] = useState(
@@ -111,26 +142,6 @@ const SigninForm = () => {
       setChecked(checked);
     }
   }, [checked, data.email, data.password]);
-
-  const [emailError, setEmailError] = useState(false);
-  useEffect(() => {
-    if (error.startsWith('"Email"') || error === 'Invalid Email or Password!') {
-      setEmailError(true);
-    }
-  }, [error]);
-
-  const [passwordError, setPasswordError] = useState(false);
-  useEffect(() => {
-    if (
-      error.startsWith('"Password"') ||
-      error === 'Invalid Email or Password!'
-    ) {
-      setPasswordError(true);
-    }
-  }, [error]);
-
-  const [passwordIconColor, setPasswordIconColor] = useState('gray');
-  const [emailIconColor, setEmailIconColor] = useState('gray');
 
   return (
     <form
@@ -156,7 +167,7 @@ const SigninForm = () => {
           name="email"
           onChange={handleChange}
           onBlur={handleEmailBlur}
-          onFocus={() => setEmailIconColor('#7300e6')}
+          onFocus={handleEmailFocus}
           value={data.email}
           inputRef={setEmailRef}
           type="email"
@@ -197,7 +208,7 @@ const SigninForm = () => {
           name="password"
           onChange={handleChange}
           onBlur={handlePasswordBlur}
-          onFocus={() => setPasswordIconColor('#7300e6')}
+          onFocus={handlePasswordFocus}
           value={data.password}
           type="password"
           label="Password"

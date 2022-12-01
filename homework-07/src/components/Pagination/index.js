@@ -15,9 +15,9 @@ const Pagination = (props) => {
     });
   });
 
-  const navigate = useNavigate();
-
   const params = useParams();
+
+  const navigate = useNavigate();
 
   const location = useLocation();
 

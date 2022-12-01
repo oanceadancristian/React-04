@@ -15,7 +15,9 @@ const EpisodeList = () => {
   const { episodeDetails } = episodes;
   const { air_date, name } = episodeDetails;
   const dispatch = useDispatch();
+
   const params = useParams();
+
   const [episodeId, setEpisodeId] = useState(
     params.episodeId === undefined ? 1 : params.episodeId
   );
@@ -47,7 +49,7 @@ const EpisodeList = () => {
       setLoading(false);
       setCharacterList(allEpisodeCharacters);
     })();
-  }, [episodeId]);
+  }, [episodeId, dispatch]);
 
   const location = useLocation();
   const { pathname } = location;

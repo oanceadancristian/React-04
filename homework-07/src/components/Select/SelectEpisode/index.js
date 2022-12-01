@@ -11,9 +11,9 @@ import MovieIcon from '@mui/icons-material/Movie';
 const SelectEpisode = (props) => {
   const { total, episodeId, setEpisodeId } = props;
 
-  const navigate = useNavigate();
-
   const params = useParams();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (Object.keys(params).length === 0) {
@@ -22,7 +22,7 @@ const SelectEpisode = (props) => {
       setValue(params.episodeId);
       setEpisodeId(params.episodeId);
     }
-  }, [navigate, params]);
+  }, [params, navigate, setEpisodeId]);
 
   const [value, setValue] = useState(episodeId);
 
