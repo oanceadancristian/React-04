@@ -146,13 +146,19 @@ const SigninForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      style={{ marginTop: '125px', textAlign: 'center' }}
+      style={{ marginTop: '100px', textAlign: 'center' }}
     >
       <FormControl>
         <Typography
           sx={{
             mt: 3,
-            fontSize: '25px',
+            fontSize: {
+              xs: '20px',
+              sm: '20px',
+              md: '25px',
+              lg: '30px',
+              xl: '30px',
+            },
             fontWeight: 'bold',
             textAlign: 'center',
             textTransform: 'uppercase',
@@ -283,7 +289,7 @@ const SigninForm = () => {
           sx={{
             mt: 3,
             px: 3,
-            py: 2,
+            py: 1.5,
             fontWeight: 'bold',
             textTransform: 'uppercase',
             borderRadius: 1,
@@ -302,7 +308,13 @@ const SigninForm = () => {
           sx={{
             flexWrap: 'wrap',
             mt: 3,
-            fontSize: '20px',
+            fontSize: {
+              xs: '17px',
+              sm: '17px',
+              md: '18px',
+              lg: '19px',
+              xl: '19px',
+            },
             fontWeight: 'bold',
           }}
         >
@@ -311,7 +323,7 @@ const SigninForm = () => {
             component={RouteLink}
             to="/signup"
             sx={{
-              ml: 2,
+              ml: 1,
               textDecoration: 'none',
               textTransform: 'capitalize',
               color: '#7eb431',
