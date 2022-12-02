@@ -62,6 +62,7 @@ const CharacterList = () => {
         } = response;
         if (status === 200) {
           setLoading(false);
+          console.log(results);
           dispatch(setCharacterList(results));
           dispatch(setInfo(info));
         }
