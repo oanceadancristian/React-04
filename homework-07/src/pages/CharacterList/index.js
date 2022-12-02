@@ -49,7 +49,7 @@ const CharacterList = () => {
   const [characterPageError, setCharacterPageError] = useState('');
 
   useEffect(() => {
-    // setPageNumber(params.pageId);
+    setPageNumber(params.pageId);
 
     axios
       .get(
