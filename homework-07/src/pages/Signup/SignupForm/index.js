@@ -42,7 +42,7 @@ const SignupForm = () => {
 
     if (confirmPassword === data.password) {
       try {
-        const url = 'http://192.168.0.164:8080/api/signup';
+        const url = 'http://localhost:8080/api/signup';
         const { data: res } = await axios.post(url, data);
         navigate('/signin');
         console.log(res.message);
