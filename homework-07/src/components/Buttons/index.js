@@ -31,7 +31,7 @@ const Buttons = () => {
             variant="contained"
             sx={{
               width: '150px',
-              padding: 2,
+              padding: 1.5,
               borderRadius: 1,
               fontWeight: 'bold',
               textTransform: 'uppercase',
@@ -58,7 +58,7 @@ const Buttons = () => {
             variant="contained"
             sx={{
               width: '150px',
-              padding: 2,
+              padding: 1.5,
               borderRadius: 1,
               fontWeight: 'bold',
               textTransform: 'uppercase',
