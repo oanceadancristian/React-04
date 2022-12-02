@@ -79,7 +79,7 @@ const Homepage = () => {
   return (
     <Box sx={{ position: 'relative', minHeight: '100vh' }}>
       <Backdrop
-        sx={{ color: '#7300e6', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ color: '#7eb431', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={loading}
       >
         <CircularProgress color="inherit" />
@@ -125,11 +125,11 @@ const Homepage = () => {
             {randomCharacterList.map((randomCharacter) => {
               const showCharacterHoverColor = () => {
                 if (showCharacterStatus() === 'random-green') {
-                  return '0 0 25px darkgreen';
+                  return '0 0 25px #7eb431';
                 } else if (showCharacterStatus() === 'random-red') {
-                  return '0 0 25px darkred';
+                  return '0 0 25px #e89ac7';
                 } else {
-                  return '0 0 25px darkgray';
+                  return '0 0 25px #8dacbf';
                 }
               };
 
@@ -331,7 +331,7 @@ const Homepage = () => {
                 sx={{
                   color: 'white',
                   '&:hover': {
-                    color: '#8c1aff',
+                    color: '#97ce4c',
                     cursor: 'pointer',
                   },
                 }}

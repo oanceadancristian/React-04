@@ -176,32 +176,32 @@ const SignupForm = () => {
   const [firstNameIconColor, setFirstNameIconColor] = useState('gray');
 
   const handleFirstNameFocus = () => {
-    setFirstNameIconColor('#7300e6');
+    setFirstNameIconColor('#7eb431');
   };
 
   const [lastNameIconColor, setLastNameIconColor] = useState('gray');
 
   const handleLastNameFocus = () => {
-    setLastNameIconColor('#7300e6');
+    setLastNameIconColor('#7eb431');
   };
 
   const [emailIconColor, setEmailIconColor] = useState('gray');
 
   const handleEmailFocus = () => {
-    setEmailIconColor('#7300e6');
+    setEmailIconColor('#7eb431');
   };
 
   const [passwordIconColor, setPasswordIconColor] = useState('gray');
 
   const handlePasswordFocus = () => {
-    setPasswordIconColor('#7300e6');
+    setPasswordIconColor('#7eb431');
   };
 
   const [confirmPasswordIconColor, setConfirmPasswordIconColor] =
     useState('gray');
 
   const handleConfirmPasswordFocus = () => {
-    setConfirmPasswordIconColor('#7300e6');
+    setConfirmPasswordIconColor('#7eb431');
   };
 
   return (
@@ -217,7 +217,7 @@ const SignupForm = () => {
             fontWeight: 'bold',
             textAlign: 'center',
             textTransform: 'uppercase',
-            color: '#7300e6',
+            color: '#7eb431',
           }}
         >
           Create your account
@@ -256,11 +256,11 @@ const SignupForm = () => {
             width: '100%',
             mt: 3,
             '& label.Mui-focused': {
-              color: firstNameError ? '#c24839' : '#7300e6',
+              color: firstNameError ? '#c24839' : '#7eb431',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: firstNameError ? '#c24839' : '#7300e6',
+                borderColor: firstNameError ? '#c24839' : '#7eb431',
               },
             },
           }}
@@ -296,11 +296,11 @@ const SignupForm = () => {
             width: '100%',
             mt: 3,
             '& label.Mui-focused': {
-              color: lastNameError ? '#c24839' : '#7300e6',
+              color: lastNameError ? '#c24839' : '#7eb431',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: lastNameError ? '#c24839' : '#7300e6',
+                borderColor: lastNameError ? '#c24839' : '#7eb431',
               },
             },
           }}
@@ -336,11 +336,11 @@ const SignupForm = () => {
             width: '100%',
             mt: 3,
             '& label.Mui-focused': {
-              color: emailError ? '#c24839' : '#7300e6',
+              color: emailError ? '#c24839' : '#7eb431',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: emailError ? '#c24839' : '#7300e6',
+                borderColor: emailError ? '#c24839' : '#7eb431',
               },
             },
           }}
@@ -376,11 +376,11 @@ const SignupForm = () => {
             width: '100%',
             mt: 3,
             '& label.Mui-focused': {
-              color: passwordError ? '#c24839' : '#7300e6',
+              color: passwordError ? '#c24839' : '#7eb431',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: passwordError ? '#c24839' : '#7300e6',
+                borderColor: passwordError ? '#c24839' : '#7eb431',
               },
             },
           }}
@@ -424,11 +424,11 @@ const SignupForm = () => {
             width: '100%',
             mt: 3,
             '& label.Mui-focused': {
-              color: confirmPasswordError ? '#c24839' : '#7300e6',
+              color: confirmPasswordError ? '#c24839' : '#7eb431',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: confirmPasswordError ? '#c24839' : '#7300e6',
+                borderColor: confirmPasswordError ? '#c24839' : '#7eb431',
               },
             },
           }}
@@ -462,10 +462,10 @@ const SignupForm = () => {
             fontWeight: 'bold',
             textTransform: 'uppercase',
             borderRadius: 1,
-            backgroundColor: '#7300e6',
+            backgroundColor: '#7eb431',
             cursor: 'pointer',
             '&:hover': {
-              backgroundColor: '#8c1aff',
+              backgroundColor: '#97ce4c',
             },
           }}
         >
@@ -489,10 +489,10 @@ const SignupForm = () => {
               ml: 2,
               textDecoration: 'none',
               textTransform: 'capitalize',
-              color: '#7300e6',
+              color: '#7eb431',
               '&:hover': {
                 textDecoration: 'underline',
-                color: '#8c1aff',
+                color: '#97ce4c',
               },
             }}
           >

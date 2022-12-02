@@ -66,9 +66,10 @@ const Filters = (props) => {
           p: 2,
           fontSize: '18px',
           fontFamily: 'monospace',
-          borderTopLeftRadius: 3,
-          borderTopRightRadius: 3,
-          backgroundColor: '#c0c0c0',
+          borderTopLeftRadius: 10,
+          borderTopRightRadius: 10,
+          color: 'white',
+          backgroundColor: '#414850',
         }}
       >
         <FilterAltIcon fontSize="medium" sx={{ mr: 0.5 }} />
@@ -100,9 +101,10 @@ const Filters = (props) => {
           p: 2,
           fontSize: '16px',
           fontFamily: 'monospace',
-          borderBottomLeftRadius: 3,
-          borderBottomRightRadius: 3,
-          backgroundColor: '#c0c0c0',
+          borderBottomLeftRadius: 10,
+          borderBottomRightRadius: 10,
+          color: 'white',
+          backgroundColor: '#414850',
         }}
       >
         <Stack
@@ -115,7 +117,7 @@ const Filters = (props) => {
             textDecoration: 'underline',
             cursor: 'pointer',
             '&:hover': {
-              color: '#8c1aff',
+              color: '#97ce4c',
             },
           }}
         >

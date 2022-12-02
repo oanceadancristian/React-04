@@ -13,7 +13,7 @@
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   color: white;
-  background-color: darkgreen;
+  background-color: #7eb431;
 }
 
 .red-bar {
@@ -27,7 +27,7 @@
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   color: white;
-  background-color: darkred;
+  background-color: #e382bb;
 }
 
 .gray-bar {
@@ -41,7 +41,7 @@
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   color: white;
-  background-color: darkgray;
+  background-color: #8dacbf;
 }
 
 .green-life {
@@ -51,7 +51,7 @@
   width: 8px;
   height: 8px;
   margin: 0 10px;
-  background-color: green;
+  background-color: #7eb431;
   transform: rotate(-45deg);
   animation: pulse 1s linear infinite;
 }
@@ -63,7 +63,7 @@
   height: 8px;
   width: 8px;
   border-radius: 50%;
-  background-color: green;
+  background-color: #7eb431;
 }
 
 .green-life:before {
@@ -83,7 +83,7 @@
   width: 8px;
   height: 8px;
   margin: 0 10px;
-  background-color: red;
+  background-color: #e382bb;
   transform: rotate(-45deg);
   animation: pulse 1s linear infinite;
 }
@@ -95,7 +95,7 @@
   height: 8px;
   width: 8px;
   border-radius: 50%;
-  background-color: red;
+  background-color: #e382bb;
 }
 
 .red-life:before {
@@ -115,7 +115,7 @@
   width: 8px;
   height: 8px;
   margin: 0 10px;
-  background-color: darkgray;
+  background-color: #8dacbf;
   transform: rotate(-45deg);
   animation: pulse 1s linear infinite;
 }
@@ -127,7 +127,7 @@
   height: 8px;
   width: 8px;
   border-radius: 50%;
-  background-color: darkgray;
+  background-color: #8dacbf;
 }
 
 .gray-life:before {

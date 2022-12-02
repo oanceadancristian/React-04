@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import BugReportIcon from '@mui/icons-material/BugReport';
-import Buttons from '../../Pages/HomepageNoAccount/Buttons';
+import Buttons from '../../components/Buttons';
 
 const PageNotFound = () => {
   return (
@@ -20,7 +20,7 @@ const PageNotFound = () => {
         <Stack
           direction="row"
           justifyContent="center"
-          sx={{ color: '#7300e6' }}
+          sx={{ color: '#7eb431' }}
         >
           {' '}
           <BugReportIcon sx={{ fontSize: '50px' }} />

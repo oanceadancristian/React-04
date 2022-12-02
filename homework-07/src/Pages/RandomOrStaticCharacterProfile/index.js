@@ -12,20 +12,20 @@ import {
   setCharacterOrigin,
   setCharacterLocation,
   setCharacterType,
-} from '../../components/slices/RandomCharacterProfileSlice';
+} from '../../components/slices/RandomOrStaticCharacterProfileSlice';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import './RandomCharacterProfile.css';
+import './RandomOrStaticCharacterProfile.css';
 
-const RandomCharacterProfile = () => {
+const RandomOrStaticCharacterProfile = () => {
   const params = useParams();
   const { characterId } = params;
 
-  const randomCharacterProfile = useSelector(
-    (state) => state.randomCharacterProfile
+  const randomOrStaticCharacterProfile = useSelector(
+    (state) => state.randomOrStaticCharacterProfile
   );
   const {
     characterImg,
@@ -36,7 +36,7 @@ const RandomCharacterProfile = () => {
     characterOrigin,
     characterLocation,
     characterType,
-  } = randomCharacterProfile;
+  } = randomOrStaticCharacterProfile;
   const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(true);
@@ -76,23 +76,23 @@ const RandomCharacterProfile = () => {
   }, [characterId, dispatch]);
 
   const showCharacterHoverColor = () => {
-    if (showCharacterStatus() === 'random-green') {
-      return '0 0 25px darkgreen';
-    } else if (showCharacterStatus() === 'random-red') {
-      return '0 0 25px darkred';
+    if (showCharacterStatus() === 'random-or-static-green') {
+      return '0 0 25px #7eb431';
+    } else if (showCharacterStatus() === 'random-or-static-red') {
+      return '0 0 25px #e382bb';
     } else {
-      return '0 0 25px darkgray';
+      return '0 0 25px #8dacbf';
     }
   };
 
   const showCharacterStatus = () => {
     let className = '';
     if (characterStatus === 'Alive') {
-      className = 'random-green';
+      className = 'random-or-static-green';
     } else if (characterStatus === 'Dead') {
-      className = 'random-red';
+      className = 'random-or-static-red';
     } else {
-      className = 'random-gray';
+      className = 'random-or-static-gray';
     }
     return className;
   };
@@ -124,7 +124,7 @@ const RandomCharacterProfile = () => {
   return (
     <Box>
       <Backdrop
-        sx={{ color: '#7300e6', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ color: '#7eb431', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={loading}
       >
         <CircularProgress color="inherit" />
@@ -164,7 +164,7 @@ const RandomCharacterProfile = () => {
               <img
                 src={characterImg}
                 alt={characterName}
-                className="random-character-image"
+                className="random-or-static-character-image"
               />
             </Box>
             <Stack
@@ -244,4 +244,4 @@ const RandomCharacterProfile = () => {
   );
 };
 
-export default RandomCharacterProfile;
+export default RandomOrStaticCharacterProfile;

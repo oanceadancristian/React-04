@@ -35,10 +35,10 @@ const Buttons = () => {
               borderRadius: 1,
               fontWeight: 'bold',
               textTransform: 'uppercase',
-              backgroundColor: '#7300e6',
+              backgroundColor: '#7eb431',
               cursor: 'pointer',
               '&:hover': {
-                backgroundColor: '#8c1aff',
+                backgroundColor: '#97ce4c',
               },
             }}
           >
@@ -62,10 +62,10 @@ const Buttons = () => {
               borderRadius: 1,
               fontWeight: 'bold',
               textTransform: 'uppercase',
-              backgroundColor: '#7300e6',
+              backgroundColor: '#7eb431',
               cursor: 'pointer',
               '&:hover': {
-                backgroundColor: '#8c1aff',
+                backgroundColor: '#97ce4c',
               },
             }}
           >

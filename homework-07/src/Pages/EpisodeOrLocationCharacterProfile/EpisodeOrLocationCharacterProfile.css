@@ -13,7 +13,7 @@
   width: 8px;
   height: 8px;
   margin: 0 10px;
-  background-color: green;
+  background-color: #7eb431;
   transform: rotate(-45deg);
   animation: pulse 1s linear infinite;
 }
@@ -25,7 +25,7 @@
   height: 8px;
   width: 8px;
   border-radius: 50%;
-  background-color: green;
+  background-color: #7eb431;
 }
 
 .static-green:before {
@@ -45,7 +45,7 @@
   width: 8px;
   height: 8px;
   margin: 0 10px;
-  background-color: red;
+  background-color: #e382bb;
   transform: rotate(-45deg);
   animation: pulse 1s linear infinite;
 }
@@ -57,7 +57,7 @@
   height: 8px;
   width: 8px;
   border-radius: 50%;
-  background-color: red;
+  background-color: #e382bb;
 }
 
 .static-red:before {
@@ -77,7 +77,7 @@
   width: 8px;
   height: 8px;
   margin: 0 10px;
-  background-color: darkgray;
+  background-color: #8dacbf;
   transform: rotate(-45deg);
   animation: pulse 1s linear infinite;
 }
@@ -89,7 +89,7 @@
   height: 8px;
   width: 8px;
   border-radius: 50%;
-  background-color: darkgray;
+  background-color: #8dacbf;
 }
 
 .static-gray:before {

@@ -29,9 +29,9 @@ const FilterButton = (props) => {
       control={
         <Radio
           sx={{
-            color: 'black',
+            color: 'white',
             '&.Mui-checked': {
-              color: '#7300e6',
+              color: '#7eb431',
             },
           }}
         />
@@ -51,7 +51,7 @@ const FilterButton = (props) => {
       value={element}
       onChange={handleChange}
       sx={{
-        color: 'black',
+        color: 'white',
         '.MuiFormControlLabel-label': {
           fontFamily: 'monospace',
         },

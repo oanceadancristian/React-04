@@ -59,7 +59,7 @@ const SelectLocation = (props) => {
               sx={{
                 fontFamily: 'monospace',
                 '&.Mui-focused': {
-                  color: '#7300e6',
+                  color: '#7eb431',
                 },
               }}
             >
@@ -74,7 +74,7 @@ const SelectLocation = (props) => {
               sx={{
                 fontFamily: 'monospace',
                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                  borderColor: '#7300e6',
+                  borderColor: '#7eb431',
                 },
               }}
             >
@@ -89,7 +89,7 @@ const SelectLocation = (props) => {
                       fontFamily: 'monospace',
                       '&:hover': {
                         color: 'white',
-                        backgroundColor: '#8c1aff',
+                        backgroundColor: '#97ce4c',
                       },
                     }}
                   >

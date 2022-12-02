@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomepageNoAccount from '../src/Pages/HomepageNoAccount';
-import Signin from '../src/Pages/Signin';
-import Signup from '../src/Pages/Signup';
-import AccessForbidden from './Pages/AccessForbidden';
-import Homepage from './Pages/Homepage';
-import CharacterList from './Pages/CharacterList';
-import EpisodeList from './Pages/EpisodeList';
-import LocationList from './Pages/LocationList';
-import RandomCharacterProfile from './Pages/RandomCharacterProfile';
-import EpisodeOrLocationCharacterProfile from './Pages/EpisodeOrLocationCharacterProfile';
-import PageNotFound from './Pages/PageNotFound';
+import HomepageNoAccount from '../src/pages/HomepageNoAccount';
+import Signin from '../src/pages/Signin';
+import Signup from '../src/pages/Signup';
+import AccessForbidden from './pages/AccessForbidden';
+import Homepage from './pages/Homepage';
+import CharacterList from './pages/CharacterList';
+import EpisodeList from './pages/EpisodeList';
+import LocationList from './pages/LocationList';
+import RandomOrStaticCharacterProfile from './pages/RandomOrStaticCharacterProfile';
+import EpisodeOrLocationCharacterProfile from './pages/EpisodeOrLocationCharacterProfile';
+import PageNotFound from './pages/PageNotFound';
 import './App.css';
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
               <Route path="/locations" element={<LocationList />} />
               <Route
                 path="/characters/:characterId"
-                element={<RandomCharacterProfile />}
+                element={<RandomOrStaticCharacterProfile />}
               />
               <Route
                 path="/characters/pages/:pageId"

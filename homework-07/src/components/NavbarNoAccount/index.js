@@ -47,7 +47,10 @@ function ResponsiveNavBarNoAccount() {
               letterSpacing: '.1rem',
               textDecoration: 'none',
               textTransform: 'uppercase',
-              color: '#7300e6',
+              color: '#7eb431',
+              '&:hover': {
+                color: '#97ce4c',
+              },
             }}
           >
             <CameraRollIcon
@@ -69,7 +72,7 @@ function ResponsiveNavBarNoAccount() {
                   fontFamily: 'monospace',
                   letterSpacing: '.1rem',
                   textTransform: 'uppercase',
-                  color: anchorElUser ? '#8c1aff' : 'white',
+                  color: anchorElUser ? '#97ce4c' : 'white',
                 }}
               >
                 <Avatar sx={{ backgroundColor: '#202329' }}>
@@ -77,8 +80,8 @@ function ResponsiveNavBarNoAccount() {
                     sx={{
                       mr: 1,
                       fontSize: '30px',
-                      color: anchorElUser ? '#8c1aff' : 'white',
-                      '&:hover': { color: '#8c1aff' },
+                      color: anchorElUser ? '#97ce4c' : 'white',
+                      '&:hover': { color: '#97ce4c' },
                     }}
                   />
                 </Avatar>
@@ -107,7 +110,7 @@ function ResponsiveNavBarNoAccount() {
                   sx={{
                     textDecoration: 'none',
                     color: 'black',
-                    '&:hover': { color: '#8c1aff' },
+                    '&:hover': { color: '#97ce4c' },
                   }}
                 >
                   <Stack direction="row" spacing={1}>
@@ -131,7 +134,7 @@ function ResponsiveNavBarNoAccount() {
                   sx={{
                     textDecoration: 'none',
                     color: 'black',
-                    '&:hover': { color: '#8c1aff' },
+                    '&:hover': { color: '#97ce4c' },
                   }}
                 >
                   <Stack direction="row" spacing={1}>
@@ -162,7 +165,10 @@ function ResponsiveNavBarNoAccount() {
               letterSpacing: '.1rem',
               textDecoration: 'none',
               textTransform: 'uppercase',
-              color: '#7300e6',
+              color: '#7eb431',
+              '&:hover': {
+                color: '#97ce4c',
+              },
             }}
           >
             <CameraRollIcon
@@ -187,8 +193,8 @@ function ResponsiveNavBarNoAccount() {
                     sx={{
                       mr: 1,
                       fontSize: '30px',
-                      color: anchorElUser ? '#8c1aff' : 'white',
-                      '&:hover': { color: '#8c1aff' },
+                      color: anchorElUser ? '#97ce4c' : 'white',
+                      '&:hover': { color: '#97ce4c' },
                     }}
                   />
                 </Avatar>
@@ -217,7 +223,7 @@ function ResponsiveNavBarNoAccount() {
                   sx={{
                     textDecoration: 'none',
                     color: 'black',
-                    '&:hover': { color: '#8c1aff' },
+                    '&:hover': { color: '#97ce4c' },
                   }}
                 >
                   <Stack direction="row" spacing={1}>
@@ -241,7 +247,7 @@ function ResponsiveNavBarNoAccount() {
                   sx={{
                     textDecoration: 'none',
                     color: 'black',
-                    '&:hover': { color: '#8c1aff' },
+                    '&:hover': { color: '#97ce4c' },
                   }}
                 >
                   <Stack direction="row" spacing={1}>

@@ -45,12 +45,12 @@ const Status = (props) => {
 
   return (
     <Accordion
-      sx={{ color: 'black', backgroundColor: '#C0C0C0' }}
+      sx={{ color: 'white', backgroundColor: '#414850' }}
       expanded={expandedStatus}
       onChange={handleExpandedStatus}
     >
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon sx={{ color: 'black' }} />}
+        expandIcon={<ExpandMoreIcon sx={{ color: 'white' }} />}
         aria-controls="panel1a-content"
         id="panel1a-header"
       >

@@ -1,4 +1,4 @@
-.random-character-image {
+.random-or-static-character-image {
   width: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 0;
@@ -6,98 +6,98 @@
   border-bottom-left-radius: 10px;
 }
 
-.random-green {
+.random-or-static-green {
   display: inline-block;
   position: relative;
   top: 0;
   width: 8px;
   height: 8px;
   margin: 0 10px;
-  background-color: green;
+  background-color: #7eb431;
   transform: rotate(-45deg);
   animation: pulse 1s linear infinite;
 }
 
-.random-green:before,
-.random-green:after {
+.random-or-static-green:before,
+.random-or-static-green:after {
   content: '';
   position: absolute;
   height: 8px;
   width: 8px;
   border-radius: 50%;
-  background-color: green;
+  background-color: #7eb431;
 }
 
-.random-green:before {
+.random-or-static-green:before {
   top: -4px;
   left: 0;
 }
 
-.random-green:after {
+.random-or-static-green:after {
   left: 4px;
   top: 0;
 }
 
-.random-red {
+.random-or-static-red {
   display: inline-block;
   position: relative;
   top: 0;
   width: 8px;
   height: 8px;
   margin: 0 10px;
-  background-color: red;
+  background-color: #e382bb;
   transform: rotate(-45deg);
   animation: pulse 1s linear infinite;
 }
 
-.random-red:before,
-.random-red:after {
+.random-or-static-red:before,
+.random-or-static-red:after {
   content: '';
   position: absolute;
   height: 8px;
   width: 8px;
   border-radius: 50%;
-  background-color: red;
+  background-color: #e382bb;
 }
 
-.random-red:before {
+.random-or-static-red:before {
   top: -4px;
   left: 0;
 }
 
-.random-red:after {
+.random-or-static-red:after {
   left: 4px;
   top: 0;
 }
 
-.random-gray {
+.random-or-static-gray {
   display: inline-block;
   position: relative;
   top: 0;
   width: 8px;
   height: 8px;
   margin: 0 10px;
-  background-color: darkgray;
+  background-color: #8dacbf;
   transform: rotate(-45deg);
   animation: pulse 1s linear infinite;
 }
 
-.random-gray:before,
-.random-gray:after {
+.random-or-static-gray:before,
+.random-or-static-gray:after {
   content: '';
   position: absolute;
   height: 8px;
   width: 8px;
   border-radius: 50%;
-  background-color: darkgray;
+  background-color: #8dacbf;
 }
 
-.random-gray:before {
+.random-or-static-gray:before {
   top: -4px;
   left: 0;
 }
 
-.random-gray:after {
+.random-or-static-gray:after {
   left: 4px;
   top: 0;
 }
@@ -115,7 +115,7 @@
 }
 
 @media (max-width: 1200px) {
-  .random-character-image {
+  .random-or-static-character-image {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 0;

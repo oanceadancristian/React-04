@@ -3,7 +3,7 @@ import RickAndMortyAppSlice from '../slices/RickAndMortyAppSlice';
 import CharacterListSlice from '../slices/CharacterListSlice';
 import EpisodeDetailsSlice from '../slices/EpisodeDetailsSlice';
 import LocationDetailsSlice from '../slices/LocationDetailsSlice';
-import RandomCharacterProfileSlice from '../slices/RandomCharacterProfileSlice';
+import RandomOrStaticCharacterProfileSlice from '../slices/RandomOrStaticCharacterProfileSlice';
 import EpisodeOrLocationCharacterProfileSlice from '../slices/EpisodeOrLocationCharacterProfileSlice';
 
 export default configureStore({
@@ -12,7 +12,7 @@ export default configureStore({
     characters: CharacterListSlice,
     episodes: EpisodeDetailsSlice,
     locations: LocationDetailsSlice,
-    randomCharacterProfile: RandomCharacterProfileSlice,
+    randomOrStaticCharacterProfile: RandomOrStaticCharacterProfileSlice,
     episodeOrLocationCharacterProfile: EpisodeOrLocationCharacterProfileSlice,
   },
 });

@@ -59,7 +59,7 @@ const SelectEpisode = (props) => {
               sx={{
                 fontFamily: 'monospace',
                 '&.Mui-focused': {
-                  color: '#7300e6',
+                  color: '#7eb431',
                 },
               }}
             >
@@ -74,10 +74,10 @@ const SelectEpisode = (props) => {
               sx={{
                 fontFamily: 'monospace',
                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                  borderColor: '#7300e6',
+                  borderColor: '#7eb431',
                 },
                 '.MuiSvgIcon-root:hover ': {
-                  fill: 'red',
+                  fill: '#e382bb',
                 },
               }}
             >
@@ -92,7 +92,7 @@ const SelectEpisode = (props) => {
                       fontFamily: 'monospace',
                       '&:hover': {
                         color: 'white',
-                        backgroundColor: '#8c1aff',
+                        backgroundColor: '#97ce4c',
                       },
                     }}
                   >

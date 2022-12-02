@@ -38,7 +38,7 @@ const Search = (props) => {
           id="fullWidth"
           inputRef={searchRef}
           onChange={handleChange}
-          onFocus={() => setSearchIconColor('#7300e6')}
+          onFocus={() => setSearchIconColor('#7eb431')}
           onBlur={() => setSearchIconColor('gray')}
           InputProps={{
             startAdornment: (
@@ -56,7 +56,7 @@ const Search = (props) => {
             '& .MuiOutlinedInput-root': {
               fontFamily: 'monospace',
               '&.Mui-focused fieldset': {
-                borderColor: '#7300e6',
+                borderColor: '#7eb431',
               },
             },
           }}

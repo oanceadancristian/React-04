@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const RandomCharacterProfilSlice = createSlice({
-  name: 'random-character-profile',
+export const RandomOrStaticCharacterProfilSlice = createSlice({
+  name: 'random-or-staticcharacter-profile',
   initialState: {
     characterImg: '',
     characterName: '',
@@ -50,6 +50,6 @@ export const {
   setCharacterOrigin,
   setCharacterLocation,
   setCharacterType,
-} = RandomCharacterProfilSlice.actions;
+} = RandomOrStaticCharacterProfilSlice.actions;
 
-export default RandomCharacterProfilSlice.reducer;
+export default RandomOrStaticCharacterProfilSlice.reducer;

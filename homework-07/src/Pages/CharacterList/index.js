@@ -85,7 +85,7 @@ const CharacterList = () => {
   return (
     <Box>
       <Backdrop
-        sx={{ color: '#7300e6', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ color: '#7eb431', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={loading}
       >
         <CircularProgress color="inherit" />
