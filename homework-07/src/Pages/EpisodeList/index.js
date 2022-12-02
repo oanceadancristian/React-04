@@ -102,7 +102,18 @@ const EpisodeList = () => {
           <Box sx={{ m: 6 }}>
             <Typography
               variant="h3"
-              sx={{ mb: 2, fontFamily: 'monospace', textAlign: 'center' }}
+              sx={{
+                mb: 2,
+                fontSize: {
+                  xs: '25px',
+                  sm: '30px',
+                  md: '35px',
+                  lg: '40px',
+                  xl: '45px',
+                },
+                fontFamily: 'monospace',
+                textAlign: 'center',
+              }}
             >
               Episode name:{' '}
               <Typography
@@ -110,6 +121,14 @@ const EpisodeList = () => {
                 component="span"
                 sx={{
                   display: { xs: 'block', md: 'inline-block' },
+                  mt: 1,
+                  fontSize: {
+                    xs: '25px',
+                    sm: '30px',
+                    md: '35px',
+                    lg: '40px',
+                    xl: '45px',
+                  },
                   fontFamily: 'monospace',
                   color: '#7eb431',
                 }}
@@ -119,7 +138,17 @@ const EpisodeList = () => {
             </Typography>
             <Typography
               variant="h5"
-              sx={{ fontFamily: 'monospace', textAlign: 'center' }}
+              sx={{
+                fontSize: {
+                  xs: '20px',
+                  sm: '25px',
+                  md: '30px',
+                  lg: '35px',
+                  xl: '40px',
+                },
+                fontFamily: 'monospace',
+                textAlign: 'center',
+              }}
             >
               Air date:{' '}
               <Typography
@@ -127,6 +156,13 @@ const EpisodeList = () => {
                 component="span"
                 sx={{
                   display: { xs: 'block', md: 'inline-block' },
+                  fontSize: {
+                    xs: '20px',
+                    sm: '25px',
+                    md: '30px',
+                    lg: '35px',
+                    xl: '40px',
+                  },
                   fontFamily: 'monospace',
                 }}
               >
@@ -180,6 +216,7 @@ const EpisodeList = () => {
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
+            textAlign: 'center',
             textTransform: 'uppercase',
             color: 'black',
           }}

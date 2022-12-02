@@ -41,8 +41,13 @@ const SelectEpisode = (props) => {
         sx={{
           mb: 2,
           p: 2,
-          fontSize: '18px',
-          fontWeight: 'bold',
+          fontSize: {
+            xs: '17px',
+            sm: '17px',
+            md: '18px',
+            lg: '19px',
+            xl: '19px',
+          },
           fontFamily: 'monospace',
           borderRadius: 3,
           backgroundColor: '#c0c0c0',

@@ -42,8 +42,13 @@ const SelectLocation = (props) => {
           mb: 2,
           p: 2,
           borderRadius: 3,
-          fontSize: '18px',
-          fontWeight: 'bold',
+          fontSize: {
+            xs: '17px',
+            sm: '17px',
+            md: '18px',
+            lg: '19px',
+            xl: '19px',
+          },
           fontFamily: 'monospace',
           backgroundColor: '#c0c0c0',
         }}

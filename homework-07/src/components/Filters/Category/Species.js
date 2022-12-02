@@ -52,6 +52,10 @@ const Species = (props) => {
         localStorage.getItem('Gender') === null
           ? ''
           : localStorage.getItem('Gender'),
+      search:
+        localStorage.getItem('Search') === null
+          ? ''
+          : localStorage.getItem('Search'),
     });
   };
 

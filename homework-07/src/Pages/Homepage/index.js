@@ -97,7 +97,15 @@ const Homepage = () => {
         <Typography
           variant="h1"
           sx={{
-            fontSize: '7.5vw',
+            mx: 3,
+            fontSize: {
+              xs: '50px',
+              sm: '60px',
+              md: '70px',
+              lg: '80px',
+              xl: '90px',
+            },
+            textAlign: 'center',
             fontWeight: 'bold',
             fontFamily: 'monospace',
           }}
@@ -264,6 +272,7 @@ const Homepage = () => {
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
+            textAlign: 'center',
             textTransform: 'uppercase',
             color: 'black',
           }}
@@ -280,6 +289,7 @@ const Homepage = () => {
           height: '50px',
           gap: 3,
           py: 6,
+          my: 3,
           backgroundColor: '#202329',
         }}
       >
@@ -290,7 +300,7 @@ const Homepage = () => {
             gap: 3,
           }}
         >
-          <Box>
+          <Box sx={{ marginLeft: '10px', textAlign: 'center' }}>
             <NavLink
               to={`/characters/pages/${
                 pageId === undefined ? 1 : pageId
@@ -302,7 +312,7 @@ const Homepage = () => {
               Characters: 826
             </NavLink>
           </Box>
-          <Box>
+          <Box sx={{ textAlign: 'center' }}>
             <NavLink
               to={`/episodes/${episodeId === undefined ? 1 : episodeId}`}
               className={({ isActive }) =>
@@ -312,7 +322,7 @@ const Homepage = () => {
               Episodes: 51
             </NavLink>
           </Box>
-          <Box>
+          <Box sx={{ marginRight: '10px', textAlign: 'center' }}>
             <NavLink
               to={`/locations/${locationId === undefined ? 1 : locationId}`}
               className={({ isActive }) =>
