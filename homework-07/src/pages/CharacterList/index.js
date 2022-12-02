@@ -62,7 +62,6 @@ const CharacterList = () => {
         } = response;
         if (status === 200) {
           setLoading(false);
-          console.log(results);
           dispatch(setCharacterList(results));
           dispatch(setInfo(info));
         }
@@ -72,16 +71,13 @@ const CharacterList = () => {
           if (error.response.status === 404) {
             setLoading(false);
             setCharacterPageError(error.response.data.error);
-            console.log(error.response);
           }
         } else if (error.request) {
           setLoading(false);
           setCharacterPageError('No response received');
-          console.log(error.request);
         } else {
           setLoading(false);
           setCharacterPageError(error.message);
-          console.log(error);
         }
       });
   }, [params.pageId, pageNumber, search, status, gender, species, dispatch]);
