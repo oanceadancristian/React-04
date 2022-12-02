@@ -144,7 +144,7 @@ const EpisodeOrLocationCharacterProfile = () => {
     if (showCharacterStatus() === 'static-green') {
       return '0 0 25px #7eb431';
     } else if (showCharacterStatus() === 'static-red') {
-      return '0 0 25px #e382bb';
+      return '0 0 25px #fa383b';
     } else {
       return '0 0 25px #8dacbf';
     }

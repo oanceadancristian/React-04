@@ -45,7 +45,7 @@
   width: 8px;
   height: 8px;
   margin: 0 10px;
-  background-color: #e89ac7;
+  background-color: #fa383b;
   transform: rotate(-45deg);
   animation: pulse 1s linear infinite;
 }
@@ -57,7 +57,7 @@
   height: 8px;
   width: 8px;
   border-radius: 50%;
-  background-color: #e89ac7;
+  background-color: #fa383b;
 }
 
 .random-red:before {
