@@ -1,5 +1,5 @@
 import React from 'react';
-import NavbarNoAccount from '../NavbarNoAccount/';
+import NavbarNoAccount from '../../components/NavbarNoAccount';
 import SignupForm from './SignupForm';
 import Box from '@mui/system/Box';
 

@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomepageNoAccount from '../src/components/HomepageNoAccount';
-import Signin from '../src/components/Signin/';
-import Signup from '../src/components/Signup/';
-import AccessForbidden from './components/AccessForbidden';
-import Homepage from './components/Homepage';
-import CharacterList from './components/CharacterList';
-import EpisodeList from './components/EpisodeList';
-import LocationList from './components/LocationList';
-import RandomCharacterProfile from './components/RandomCharacterProfile';
-import EpisodeOrLocationCharacterProfile from './components/EpisodeOrLocationCharacterProfile';
-import PageNotFound from './components/PageNotFound';
+import HomepageNoAccount from '../src/Pages/HomepageNoAccount';
+import Signin from '../src/Pages/Signin';
+import Signup from '../src/Pages/Signup';
+import AccessForbidden from './Pages/AccessForbidden';
+import Homepage from './Pages/Homepage';
+import CharacterList from './Pages/CharacterList';
+import EpisodeList from './Pages/EpisodeList';
+import LocationList from './Pages/LocationList';
+import RandomCharacterProfile from './Pages/RandomCharacterProfile';
+import EpisodeOrLocationCharacterProfile from './Pages/EpisodeOrLocationCharacterProfile';
+import PageNotFound from './Pages/PageNotFound';
 import './App.css';
 
 function App() {

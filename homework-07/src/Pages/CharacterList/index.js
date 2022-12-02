@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import Navbar from '../Navbar';
-import Search from '../Search';
-import Filters from '../Filters';
-import CharacterItem from '../CharacterItem';
-import Pagination from '../Pagination';
-import { setCharacterList, setInfo } from '../slices/CharacterListSlice';
+import Navbar from '../../components/Navbar';
+import Search from '../../components/Search';
+import Filters from '../../components/Filters';
+import CharacterItem from '../../components/CharacterItem';
+import Pagination from '../../components/Pagination';
+import {
+  setCharacterList,
+  setInfo,
+} from '../../components/slices/CharacterListSlice';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';

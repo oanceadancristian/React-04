@@ -1,10 +1,10 @@
 import React from 'react';
-import NavbarNoAccount from '../NavbarNoAccount';
+import NavbarNoAccount from '../../components/NavbarNoAccount';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import BugReportIcon from '@mui/icons-material/BugReport';
-import Buttons from '../HomepageNoAccount/Buttons';
+import Buttons from '../../Pages/HomepageNoAccount/Buttons';
 
 const AccessForbidden = () => {
   return (

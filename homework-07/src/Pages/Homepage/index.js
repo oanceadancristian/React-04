@@ -6,9 +6,9 @@ import {
   useLocation,
   useParams,
 } from 'react-router-dom';
-import Navbar from '../Navbar';
+import Navbar from '../../components/Navbar';
 import axios from 'axios';
-import { setRandomCharacterList } from '../slices/RickAndMortyAppSlice';
+import { setRandomCharacterList } from '../../components/slices/RickAndMortyAppSlice';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';

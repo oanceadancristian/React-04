@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import Navbar from '../Navbar';
+import Navbar from '../../components/Navbar';
 import {
   setCharacterImg,
   setCharacterName,
@@ -12,7 +12,7 @@ import {
   setCharacterOrigin,
   setCharacterLocation,
   setCharacterType,
-} from '../slices/EpisodeOrLocationCharacterProfileSlice';
+} from '../../components/slices/EpisodeOrLocationCharacterProfileSlice';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';

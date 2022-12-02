@@ -1,69 +1,83 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
-import Navbar from '../Navbar';
-import SelectLocation from '../Select/SelectLocation';
-import CharacterItem from '../CharacterItem';
-import { setLocationDetails } from '../slices/LocationDetailsSlice';
-import Box from '@mui/material/Box';
+import Navbar from '../../components/Navbar';
+import SelectEpisode from '../../components/Select/SelectEpisode';
+import CharacterItem from '../../components/CharacterItem';
+import { setEpisodeDetails } from '../../components/slices/EpisodeDetailsSlice';
+import Box from '@mui/system/Box';
 import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
-const LocationList = () => {
-  const locations = useSelector((state) => state.locations);
-  const { locationDetails } = locations;
-  const { dimension, name, type } = locationDetails;
+const EpisodeList = () => {
+  const episodes = useSelector((state) => state.episodes);
+  const { episodeDetails } = episodes;
+  const { air_date, name } = episodeDetails;
   const dispatch = useDispatch();
 
   const params = useParams();
 
-  const [locationId, setLocationId] = useState(
-    params.locationId === undefined ? 1 : params.locationId
+  const [episodeId, setEpisodeId] = useState(
+    params.episodeId === undefined ? 1 : params.episodeId
   );
   const [characterList, setCharacterList] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
-  const [locationFound, setLocationFound] = useState(true);
+  const [episodeFound, setEpisodeFound] = useState(true);
 
   const [characterPageError, setCharacterPageError] = useState('');
 
   useEffect(() => {
-    if (locationId > 126) {
+    if (episodeId > 51) {
       setLoading(false);
-      setLocationFound(false);
-      setCharacterPageError('Location not found!');
+      setEpisodeFound(false);
+      setCharacterPageError('Episode not found!');
     }
-  }, [locationId]);
+  }, [episodeId]);
 
   useEffect(() => {
-    const getLocationCharacters = async () => {
-      const locationData = await fetch(
-        `https://rickandmortyapi.com/api/location/${locationId}`
-      ).then((response) => response.json());
-
-      dispatch(setLocationDetails(locationData));
-
-      const locationCharacterIdList = [];
-      locationData.residents.forEach((resident) => {
-        let locationCharacterId = resident.substring(
-          resident.lastIndexOf('/') + 1
-        );
-        locationCharacterIdList.push(locationCharacterId);
-      });
-      const endpoint = locationCharacterIdList.toString();
-
-      fetch(`https://rickandmortyapi.com/api/character/${endpoint}`)
+    const getEpisodeCharacters = async () => {
+      const episodeData = await fetch(
+        `https://rickandmortyapi.com/api/episode/${episodeId}`
+      )
         .then((response) => response.json())
-        .then((data) => {
+        .catch((error) => {
           setLoading(false);
-          setCharacterList(data);
+          setEpisodeFound(false);
+          setCharacterPageError(error.message);
         });
+
+      if (episodeData) {
+        dispatch(setEpisodeDetails(episodeData));
+
+        const episodeCharacterIdList = [];
+        episodeData.characters.forEach((character) => {
+          let episodeCharacterId = character.substring(
+            character.lastIndexOf('/') + 1
+          );
+          episodeCharacterIdList.push(episodeCharacterId);
+        });
+        const endpoint = episodeCharacterIdList.toString();
+
+        fetch(`https://rickandmortyapi.com/api/character/${endpoint}`)
+          .then((response) => response.json())
+          .then((data) => {
+            setLoading(false);
+            setEpisodeFound(true);
+            setCharacterList(data);
+          })
+          .catch((error) => {
+            setLoading(false);
+            setEpisodeFound(false);
+            setCharacterPageError(error.message);
+          });
+      }
     };
 
-    getLocationCharacters();
-  }, [locationId, dispatch]);
+    getEpisodeCharacters();
+  }, [episodeId, dispatch]);
 
   const location = useLocation();
   const { pathname } = location;
@@ -83,14 +97,14 @@ const LocationList = () => {
         <CircularProgress color="inherit" />
       </Backdrop>
       <Navbar />
-      {locationFound ? (
+      {episodeFound ? (
         <>
           <Box sx={{ m: 6 }}>
             <Typography
               variant="h3"
               sx={{ mb: 2, fontFamily: 'monospace', textAlign: 'center' }}
             >
-              Location name:{' '}
+              Episode name:{' '}
               <Typography
                 variant="h3"
                 component="span"
@@ -100,32 +114,14 @@ const LocationList = () => {
                   color: '#7300e6',
                 }}
               >
-                {name === '' || name === 'unknown' ? 'Unknown' : name}
-              </Typography>
-            </Typography>
-            <Typography
-              variant="h5"
-              sx={{ mb: 2, fontFamily: 'monospace', textAlign: 'center' }}
-            >
-              Dimension:{' '}
-              <Typography
-                variant="h5"
-                component="span"
-                sx={{
-                  display: { xs: 'block', md: 'inline-block' },
-                  fontFamily: 'monospace',
-                }}
-              >
-                {dimension === '' || dimension === 'unknown'
-                  ? 'Unknown'
-                  : dimension}
+                {name === '' ? 'Unknown' : name}
               </Typography>
             </Typography>
             <Typography
               variant="h5"
               sx={{ fontFamily: 'monospace', textAlign: 'center' }}
             >
-              Type:
+              Air date:{' '}
               <Typography
                 variant="h5"
                 component="span"
@@ -134,7 +130,7 @@ const LocationList = () => {
                   fontFamily: 'monospace',
                 }}
               >
-                {type === '' || type === 'unknown' ? 'Unknown' : type}
+                {air_date === '' ? 'Unknown' : air_date}
               </Typography>
             </Typography>
           </Box>
@@ -153,10 +149,10 @@ const LocationList = () => {
                 my: { xs: 5 },
               }}
             >
-              <SelectLocation
-                total={126}
-                locationId={locationId}
-                setLocationId={setLocationId}
+              <SelectEpisode
+                total={51}
+                episodeId={episodeId}
+                setEpisodeId={setEpisodeId}
               />
             </Box>
             <Box
@@ -195,4 +191,4 @@ const LocationList = () => {
   );
 };
 
-export default LocationList;
+export default EpisodeList;
