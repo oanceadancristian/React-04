@@ -159,7 +159,7 @@ function ResponsiveNavBarNoAccount() {
               display: { xs: 'flex', md: 'none' },
               alignItems: 'center',
               flexGrow: 1,
-              fontSize: '20px',
+              fontSize: '17px',
               fontWeight: 700,
               fontFamily: 'monospace',
               letterSpacing: '.1rem',
@@ -175,7 +175,7 @@ function ResponsiveNavBarNoAccount() {
               sx={{
                 display: { xs: 'flex', md: 'none' },
                 mr: 1,
-                fontSize: '25px',
+                fontSize: '22px',
               }}
             />
             Rick and Morty
