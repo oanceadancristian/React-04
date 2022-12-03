@@ -202,7 +202,7 @@ function ResponsiveNavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <Box sx={{ margin: '5px 20px', textAlign: 'center' }}>
+              {/* <Box sx={{ margin: '5px 20px', textAlign: 'center' }}>
                 <Typography component="div">
                   Signed in as{' '}
                   <Typography component="p" sx={{ fontWeight: 'bold' }}>
@@ -211,7 +211,7 @@ function ResponsiveNavBar() {
                       localStorage.getItem('googleEmail').replace(/"/g, '')}
                   </Typography>
                 </Typography>
-              </Box>
+              </Box> */}
               <MenuItem
                 onClick={handleCloseUserMenu}
                 sx={{ display: 'flex', justifyContent: 'center' }}
