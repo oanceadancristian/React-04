@@ -378,13 +378,17 @@ const SigninForm = () => {
       <Stack spacing={0.5} justifyContent="center" alignItems="center">
         <FacebookLogin
           appId="487185063270333"
-          textButton="&nbsp;&nbsp;Sign in with Facebook"
+          textButton="Sign in with Facebook"
           fields="name,email"
           callback={responseFacebook}
           cssClass="btnFacebook"
           icon="fa-facebook"
         />
-        <GoogleLogin onSuccess={responseGoogle} onError={responseGoogle} />
+        <GoogleLogin
+          onSuccess={responseGoogle}
+          onError={responseGoogle}
+          width="275"
+        />
       </Stack>
     </form>
   );

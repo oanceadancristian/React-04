@@ -554,7 +554,11 @@ const SignupForm = () => {
           cssClass="btnFacebook"
           icon="fa-facebook"
         />
-        <GoogleLogin onSuccess={responseGoogle} onError={responseGoogle} />
+        <GoogleLogin
+          onSuccess={responseGoogle}
+          onError={responseGoogle}
+          width="275"
+        />
       </Stack>
     </form>
   );
