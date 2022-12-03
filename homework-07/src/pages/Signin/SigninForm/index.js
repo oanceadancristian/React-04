@@ -40,7 +40,7 @@ const SigninForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = 'http://localhost:8080/api/signin';
+      const url = 'http://192.168.0.164:8080/api/signin';
       const { data: res } = await axios.post(url, data);
       localStorage.setItem('userToken', res.data);
       localStorage.setItem('userName', res.userName);
@@ -175,6 +175,7 @@ const SigninForm = () => {
         'googleEmail',
         JSON.stringify(googleUserObject['email'])
       );
+
       window.location = '/homepage';
     }
   };

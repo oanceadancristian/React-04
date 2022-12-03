@@ -90,7 +90,13 @@ const Homepage = () => {
         alignItems="center"
         justifyContent="center"
         sx={{
-          height: '50vh',
+          height: {
+            xs: '35vh',
+            sm: '35vh',
+            md: '40vh',
+            lg: '50vh',
+            xl: '50vh',
+          },
           backgroundColor: '#efefef',
         }}
       >
