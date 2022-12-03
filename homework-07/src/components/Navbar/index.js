@@ -46,6 +46,8 @@ function ResponsiveNavBar() {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userEmail');
     localStorage.removeItem('facebookToken');
     localStorage.removeItem('facebookName');
     localStorage.removeItem('facebookEmail');
@@ -202,16 +204,16 @@ function ResponsiveNavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {/* <Box sx={{ margin: '5px 20px', textAlign: 'center' }}>
+              <Box sx={{ margin: '5px 20px', textAlign: 'center' }}>
                 <Typography component="div">
                   Signed in as{' '}
                   <Typography component="p" sx={{ fontWeight: 'bold' }}>
-                    {localStorage.getItem('token') ||
+                    {localStorage.getItem('userEmail') ||
                       localStorage.getItem('facebookEmail') ||
                       localStorage.getItem('googleEmail').replace(/"/g, '')}
                   </Typography>
                 </Typography>
-              </Box> */}
+              </Box>
               <MenuItem
                 onClick={handleCloseUserMenu}
                 sx={{ display: 'flex', justifyContent: 'center' }}
@@ -398,7 +400,7 @@ function ResponsiveNavBar() {
                 <Typography component="div">
                   Signed in as{' '}
                   <Typography component="p" sx={{ fontWeight: 'bold' }}>
-                    {localStorage.getItem('token') ||
+                    {localStorage.getItem('userEmail') ||
                       localStorage.getItem('facebookEmail') ||
                       localStorage.getItem('googleEmail').replace(/"/g, '')}
                   </Typography>

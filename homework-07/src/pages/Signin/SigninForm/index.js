@@ -43,6 +43,9 @@ const SigninForm = () => {
       const url = 'http://localhost:8080/api/signin';
       const { data: res } = await axios.post(url, data);
       localStorage.setItem('token', res.data);
+      localStorage.setItem('userName', res.userName);
+      localStorage.setItem('userEmail', res.userEmail);
+
       if (checked) {
         secureLocalStorage.setItem('remember_me', checked);
         secureLocalStorage.setItem('email', data.email);
