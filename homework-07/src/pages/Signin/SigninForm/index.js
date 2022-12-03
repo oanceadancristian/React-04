@@ -42,18 +42,17 @@ const SigninForm = () => {
     try {
       const url = 'http://localhost:8080/api/signin';
       const { data: res } = await axios.post(url, data);
-      localStorage.setItem('token', res.data);
+      localStorage.setItem('userToken', res.data);
       localStorage.setItem('userName', res.userName);
       localStorage.setItem('userEmail', res.userEmail);
-
       if (checked) {
-        secureLocalStorage.setItem('remember_me', checked);
-        secureLocalStorage.setItem('email', data.email);
-        secureLocalStorage.setItem('password', data.password);
+        secureLocalStorage.setItem('userSecureRememberMe', checked);
+        secureLocalStorage.setItem('userSecureEmail', data.email);
+        secureLocalStorage.setItem('userSecurePassword', data.password);
       } else {
-        secureLocalStorage.removeItem('remember_me');
-        secureLocalStorage.removeItem('email');
-        secureLocalStorage.removeItem('password');
+        secureLocalStorage.removeItem('userSecureRememberMe');
+        secureLocalStorage.removeItem('userSecureEmail');
+        secureLocalStorage.removeItem('userSecurePassword');
       }
       window.location = '/homepage';
     } catch (error) {
@@ -89,9 +88,9 @@ const SigninForm = () => {
   }, [error]);
 
   const handleChange = ({ currentTarget: input }) => {
-    secureLocalStorage.removeItem('remember_me');
-    secureLocalStorage.removeItem('email');
-    secureLocalStorage.removeItem('password');
+    secureLocalStorage.removeItem('userSecureRememberMe');
+    secureLocalStorage.removeItem('userSecureEmail');
+    secureLocalStorage.removeItem('userSecurePassword');
     setData({ ...data, [input.name]: input.value });
     setError('');
 
@@ -133,9 +132,9 @@ const SigninForm = () => {
   };
 
   const [checked, setChecked] = useState(
-    secureLocalStorage.getItem('remember_me') === null
+    secureLocalStorage.getItem('userSecureRememberMe') === null
       ? false
-      : secureLocalStorage.getItem('remember_me')
+      : secureLocalStorage.getItem('userSecureRememberMe')
   );
 
   const handleCheckboxChange = () => {
@@ -143,10 +142,13 @@ const SigninForm = () => {
   };
 
   useEffect(() => {
-    if (secureLocalStorage.getItem('remember_me')) {
+    if (secureLocalStorage.getItem('userSecureRememberMe')) {
       setData({
-        email: secureLocalStorage.getItem('email', data.email),
-        password: secureLocalStorage.getItem('password', data.password),
+        email: secureLocalStorage.getItem('userSecureEmail', data.email),
+        password: secureLocalStorage.getItem(
+          'userSecurePassword',
+          data.password
+        ),
       });
       setChecked(checked);
     }

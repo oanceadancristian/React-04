@@ -15,7 +15,7 @@ import './App.css';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function App() {
-  const user = localStorage.getItem('token');
+  const user = localStorage.getItem('userToken');
   const facebookUser = localStorage.getItem('facebookToken');
   const googleUser = localStorage.getItem('googleUser');
 

@@ -45,7 +45,7 @@ function ResponsiveNavBar() {
   const { pathname, search } = location;
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem('userToken');
     localStorage.removeItem('userName');
     localStorage.removeItem('userEmail');
     localStorage.removeItem('facebookToken');
