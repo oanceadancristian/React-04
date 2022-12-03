@@ -15,6 +15,12 @@ import Checkbox from '@mui/material/Checkbox';
 import Stack from '@mui/system/Stack';
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import './SigninForm.css';
+
+import FacebookLogin from 'react-facebook-login';
+import { GoogleLogin } from '@react-oauth/google';
+import jwt_decode from 'jwt-decode';
 
 const SigninForm = () => {
   const emailRef = useRef();
@@ -143,21 +149,46 @@ const SigninForm = () => {
     }
   }, [checked, data.email, data.password]);
 
+  const responseFacebook = (response) => {
+    if (response.accessToken) {
+      localStorage.setItem('facebookToken', response.accessToken);
+      localStorage.setItem('facebookName', response.name);
+      localStorage.setItem('facebookEmail', response.email);
+      window.location = '/homepage';
+    }
+  };
+
+  const responseGoogle = (response) => {
+    if (response.credential) {
+      const googleUserObject = jwt_decode(response.credential);
+      localStorage.setItem('googleUser', JSON.stringify(googleUserObject));
+      localStorage.setItem(
+        'googleName',
+        JSON.stringify(googleUserObject['given_name'])
+      );
+      localStorage.setItem(
+        'googleEmail',
+        JSON.stringify(googleUserObject['email'])
+      );
+      window.location = '/homepage';
+    }
+  };
+
   return (
     <form
       onSubmit={handleSubmit}
-      style={{ marginTop: '100px', textAlign: 'center' }}
+      style={{ marginTop: '75px', textAlign: 'center' }}
     >
       <FormControl>
         <Typography
           sx={{
-            mt: 3,
+            mt: 2.5,
             fontSize: {
-              xs: '20px',
-              sm: '20px',
-              md: '25px',
-              lg: '30px',
-              xl: '30px',
+              xs: '17px',
+              sm: '17px',
+              md: '20px',
+              lg: '23px',
+              xl: '23px',
             },
             fontWeight: 'bold',
             textAlign: 'center',
@@ -197,7 +228,7 @@ const SigninForm = () => {
           }}
           sx={{
             width: '100%',
-            mt: 3,
+            mt: 2.5,
             '& label.Mui-focused': {
               color: emailError ? '#c24839' : '#7eb431',
             },
@@ -237,7 +268,7 @@ const SigninForm = () => {
           }}
           sx={{
             width: '100%',
-            mt: 3,
+            mt: 2.5,
             '& label.Mui-focused': {
               color: passwordError ? '#c24839' : '#7eb431',
             },
@@ -271,8 +302,8 @@ const SigninForm = () => {
             alignItems="center"
             sx={{
               gap: 0.5,
-              mt: 2,
-              p: 2,
+              mt: 1.5,
+              p: 1.5,
               textAlign: 'center',
               borderRadius: 1,
               color: 'white',
@@ -287,7 +318,7 @@ const SigninForm = () => {
           type="submit"
           variant="contained"
           sx={{
-            mt: 3,
+            mt: 1.5,
             px: 3,
             py: 1.5,
             fontWeight: 'bold',
@@ -307,7 +338,8 @@ const SigninForm = () => {
           justifyContent="center"
           sx={{
             flexWrap: 'wrap',
-            mt: 3,
+            mt: 2,
+            mb: 2,
             fontSize: {
               xs: '17px',
               sm: '17px',
@@ -336,7 +368,19 @@ const SigninForm = () => {
             Sign up
           </Link>
         </Stack>
+        <Divider sx={{ width: '100%', mb: 2, fontWeight: 'bold' }}>OR</Divider>
       </FormControl>
+      <Stack spacing={0.5} justifyContent="center" alignItems="center">
+        <FacebookLogin
+          appId="487185063270333"
+          textButton="&nbsp;&nbsp;Sign in with Facebook"
+          fields="name,email"
+          callback={responseFacebook}
+          cssClass="btnFacebook"
+          icon="fa-facebook"
+        />
+        <GoogleLogin onSuccess={responseGoogle} onError={responseGoogle} />
+      </Stack>
     </form>
   );
 };

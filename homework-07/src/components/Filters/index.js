@@ -53,6 +53,7 @@ const Filters = (props) => {
     localStorage.removeItem('Status');
     localStorage.removeItem('Species');
     localStorage.removeItem('Gender');
+    localStorage.removeItem('Search');
     navigate('/characters/pages/1');
   };
 

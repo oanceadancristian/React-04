@@ -46,6 +46,12 @@ function ResponsiveNavBar() {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('facebookToken');
+    localStorage.removeItem('facebookName');
+    localStorage.removeItem('facebookEmail');
+    localStorage.removeItem('googleUser');
+    localStorage.removeItem('googleName');
+    localStorage.removeItem('googleEmail');
     window.location = '/';
   };
 
@@ -196,7 +202,20 @@ function ResponsiveNavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem onClick={handleCloseUserMenu}>
+              <Box sx={{ margin: '5px 20px', textAlign: 'center' }}>
+                <Typography component="div">
+                  Signed in as{' '}
+                  <Typography component="p" sx={{ fontWeight: 'bold' }}>
+                    {localStorage.getItem('token') ||
+                      localStorage.getItem('facebookEmail') ||
+                      localStorage.getItem('googleEmail').replace(/"/g, '')}
+                  </Typography>
+                </Typography>
+              </Box>
+              <MenuItem
+                onClick={handleCloseUserMenu}
+                sx={{ display: 'flex', justifyContent: 'center' }}
+              >
                 <Link
                   component={RouterLink}
                   onClick={handleLogout}
@@ -375,7 +394,20 @@ function ResponsiveNavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem onClick={handleCloseUserMenu}>
+              <Box sx={{ margin: '5px 20px', textAlign: 'center' }}>
+                <Typography component="div">
+                  Signed in as{' '}
+                  <Typography component="p" sx={{ fontWeight: 'bold' }}>
+                    {localStorage.getItem('token') ||
+                      localStorage.getItem('facebookEmail') ||
+                      localStorage.getItem('googleEmail').replace(/"/g, '')}
+                  </Typography>
+                </Typography>
+              </Box>
+              <MenuItem
+                onClick={handleCloseUserMenu}
+                sx={{ display: 'flex', justifyContent: 'center' }}
+              >
                 <Link
                   component={RouterLink}
                   onClick={handleLogout}
