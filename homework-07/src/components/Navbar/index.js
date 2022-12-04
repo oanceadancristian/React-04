@@ -16,6 +16,7 @@ import CameraRollIcon from '@mui/icons-material/CameraRoll';
 import MenuIcon from '@mui/icons-material/Menu';
 import Avatar from '@mui/material/Avatar';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import EditIcon from '@mui/icons-material/Edit';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 function ResponsiveNavBar() {
@@ -219,7 +220,7 @@ function ResponsiveNavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <Box sx={{ margin: '5px 20px', textAlign: 'center' }}>
+              <Box sx={{ margin: '10px 20px', textAlign: 'center' }}>
                 <Typography component="div">
                   Signed in as{' '}
                   <Typography component="p" sx={{ fontWeight: 'bold' }}>
@@ -233,28 +234,56 @@ function ResponsiveNavBar() {
                 onClick={handleCloseUserMenu}
                 sx={{ display: 'flex', justifyContent: 'center' }}
               >
-                <Link
-                  component={RouterLink}
-                  onClick={handleLogout}
-                  sx={{
-                    textDecoration: 'none',
-                    color: 'black',
-                    '&:hover': { color: '#97ce4c' },
-                  }}
-                >
-                  <Stack direction="row" spacing={1}>
-                    <LogoutIcon />
-                    <Typography
-                      textAlign="center"
+                <Stack alignItems="center" spacing={1}>
+                  {localStorage.getItem('userEmail') ? (
+                    <Link
+                      component={RouterLink}
+                      to="/update_profile"
                       sx={{
-                        fontFamily: 'monospace',
-                        textTransform: 'uppercase',
+                        textDecoration: 'none',
+                        color: 'black',
+                        '&:hover': { color: '#97ce4c' },
                       }}
                     >
-                      Sign out
-                    </Typography>
-                  </Stack>
-                </Link>
+                      <Stack direction="row" spacing={1}>
+                        <EditIcon />
+                        <Typography
+                          textAlign="center"
+                          sx={{
+                            fontFamily: 'monospace',
+                            textTransform: 'uppercase',
+                          }}
+                        >
+                          Update profile
+                        </Typography>
+                      </Stack>
+                    </Link>
+                  ) : (
+                    ''
+                  )}
+                  <Link
+                    component={RouterLink}
+                    onClick={handleLogout}
+                    sx={{
+                      textDecoration: 'none',
+                      color: 'black',
+                      '&:hover': { color: '#97ce4c' },
+                    }}
+                  >
+                    <Stack direction="row" spacing={1}>
+                      <LogoutIcon />
+                      <Typography
+                        textAlign="center"
+                        sx={{
+                          fontFamily: 'monospace',
+                          textTransform: 'uppercase',
+                        }}
+                      >
+                        Sign out
+                      </Typography>
+                    </Stack>
+                  </Link>
+                </Stack>
               </MenuItem>
             </Menu>
           </Box>
@@ -424,7 +453,7 @@ function ResponsiveNavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <Box sx={{ margin: '5px 20px', textAlign: 'center' }}>
+              <Box sx={{ margin: '10px 20px', textAlign: 'center' }}>
                 <Typography component="div">
                   Signed in as{' '}
                   <Typography component="p" sx={{ fontWeight: 'bold' }}>
@@ -438,28 +467,56 @@ function ResponsiveNavBar() {
                 onClick={handleCloseUserMenu}
                 sx={{ display: 'flex', justifyContent: 'center' }}
               >
-                <Link
-                  component={RouterLink}
-                  onClick={handleLogout}
-                  sx={{
-                    textDecoration: 'none',
-                    color: 'black',
-                    '&:hover': { color: '#97ce4c' },
-                  }}
-                >
-                  <Stack direction="row" spacing={1}>
-                    <LogoutIcon />
-                    <Typography
-                      textAlign="center"
+                <Stack alignItems="center" spacing={1}>
+                  {localStorage.getItem('userEmail') ? (
+                    <Link
+                      component={RouterLink}
+                      to="/update_profile"
                       sx={{
-                        fontFamily: 'monospace',
-                        textTransform: 'uppercase',
+                        textDecoration: 'none',
+                        color: 'black',
+                        '&:hover': { color: '#97ce4c' },
                       }}
                     >
-                      Sign out
-                    </Typography>
-                  </Stack>
-                </Link>
+                      <Stack direction="row" spacing={1}>
+                        <EditIcon />
+                        <Typography
+                          textAlign="center"
+                          sx={{
+                            fontFamily: 'monospace',
+                            textTransform: 'uppercase',
+                          }}
+                        >
+                          Update profile
+                        </Typography>
+                      </Stack>
+                    </Link>
+                  ) : (
+                    ''
+                  )}
+                  <Link
+                    component={RouterLink}
+                    onClick={handleLogout}
+                    sx={{
+                      textDecoration: 'none',
+                      color: 'black',
+                      '&:hover': { color: '#97ce4c' },
+                    }}
+                  >
+                    <Stack direction="row" spacing={1}>
+                      <LogoutIcon />
+                      <Typography
+                        textAlign="center"
+                        sx={{
+                          fontFamily: 'monospace',
+                          textTransform: 'uppercase',
+                        }}
+                      >
+                        Sign out
+                      </Typography>
+                    </Stack>
+                  </Link>
+                </Stack>
               </MenuItem>
             </Menu>
           </Box>

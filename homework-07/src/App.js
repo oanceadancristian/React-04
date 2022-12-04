@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomepageNoAccount from '../src/pages/HomepageNoAccount';
 import Signin from '../src/pages/Signin';
 import Signup from '../src/pages/Signup';
+import UpdateProfile from './pages/UpdateProfile';
 import AccessForbidden from './pages/AccessForbidden';
 import Homepage from './pages/Homepage';
 import CharacterList from './pages/CharacterList';
@@ -31,6 +32,10 @@ function App() {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="*" element={<AccessForbidden />} />
               </>
+            )}
+
+            {user && (
+              <Route path="/update_profile" element={<UpdateProfile />} />
             )}
 
             {(user || facebookUser || googleUser) && (
