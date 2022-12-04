@@ -276,14 +276,14 @@ const EditProfileForm = () => {
               <InputAdornment position="start">
                 <PersonIcon
                   sx={{
-                    color: firstNameError ? '#c24839' : firstNameIconColor,
+                    color: firstNameError ? '#d32f2f' : firstNameIconColor,
                   }}
                 />
               </InputAdornment>
             ),
             endAdornment: (
               <InputAdornment position="end">
-                {firstNameError ? <ErrorIcon sx={{ color: '#c24839' }} /> : ''}
+                {firstNameError ? <ErrorIcon sx={{ color: '#d32f2f' }} /> : ''}
               </InputAdornment>
             ),
           }}
@@ -291,11 +291,11 @@ const EditProfileForm = () => {
             width: '100%',
             mt: 2.5,
             '& label.Mui-focused': {
-              color: firstNameError ? '#c24839' : '#7eb431',
+              color: firstNameError ? '#d32f2f' : '#7eb431',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: firstNameError ? '#c24839' : '#7eb431',
+                borderColor: firstNameError ? '#d32f2f' : '#7eb431',
               },
             },
           }}
@@ -317,13 +317,13 @@ const EditProfileForm = () => {
             startAdornment: (
               <InputAdornment position="start">
                 <PersonIcon
-                  sx={{ color: lastNameError ? '#c24839' : lastNameIconColor }}
+                  sx={{ color: lastNameError ? '#d32f2f' : lastNameIconColor }}
                 />
               </InputAdornment>
             ),
             endAdornment: (
               <InputAdornment position="end">
-                {lastNameError ? <ErrorIcon sx={{ color: '#c24839' }} /> : ''}
+                {lastNameError ? <ErrorIcon sx={{ color: '#d32f2f' }} /> : ''}
               </InputAdornment>
             ),
           }}
@@ -331,11 +331,11 @@ const EditProfileForm = () => {
             width: '100%',
             mt: 2.5,
             '& label.Mui-focused': {
-              color: lastNameError ? '#c24839' : '#7eb431',
+              color: lastNameError ? '#d32f2f' : '#7eb431',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: lastNameError ? '#c24839' : '#7eb431',
+                borderColor: lastNameError ? '#d32f2f' : '#7eb431',
               },
             },
           }}
@@ -357,13 +357,13 @@ const EditProfileForm = () => {
             startAdornment: (
               <InputAdornment position="start">
                 <EmailIcon
-                  sx={{ color: emailError ? '#c24839' : emailIconColor }}
+                  sx={{ color: emailError ? '#d32f2f' : emailIconColor }}
                 />
               </InputAdornment>
             ),
             endAdornment: (
               <InputAdornment position="end">
-                {emailError ? <ErrorIcon sx={{ color: '#c24839' }} /> : ''}
+                {emailError ? <ErrorIcon sx={{ color: '#d32f2f' }} /> : ''}
               </InputAdornment>
             ),
           }}
@@ -371,11 +371,11 @@ const EditProfileForm = () => {
             width: '100%',
             mt: 2.5,
             '& label.Mui-focused': {
-              color: emailError ? '#c24839' : '#7eb431',
+              color: emailError ? '#d32f2f' : '#7eb431',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: emailError ? '#c24839' : '#7eb431',
+                borderColor: emailError ? '#d32f2f' : '#7eb431',
               },
             },
           }}
@@ -397,13 +397,13 @@ const EditProfileForm = () => {
             startAdornment: (
               <InputAdornment position="start">
                 <VpnKeyIcon
-                  sx={{ color: passwordError ? '#c24839' : passwordIconColor }}
+                  sx={{ color: passwordError ? '#d32f2f' : passwordIconColor }}
                 />
               </InputAdornment>
             ),
             endAdornment: (
               <InputAdornment position="end">
-                {passwordError ? <ErrorIcon sx={{ color: '#c24839' }} /> : ''}
+                {passwordError ? <ErrorIcon sx={{ color: '#d32f2f' }} /> : ''}
               </InputAdornment>
             ),
           }}
@@ -411,11 +411,11 @@ const EditProfileForm = () => {
             width: '100%',
             mt: 2.5,
             '& label.Mui-focused': {
-              color: passwordError ? '#c24839' : '#7eb431',
+              color: passwordError ? '#d32f2f' : '#7eb431',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: passwordError ? '#c24839' : '#7eb431',
+                borderColor: passwordError ? '#d32f2f' : '#7eb431',
               },
             },
           }}
@@ -439,7 +439,7 @@ const EditProfileForm = () => {
                 <VpnKeyIcon
                   sx={{
                     color: confirmPasswordError
-                      ? '#c24839'
+                      ? '#d32f2f'
                       : confirmPasswordIconColor,
                   }}
                 />
@@ -448,7 +448,7 @@ const EditProfileForm = () => {
             endAdornment: (
               <InputAdornment position="end">
                 {confirmPasswordError ? (
-                  <ErrorIcon sx={{ color: '#c24839' }} />
+                  <ErrorIcon sx={{ color: '#d32f2f' }} />
                 ) : (
                   ''
                 )}
@@ -459,11 +459,11 @@ const EditProfileForm = () => {
             width: '100%',
             mt: 2.5,
             '& label.Mui-focused': {
-              color: confirmPasswordError ? '#c24839' : '#7eb431',
+              color: confirmPasswordError ? '#d32f2f' : '#7eb431',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: confirmPasswordError ? '#c24839' : '#7eb431',
+                borderColor: confirmPasswordError ? '#d32f2f' : '#7eb431',
               },
             },
           }}
@@ -480,7 +480,7 @@ const EditProfileForm = () => {
               textAlign: 'center',
               borderRadius: '5px',
               color: 'white',
-              backgroundColor: '#c24839',
+              backgroundColor: '#d32f2f',
             }}
           >
             <ErrorIcon sx={{ color: 'white' }} />
@@ -497,10 +497,10 @@ const EditProfileForm = () => {
             fontWeight: 'bold',
             textTransform: 'uppercase',
             borderRadius: 1,
-            backgroundColor: '#7eb431',
+            backgroundColor: '#1976d2',
             cursor: 'pointer',
             '&:hover': {
-              backgroundColor: '#97ce4c',
+              backgroundColor: '#0059B2',
             },
           }}
         >
@@ -516,10 +516,10 @@ const EditProfileForm = () => {
             fontWeight: 'bold',
             textTransform: 'uppercase',
             borderRadius: 1,
-            backgroundColor: '#fa383b',
+            backgroundColor: '#d32f2f',
             cursor: 'pointer',
             '&:hover': {
-              backgroundColor: '#fb5154',
+              backgroundColor: '#c62828',
             },
           }}
         >

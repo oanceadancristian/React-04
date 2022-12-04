@@ -227,13 +227,13 @@ const SigninForm = () => {
             startAdornment: (
               <InputAdornment position="start">
                 <EmailIcon
-                  sx={{ color: emailError ? '#c24839' : emailIconColor }}
+                  sx={{ color: emailError ? '#d32f2f' : emailIconColor }}
                 />
               </InputAdornment>
             ),
             endAdornment: (
               <InputAdornment position="end">
-                {emailError ? <ErrorIcon sx={{ color: '#c24839' }} /> : ''}
+                {emailError ? <ErrorIcon sx={{ color: '#d32f2f' }} /> : ''}
               </InputAdornment>
             ),
           }}
@@ -241,11 +241,11 @@ const SigninForm = () => {
             width: '100%',
             mt: 2.5,
             '& label.Mui-focused': {
-              color: emailError ? '#c24839' : '#7eb431',
+              color: emailError ? '#d32f2f' : '#7eb431',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: emailError ? '#c24839' : '#7eb431',
+                borderColor: emailError ? '#d32f2f' : '#7eb431',
               },
             },
           }}
@@ -267,13 +267,13 @@ const SigninForm = () => {
             startAdornment: (
               <InputAdornment position="start">
                 <VpnKeyIcon
-                  sx={{ color: passwordError ? '#c24839' : passwordIconColor }}
+                  sx={{ color: passwordError ? '#d32f2f' : passwordIconColor }}
                 />
               </InputAdornment>
             ),
             endAdornment: (
               <InputAdornment position="end">
-                {passwordError ? <ErrorIcon sx={{ color: '#c24839' }} /> : ''}
+                {passwordError ? <ErrorIcon sx={{ color: '#d32f2f' }} /> : ''}
               </InputAdornment>
             ),
           }}
@@ -281,11 +281,11 @@ const SigninForm = () => {
             width: '100%',
             mt: 2.5,
             '& label.Mui-focused': {
-              color: passwordError ? '#c24839' : '#7eb431',
+              color: passwordError ? '#d32f2f' : '#7eb431',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: passwordError ? '#c24839' : '#7eb431',
+                borderColor: passwordError ? '#d32f2f' : '#7eb431',
               },
             },
           }}
@@ -318,7 +318,7 @@ const SigninForm = () => {
               textAlign: 'center',
               borderRadius: 1,
               color: 'white',
-              backgroundColor: '#c24839',
+              backgroundColor: '#d32f2f',
             }}
           >
             <ErrorIcon sx={{ color: 'white' }} />

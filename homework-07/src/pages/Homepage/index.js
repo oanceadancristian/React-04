@@ -141,7 +141,7 @@ const Homepage = () => {
                 if (showCharacterStatus() === 'random-green') {
                   return '0 0 25px #7eb431';
                 } else if (showCharacterStatus() === 'random-red') {
-                  return '0 0 25px #fa383b';
+                  return '0 0 25px #d32f2f';
                 } else {
                   return '0 0 25px #8dacbf';
                 }
