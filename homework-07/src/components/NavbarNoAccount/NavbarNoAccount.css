@@ -1,7 +1,7 @@
 .active-no-account {
   font-weight: bold;
   text-decoration: none;
-  color: #7eb431;
+  color: #cc7a00;
 }
 
 .inactive-no-account {
@@ -10,5 +10,5 @@
 }
 
 .inactive-no-account:hover {
-  color: #97ce4c;
+  color: #ff9800;
 }

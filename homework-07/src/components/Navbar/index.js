@@ -79,8 +79,8 @@ function ResponsiveNavBar() {
               letterSpacing: '.25rem',
               textDecoration: 'none',
               textTransform: 'uppercase',
-              color: pathname === '/homepage' ? '#7eb431' : 'white',
-              '&:hover': { color: '#97ce4c' },
+              color: pathname === '/homepage' ? '#cc7a00' : 'white',
+              '&:hover': { color: '#ff9800' },
             }}
           >
             <CameraRollIcon
@@ -116,9 +116,9 @@ function ResponsiveNavBar() {
                   fontSize: '20px',
                   fontFamily: 'monospace',
                   color: pathname.startsWith('/characters')
-                    ? '#7eb431'
+                    ? '#cc7a00'
                     : 'white',
-                  '&:hover': { color: '#97ce4c', backgroundColor: '#202329' },
+                  '&:hover': { color: '#ff9800', backgroundColor: '#202329' },
                 }}
               >
                 Characters
@@ -136,9 +136,9 @@ function ResponsiveNavBar() {
                   my: 2,
                   fontSize: '20px',
                   fontFamily: 'monospace',
-                  color: pathname.startsWith('/episodes') ? '#7eb431' : 'white',
+                  color: pathname.startsWith('/episodes') ? '#cc7a00' : 'white',
 
-                  '&:hover': { color: '#97ce4c', backgroundColor: '#202329' },
+                  '&:hover': { color: '#ff9800', backgroundColor: '#202329' },
                 }}
               >
                 Episodes
@@ -157,10 +157,10 @@ function ResponsiveNavBar() {
                   fontSize: '20px',
                   fontFamily: 'monospace',
                   color: pathname.startsWith('/locations')
-                    ? '#7eb431'
+                    ? '#cc7a00'
                     : 'white',
 
-                  '&:hover': { color: '#97ce4c', backgroundColor: '#202329' },
+                  '&:hover': { color: '#ff9800', backgroundColor: '#202329' },
                 }}
               >
                 Locations
@@ -177,7 +177,7 @@ function ResponsiveNavBar() {
                   fontFamily: 'monospace',
                   letterSpacing: '.1rem',
                   textTransform: 'uppercase',
-                  color: anchorElUser ? '#97ce4c' : 'white',
+                  color: anchorElUser ? '#cc7a00' : 'white',
                 }}
               >
                 <Avatar
@@ -198,8 +198,8 @@ function ResponsiveNavBar() {
                     sx={{
                       mr: 1,
                       fontSize: '30px',
-                      color: anchorElUser ? '#97ce4c' : 'white',
-                      '&:hover': { color: '#97ce4c' },
+                      color: anchorElUser ? '#cc7a00' : 'white',
+                      '&:hover': { color: '#ff9800' },
                     }}
                   />
                 </Avatar>
@@ -243,7 +243,7 @@ function ResponsiveNavBar() {
                       sx={{
                         textDecoration: 'none',
                         color: 'black',
-                        '&:hover': { color: '#97ce4c' },
+                        '&:hover': { color: '#ff9800' },
                       }}
                     >
                       <Stack direction="row" spacing={0.5}>
@@ -268,7 +268,7 @@ function ResponsiveNavBar() {
                     sx={{
                       textDecoration: 'none',
                       color: 'black',
-                      '&:hover': { color: '#97ce4c' },
+                      '&:hover': { color: '#ff9800' },
                     }}
                   >
                     <Stack direction="row" spacing={0.5}>
@@ -296,8 +296,8 @@ function ResponsiveNavBar() {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               sx={{
-                color: anchorElNav ? '#97ce4c' : 'white',
-                '&:hover': { color: '#97ce4c' },
+                color: anchorElNav ? '#cc7a00' : 'white',
+                '&:hover': { color: '#ff9800' },
               }}
             >
               <MenuIcon sx={{ fontSize: '30px' }} />
@@ -327,7 +327,7 @@ function ResponsiveNavBar() {
                   textDecoration: 'none',
                   textTransform: 'uppercase',
                   color: 'black',
-                  '&:hover': { color: '#97ce4c' },
+                  '&:hover': { color: '#ff9800' },
                 }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
@@ -346,7 +346,7 @@ function ResponsiveNavBar() {
                   textDecoration: 'none',
                   textTransform: 'uppercase',
                   color: 'black',
-                  '&:hover': { color: '#97ce4c' },
+                  '&:hover': { color: '#ff9800' },
                 }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
@@ -365,7 +365,7 @@ function ResponsiveNavBar() {
                   textDecoration: 'none',
                   textTransform: 'uppercase',
                   color: 'black',
-                  '&:hover': { color: '#97ce4c' },
+                  '&:hover': { color: '#ff9800' },
                 }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
@@ -394,7 +394,7 @@ function ResponsiveNavBar() {
               letterSpacing: '.25rem',
               textDecoration: 'none',
               textTransform: 'uppercase',
-              color: '#7eb431',
+              color: '#cc7a00',
             }}
           >
             <CameraRollIcon
@@ -431,8 +431,8 @@ function ResponsiveNavBar() {
                   <AccountBoxIcon
                     sx={{
                       fontSize: '30px',
-                      color: anchorElUser ? '#97ce4c' : 'white',
-                      '&:hover': { color: '#97ce4c' },
+                      color: anchorElUser ? '#cc7a00' : 'white',
+                      '&:hover': { color: '#ff9800' },
                     }}
                   />
                 </Avatar>
@@ -476,7 +476,7 @@ function ResponsiveNavBar() {
                       sx={{
                         textDecoration: 'none',
                         color: 'black',
-                        '&:hover': { color: '#97ce4c' },
+                        '&:hover': { color: '#ff9800' },
                       }}
                     >
                       <Stack direction="row" spacing={0.5}>
@@ -501,7 +501,7 @@ function ResponsiveNavBar() {
                     sx={{
                       textDecoration: 'none',
                       color: 'black',
-                      '&:hover': { color: '#97ce4c' },
+                      '&:hover': { color: '#ff9800' },
                     }}
                   >
                     <Stack direction="row" spacing={0.5}>

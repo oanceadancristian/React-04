@@ -142,11 +142,11 @@ const EpisodeOrLocationCharacterProfile = () => {
 
   const showCharacterHoverColor = () => {
     if (showCharacterStatus() === 'static-green') {
-      return '0 0 25px #7eb431';
+      return '0 0 25px #2e7d32';
     } else if (showCharacterStatus() === 'static-red') {
       return '0 0 25px #d32f2f';
     } else {
-      return '0 0 25px #8dacbf';
+      return '0 0 25px #1976d2';
     }
   };
 
@@ -189,7 +189,7 @@ const EpisodeOrLocationCharacterProfile = () => {
   return (
     <Box>
       <Backdrop
-        sx={{ color: '#7eb431', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ color: '#2e7d32', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={loading}
       >
         <CircularProgress color="inherit" />

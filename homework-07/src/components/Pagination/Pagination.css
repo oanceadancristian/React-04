@@ -27,13 +27,13 @@
   border: none;
   border-radius: 3px;
   color: white;
-  background-color: #7eb431;
+  background-color: #cc7a00;
   cursor: pointer;
 }
 
 .prev-btn a:hover,
 .next-btn a:hover {
-  background-color: #97ce4c;
+  background-color: #ff9800;
 }
 
 .page-link {
@@ -51,9 +51,9 @@
 
 .page-active-link {
   color: white;
-  background-color: #7eb431;
+  background-color: #cc7a00;
 }
 
 .page-active-link:hover {
-  background-color: #97ce4c;
+  background-color: #ff9800;
 }

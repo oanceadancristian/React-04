@@ -202,32 +202,32 @@ const EditProfileForm = () => {
   const [firstNameIconColor, setFirstNameIconColor] = useState('gray');
 
   const handleFirstNameFocus = () => {
-    setFirstNameIconColor('#7eb431');
+    setFirstNameIconColor('#2e7d32');
   };
 
   const [lastNameIconColor, setLastNameIconColor] = useState('gray');
 
   const handleLastNameFocus = () => {
-    setLastNameIconColor('#7eb431');
+    setLastNameIconColor('#2e7d32');
   };
 
   const [emailIconColor, setEmailIconColor] = useState('gray');
 
   const handleEmailFocus = () => {
-    setEmailIconColor('#7eb431');
+    setEmailIconColor('#2e7d32');
   };
 
   const [passwordIconColor, setPasswordIconColor] = useState('gray');
 
   const handlePasswordFocus = () => {
-    setPasswordIconColor('#7eb431');
+    setPasswordIconColor('#2e7d32');
   };
 
   const [confirmPasswordIconColor, setConfirmPasswordIconColor] =
     useState('gray');
 
   const handleConfirmPasswordFocus = () => {
-    setConfirmPasswordIconColor('#7eb431');
+    setConfirmPasswordIconColor('#2e7d32');
   };
 
   return (
@@ -249,12 +249,12 @@ const EditProfileForm = () => {
             fontWeight: 'bold',
             textAlign: 'center',
             textTransform: 'uppercase',
-            color: '#7eb431',
+            color: '#2e7d32',
           }}
         >
           Edit your profile
         </Typography>
-        <Typography sx={{ mt: 1, fontWeight: 'bold', color: '#7eb431' }}>
+        <Typography sx={{ mt: 1, fontWeight: 'bold', color: '#2e7d32' }}>
           {updateMessage}
         </Typography>
         <TextField
@@ -291,11 +291,11 @@ const EditProfileForm = () => {
             width: '100%',
             mt: 2.5,
             '& label.Mui-focused': {
-              color: firstNameError ? '#d32f2f' : '#7eb431',
+              color: firstNameError ? '#d32f2f' : '#2e7d32',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: firstNameError ? '#d32f2f' : '#7eb431',
+                borderColor: firstNameError ? '#d32f2f' : '#2e7d32',
               },
             },
           }}
@@ -331,11 +331,11 @@ const EditProfileForm = () => {
             width: '100%',
             mt: 2.5,
             '& label.Mui-focused': {
-              color: lastNameError ? '#d32f2f' : '#7eb431',
+              color: lastNameError ? '#d32f2f' : '#2e7d32',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: lastNameError ? '#d32f2f' : '#7eb431',
+                borderColor: lastNameError ? '#d32f2f' : '#2e7d32',
               },
             },
           }}
@@ -371,11 +371,11 @@ const EditProfileForm = () => {
             width: '100%',
             mt: 2.5,
             '& label.Mui-focused': {
-              color: emailError ? '#d32f2f' : '#7eb431',
+              color: emailError ? '#d32f2f' : '#2e7d32',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: emailError ? '#d32f2f' : '#7eb431',
+                borderColor: emailError ? '#d32f2f' : '#2e7d32',
               },
             },
           }}
@@ -411,11 +411,11 @@ const EditProfileForm = () => {
             width: '100%',
             mt: 2.5,
             '& label.Mui-focused': {
-              color: passwordError ? '#d32f2f' : '#7eb431',
+              color: passwordError ? '#d32f2f' : '#2e7d32',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: passwordError ? '#d32f2f' : '#7eb431',
+                borderColor: passwordError ? '#d32f2f' : '#2e7d32',
               },
             },
           }}
@@ -459,11 +459,11 @@ const EditProfileForm = () => {
             width: '100%',
             mt: 2.5,
             '& label.Mui-focused': {
-              color: confirmPasswordError ? '#d32f2f' : '#7eb431',
+              color: confirmPasswordError ? '#d32f2f' : '#2e7d32',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: confirmPasswordError ? '#d32f2f' : '#7eb431',
+                borderColor: confirmPasswordError ? '#d32f2f' : '#2e7d32',
               },
             },
           }}

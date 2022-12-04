@@ -91,7 +91,7 @@ const EpisodeList = () => {
   return (
     <Box>
       <Backdrop
-        sx={{ color: '#7eb431', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ color: '#2e7d32', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={loading}
       >
         <CircularProgress color="inherit" />
@@ -130,7 +130,7 @@ const EpisodeList = () => {
                     xl: '45px',
                   },
                   fontFamily: 'monospace',
-                  color: '#7eb431',
+                  color: '#2e7d32',
                 }}
               >
                 {name === '' ? 'Unknown' : name}

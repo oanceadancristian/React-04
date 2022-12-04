@@ -47,7 +47,7 @@ const Search = (props) => {
   };
 
   const handleSearchFocus = () => {
-    setSearchIconColor('#7eb431');
+    setSearchIconColor('#414850');
   };
 
   return (
@@ -87,7 +87,7 @@ const Search = (props) => {
             '& .MuiOutlinedInput-root': {
               fontFamily: 'monospace',
               '&.Mui-focused fieldset': {
-                borderColor: '#7eb431',
+                borderColor: '#414850',
               },
             },
           }}

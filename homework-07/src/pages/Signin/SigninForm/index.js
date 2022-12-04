@@ -123,13 +123,13 @@ const SigninForm = () => {
   const [emailIconColor, setEmailIconColor] = useState('gray');
 
   const handleEmailFocus = () => {
-    setEmailIconColor('#7eb431');
+    setEmailIconColor('#2e7d32');
   };
 
   const [passwordIconColor, setPasswordIconColor] = useState('gray');
 
   const handlePasswordFocus = () => {
-    setPasswordIconColor('#7eb431');
+    setPasswordIconColor('#2e7d32');
   };
 
   const [checked, setChecked] = useState(
@@ -204,7 +204,7 @@ const SigninForm = () => {
             fontWeight: 'bold',
             textAlign: 'center',
             textTransform: 'uppercase',
-            color: '#7eb431',
+            color: '#2e7d32',
           }}
         >
           Sign in to your account
@@ -241,11 +241,11 @@ const SigninForm = () => {
             width: '100%',
             mt: 2.5,
             '& label.Mui-focused': {
-              color: emailError ? '#d32f2f' : '#7eb431',
+              color: emailError ? '#d32f2f' : '#2e7d32',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: emailError ? '#d32f2f' : '#7eb431',
+                borderColor: emailError ? '#d32f2f' : '#2e7d32',
               },
             },
           }}
@@ -281,11 +281,11 @@ const SigninForm = () => {
             width: '100%',
             mt: 2.5,
             '& label.Mui-focused': {
-              color: passwordError ? '#d32f2f' : '#7eb431',
+              color: passwordError ? '#d32f2f' : '#2e7d32',
             },
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderColor: passwordError ? '#d32f2f' : '#7eb431',
+                borderColor: passwordError ? '#d32f2f' : '#2e7d32',
               },
             },
           }}
@@ -298,7 +298,7 @@ const SigninForm = () => {
                 onChange={handleCheckboxChange}
                 sx={{
                   '&.Mui-checked': {
-                    color: '#7eb431',
+                    color: '#2e7d32',
                   },
                 }}
               />
@@ -335,10 +335,10 @@ const SigninForm = () => {
             fontWeight: 'bold',
             textTransform: 'uppercase',
             borderRadius: 1,
-            backgroundColor: '#7eb431',
+            backgroundColor: '#2e7d32',
             cursor: 'pointer',
             '&:hover': {
-              backgroundColor: '#97ce4c',
+              backgroundColor: '#2e7d32',
             },
           }}
         >
@@ -369,10 +369,10 @@ const SigninForm = () => {
               ml: 1,
               textDecoration: 'none',
               textTransform: 'capitalize',
-              color: '#7eb431',
+              color: '#2e7d32',
               '&:hover': {
                 textDecoration: 'underline',
-                color: '#97ce4c',
+                color: '#2e7d32',
               },
             }}
           >

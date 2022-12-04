@@ -31,7 +31,7 @@ const FilterButton = (props) => {
           sx={{
             color: 'white',
             '&.Mui-checked': {
-              color: '#7eb431',
+              color: '#cc7a00',
             },
           }}
         />

@@ -124,8 +124,9 @@ const Filters = (props) => {
             fontWeight: 'normal',
             textDecoration: 'underline',
             cursor: 'pointer',
+            color: '#cc7a00',
             '&:hover': {
-              color: '#97ce4c',
+              color: '#ff9800',
             },
           }}
         >

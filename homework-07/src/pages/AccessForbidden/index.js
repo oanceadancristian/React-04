@@ -20,7 +20,7 @@ const AccessForbidden = () => {
         <Stack
           direction="row"
           justifyContent="center"
-          sx={{ color: '#7eb431' }}
+          sx={{ color: '#2e7d32' }}
         >
           {' '}
           <BugReportIcon sx={{ fontSize: '50px' }} />

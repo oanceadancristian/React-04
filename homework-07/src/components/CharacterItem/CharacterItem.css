@@ -13,7 +13,7 @@
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   color: white;
-  background-color: #7eb431;
+  background-color: #2e7d32;
 }
 
 .red-bar {
@@ -41,7 +41,7 @@
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   color: white;
-  background-color: #8dacbf;
+  background-color: #1976d2;
 }
 
 .green-life {
@@ -51,7 +51,7 @@
   width: 8px;
   height: 8px;
   margin: 0 10px;
-  background-color: #7eb431;
+  background-color: #2e7d32;
   transform: rotate(-45deg);
   animation: pulse 1s linear infinite;
 }
@@ -63,7 +63,7 @@
   height: 8px;
   width: 8px;
   border-radius: 50%;
-  background-color: #7eb431;
+  background-color: #2e7d32;
 }
 
 .green-life:before {
@@ -115,7 +115,7 @@
   width: 8px;
   height: 8px;
   margin: 0 10px;
-  background-color: #8dacbf;
+  background-color: #1976d2;
   transform: rotate(-45deg);
   animation: pulse 1s linear infinite;
 }
@@ -127,7 +127,7 @@
   height: 8px;
   width: 8px;
   border-radius: 50%;
-  background-color: #8dacbf;
+  background-color: #1976d2;
 }
 
 .gray-life:before {

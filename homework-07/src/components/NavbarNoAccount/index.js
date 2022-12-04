@@ -47,9 +47,9 @@ function ResponsiveNavBarNoAccount() {
               letterSpacing: '.1rem',
               textDecoration: 'none',
               textTransform: 'uppercase',
-              color: '#7eb431',
+              color: '#cc7a00',
               '&:hover': {
-                color: '#97ce4c',
+                color: '#ff9800',
               },
             }}
           >
@@ -72,7 +72,7 @@ function ResponsiveNavBarNoAccount() {
                   fontFamily: 'monospace',
                   letterSpacing: '.1rem',
                   textTransform: 'uppercase',
-                  color: anchorElUser ? '#97ce4c' : 'white',
+                  color: anchorElUser ? '#cc7a00' : 'white',
                 }}
               >
                 <Avatar sx={{ backgroundColor: '#202329' }}>
@@ -80,8 +80,8 @@ function ResponsiveNavBarNoAccount() {
                     sx={{
                       mr: 1,
                       fontSize: '30px',
-                      color: anchorElUser ? '#97ce4c' : 'white',
-                      '&:hover': { color: '#97ce4c' },
+                      color: anchorElUser ? '#cc7a00' : 'white',
+                      '&:hover': { color: '#ff9800' },
                     }}
                   />
                 </Avatar>
@@ -110,7 +110,7 @@ function ResponsiveNavBarNoAccount() {
                   sx={{
                     textDecoration: 'none',
                     color: 'black',
-                    '&:hover': { color: '#97ce4c' },
+                    '&:hover': { color: '#ff9800' },
                   }}
                 >
                   <Stack direction="row" spacing={0.5}>
@@ -134,7 +134,7 @@ function ResponsiveNavBarNoAccount() {
                   sx={{
                     textDecoration: 'none',
                     color: 'black',
-                    '&:hover': { color: '#97ce4c' },
+                    '&:hover': { color: '#ff9800' },
                   }}
                 >
                   <Stack direction="row" spacing={0.5}>
@@ -165,9 +165,9 @@ function ResponsiveNavBarNoAccount() {
               letterSpacing: '.1rem',
               textDecoration: 'none',
               textTransform: 'uppercase',
-              color: '#7eb431',
+              color: '#cc7a00',
               '&:hover': {
-                color: '#97ce4c',
+                color: '#ff9800',
               },
             }}
           >
@@ -193,8 +193,8 @@ function ResponsiveNavBarNoAccount() {
                     sx={{
                       mr: 1,
                       fontSize: '30px',
-                      color: anchorElUser ? '#97ce4c' : 'white',
-                      '&:hover': { color: '#97ce4c' },
+                      color: anchorElUser ? '#cc7a00' : 'white',
+                      '&:hover': { color: '#ff9800' },
                     }}
                   />
                 </Avatar>
@@ -223,7 +223,7 @@ function ResponsiveNavBarNoAccount() {
                   sx={{
                     textDecoration: 'none',
                     color: 'black',
-                    '&:hover': { color: '#97ce4c' },
+                    '&:hover': { color: '#ff9800' },
                   }}
                 >
                   <Stack direction="row" spacing={0.5}>
@@ -247,7 +247,7 @@ function ResponsiveNavBarNoAccount() {
                   sx={{
                     textDecoration: 'none',
                     color: 'black',
-                    '&:hover': { color: '#97ce4c' },
+                    '&:hover': { color: '#ff9800' },
                   }}
                 >
                   <Stack direction="row" spacing={0.5}>
