@@ -51,7 +51,6 @@ const SignupForm = () => {
         const url = 'http://localhost:8080/api/signup';
         const { data: res } = await axios.post(url, data);
         navigate('/signin');
-        console.log(res.message);
       } catch (error) {
         if (
           error.response &&

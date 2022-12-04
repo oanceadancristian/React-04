@@ -35,7 +35,7 @@ const EditProfileForm = () => {
 
   const [updateMessage, setUpdateMessage] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
 
     if (confirmPassword === data.password) {
@@ -63,6 +63,28 @@ const EditProfileForm = () => {
       }
     } else {
       setError('Passwords do not match!');
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      const url = 'http://localhost:8080/api/delete_profile';
+      const { data: res } = await axios.delete(url, { data });
+      localStorage.removeItem('userToken');
+      localStorage.removeItem('userFirstName');
+      localStorage.removeItem('userLastName');
+      localStorage.removeItem('userEmail');
+      window.location = '/signup';
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setError(error.response.data.message);
+      } else if (!error.response) {
+        setError('Network error! Please try again later!');
+      }
     }
   };
 
@@ -210,7 +232,7 @@ const EditProfileForm = () => {
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleUpdate}
       style={{ marginTop: '75px', textAlign: 'center' }}
     >
       <FormControl>
@@ -485,7 +507,7 @@ const EditProfileForm = () => {
           Update profile
         </Button>
         <Button
-          type="submit"
+          onClick={handleDelete}
           variant="contained"
           sx={{
             mt: 1.5,
