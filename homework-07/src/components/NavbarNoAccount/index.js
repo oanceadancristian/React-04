@@ -88,7 +88,7 @@ function ResponsiveNavBarNoAccount() {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: '40px' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -113,7 +113,7 @@ function ResponsiveNavBarNoAccount() {
                     '&:hover': { color: '#97ce4c' },
                   }}
                 >
-                  <Stack direction="row" spacing={1}>
+                  <Stack direction="row" spacing={0.5}>
                     <LoginOutlinedIcon />
                     <Typography
                       textAlign="center"
@@ -137,7 +137,7 @@ function ResponsiveNavBarNoAccount() {
                     '&:hover': { color: '#97ce4c' },
                   }}
                 >
-                  <Stack direction="row" spacing={1}>
+                  <Stack direction="row" spacing={0.5}>
                     <PersonAddIcon />
                     <Typography
                       textAlign="center"
@@ -201,7 +201,7 @@ function ResponsiveNavBarNoAccount() {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: '40px' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -226,7 +226,7 @@ function ResponsiveNavBarNoAccount() {
                     '&:hover': { color: '#97ce4c' },
                   }}
                 >
-                  <Stack direction="row" spacing={1}>
+                  <Stack direction="row" spacing={0.5}>
                     <LoginOutlinedIcon />
                     <Typography
                       textAlign="center"
@@ -250,7 +250,7 @@ function ResponsiveNavBarNoAccount() {
                     '&:hover': { color: '#97ce4c' },
                   }}
                 >
-                  <Stack direction="row" spacing={1}>
+                  <Stack direction="row" spacing={0.5}>
                     <PersonAddIcon />
                     <Typography
                       textAlign="center"
