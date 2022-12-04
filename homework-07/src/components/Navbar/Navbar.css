@@ -1,7 +1,7 @@
 .navbar-active {
   font-weight: bold;
   text-decoration: none;
-  color: #cc7a00;
+  color: #97ce4c;
 }
 
 .navbar-inactive {
@@ -10,7 +10,7 @@
 }
 
 .navbar-inactive:hover {
-  color: #ff9800;
+  color: #7eb431;
 }
 
 .sign-out-active {
@@ -26,5 +26,5 @@
 
 .sign-out-active:hover,
 .sign-out-inactive:hover {
-  color: #ff9800;
+  color: #7eb431;
 }

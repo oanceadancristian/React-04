@@ -77,7 +77,7 @@ const Filters = (props) => {
           borderTopLeftRadius: 10,
           borderTopRightRadius: 10,
           color: 'white',
-          backgroundColor: '#414850',
+          backgroundColor: '#3c3e44',
         }}
       >
         <FilterAltIcon fontSize="medium" sx={{ mr: 0.5 }} />
@@ -112,7 +112,7 @@ const Filters = (props) => {
           borderBottomLeftRadius: 10,
           borderBottomRightRadius: 10,
           color: 'white',
-          backgroundColor: '#414850',
+          backgroundColor: '#3c3e44',
         }}
       >
         <Stack
@@ -124,9 +124,9 @@ const Filters = (props) => {
             fontWeight: 'normal',
             textDecoration: 'underline',
             cursor: 'pointer',
-            color: '#cc7a00',
+            color: '#97ce4c',
             '&:hover': {
-              color: '#ff9800',
+              color: '#7eb431',
             },
           }}
         >

@@ -105,11 +105,11 @@ const LocationList = () => {
               sx={{
                 mb: 2,
                 fontSize: {
-                  xs: '25px',
-                  sm: '30px',
-                  md: '35px',
-                  lg: '40px',
-                  xl: '45px',
+                  xs: '28px',
+                  sm: '31px',
+                  md: '34px',
+                  lg: '37px',
+                  xl: '40px',
                 },
                 fontFamily: 'monospace',
                 textAlign: 'center',
@@ -123,11 +123,11 @@ const LocationList = () => {
                   display: { xs: 'block', md: 'inline-block' },
                   mt: 1,
                   fontSize: {
-                    xs: '25px',
-                    sm: '30px',
-                    md: '35px',
-                    lg: '40px',
-                    xl: '45px',
+                    xs: '28px',
+                    sm: '31px',
+                    md: '34px',
+                    lg: '37px',
+                    xl: '40px',
                   },
                   fontFamily: 'monospace',
                   color: '#2e7d32',
@@ -141,11 +141,11 @@ const LocationList = () => {
               sx={{
                 mb: 2,
                 fontSize: {
-                  xs: '20px',
-                  sm: '25px',
-                  md: '30px',
-                  lg: '35px',
-                  xl: '40px',
+                  xs: '25px',
+                  sm: '28px',
+                  md: '31px',
+                  lg: '34px',
+                  xl: '37px',
                 },
                 fontFamily: 'monospace',
                 textAlign: 'center',
@@ -158,11 +158,11 @@ const LocationList = () => {
                 sx={{
                   display: { xs: 'block', md: 'inline-block' },
                   fontSize: {
-                    xs: '20px',
-                    sm: '25px',
-                    md: '30px',
-                    lg: '35px',
-                    xl: '40px',
+                    xs: '25px',
+                    sm: '28px',
+                    md: '31px',
+                    lg: '34px',
+                    xl: '37px',
                   },
                   fontFamily: 'monospace',
                 }}
@@ -176,11 +176,11 @@ const LocationList = () => {
               variant="h5"
               sx={{
                 fontSize: {
-                  xs: '15px',
-                  sm: '20px',
-                  md: '25px',
-                  lg: '30px',
-                  xl: '35px',
+                  xs: '22px',
+                  sm: '25px',
+                  md: '28px',
+                  lg: '31px',
+                  xl: '34px',
                 },
                 fontFamily: 'monospace',
                 textAlign: 'center',
@@ -193,11 +193,11 @@ const LocationList = () => {
                 sx={{
                   display: { xs: 'block', md: 'inline-block' },
                   fontSize: {
-                    xs: '15px',
-                    sm: '20px',
-                    md: '25px',
-                    lg: '30px',
-                    xl: '35px',
+                    xs: '22px',
+                    sm: '25px',
+                    md: '28px',
+                    lg: '31px',
+                    xl: '34px',
                   },
                   fontFamily: 'monospace',
                 }}

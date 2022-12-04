@@ -13,6 +13,7 @@
 }
 
 .break {
+  color: black;
   cursor: pointer;
 }
 
@@ -27,33 +28,35 @@
   border: none;
   border-radius: 3px;
   color: white;
-  background-color: #cc7a00;
+  background-color: #2e7d32;
   cursor: pointer;
 }
 
 .prev-btn a:hover,
 .next-btn a:hover {
-  background-color: #ff9800;
+  background-color: #1b5e20;
 }
 
 .page-link {
   display: inline-block;
   padding: 10px 15px;
   border-radius: 3px;
-  color: black;
-  background-color: #c8c8c8;
+  color: white;
+  background-color: #3c3e44;
   cursor: pointer;
 }
 
 .page-link:hover {
-  background-color: #d8d8d8;
+  color: white;
+  background-color: #202329;
 }
 
 .page-active-link {
   color: white;
-  background-color: #cc7a00;
+  background-color: #2e7d32;
 }
 
 .page-active-link:hover {
-  background-color: #ff9800;
+  color: white;
+  background-color: #1b5e20;
 }

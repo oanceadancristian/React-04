@@ -49,7 +49,7 @@ const Gender = (props) => {
 
   return (
     <Accordion
-      sx={{ color: 'white', backgroundColor: '#414850' }}
+      sx={{ color: 'white', backgroundColor: '#3c3e44' }}
       expanded={expandedGender}
       onChange={handleExpandedGender}
     >

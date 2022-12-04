@@ -92,7 +92,7 @@ const CharacterList = () => {
       </Backdrop>
       <Navbar />
       {!characterPageError ? (
-        <>
+        <Box>
           <Search setSearch={setSearch} setPageNumber={setPageNumber} />
           <Box
             justifyContent="center"
@@ -136,7 +136,7 @@ const CharacterList = () => {
               setPageNumber={setPageNumber}
             />
           </Box>
-        </>
+        </Box>
       ) : (
         <Typography
           variant="h5"

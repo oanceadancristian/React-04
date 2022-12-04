@@ -96,11 +96,11 @@ const CharacterItem = (props) => {
               height: '600px',
               width: '300px',
               borderRadius: 3,
-              backgroundColor: '#414850',
-              boxShadow: '0 0 25px #555;',
+              backgroundColor: '#3c3e44',
+              boxShadow: '0 0 10px black;',
               color: 'white',
               '&:hover': {
-                boxShadow: '0 0 25px  black',
+                boxShadow: '0 0 10px  white',
               },
             }}
           >

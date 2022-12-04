@@ -347,7 +347,7 @@ const Homepage = () => {
                 sx={{
                   color: 'white',
                   '&:hover': {
-                    color: '#ff9800',
+                    color: '#7eb431',
                     cursor: 'pointer',
                   },
                 }}

@@ -43,14 +43,15 @@ const SelectLocation = (props) => {
           p: 2,
           borderRadius: 3,
           fontSize: {
-            xs: '17px',
-            sm: '17px',
-            md: '18px',
-            lg: '19px',
-            xl: '19px',
+            xs: '16px',
+            sm: '16px',
+            md: '17px',
+            lg: '18px',
+            xl: '18px',
           },
           fontFamily: 'monospace',
-          backgroundColor: '#c0c0c0',
+          color: 'white',
+          backgroundColor: '#3c3e44',
         }}
       >
         <PlaceIcon fontSize="medium" sx={{ mr: 0.5 }} />
@@ -64,7 +65,7 @@ const SelectLocation = (props) => {
               sx={{
                 fontFamily: 'monospace',
                 '&.Mui-focused': {
-                  color: '#414850',
+                  color: 'black',
                 },
               }}
             >
@@ -79,7 +80,7 @@ const SelectLocation = (props) => {
               sx={{
                 fontFamily: 'monospace',
                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                  borderColor: '#414850',
+                  borderColor: 'black',
                 },
               }}
             >
@@ -94,7 +95,7 @@ const SelectLocation = (props) => {
                       fontFamily: 'monospace',
                       '&:hover': {
                         color: 'white',
-                        backgroundColor: '#ff9800',
+                        backgroundColor: '#1b5e20',
                       },
                     }}
                   >

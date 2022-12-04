@@ -118,7 +118,7 @@
   font-weight: bold;
   text-decoration: none;
   text-transform: uppercase;
-  color: #cc7a00;
+  color: #97ce4c;
 }
 
 .footer-inactive {
@@ -128,7 +128,7 @@
 }
 
 .footer-inactive:hover {
-  color: #ff9800;
+  color: #7eb431;
 }
 
 @media (max-width: 900px) {
