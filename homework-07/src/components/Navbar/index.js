@@ -51,9 +51,11 @@ function ResponsiveNavBar() {
     localStorage.removeItem('facebookToken');
     localStorage.removeItem('facebookName');
     localStorage.removeItem('facebookEmail');
+    localStorage.removeItem('facebookPicture');
     localStorage.removeItem('googleUser');
     localStorage.removeItem('googleName');
     localStorage.removeItem('googleEmail');
+    localStorage.removeItem('googlePicture');
     window.location = '/';
   };
 
@@ -176,7 +178,20 @@ function ResponsiveNavBar() {
                   color: anchorElUser ? '#97ce4c' : 'white',
                 }}
               >
-                <Avatar sx={{ backgroundColor: '#202329' }}>
+                <Avatar
+                  sx={{ backgroundColor: '#202329' }}
+                  alt={
+                    localStorage.getItem('facebookPicture')
+                      ? 'Facebook picture'
+                      : localStorage.getItem('googlePicture')
+                      ? 'Google picture'
+                      : ''
+                  }
+                  src={
+                    localStorage.getItem('facebookPicture') ||
+                    localStorage.getItem('googlePicture')
+                  }
+                >
                   <AccountBoxIcon
                     sx={{
                       mr: 1,
@@ -210,7 +225,7 @@ function ResponsiveNavBar() {
                   <Typography component="p" sx={{ fontWeight: 'bold' }}>
                     {localStorage.getItem('userEmail') ||
                       localStorage.getItem('facebookEmail') ||
-                      localStorage.getItem('googleEmail').replace(/"/g, '')}
+                      localStorage.getItem('googleEmail')?.replace(/"/g, '')}
                   </Typography>
                 </Typography>
               </Box>
@@ -369,7 +384,20 @@ function ResponsiveNavBar() {
                   p: 0,
                 }}
               >
-                <Avatar sx={{ backgroundColor: '#202329' }}>
+                <Avatar
+                  sx={{ backgroundColor: '#202329' }}
+                  alt={
+                    localStorage.getItem('facebookPicture')
+                      ? 'Facebook picture'
+                      : localStorage.getItem('googlePicture')
+                      ? 'Google picture'
+                      : ''
+                  }
+                  src={
+                    localStorage.getItem('facebookPicture') ||
+                    localStorage.getItem('googlePicture')
+                  }
+                >
                   <AccountBoxIcon
                     sx={{
                       fontSize: '30px',
@@ -402,7 +430,7 @@ function ResponsiveNavBar() {
                   <Typography component="p" sx={{ fontWeight: 'bold' }}>
                     {localStorage.getItem('userEmail') ||
                       localStorage.getItem('facebookEmail') ||
-                      localStorage.getItem('googleEmail').replace(/"/g, '')}
+                      localStorage.getItem('googleEmail')?.replace(/"/g, '')}
                   </Typography>
                 </Typography>
               </Box>

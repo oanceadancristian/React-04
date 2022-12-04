@@ -159,6 +159,7 @@ const SigninForm = () => {
       localStorage.setItem('facebookToken', response.accessToken);
       localStorage.setItem('facebookName', response.name);
       localStorage.setItem('facebookEmail', response.email);
+      localStorage.setItem('facebookPicture', response.picture.data.url);
       window.location = '/homepage';
     }
   };
@@ -175,7 +176,10 @@ const SigninForm = () => {
         'googleEmail',
         JSON.stringify(googleUserObject['email'])
       );
-
+      localStorage.setItem(
+        'googlePicture',
+        JSON.stringify(googleUserObject['picture'])
+      );
       window.location = '/homepage';
     }
   };
@@ -380,7 +384,7 @@ const SigninForm = () => {
         <FacebookLogin
           appId="487185063270333"
           textButton="Sign in with Facebook"
-          fields="name,email"
+          fields="name,email,picture"
           callback={responseFacebook}
           cssClass="btnFacebook"
           icon="fa-facebook"
