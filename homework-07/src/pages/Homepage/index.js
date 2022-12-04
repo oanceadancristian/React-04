@@ -295,7 +295,7 @@ const Homepage = () => {
           height: '50px',
           gap: 3,
           py: 6,
-          my: 3,
+          mt: 3,
           backgroundColor: '#202329',
         }}
       >

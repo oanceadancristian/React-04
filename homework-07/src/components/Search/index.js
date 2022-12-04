@@ -14,6 +14,10 @@ const Search = (props) => {
   const handleChange = (e) => {
     localStorage.setItem('Search', e.target.value);
 
+    if (e.target.value === '') {
+      localStorage.removeItem('Search');
+    }
+
     setQueryParamas({
       ...queryParams,
       statusFilter:
