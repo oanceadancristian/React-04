@@ -5,6 +5,7 @@ const cors = require('cors');
 const connection = require('./db');
 const signInRoute = require('./routes/signin');
 const signUpRoute = require('./routes/signup');
+const editProfileRoute = require('./routes/edit_profile');
 
 connection();
 
@@ -13,6 +14,7 @@ app.use(cors());
 
 app.use('/api/signin', signInRoute);
 app.use('/api/signup', signUpRoute);
+app.use('/api/edit_profile', editProfileRoute);
 
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}`));

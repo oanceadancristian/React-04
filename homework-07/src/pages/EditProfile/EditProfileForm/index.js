@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import FormControl from '@mui/material/FormControl';
 import Typography from '@mui/material/Typography';
@@ -11,9 +10,8 @@ import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import ErrorIcon from '@mui/icons-material/Error';
 import Stack from '@mui/system/Stack';
 import Button from '@mui/material/Button';
-import './UpdateProfileForm.css';
 
-const UpdateProfileForm = () => {
+const EditProfileForm = () => {
   const firstNameRef = useRef();
 
   useEffect(() => {
@@ -25,9 +23,9 @@ const UpdateProfileForm = () => {
   };
 
   const [data, setData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
+    firstName: localStorage.getItem('userFirstName'),
+    lastName: localStorage.getItem('userLastName'),
+    email: localStorage.getItem('userEmail'),
     password: '',
   });
 
@@ -35,17 +33,23 @@ const UpdateProfileForm = () => {
 
   const [error, setError] = useState('');
 
-  const navigate = useNavigate();
+  const [updateMessage, setUpdateMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (confirmPassword === data.password) {
       try {
-        const url = 'http://localhost:8080/api/signup';
-        const { data: res } = await axios.post(url, data);
-        navigate('/signin');
-        console.log(res.message);
+        const url = 'http://localhost:8080/api/edit_profile';
+        const { data: res } = await axios.patch(url, data);
+        localStorage.setItem('userFirstName', res.userFirstName);
+        localStorage.setItem('userLastName', res.userLastName);
+        localStorage.setItem('userEmail', res.userEmail);
+
+        setData({ ...data, password: '' });
+        setConfirmPassword('');
+
+        setUpdateMessage(res.message);
       } catch (error) {
         if (
           error.response &&
@@ -226,7 +230,10 @@ const UpdateProfileForm = () => {
             color: '#7eb431',
           }}
         >
-          Update your profile
+          Edit your profile
+        </Typography>
+        <Typography sx={{ mt: 1, fontWeight: 'bold', color: '#7eb431' }}>
+          {updateMessage}
         </Typography>
         <TextField
           required
@@ -490,7 +497,7 @@ const UpdateProfileForm = () => {
             backgroundColor: '#fa383b',
             cursor: 'pointer',
             '&:hover': {
-              backgroundColor: '#fa383b',
+              backgroundColor: '#fb5154',
             },
           }}
         >
@@ -501,4 +508,4 @@ const UpdateProfileForm = () => {
   );
 };
 
-export default UpdateProfileForm;
+export default EditProfileForm;

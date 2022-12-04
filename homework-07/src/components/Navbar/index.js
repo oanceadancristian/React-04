@@ -47,7 +47,8 @@ function ResponsiveNavBar() {
 
   const handleLogout = () => {
     localStorage.removeItem('userToken');
-    localStorage.removeItem('userName');
+    localStorage.removeItem('userFirstName');
+    localStorage.removeItem('userLastName');
     localStorage.removeItem('userEmail');
     localStorage.removeItem('facebookToken');
     localStorage.removeItem('facebookName');
@@ -205,7 +206,7 @@ function ResponsiveNavBar() {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: '40px' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -220,7 +221,7 @@ function ResponsiveNavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <Box sx={{ margin: '10px 20px', textAlign: 'center' }}>
+              <Box sx={{ mx: 2.5, mt: 1, mb: 1.5, textAlign: 'center' }}>
                 <Typography component="div">
                   Signed in as{' '}
                   <Typography component="p" sx={{ fontWeight: 'bold' }}>
@@ -234,18 +235,18 @@ function ResponsiveNavBar() {
                 onClick={handleCloseUserMenu}
                 sx={{ display: 'flex', justifyContent: 'center' }}
               >
-                <Stack alignItems="center" spacing={1}>
+                <Stack alignItems="center" spacing={2}>
                   {localStorage.getItem('userEmail') ? (
                     <Link
                       component={RouterLink}
-                      to="/update_profile"
+                      to="/edit_profile"
                       sx={{
                         textDecoration: 'none',
                         color: 'black',
                         '&:hover': { color: '#97ce4c' },
                       }}
                     >
-                      <Stack direction="row" spacing={1}>
+                      <Stack direction="row" spacing={0.5}>
                         <EditIcon />
                         <Typography
                           textAlign="center"
@@ -254,7 +255,7 @@ function ResponsiveNavBar() {
                             textTransform: 'uppercase',
                           }}
                         >
-                          Update profile
+                          Edit profile
                         </Typography>
                       </Stack>
                     </Link>
@@ -270,7 +271,7 @@ function ResponsiveNavBar() {
                       '&:hover': { color: '#97ce4c' },
                     }}
                   >
-                    <Stack direction="row" spacing={1}>
+                    <Stack direction="row" spacing={0.5}>
                       <LogoutIcon />
                       <Typography
                         textAlign="center"
@@ -438,7 +439,7 @@ function ResponsiveNavBar() {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: '40px' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -453,7 +454,7 @@ function ResponsiveNavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <Box sx={{ margin: '10px 20px', textAlign: 'center' }}>
+              <Box sx={{ mx: 2.5, mt: 1, mb: 1.5, textAlign: 'center' }}>
                 <Typography component="div">
                   Signed in as{' '}
                   <Typography component="p" sx={{ fontWeight: 'bold' }}>
@@ -467,18 +468,18 @@ function ResponsiveNavBar() {
                 onClick={handleCloseUserMenu}
                 sx={{ display: 'flex', justifyContent: 'center' }}
               >
-                <Stack alignItems="center" spacing={1}>
+                <Stack alignItems="center" spacing={2}>
                   {localStorage.getItem('userEmail') ? (
                     <Link
                       component={RouterLink}
-                      to="/update_profile"
+                      to="/edit_profile"
                       sx={{
                         textDecoration: 'none',
                         color: 'black',
                         '&:hover': { color: '#97ce4c' },
                       }}
                     >
-                      <Stack direction="row" spacing={1}>
+                      <Stack direction="row" spacing={0.5}>
                         <EditIcon />
                         <Typography
                           textAlign="center"
@@ -487,7 +488,7 @@ function ResponsiveNavBar() {
                             textTransform: 'uppercase',
                           }}
                         >
-                          Update profile
+                          Edit profile
                         </Typography>
                       </Stack>
                     </Link>
@@ -503,7 +504,7 @@ function ResponsiveNavBar() {
                       '&:hover': { color: '#97ce4c' },
                     }}
                   >
-                    <Stack direction="row" spacing={1}>
+                    <Stack direction="row" spacing={0.5}>
                       <LogoutIcon />
                       <Typography
                         textAlign="center"

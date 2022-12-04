@@ -1,15 +1,15 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
-import UpdateProfileForm from '../UpdateProfile/UpdateProfileForm';
+import EditProfileForm from '../EditProfile/EditProfileForm';
 import Box from '@mui/system/Box';
 
-const UpdateProfile = () => {
+const EditProfile = () => {
   return (
     <Box sx={{ height: '100vh' }}>
       <Navbar />
-      <UpdateProfileForm />
+      <EditProfileForm />
     </Box>
   );
 };
 
-export default UpdateProfile;
+export default EditProfile;
