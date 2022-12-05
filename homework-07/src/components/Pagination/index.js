@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import Box from '@mui/material/Box';
 import './Pagination.css';
 
 const Pagination = (props) => {
@@ -45,20 +46,22 @@ const Pagination = (props) => {
   }, []);
 
   return (
-    <ReactPaginate
-      className="pagination"
-      previousLabel="Prev"
-      nextLabel="Next"
-      previousClassName="prev-btn"
-      nextClassName="next-btn"
-      pageLinkClassName="page-link"
-      activeLinkClassName="page-active-link"
-      onPageChange={handlePageChange}
-      forcePage={pageNumber === 1 ? 0 : pageNumber - 1}
-      pageCount={pages}
-      marginPagesDisplayed={paginationWidth < 900 ? 1 : 2}
-      pageRangeDisplayed={1}
-    />
+    <Box sx={{ mb: 30 }}>
+      <ReactPaginate
+        className="pagination"
+        previousLabel="Prev"
+        nextLabel="Next"
+        previousClassName="prev-btn"
+        nextClassName="next-btn"
+        pageLinkClassName="page-link"
+        activeLinkClassName="page-active-link"
+        onPageChange={handlePageChange}
+        forcePage={pageNumber === 1 ? 0 : pageNumber - 1}
+        pageCount={pages}
+        marginPagesDisplayed={paginationWidth < 900 ? 1 : 2}
+        pageRangeDisplayed={1}
+      />
+    </Box>
   );
 };
 

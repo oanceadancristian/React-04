@@ -60,7 +60,6 @@ const Search = (props) => {
       justifyContent="center"
       sx={{
         gap: 2,
-        mt: 6,
       }}
     >
       <Box

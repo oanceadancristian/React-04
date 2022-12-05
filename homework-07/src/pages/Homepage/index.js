@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  Link as RouterLink,
-  NavLink,
-  useLocation,
-  useParams,
-} from 'react-router-dom';
+import { Link as RouterLink, useLocation, useParams } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 import axios from 'axios';
 import { setRandomCharacterList } from '../../components/slices/RickAndMortyAppSlice';
 import Box from '@mui/material/Box';
@@ -15,7 +11,6 @@ import Typography from '@mui/material/Typography';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import Link from '@mui/material/Link';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import './Homepage.css';
 
 const Homepage = () => {
@@ -286,76 +281,7 @@ const Homepage = () => {
           {characterPageError}
         </Typography>
       )}
-      <Stack
-        direction="column"
-        sx={{
-          position: 'absolute',
-          bottom: '0',
-          width: '100%',
-          height: '50px',
-          gap: 3,
-          py: 6,
-          mt: 3,
-          backgroundColor: '#202329',
-        }}
-      >
-        <Stack
-          direction="row"
-          justifyContent="center"
-          sx={{
-            gap: 3,
-          }}
-        >
-          <Box sx={{ marginLeft: '10px', textAlign: 'center' }}>
-            <NavLink
-              to={`/characters/pages/${
-                pageId === undefined ? 1 : pageId
-              }${search}`}
-              className={({ isActive }) =>
-                isActive ? 'footer-active' : 'footer-inactive'
-              }
-            >
-              Characters: 826
-            </NavLink>
-          </Box>
-          <Box sx={{ textAlign: 'center' }}>
-            <NavLink
-              to={`/episodes/${episodeId === undefined ? 1 : episodeId}`}
-              className={({ isActive }) =>
-                isActive ? 'footer-active' : 'footer-inactive'
-              }
-            >
-              Episodes: 51
-            </NavLink>
-          </Box>
-          <Box sx={{ marginRight: '10px', textAlign: 'center' }}>
-            <NavLink
-              to={`/locations/${locationId === undefined ? 1 : locationId}`}
-              className={({ isActive }) =>
-                isActive ? 'footer-active' : 'footer-inactive'
-              }
-            >
-              Locations: 126
-            </NavLink>
-          </Box>
-        </Stack>
-        <Stack direction="row" justifyContent="center">
-          <Box>
-            <Link href="https://github.com/oanceadancristian" target="_blank">
-              <GitHubIcon
-                fontSize="large"
-                sx={{
-                  color: 'white',
-                  '&:hover': {
-                    color: '#7eb431',
-                    cursor: 'pointer',
-                  },
-                }}
-              />
-            </Link>
-          </Box>
-        </Stack>
-      </Stack>
+      <Footer />
     </Box>
   );
 };

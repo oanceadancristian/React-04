@@ -4,6 +4,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import SelectEpisode from '../../components/Select/SelectEpisode';
 import CharacterItem from '../../components/CharacterItem';
+import Footer from '../../components/Footer';
 import { setEpisodeDetails } from '../../components/slices/EpisodeDetailsSlice';
 import Box from '@mui/system/Box';
 import Typography from '@mui/material/Typography';
@@ -89,7 +90,7 @@ const EpisodeList = () => {
   }, []);
 
   return (
-    <Box>
+    <Box sx={{ position: 'relative', minHeight: '100vh' }}>
       <Backdrop
         sx={{ color: '#2e7d32', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={loading}
@@ -98,8 +99,8 @@ const EpisodeList = () => {
       </Backdrop>
       <Navbar />
       {episodeFound ? (
-        <>
-          <Box sx={{ m: 6 }}>
+        <Box>
+          <Box sx={{ my: 6 }}>
             <Typography
               variant="h3"
               sx={{
@@ -175,14 +176,14 @@ const EpisodeList = () => {
             sx={{
               display: { xs: 'block', md: 'flex' },
               gap: 3,
-              margin: 6,
+              mx: 6,
             }}
           >
             <Box
               sx={{
                 width: { xs: '75%', md: '25%' },
                 mx: { xs: 'auto' },
-                my: { xs: 5 },
+                mb: { xs: 5 },
               }}
             >
               <SelectEpisode
@@ -199,6 +200,7 @@ const EpisodeList = () => {
                 columnGap: { xs: 12, md: 8 },
                 rowGap: 6,
                 width: { xs: '100%', md: '75%' },
+                mb: 30,
               }}
             >
               <CharacterItem
@@ -207,7 +209,7 @@ const EpisodeList = () => {
               />
             </Box>
           </Box>
-        </>
+        </Box>
       ) : (
         <Typography
           variant="h5"
@@ -224,6 +226,7 @@ const EpisodeList = () => {
           {characterPageError}
         </Typography>
       )}
+      <Footer />
     </Box>
   );
 };

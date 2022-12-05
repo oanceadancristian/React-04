@@ -7,6 +7,7 @@ import Search from '../../components/Search';
 import Filters from '../../components/Filters';
 import CharacterItem from '../../components/CharacterItem';
 import Pagination from '../../components/Pagination';
+import Footer from '../../components/Footer';
 import {
   setCharacterList,
   setInfo,
@@ -83,7 +84,7 @@ const CharacterList = () => {
   }, [params.pageId, pageNumber, search, status, gender, species, dispatch]);
 
   return (
-    <Box>
+    <Box sx={{ position: 'relative', minHeight: '100vh' }}>
       <Backdrop
         sx={{ color: '#2e7d32', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={loading}
@@ -93,13 +94,16 @@ const CharacterList = () => {
       <Navbar />
       {!characterPageError ? (
         <Box>
-          <Search setSearch={setSearch} setPageNumber={setPageNumber} />
+          <Box sx={{ mt: 10 }}>
+            <Search setSearch={setSearch} setPageNumber={setPageNumber} />
+          </Box>
           <Box
             justifyContent="center"
             sx={{
               display: { xs: 'block', md: 'flex' },
               gap: 3,
-              margin: 6,
+              mx: 6,
+              my: 10,
             }}
           >
             <Box
@@ -153,6 +157,7 @@ const CharacterList = () => {
           {characterPageError}
         </Typography>
       )}
+      <Footer />
     </Box>
   );
 };
