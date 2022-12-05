@@ -9,8 +9,11 @@ import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import ErrorIcon from '@mui/icons-material/Error';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
 import Stack from '@mui/system/Stack';
 import Button from '@mui/material/Button';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 const EditProfileForm = () => {
   const firstNameRef = useRef();
@@ -237,6 +240,12 @@ const EditProfileForm = () => {
   const handleConfirmPasswordFocus = () => {
     setConfirmPasswordIconColor('#2e7d32');
   };
+
+  ///// MODAL /////
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  ///// MODAL /////
 
   return (
     <form
@@ -499,6 +508,7 @@ const EditProfileForm = () => {
           type="submit"
           variant="contained"
           sx={{
+            width: '100%',
             mt: 1.5,
             px: 3,
             py: 1.5,
@@ -514,25 +524,109 @@ const EditProfileForm = () => {
         >
           Update profile
         </Button>
-        <Button
-          onClick={handleDelete}
-          variant="contained"
-          sx={{
-            mt: 1.5,
-            px: 3,
-            py: 1.5,
-            fontWeight: 'bold',
-            textTransform: 'uppercase',
-            borderRadius: 1,
-            backgroundColor: '#d32f2f',
-            cursor: 'pointer',
-            '&:hover': {
-              backgroundColor: '#c62828',
-            },
-          }}
-        >
-          Delete profile
-        </Button>
+        {/* MODAL */}
+        <Box>
+          <Button
+            onClick={handleOpen}
+            variant="contained"
+            sx={{
+              width: '100%',
+              mt: 1.5,
+              px: 3,
+              py: 1.5,
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
+              borderRadius: 1,
+              backgroundColor: '#d32f2f',
+              cursor: 'pointer',
+              '&:hover': {
+                backgroundColor: '#c62828',
+              },
+            }}
+          >
+            Delete profile
+          </Button>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box
+              sx={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '500px',
+                p: 4,
+                textAlign: 'center',
+                border: '2px solid #202329',
+                boxShadow: 24,
+                backgroundColor: '#f2f2f2',
+              }}
+            >
+              <HighlightOffIcon sx={{ fontSize: '100px', color: '#d32f2f' }} />
+              <Typography
+                id="modal-modal-title"
+                variant="h6"
+                component="h2"
+                sx={{ fontWeight: 'bold' }}
+              >
+                {localStorage.getItem('userFirstName') +
+                  ' ' +
+                  localStorage.getItem('userLastName')}
+                , are you sure?
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                Do you really want to delete your profile?
+              </Typography>
+              <Typography
+                id="modal-modal-description"
+                sx={{ mt: 2, color: '#d32f2f' }}
+              >
+                Warning! This action cannot be undone!
+              </Typography>
+              <Stack
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
+                spacing={2}
+                sx={{ mt: 3 }}
+              >
+                <Button
+                  onClick={handleClose}
+                  variant="contained"
+                  sx={{
+                    px: 3,
+                    py: 1,
+                    backgroundColor: '#787c87',
+                    '&:hover': {
+                      backgroundColor: '#60636c',
+                    },
+                  }}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  onClick={handleDelete}
+                  variant="contained"
+                  sx={{
+                    px: 3,
+                    py: 1,
+                    backgroundColor: '#d32f2f',
+                    '&:hover': {
+                      backgroundColor: '#c62828',
+                    },
+                  }}
+                >
+                  Delete
+                </Button>
+              </Stack>
+            </Box>
+          </Modal>
+        </Box>
+        {/* MODAL */}
       </FormControl>
     </form>
   );
