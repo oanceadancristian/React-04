@@ -116,9 +116,7 @@ function ResponsiveNavBar() {
           >
             <Link
               component={RouterLink}
-              to={`/characters/pages/${
-                pageId === undefined ? 1 : pageId
-              }${search}`}
+              to={`/characters/pages/1`}
               sx={{ textDecoration: 'none' }}
             >
               <Button
@@ -139,7 +137,7 @@ function ResponsiveNavBar() {
             </Link>
             <Link
               component={RouterLink}
-              to={`/episodes/${episodeId === undefined ? 1 : episodeId}`}
+              to={`/episodes`}
               sx={{ textDecoration: 'none' }}
             >
               <Button
@@ -150,7 +148,6 @@ function ResponsiveNavBar() {
                   fontSize: '20px',
                   fontFamily: 'monospace',
                   color: pathname.startsWith('/episodes') ? '#97ce4c' : 'white',
-
                   '&:hover': { color: '#7eb431', backgroundColor: '#202329' },
                 }}
               >
@@ -159,7 +156,7 @@ function ResponsiveNavBar() {
             </Link>
             <Link
               component={RouterLink}
-              to={`/locations/${locationId === undefined ? 1 : locationId}`}
+              to={`/locations`}
               sx={{ textDecoration: 'none' }}
             >
               <Button
@@ -335,7 +332,7 @@ function ResponsiveNavBar() {
             >
               <Link
                 component={RouterLink}
-                to="/characters"
+                to="/characters/pages/1"
                 sx={{
                   textDecoration: 'none',
                   textTransform: 'uppercase',
