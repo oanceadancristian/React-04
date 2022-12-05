@@ -38,6 +38,7 @@ const EditProfileForm = () => {
   const [error, setError] = useState('');
 
   const [updateMessage, setUpdateMessage] = useState('');
+  const [deleteMessage, setDeleteMessage] = useState('');
 
   const params = useParams();
   const { userId } = params;
@@ -82,7 +83,12 @@ const EditProfileForm = () => {
         localStorage.removeItem('userFirstName');
         localStorage.removeItem('userLastName');
         localStorage.removeItem('userEmail');
-        window.location = '/signup';
+
+        setDeleteMessage(res.message);
+
+        setTimeout(() => {
+          window.location = '/signup';
+        }, 3000);
       } catch (error) {
         if (
           error.response &&
@@ -255,391 +261,427 @@ const EditProfileForm = () => {
       setOpen(false);
     }
   }, [error]);
-
   ////////// MODAL //////////
 
   return (
-    <form
-      onSubmit={handleUpdate}
-      style={{ marginTop: '75px', textAlign: 'center' }}
-    >
-      <FormControl>
-        <Typography
-          sx={{
-            mt: 2.5,
-            fontSize: {
-              xs: '17px',
-              sm: '17px',
-              md: '20px',
-              lg: '23px',
-              xl: '23px',
-            },
-            fontWeight: 'bold',
-            textAlign: 'center',
-            textTransform: 'uppercase',
-            color: '#2e7d32',
-          }}
+    <>
+      {!deleteMessage ? (
+        <form
+          onSubmit={handleUpdate}
+          style={{ marginTop: '75px', textAlign: 'center' }}
         >
-          Edit your profile
-        </Typography>
-        <Typography sx={{ mt: 1, fontWeight: 'bold', color: '#2e7d32' }}>
-          {updateMessage}
-        </Typography>
-        <TextField
-          required
-          error={firstNameError}
-          name="firstName"
-          onChange={handleChange}
-          onBlur={handleFirstNameBlur}
-          onFocus={handleFirstNameFocus}
-          value={data.firstName}
-          inputRef={setFirstNameRef}
-          type="text"
-          label="First Name"
-          variant="outlined"
-          size="small"
-          id="outlined-basic-first-name"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <PersonIcon
-                  sx={{
-                    color: firstNameError ? '#d32f2f' : firstNameIconColor,
-                  }}
-                />
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <InputAdornment position="end">
-                {firstNameError ? <ErrorIcon sx={{ color: '#d32f2f' }} /> : ''}
-              </InputAdornment>
-            ),
-          }}
-          sx={{
-            width: '100%',
-            mt: 2.5,
-            '& label.Mui-focused': {
-              color: firstNameError ? '#d32f2f' : '#2e7d32',
-            },
-            '& .MuiOutlinedInput-root': {
-              '&.Mui-focused fieldset': {
-                borderColor: firstNameError ? '#d32f2f' : '#2e7d32',
-              },
-            },
-          }}
-        />
-        <TextField
-          required
-          error={lastNameError}
-          name="lastName"
-          onChange={handleChange}
-          onBlur={handleLastNameBlur}
-          onFocus={handleLastNameFocus}
-          value={data.lastName}
-          type="text"
-          label="Last Name"
-          variant="outlined"
-          size="small"
-          id="outlined-basic-last-name"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <PersonIcon
-                  sx={{ color: lastNameError ? '#d32f2f' : lastNameIconColor }}
-                />
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <InputAdornment position="end">
-                {lastNameError ? <ErrorIcon sx={{ color: '#d32f2f' }} /> : ''}
-              </InputAdornment>
-            ),
-          }}
-          sx={{
-            width: '100%',
-            mt: 2.5,
-            '& label.Mui-focused': {
-              color: lastNameError ? '#d32f2f' : '#2e7d32',
-            },
-            '& .MuiOutlinedInput-root': {
-              '&.Mui-focused fieldset': {
-                borderColor: lastNameError ? '#d32f2f' : '#2e7d32',
-              },
-            },
-          }}
-        />
-        <TextField
-          required
-          error={emailError}
-          name="email"
-          onChange={handleChange}
-          onBlur={handleEmailBlur}
-          onFocus={handleEmailFocus}
-          value={data.email}
-          type="email"
-          label="Email Address"
-          variant="outlined"
-          size="small"
-          id="outlined-basic-email-address"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <EmailIcon
-                  sx={{ color: emailError ? '#d32f2f' : emailIconColor }}
-                />
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <InputAdornment position="end">
-                {emailError ? <ErrorIcon sx={{ color: '#d32f2f' }} /> : ''}
-              </InputAdornment>
-            ),
-          }}
-          sx={{
-            width: '100%',
-            mt: 2.5,
-            '& label.Mui-focused': {
-              color: emailError ? '#d32f2f' : '#2e7d32',
-            },
-            '& .MuiOutlinedInput-root': {
-              '&.Mui-focused fieldset': {
-                borderColor: emailError ? '#d32f2f' : '#2e7d32',
-              },
-            },
-          }}
-        />
-        <TextField
-          required
-          error={passwordError}
-          name="password"
-          onChange={handleChange}
-          onBlur={handlePasswordBlur}
-          onFocus={handlePasswordFocus}
-          value={data.password}
-          type="password"
-          label="Password"
-          variant="outlined"
-          size="small"
-          id="outlined-basic-password"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <VpnKeyIcon
-                  sx={{ color: passwordError ? '#d32f2f' : passwordIconColor }}
-                />
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <InputAdornment position="end">
-                {passwordError ? <ErrorIcon sx={{ color: '#d32f2f' }} /> : ''}
-              </InputAdornment>
-            ),
-          }}
-          sx={{
-            width: '100%',
-            mt: 2.5,
-            '& label.Mui-focused': {
-              color: passwordError ? '#d32f2f' : '#2e7d32',
-            },
-            '& .MuiOutlinedInput-root': {
-              '&.Mui-focused fieldset': {
-                borderColor: passwordError ? '#d32f2f' : '#2e7d32',
-              },
-            },
-          }}
-        />
-        <TextField
-          required
-          error={confirmPasswordError}
-          name="confirmPassword"
-          onChange={handleConfirmPasswordChange}
-          onBlur={handleConfirmPasswordBlur}
-          onFocus={handleConfirmPasswordFocus}
-          value={confirmPassword}
-          type="password"
-          label="Confirm Password"
-          variant="outlined"
-          size="small"
-          id="outlined-basic-confirm-password"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <VpnKeyIcon
-                  sx={{
-                    color: confirmPasswordError
-                      ? '#d32f2f'
-                      : confirmPasswordIconColor,
-                  }}
-                />
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <InputAdornment position="end">
-                {confirmPasswordError ? (
-                  <ErrorIcon sx={{ color: '#d32f2f' }} />
-                ) : (
-                  ''
-                )}
-              </InputAdornment>
-            ),
-          }}
-          sx={{
-            width: '100%',
-            mt: 2.5,
-            '& label.Mui-focused': {
-              color: confirmPasswordError ? '#d32f2f' : '#2e7d32',
-            },
-            '& .MuiOutlinedInput-root': {
-              '&.Mui-focused fieldset': {
-                borderColor: confirmPasswordError ? '#d32f2f' : '#2e7d32',
-              },
-            },
-          }}
-        />
-        {error && (
-          <Stack
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            sx={{
-              gap: 0.5,
-              mt: 1.5,
-              p: 1.5,
-              textAlign: 'center',
-              borderRadius: '5px',
-              color: 'white',
-              backgroundColor: '#d32f2f',
-            }}
-          >
-            <ErrorIcon sx={{ color: 'white' }} />
-            {error}
-          </Stack>
-        )}
-        <Button
-          type="submit"
-          variant="contained"
-          sx={{
-            width: '100%',
-            mt: 1.5,
-            px: 3,
-            py: 1.5,
-            fontWeight: 'bold',
-            textTransform: 'uppercase',
-            borderRadius: 1,
-            backgroundColor: '#1976d2',
-            cursor: 'pointer',
-            '&:hover': {
-              backgroundColor: '#0059B2',
-            },
-          }}
-        >
-          Update profile
-        </Button>
-        {/* MODAL */}
-        <Box>
-          <Button
-            onClick={handleOpen}
-            variant="contained"
-            sx={{
-              width: '100%',
-              mt: 1.5,
-              px: 3,
-              py: 1.5,
-              fontWeight: 'bold',
-              textTransform: 'uppercase',
-              borderRadius: 1,
-              backgroundColor: '#d32f2f',
-              cursor: 'pointer',
-              '&:hover': {
-                backgroundColor: '#c62828',
-              },
-            }}
-          >
-            Delete profile
-          </Button>
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box
+          <FormControl>
+            <Typography
               sx={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: '500px',
-                p: 4,
+                mt: 2.5,
+                fontSize: {
+                  xs: '17px',
+                  sm: '17px',
+                  md: '20px',
+                  lg: '23px',
+                  xl: '23px',
+                },
+                fontWeight: 'bold',
                 textAlign: 'center',
-                border: '2px solid #202329',
-                boxShadow: 24,
-                backgroundColor: '#f2f2f2',
+                textTransform: 'uppercase',
+                color: '#2e7d32',
               }}
             >
-              <HighlightOffIcon sx={{ fontSize: '100px', color: '#d32f2f' }} />
-              <Typography
-                id="modal-modal-title"
-                variant="h6"
-                component="h2"
-                sx={{ fontWeight: 'bold' }}
-              >
-                {localStorage.getItem('userFirstName') +
-                  ' ' +
-                  localStorage.getItem('userLastName')}
-                , are you sure?
-              </Typography>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                Do you really want to delete your profile?
-              </Typography>
-              <Typography
-                id="modal-modal-description"
-                sx={{ mt: 2, color: '#d32f2f' }}
-              >
-                Warning! This action cannot be undone!
-              </Typography>
+              Edit your profile
+            </Typography>
+            <Typography sx={{ mt: 1, fontWeight: 'bold', color: '#2e7d32' }}>
+              {updateMessage}
+            </Typography>
+            <TextField
+              required
+              error={firstNameError}
+              name="firstName"
+              onChange={handleChange}
+              onBlur={handleFirstNameBlur}
+              onFocus={handleFirstNameFocus}
+              value={data.firstName}
+              inputRef={setFirstNameRef}
+              type="text"
+              label="First Name"
+              variant="outlined"
+              size="small"
+              id="outlined-basic-first-name"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <PersonIcon
+                      sx={{
+                        color: firstNameError ? '#d32f2f' : firstNameIconColor,
+                      }}
+                    />
+                  </InputAdornment>
+                ),
+                endAdornment: (
+                  <InputAdornment position="end">
+                    {firstNameError ? (
+                      <ErrorIcon sx={{ color: '#d32f2f' }} />
+                    ) : (
+                      ''
+                    )}
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                width: '100%',
+                mt: 2.5,
+                '& label.Mui-focused': {
+                  color: firstNameError ? '#d32f2f' : '#2e7d32',
+                },
+                '& .MuiOutlinedInput-root': {
+                  '&.Mui-focused fieldset': {
+                    borderColor: firstNameError ? '#d32f2f' : '#2e7d32',
+                  },
+                },
+              }}
+            />
+            <TextField
+              required
+              error={lastNameError}
+              name="lastName"
+              onChange={handleChange}
+              onBlur={handleLastNameBlur}
+              onFocus={handleLastNameFocus}
+              value={data.lastName}
+              type="text"
+              label="Last Name"
+              variant="outlined"
+              size="small"
+              id="outlined-basic-last-name"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <PersonIcon
+                      sx={{
+                        color: lastNameError ? '#d32f2f' : lastNameIconColor,
+                      }}
+                    />
+                  </InputAdornment>
+                ),
+                endAdornment: (
+                  <InputAdornment position="end">
+                    {lastNameError ? (
+                      <ErrorIcon sx={{ color: '#d32f2f' }} />
+                    ) : (
+                      ''
+                    )}
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                width: '100%',
+                mt: 2.5,
+                '& label.Mui-focused': {
+                  color: lastNameError ? '#d32f2f' : '#2e7d32',
+                },
+                '& .MuiOutlinedInput-root': {
+                  '&.Mui-focused fieldset': {
+                    borderColor: lastNameError ? '#d32f2f' : '#2e7d32',
+                  },
+                },
+              }}
+            />
+            <TextField
+              required
+              error={emailError}
+              name="email"
+              onChange={handleChange}
+              onBlur={handleEmailBlur}
+              onFocus={handleEmailFocus}
+              value={data.email}
+              type="email"
+              label="Email Address"
+              variant="outlined"
+              size="small"
+              id="outlined-basic-email-address"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <EmailIcon
+                      sx={{ color: emailError ? '#d32f2f' : emailIconColor }}
+                    />
+                  </InputAdornment>
+                ),
+                endAdornment: (
+                  <InputAdornment position="end">
+                    {emailError ? <ErrorIcon sx={{ color: '#d32f2f' }} /> : ''}
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                width: '100%',
+                mt: 2.5,
+                '& label.Mui-focused': {
+                  color: emailError ? '#d32f2f' : '#2e7d32',
+                },
+                '& .MuiOutlinedInput-root': {
+                  '&.Mui-focused fieldset': {
+                    borderColor: emailError ? '#d32f2f' : '#2e7d32',
+                  },
+                },
+              }}
+            />
+            <TextField
+              required
+              error={passwordError}
+              name="password"
+              onChange={handleChange}
+              onBlur={handlePasswordBlur}
+              onFocus={handlePasswordFocus}
+              value={data.password}
+              type="password"
+              label="Password"
+              variant="outlined"
+              size="small"
+              id="outlined-basic-password"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <VpnKeyIcon
+                      sx={{
+                        color: passwordError ? '#d32f2f' : passwordIconColor,
+                      }}
+                    />
+                  </InputAdornment>
+                ),
+                endAdornment: (
+                  <InputAdornment position="end">
+                    {passwordError ? (
+                      <ErrorIcon sx={{ color: '#d32f2f' }} />
+                    ) : (
+                      ''
+                    )}
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                width: '100%',
+                mt: 2.5,
+                '& label.Mui-focused': {
+                  color: passwordError ? '#d32f2f' : '#2e7d32',
+                },
+                '& .MuiOutlinedInput-root': {
+                  '&.Mui-focused fieldset': {
+                    borderColor: passwordError ? '#d32f2f' : '#2e7d32',
+                  },
+                },
+              }}
+            />
+            <TextField
+              required
+              error={confirmPasswordError}
+              name="confirmPassword"
+              onChange={handleConfirmPasswordChange}
+              onBlur={handleConfirmPasswordBlur}
+              onFocus={handleConfirmPasswordFocus}
+              value={confirmPassword}
+              type="password"
+              label="Confirm Password"
+              variant="outlined"
+              size="small"
+              id="outlined-basic-confirm-password"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <VpnKeyIcon
+                      sx={{
+                        color: confirmPasswordError
+                          ? '#d32f2f'
+                          : confirmPasswordIconColor,
+                      }}
+                    />
+                  </InputAdornment>
+                ),
+                endAdornment: (
+                  <InputAdornment position="end">
+                    {confirmPasswordError ? (
+                      <ErrorIcon sx={{ color: '#d32f2f' }} />
+                    ) : (
+                      ''
+                    )}
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                width: '100%',
+                mt: 2.5,
+                '& label.Mui-focused': {
+                  color: confirmPasswordError ? '#d32f2f' : '#2e7d32',
+                },
+                '& .MuiOutlinedInput-root': {
+                  '&.Mui-focused fieldset': {
+                    borderColor: confirmPasswordError ? '#d32f2f' : '#2e7d32',
+                  },
+                },
+              }}
+            />
+            {error && (
               <Stack
                 direction="row"
                 justifyContent="center"
                 alignItems="center"
-                spacing={2}
-                sx={{ mt: 3 }}
+                sx={{
+                  gap: 0.5,
+                  mt: 1.5,
+                  p: 1.5,
+                  textAlign: 'center',
+                  borderRadius: '5px',
+                  color: 'white',
+                  backgroundColor: '#d32f2f',
+                }}
               >
-                <Button
-                  onClick={handleClose}
-                  variant="contained"
-                  sx={{
-                    px: 3,
-                    py: 1,
-                    backgroundColor: '#787c87',
-                    '&:hover': {
-                      backgroundColor: '#60636c',
-                    },
-                  }}
-                >
-                  Cancel
-                </Button>
-                <Button
-                  onClick={handleDelete}
-                  variant="contained"
-                  sx={{
-                    px: 3,
-                    py: 1,
-                    backgroundColor: '#d32f2f',
-                    '&:hover': {
-                      backgroundColor: '#c62828',
-                    },
-                  }}
-                >
-                  Delete
-                </Button>
+                <ErrorIcon sx={{ color: 'white' }} />
+                {error}
               </Stack>
+            )}
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{
+                width: '100%',
+                mt: 1.5,
+                px: 3,
+                py: 1.5,
+                fontWeight: 'bold',
+                textTransform: 'uppercase',
+                borderRadius: 1,
+                backgroundColor: '#1976d2',
+                cursor: 'pointer',
+                '&:hover': {
+                  backgroundColor: '#0059B2',
+                },
+              }}
+            >
+              Update profile
+            </Button>
+            {/* MODAL */}
+            <Box>
+              <Button
+                onClick={handleOpen}
+                variant="contained"
+                sx={{
+                  width: '100%',
+                  mt: 1.5,
+                  px: 3,
+                  py: 1.5,
+                  fontWeight: 'bold',
+                  textTransform: 'uppercase',
+                  borderRadius: 1,
+                  backgroundColor: '#d32f2f',
+                  cursor: 'pointer',
+                  '&:hover': {
+                    backgroundColor: '#c62828',
+                  },
+                }}
+              >
+                Delete profile
+              </Button>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: '500px',
+                    p: 4,
+                    textAlign: 'center',
+                    border: '2px solid #202329',
+                    boxShadow: 24,
+                    backgroundColor: '#f2f2f2',
+                  }}
+                >
+                  <HighlightOffIcon
+                    sx={{ fontSize: '100px', color: '#d32f2f' }}
+                  />
+                  <Typography
+                    id="modal-modal-title"
+                    variant="h6"
+                    component="h2"
+                    sx={{ fontWeight: 'bold' }}
+                  >
+                    {localStorage.getItem('userFirstName') +
+                      ' ' +
+                      localStorage.getItem('userLastName')}
+                    , are you sure?
+                  </Typography>
+                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    Do you really want to delete your profile?
+                  </Typography>
+                  <Typography
+                    id="modal-modal-description"
+                    sx={{ mt: 2, color: '#d32f2f' }}
+                  >
+                    Warning! This action cannot be undone!
+                  </Typography>
+                  <Stack
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center"
+                    spacing={2}
+                    sx={{ mt: 3 }}
+                  >
+                    <Button
+                      onClick={handleClose}
+                      variant="contained"
+                      sx={{
+                        px: 3,
+                        py: 1,
+                        backgroundColor: '#787c87',
+                        '&:hover': {
+                          backgroundColor: '#60636c',
+                        },
+                      }}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      onClick={handleDelete}
+                      variant="contained"
+                      sx={{
+                        px: 3,
+                        py: 1,
+                        backgroundColor: '#d32f2f',
+                        '&:hover': {
+                          backgroundColor: '#c62828',
+                        },
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  </Stack>
+                </Box>
+              </Modal>
             </Box>
-          </Modal>
-        </Box>
-        {/* MODAL */}
-      </FormControl>
-    </form>
+            {/* MODAL */}
+          </FormControl>
+        </form>
+      ) : (
+        <Typography
+          variant="h5"
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            textAlign: 'center',
+            textTransform: 'uppercase',
+            color: 'black',
+          }}
+        >
+          {deleteMessage}
+        </Typography>
+      )}
+    </>
   );
 };
 

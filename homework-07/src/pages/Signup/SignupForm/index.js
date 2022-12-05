@@ -41,6 +41,8 @@ const SignupForm = () => {
 
   const [error, setError] = useState('');
 
+  const [accountCreatedMessage, setAccountCreatedMessage] = useState('');
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -50,7 +52,12 @@ const SignupForm = () => {
       try {
         const url = 'http://localhost:8080/api/signup';
         const { data: res } = await axios.post(url, data);
-        navigate('/signin');
+
+        setAccountCreatedMessage(res.message);
+
+        setTimeout(() => {
+          navigate('/signin');
+        }, 3000);
       } catch (error) {
         if (
           error.response &&
@@ -237,7 +244,7 @@ const SignupForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      style={{ marginTop: '25px', textAlign: 'center' }}
+      style={{ marginTop: '10px', textAlign: 'center' }}
     >
       <FormControl>
         <Typography
@@ -257,6 +264,9 @@ const SignupForm = () => {
           }}
         >
           Create your account
+        </Typography>
+        <Typography sx={{ mt: 1, fontWeight: 'bold', color: '#2e7d32' }}>
+          {accountCreatedMessage}
         </Typography>
         <TextField
           required
