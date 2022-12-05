@@ -14,6 +14,7 @@ import Modal from '@mui/material/Modal';
 import Stack from '@mui/system/Stack';
 import Button from '@mui/material/Button';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import { fabClasses } from '@mui/material';
 
 const EditProfileForm = () => {
   const firstNameRef = useRef();
@@ -241,11 +242,23 @@ const EditProfileForm = () => {
     setConfirmPasswordIconColor('#2e7d32');
   };
 
-  ///// MODAL /////
+  ////////// MODAL //////////
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  ///// MODAL /////
+
+  const [disabled, setDisabled] = useState(true);
+
+  useEffect(() => {
+    if (
+      confirmPassword === data.password &&
+      confirmPassword !== '' &&
+      data.password !== ''
+    ) {
+      setDisabled(false);
+    }
+  }, [confirmPassword, data.password]);
+  ////////// MODAL //////////
 
   return (
     <form
@@ -505,6 +518,7 @@ const EditProfileForm = () => {
           </Stack>
         )}
         <Button
+          disabled={disabled}
           type="submit"
           variant="contained"
           sx={{
@@ -527,6 +541,7 @@ const EditProfileForm = () => {
         {/* MODAL */}
         <Box>
           <Button
+            disabled={disabled}
             onClick={handleOpen}
             variant="contained"
             sx={{
