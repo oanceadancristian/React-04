@@ -129,6 +129,8 @@ const SignupForm = () => {
       setEmailError(false);
     } else if (input.name === 'password') {
       setPasswordError(false);
+      setConfirmPasswordError(false);
+      setError('');
     }
   };
 
@@ -137,6 +139,8 @@ const SignupForm = () => {
 
     if (e.target.name === 'confirmPassword') {
       setConfirmPasswordError(false);
+      setPasswordError(false);
+      setError('');
     }
   };
 

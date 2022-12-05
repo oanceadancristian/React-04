@@ -95,6 +95,9 @@ const SigninForm = () => {
     setData({ ...data, [input.name]: input.value });
     setError('');
 
+    setEmailError(false);
+    setPasswordError(false);
+
     if (input.name === 'email') {
       setEmailError(false);
     } else if (input.name === 'password') {
