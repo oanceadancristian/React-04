@@ -14,7 +14,6 @@ import Modal from '@mui/material/Modal';
 import Stack from '@mui/system/Stack';
 import Button from '@mui/material/Button';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import { fabClasses } from '@mui/material';
 
 const EditProfileForm = () => {
   const firstNameRef = useRef();
