@@ -34,7 +34,9 @@ function App() {
               </>
             )}
 
-            {user && <Route path="/edit_profile" element={<EditProfile />} />}
+            {user && (
+              <Route path="/edit_profile/:userId" element={<EditProfile />} />
+            )}
 
             {(user || facebookUser || googleUser) && (
               <>

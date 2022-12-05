@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import FormControl from '@mui/material/FormControl';
 import Typography from '@mui/material/Typography';
@@ -35,12 +36,15 @@ const EditProfileForm = () => {
 
   const [updateMessage, setUpdateMessage] = useState('');
 
+  const params = useParams();
+  const { userId } = params;
+
   const handleUpdate = async (e) => {
     e.preventDefault();
 
     if (confirmPassword === data.password) {
       try {
-        const url = 'http://localhost:8080/api/edit_profile';
+        const url = `http://localhost:8080/api/edit_profile/${userId}`;
         const { data: res } = await axios.patch(url, data);
         localStorage.setItem('userFirstName', res.userFirstName);
         localStorage.setItem('userLastName', res.userLastName);
@@ -67,24 +71,28 @@ const EditProfileForm = () => {
   };
 
   const handleDelete = async () => {
-    try {
-      const url = 'http://localhost:8080/api/delete_profile';
-      const { data: res } = await axios.delete(url, { data });
-      localStorage.removeItem('userToken');
-      localStorage.removeItem('userFirstName');
-      localStorage.removeItem('userLastName');
-      localStorage.removeItem('userEmail');
-      window.location = '/signup';
-    } catch (error) {
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        setError(error.response.data.message);
-      } else if (!error.response) {
-        setError('Network error! Please try again later!');
+    if (confirmPassword === data.password) {
+      try {
+        const url = `http://localhost:8080/api/delete_profile/${userId}`;
+        const { data: res } = await axios.delete(url, { data });
+        localStorage.removeItem('userToken');
+        localStorage.removeItem('userFirstName');
+        localStorage.removeItem('userLastName');
+        localStorage.removeItem('userEmail');
+        window.location = '/signup';
+      } catch (error) {
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          setError(error.response.data.message);
+        } else if (!error.response) {
+          setError('Network error! Please try again later!');
+        }
       }
+    } else {
+      setError('Passwords do not match!');
     }
   };
 

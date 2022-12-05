@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link as RouterLink, useLocation, useParams } from 'react-router-dom';
+import axios from 'axios';
 import Link from '@mui/material/Link';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
@@ -60,6 +61,18 @@ function ResponsiveNavBar() {
     localStorage.removeItem('googlePicture');
     window.location = '/';
   };
+
+  const [userId, setUserId] = useState('');
+
+  useEffect(() => {
+    axios.get('http://localhost:8080/api/get_profile').then((response) => {
+      response.data.forEach((user) => {
+        if (user.email === localStorage.getItem('userEmail')) {
+          setUserId(user._id);
+        }
+      });
+    });
+  }, []);
 
   return (
     <AppBar position="static">
@@ -239,7 +252,7 @@ function ResponsiveNavBar() {
                   {localStorage.getItem('userEmail') ? (
                     <Link
                       component={RouterLink}
-                      to="/edit_profile"
+                      to={`/edit_profile/${userId}`}
                       sx={{
                         textDecoration: 'none',
                         color: 'black',
@@ -472,7 +485,7 @@ function ResponsiveNavBar() {
                   {localStorage.getItem('userEmail') ? (
                     <Link
                       component={RouterLink}
-                      to="/edit_profile"
+                      to={`/edit_profile/${userId}`}
                       sx={{
                         textDecoration: 'none',
                         color: 'black',

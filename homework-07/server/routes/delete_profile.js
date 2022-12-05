@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const { User, validate } = require('../models/user');
 
-router.delete('/', async (req, res) => {
+router.delete('/:userId', async (req, res) => {
   try {
     const { error } = validate(req.body);
     if (error) {
       return res.status(400).send({ message: error.details[0].message });
     }
-    await User.deleteOne({ email: req.body.email });
+    await User.findByIdAndDelete({ _id: req.params.userId });
     res.status(201).send({
       message: 'Account deleted successfully!',
     });
