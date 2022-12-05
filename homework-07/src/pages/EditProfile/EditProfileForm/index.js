@@ -38,6 +38,7 @@ const EditProfileForm = () => {
   const [error, setError] = useState('');
 
   const [updateMessage, setUpdateMessage] = useState('');
+  const [deleteMessage, setDeleteMessage] = useState('');
 
   const params = useParams();
   const { userId } = params;
@@ -154,6 +155,7 @@ const EditProfileForm = () => {
       setEmailError(false);
     } else if (input.name === 'password') {
       setPasswordError(false);
+      setConfirmPasswordError(false);
     }
   };
 
@@ -162,6 +164,7 @@ const EditProfileForm = () => {
 
     if (e.target.name === 'confirmPassword') {
       setConfirmPasswordError(false);
+      setPasswordError(false);
     }
   };
 
@@ -246,17 +249,6 @@ const EditProfileForm = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [disabled, setDisabled] = useState(true);
-
-  useEffect(() => {
-    if (
-      confirmPassword === data.password &&
-      confirmPassword !== '' &&
-      data.password !== ''
-    ) {
-      setDisabled(false);
-    }
-  }, [confirmPassword, data.password]);
   ////////// MODAL //////////
 
   return (
@@ -284,7 +276,7 @@ const EditProfileForm = () => {
           Edit your profile
         </Typography>
         <Typography sx={{ mt: 1, fontWeight: 'bold', color: '#2e7d32' }}>
-          {updateMessage}
+          {updateMessage || deleteMessage}
         </Typography>
         <TextField
           required
@@ -517,7 +509,6 @@ const EditProfileForm = () => {
           </Stack>
         )}
         <Button
-          disabled={disabled}
           type="submit"
           variant="contained"
           sx={{
@@ -540,7 +531,6 @@ const EditProfileForm = () => {
         {/* MODAL */}
         <Box>
           <Button
-            disabled={disabled}
             onClick={handleOpen}
             variant="contained"
             sx={{
