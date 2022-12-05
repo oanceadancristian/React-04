@@ -38,7 +38,6 @@ const EditProfileForm = () => {
   const [error, setError] = useState('');
 
   const [updateMessage, setUpdateMessage] = useState('');
-  const [deleteMessage, setDeleteMessage] = useState('');
 
   const params = useParams();
   const { userId } = params;
@@ -156,6 +155,7 @@ const EditProfileForm = () => {
     } else if (input.name === 'password') {
       setPasswordError(false);
       setConfirmPasswordError(false);
+      setError('');
     }
   };
 
@@ -165,6 +165,7 @@ const EditProfileForm = () => {
     if (e.target.name === 'confirmPassword') {
       setConfirmPasswordError(false);
       setPasswordError(false);
+      setError('');
     }
   };
 
@@ -249,6 +250,12 @@ const EditProfileForm = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  useEffect(() => {
+    if (error) {
+      setOpen(false);
+    }
+  }, [error]);
+
   ////////// MODAL //////////
 
   return (
@@ -276,7 +283,7 @@ const EditProfileForm = () => {
           Edit your profile
         </Typography>
         <Typography sx={{ mt: 1, fontWeight: 'bold', color: '#2e7d32' }}>
-          {updateMessage || deleteMessage}
+          {updateMessage}
         </Typography>
         <TextField
           required
