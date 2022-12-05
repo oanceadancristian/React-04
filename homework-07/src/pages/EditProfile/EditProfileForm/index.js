@@ -44,7 +44,7 @@ const EditProfileForm = () => {
 
     if (confirmPassword === data.password) {
       try {
-        const url = `http://localhost:8080/api/edit_profile/${userId}`;
+        const url = `http://localhost:8080/api/update_profile/${userId}`;
         const { data: res } = await axios.patch(url, data);
         localStorage.setItem('userFirstName', res.userFirstName);
         localStorage.setItem('userLastName', res.userLastName);
