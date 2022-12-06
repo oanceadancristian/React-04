@@ -3,12 +3,16 @@ import { Link as RouteLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import FormControl from '@mui/material/FormControl';
 import Typography from '@mui/material/Typography';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import ErrorIcon from '@mui/icons-material/Error';
+import Alert from '@mui/material/Alert';
 import Stack from '@mui/system/Stack';
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
@@ -42,6 +46,8 @@ const SignupForm = () => {
   const [error, setError] = useState('');
 
   const [accountCreatedMessage, setAccountCreatedMessage] = useState('');
+  const [openAccountCreateMessageBox, setOpenAccountCreateMessageBox] =
+    useState(true);
 
   const navigate = useNavigate();
 
@@ -269,9 +275,28 @@ const SignupForm = () => {
         >
           Create your account
         </Typography>
-        <Typography sx={{ mt: 1, fontWeight: 'bold', color: '#2e7d32' }}>
-          {accountCreatedMessage}
-        </Typography>
+        {accountCreatedMessage && (
+          <Collapse in={openAccountCreateMessageBox}>
+            <Alert
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="small"
+                  onClick={() => {
+                    setOpenAccountCreateMessageBox(false);
+                  }}
+                >
+                  <CloseIcon fontSize="inherit" />
+                </IconButton>
+              }
+              variant="filled"
+              sx={{ mt: 1.5 }}
+            >
+              {accountCreatedMessage}
+            </Alert>
+          </Collapse>
+        )}
         <TextField
           required
           error={firstNameError}
@@ -484,23 +509,13 @@ const SignupForm = () => {
           }}
         />
         {error && (
-          <Stack
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            sx={{
-              gap: 0.5,
-              mt: 1.5,
-              p: 1.5,
-              textAlign: 'center',
-              borderRadius: '5px',
-              color: 'white',
-              backgroundColor: '#d32f2f',
-            }}
+          <Alert
+            variant="filled"
+            severity="error"
+            sx={{ display: 'flex', justifyContent: 'center', mt: 1.5 }}
           >
-            <ErrorIcon sx={{ color: 'white' }} />
             {error}
-          </Stack>
+          </Alert>
         )}
         <Button
           type="submit"

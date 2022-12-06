@@ -12,6 +12,7 @@ import ErrorIcon from '@mui/icons-material/Error';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import Alert from '@mui/material/Alert';
 import Stack from '@mui/system/Stack';
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
@@ -310,23 +311,13 @@ const SigninForm = () => {
           />
         </FormGroup>
         {error && (
-          <Stack
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            sx={{
-              gap: 0.5,
-              mt: 1.5,
-              p: 1.5,
-              textAlign: 'center',
-              borderRadius: 1,
-              color: 'white',
-              backgroundColor: '#d32f2f',
-            }}
+          <Alert
+            variant="filled"
+            severity="error"
+            sx={{ display: 'flex', justifyContent: 'center', mt: 1.5 }}
           >
-            <ErrorIcon sx={{ color: 'white' }} />
             {error}
-          </Stack>
+          </Alert>
         )}
         <Button
           type="submit"

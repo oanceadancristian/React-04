@@ -3,12 +3,16 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import FormControl from '@mui/material/FormControl';
 import Typography from '@mui/material/Typography';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import ErrorIcon from '@mui/icons-material/Error';
+import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Stack from '@mui/system/Stack';
@@ -38,6 +42,8 @@ const EditProfileForm = () => {
   const [error, setError] = useState('');
 
   const [updateMessage, setUpdateMessage] = useState('');
+  const [openUpdateMessageBox, setOpenUpdateMessageBox] = useState(true);
+
   const [deleteMessage, setDeleteMessage] = useState('');
 
   const params = useParams();
@@ -58,6 +64,8 @@ const EditProfileForm = () => {
         setConfirmPassword('');
 
         setUpdateMessage(res.message);
+
+        firstNameRef.current?.focus();
       } catch (error) {
         if (
           error.response &&
@@ -289,9 +297,28 @@ const EditProfileForm = () => {
             >
               Edit your profile
             </Typography>
-            <Typography sx={{ mt: 1, fontWeight: 'bold', color: '#2e7d32' }}>
-              {updateMessage}
-            </Typography>
+            {updateMessage && (
+              <Collapse in={openUpdateMessageBox}>
+                <Alert
+                  action={
+                    <IconButton
+                      aria-label="close"
+                      color="inherit"
+                      size="small"
+                      onClick={() => {
+                        setOpenUpdateMessageBox(false);
+                      }}
+                    >
+                      <CloseIcon fontSize="inherit" />
+                    </IconButton>
+                  }
+                  variant="filled"
+                  sx={{ mt: 1.5 }}
+                >
+                  {updateMessage}
+                </Alert>
+              </Collapse>
+            )}
             <TextField
               required
               error={firstNameError}
@@ -520,23 +547,13 @@ const EditProfileForm = () => {
               }}
             />
             {error && (
-              <Stack
-                direction="row"
-                justifyContent="center"
-                alignItems="center"
-                sx={{
-                  gap: 0.5,
-                  mt: 1.5,
-                  p: 1.5,
-                  textAlign: 'center',
-                  borderRadius: '5px',
-                  color: 'white',
-                  backgroundColor: '#d32f2f',
-                }}
+              <Alert
+                variant="filled"
+                severity="error"
+                sx={{ display: 'flex', justifyContent: 'center', mt: 1.5 }}
               >
-                <ErrorIcon sx={{ color: 'white' }} />
                 {error}
-              </Stack>
+              </Alert>
             )}
             <Button
               type="submit"
