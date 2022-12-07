@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link as RouterLink, useLocation, useParams } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import axios from 'axios';
@@ -64,12 +64,6 @@ const Homepage = () => {
     localStorage.removeItem('Species');
     localStorage.removeItem('Gender');
   }, []);
-
-  const params = useParams();
-  const { pageId, episodeId, locationId } = params;
-
-  const location = useLocation();
-  const { search } = location;
 
   return (
     <Box sx={{ position: 'relative', minHeight: '100vh' }}>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link as RouterLink, useLocation, useParams } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Link from '@mui/material/Link';
 import AppBar from '@mui/material/AppBar';
@@ -40,11 +40,8 @@ function ResponsiveNavBar() {
     setAnchorElUser(null);
   };
 
-  const params = useParams();
-  const { pageId, episodeId, locationId } = params;
-
   const location = useLocation();
-  const { pathname, search } = location;
+  const { pathname } = location;
 
   const handleLogout = () => {
     localStorage.removeItem('userToken');
